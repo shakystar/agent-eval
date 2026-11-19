@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "backend": "fixture",
+  "runtime": "actual Go process",
+  "orchestrator": "actual LangGraph/SQLite process",
+  "inspect": {
+    "status": "passed",
+    "samples": 2,
+    "receipt_identity_preserved": true,
+    "original_log_sha256": "2adeb18effa2e5ab91d63b7ffb16ca56a8effa1bfd7f056633202de6d3bf3de9",
+    "append_preserved": true,
+    "scoring_error_observed": true,
+    "tampered_artifact_rejected": true,
+    "external_grader_model_calls": 0,
+    "scope": "integration rules only; no task-quality or skill-effect conclusion"
+  },
+  "execution_attempts": 2,
+  "completed_tasks": 2,
+  "receipt_generations": [
+    1,
+    1
+  ],
+  "rescore_additional_attempts": 0,
+  "restart_additional_attempts": 0,
+  "model_status_unchanged_after_rescore_and_restart": true,
+  "document_sha256": "ba4df77915a94416b57c496677a5a0000c397e5ddcefcf7de9be9273cab98d34",
+  "image_id": "sha256:04f592fbe15d1bac006d5c4bc3a1668005b501a27e427deedc9b670ec9899a2d",
+  "limitations": [
+    "Fixed workflow; not arbitrary task injection",
+    "Rule-based integration evidence, not professional task quality",
+    "Fixture consumer does not perform semantic review"
+  ]
+}

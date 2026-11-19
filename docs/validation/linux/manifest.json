@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-20",
+  "host": "Windows / WSL2 Ubuntu-22.04",
+  "docker": "29.1.3 linux/amd64",
+  "image_id": "sha256:04f592fbe15d1bac006d5c4bc3a1668005b501a27e427deedc9b670ec9899a2d",
+  "sources": {
+    "role-runtime": "2be08fc0787c4ac67b934ff1f178806958021634",
+    "role-orchestrator": "5d2b51840e56284b6902e41cf76a00bc486dc3a2",
+    "inspect": "ec5d110b1704a6eb31e2efedec59a12190df80e1",
+    "uv": "0.13.9"
+  },
+  "codex_adapter": "v0.0.0-20261119053648-3ab5b920bf6c",
+  "codex_cli": "0.167.0",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "medium",
+  "config_sha256": "930874deea71b686a40134067b465888c17b430ca9d12573524f664f59f7141c",
+  "inspect_build_version": "0.3.292.dev1+gec5d110b1",
+  "inspect_version_note": "Shallow checkout SCM metadata differs from earlier dev17 build; source commit is identical. No Windows patch applied.",
+  "go_vet": "passed: engine, control, lifecycle",
+  "go_race_tests": "passed: engine, control, lifecycle",
+  "raw_evidence_volume": "agent-eval-live-20261120-m0",
+  "live_experiments": [
+    {
+      "state": "/state/live-001",
+      "status": "failed",
+      "stage": "account_read",
+      "code": "workspace_routing_unauthorized",
+      "execution": "not_started",
+      "automatic_retry": false
+    },
+    {
+      "state": "/state/live-002",
+      "status": "passed",
+      "precondition": "Same SDK account/read doctor succeeded in WSL and container; no auth/config/network changes",
+      "completed_tasks": 2
+    }
+  ],
+  "limitations": [
+    "Initial account routing failure is preserved; long-term authentication reliability is not established.",
+    "Runtime fix branch is published, not merged into main.",
+    "Image is local, not published to a registry.",
+    "Rule-based integration scores are not semantic quality judgments."
+  ],
+  "normalized_source_sha256": {
+    "Dockerfile": "55f0d405d060ac3415a2faa203adea84ba4963b953eb766ffd8342770923f744",
+    "integration_driver.py": "dd9ed7133fa0f177f6f2fc7e0097778300d4aca5ed44d8b5a61b1f98b33751c2",
+    "prepare_context.py": "3b4f2be367f205b60a2bd9e70a8602517f870683a366add000034c00ecc6c6fc",
+    "run_suite.py": "abfc1e0b147bb28f50e8220dfffd111fe933742f40c9bde81101f75b93391019",
+    "score_artifacts.py": "c964d408ac2192b26d23a3ed68cb729f6d76785d95aff778471a74d532e715e4",
+    "sources.json": "7ef3fb6fc9707a4f7bbaffe4cc805cbe99f9c9d710e2068f7a4413bbe219bf7e"
+  },
+  "report_sha256": {
+    "codex-inspect-integration.json": "8f55815c60fd16c9b43b27afe4ca2c296c591c679b38a62eb191500d54331140",
+    "fixture-inspect-integration.json": "d0119c699a5da8877e9a6634c5b7a80cc885479129ed5ece1e98b3967f0c12c0",
+    "workflow-acceptance.json": "74fcb887b3153a66ecab8d2d27519c442bb49d520f1848ea0b00eb4e2f3aeedc"
+  }
+}

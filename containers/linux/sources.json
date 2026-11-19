@@ -1,0 +1,6 @@
+{
+  "role-runtime": "2be08fc0787c4ac67b934ff1f178806958021634",
+  "role-orchestrator": "5d2b51840e56284b6902e41cf76a00bc486dc3a2",
+  "inspect": "ec5d110b1704a6eb31e2efedec59a12190df80e1",
+  "uv": "0.13.9"
+}

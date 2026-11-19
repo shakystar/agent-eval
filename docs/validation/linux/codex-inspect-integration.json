@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "backend": "codex",
+  "runtime": "actual Go process",
+  "orchestrator": "actual LangGraph/SQLite process",
+  "inspect": {
+    "status": "passed",
+    "samples": 2,
+    "receipt_identity_preserved": true,
+    "original_log_sha256": "a406b7951d579de876faf4c54afca1562d60eea4be3a0677d329cd889592e6ff",
+    "append_preserved": true,
+    "scoring_error_observed": true,
+    "tampered_artifact_rejected": true,
+    "external_grader_model_calls": 0,
+    "scope": "integration rules only; no task-quality or skill-effect conclusion"
+  },
+  "execution_attempts": 2,
+  "completed_tasks": 2,
+  "receipt_generations": [
+    1,
+    1
+  ],
+  "rescore_additional_attempts": 0,
+  "restart_additional_attempts": 0,
+  "model_status_unchanged_after_rescore_and_restart": true,
+  "document_sha256": "b0d531a6064b22e718209c61761856008c8a48cf79ca11cec953cb19d4ac9760",
+  "image_id": "sha256:04f592fbe15d1bac006d5c4bc3a1668005b501a27e427deedc9b670ec9899a2d",
+  "limitations": [
+    "Fixed workflow; not arbitrary task injection",
+    "No human-confirmed semantic quality evaluation"
+  ]
+}
