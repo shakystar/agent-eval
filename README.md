@@ -82,6 +82,8 @@ agent-eval은 실험 명세, 평가용 시나리오와 주입 계획, 증거 계
 
 ## 재사용 결정
 
+[Windows 오류 수정 기록](docs/validation/m0-windows-fixes.md): Inspect의 긴 SQLite 경로를 수정해 native 로그 저장·읽기·재채점을 확인했습니다. workflow Windows 빌드는 복구했으며 실제 Windows workflow 실행 지원은 별도입니다.
+
 Inspect AI의 채점·재평가·로그 API·뷰어를 첫 재사용 대상으로 선택합니다. Harbor는 환경형 과제의 실행·검증을 맡는 후속 백엔드로 둡니다. 실험 조건·인계 정책·주입 적용 기록·증거 연결·판정 확정과 비교는 agent-eval이 소유합니다.
 
 첫 실제 실행은 기존 role-orchestrator → role-runtime → codex-adapter 경로를 유지합니다. 외부 하네스의 모델 라우팅으로 자동 교체하지 않으며, 실행과 재시도 소유자를 하나로 고정합니다. M0 계약 검증을 거친 범위만 연결하고, 기능 구현·통합 성공과 기획 결정을 구분합니다.

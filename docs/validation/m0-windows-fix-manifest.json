@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-20",
+  "inspect_base_commit": "ec5d110b1704a6eb31e2efedec59a12190df80e1",
+  "inspect_patch_sha256": "8ae22560781d10f0627d6a144b7e61ba6ca7d5e44eeb159dffc3c3c23ddeafee",
+  "inspect_installed_buffer_sha256": "9d07e09d803ae7ccfebe3dcbd2493f3c748ee67ba2c4a14a93728e177dc067cd",
+  "runtime_base_commit": "bba4f3a6afc9b4ebc6adaf1c010feeb5a5434d2b",
+  "runtime_fix_commit": "2be08fc0787c4ac67b934ff1f178806958021634",
+  "runtime_fix_branch": "fix/m0-windows-control-build",
+  "runtime_patch_sha256": "6e26d6187e596e584af04c68169b89396d307ccbbe329b6adf882655d055ccbf",
+  "runtime_fix_remote_status": "local commit; patch archived in agent-eval",
+  "windows_path_tests": {
+    "passed": 4,
+    "scope": [
+      "long Unicode/hash path read-write/read-only",
+      "missing read-only file never created",
+      "extended path idempotent",
+      "UNC prefix normalization without network"
+    ]
+  },
+  "go": "go1.26.11 windows/amd64",
+  "go_build": "passed",
+  "go_vet": "passed",
+  "go_windows_fail_closed_test": "passed",
+  "go_windows_race_test": "passed",
+  "go_cross_compile": {
+    "linux/amd64": "passed, not executed",
+    "darwin/amd64": "passed, not executed"
+  },
+  "workflow_launch": {
+    "exit_code": 1,
+    "message": "state store currently supports Linux/macOS only",
+    "expected": true
+  },
+  "limits": [
+    "Windows workflow execution remains unsupported",
+    "Linux/macOS lock regression tests compiled but not executed",
+    "No live model calls",
+    "Inspect patch is local, not an upstream release"
+  ],
+  "posthoc_source_note": "Posthoc report recorded runtime base HEAD while portability changes were uncommitted. Shared vector files and Python validator were unchanged."
+}

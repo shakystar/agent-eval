@@ -1,0 +1,45 @@
+diff --git a/src/inspect_ai/log/_recorders/buffer/database.py b/src/inspect_ai/log/_recorders/buffer/database.py
+index 89291bd34..683da644a 100644
+--- a/src/inspect_ai/log/_recorders/buffer/database.py
++++ b/src/inspect_ai/log/_recorders/buffer/database.py
+@@ -22,6 +22,7 @@ from typing import (
+     TypeVar,
+ )
+ from weakref import WeakSet
++from urllib.parse import quote
+ 
+ import anyio
+ import anyio.to_thread
+@@ -1269,7 +1270,7 @@ class SampleBufferDatabase(SampleBuffer):
+                 # the database was deleted raises OperationalError rather
+                 # than leaving an empty database behind
+                 database = (
+-                    f"{self.db_path.as_uri()}?mode=ro"
++                    sqlite_readonly_uri(self.db_path)
+                     if self._read_only
+                     else self.db_path
+                 )
+@@ -2379,7 +2380,22 @@ def sample_buffer_shutdown_pending(location: str) -> bool:
+ 
+ 
+ def resolve_db_dir(db_dir: Path | None = None) -> Path:
+-    return db_dir or inspect_data_dir("samplebuffer")
++    path = db_dir or inspect_data_dir("samplebuffer")
++    if os.name == "nt":
++        # SQLite and its WAL sidecars can exceed MAX_PATH even when the
++        # application data directory itself is short. Keep the same location.
++        value = str(path.absolute())
++        if not value.startswith("\\\\?\\"):
++            value = "\\\\?\\UNC\\" + value[2:] if value.startswith("\\\\") else "\\\\?\\" + value
++        return Path(value)
++    return path
++
++
++def sqlite_readonly_uri(path: Path) -> str:
++    # as_uri() treats the Windows extended-path '?' as an authority component.
++    # Encode the complete native path so SQLite decodes it before opening it.
++    uri = "file:" + quote(str(path), safe="/:") if os.name == "nt" else path.as_uri()
++    return f"{uri}?mode=ro"
+ 
+ 
+ def location_dir_and_file(location: str) -> tuple[str, str]:

@@ -1,0 +1,169 @@
+diff --git a/docs/research/windows-build-compatibility.md b/docs/research/windows-build-compatibility.md
+new file mode 100644
+index 0000000..956a8a7
+--- /dev/null
++++ b/docs/research/windows-build-compatibility.md
+@@ -0,0 +1,16 @@
++# Windows workflow 빌드 오류 수정
++
++2026-11-20. Go 1.26.11, Windows/amd64.
++
++`internal/control/server.go`가 `syscall.Flock`, `LOCK_EX`, `LOCK_NB`를 OS 구분 없이 참조해 workflow 컴파일이 실패했습니다. control owner 잠금을 OS별 파일로 분리했습니다. Linux/macOS의 기존 파일 잠금과 close 해제를 유지하며, 다른 OS에서는 명시적 미지원 오류를 반환합니다. state store의 지원 OS 정책은 변경하지 않았습니다.
++
++검증 결과:
++
++- `go build ./cmd/runtime-workflow`: Windows 빌드 통과.
++- `go test ./internal/control -run '^TestUnsupportedOwnerLockFailsClosed$' -count=1`: 통과. 파일을 생성하거나 잠금 없이 성공하지 않음을 확인했습니다.
++- 같은 검사에 `-race` 적용: 통과.
++- `go vet ./internal/control ./cmd/runtime-workflow`: 통과.
++- Linux/amd64, Darwin/amd64 control 테스트 교차 컴파일: 통과. 해당 OS에서 테스트를 실행한 것은 아닙니다.
++- 생성된 바이너리를 fixture backend로 실행: 기존 `state store currently supports Linux/macOS only` 오류로 종료했습니다. 모델 호출은 없습니다.
++
++Windows 빌드 복구와 Windows workflow 실행 지원은 별개입니다. Unix socket·파일 권한·영속 저장·Python orchestrator의 `fcntl`을 포함하는 전체 Windows 지원은 이번 수정에 포함하지 않습니다. Linux/macOS 잠금 배타성·해제 회귀 검사를 추가했으며, 해당 OS에서의 실행 검증은 남습니다.
+diff --git a/docs/roadmap.md b/docs/roadmap.md
+index fd499e5..1256274 100644
+--- a/docs/roadmap.md
++++ b/docs/roadmap.md
+@@ -91,3 +91,7 @@ Codex advisory 파일럿: Go app-server 어댑터·역할 thread 영속 매핑
+ 산출물: CLI 또는 최소 API, 상태 조회, 합성 프로젝트 기반 end-to-end 데모, 운영 문서.
+ 
+ 종료 기준: 실행 중단 후에도 프로젝트 작업을 이어가고 결과물의 자동 검증을 통과한다. 작업 자동 분해·웹 UI·분산화는 결과를 보고 다음 백로그로 결정한다.
++
++## Windows 빌드 호환성
++
++2026-11-20: [workflow의 OS별 잠금 분리](research/windows-build-compatibility.md)로 Windows 컴파일 오류를 수정했습니다. Linux/macOS 전용 실행 계약은 유지합니다.
+diff --git a/internal/control/lock_other.go b/internal/control/lock_other.go
+new file mode 100644
+index 0000000..2d2853d
+--- /dev/null
++++ b/internal/control/lock_other.go
+@@ -0,0 +1,13 @@
++//go:build !darwin && !linux
++
++package control
++
++import (
++	"errors"
++	"os"
++)
++
++// Match the Store's supported platforms. Never start an unlocked owner.
++func acquireOwnerLock(string) (*os.File, error) {
++	return nil, errors.New("control owner currently supports Linux/macOS only")
++}
+diff --git a/internal/control/lock_other_test.go b/internal/control/lock_other_test.go
+new file mode 100644
+index 0000000..80bdeea
+--- /dev/null
++++ b/internal/control/lock_other_test.go
+@@ -0,0 +1,21 @@
++//go:build !darwin && !linux
++
++package control
++
++import (
++	"os"
++	"path/filepath"
++	"strings"
++	"testing"
++)
++
++func TestUnsupportedOwnerLockFailsClosed(t *testing.T) {
++	path := filepath.Join(t.TempDir(), "owner.lock")
++	f, err := acquireOwnerLock(path)
++	if f != nil || err == nil || !strings.Contains(err.Error(), "Linux/macOS") {
++		t.Fatalf("unsupported owner must fail closed: file=%v err=%v", f, err)
++	}
++	if _, err := os.Stat(path); !os.IsNotExist(err) {
++		t.Fatalf("unsupported owner created lock file: %v", err)
++	}
++}
+diff --git a/internal/control/lock_unix.go b/internal/control/lock_unix.go
+new file mode 100644
+index 0000000..8e4727f
+--- /dev/null
++++ b/internal/control/lock_unix.go
+@@ -0,0 +1,20 @@
++//go:build darwin || linux
++
++package control
++
++import (
++	"os"
++	"syscall"
++)
++
++func acquireOwnerLock(path string) (*os.File, error) {
++	f, err := os.OpenFile(path, os.O_CREATE|os.O_RDWR, 0600)
++	if err != nil {
++		return nil, err
++	}
++	if err = syscall.Flock(int(f.Fd()), syscall.LOCK_EX|syscall.LOCK_NB); err != nil {
++		f.Close()
++		return nil, err
++	}
++	return f, nil
++}
+diff --git a/internal/control/lock_unix_test.go b/internal/control/lock_unix_test.go
+new file mode 100644
+index 0000000..b9a4d77
+--- /dev/null
++++ b/internal/control/lock_unix_test.go
+@@ -0,0 +1,29 @@
++//go:build darwin || linux
++
++package control
++
++import (
++	"path/filepath"
++	"testing"
++)
++
++func TestOwnerLockExclusionAndRelease(t *testing.T) {
++	path := filepath.Join(t.TempDir(), "owner.lock")
++	first, err := acquireOwnerLock(path)
++	if err != nil {
++		t.Fatal(err)
++	}
++	defer first.Close()
++	if other, err := acquireOwnerLock(path); err == nil {
++		other.Close()
++		t.Fatal("second owner acquired lock")
++	}
++	if err := first.Close(); err != nil {
++		t.Fatal(err)
++	}
++	last, err := acquireOwnerLock(path)
++	if err != nil {
++		t.Fatal(err)
++	}
++	last.Close()
++}
+diff --git a/internal/control/server.go b/internal/control/server.go
+index 34feb90..57bb5fd 100644
+--- a/internal/control/server.go
++++ b/internal/control/server.go
+@@ -18,7 +18,6 @@ import (
+ 	"reflect"
+ 	"regexp"
+ 	"sync"
+-	"syscall"
+ 	"time"
+ )
+ 
+@@ -170,14 +169,10 @@ func (s *Server) Start(ctx context.Context) error {
+ 	if e := os.MkdirAll(dir, 0700); e != nil {
+ 		return e
+ 	}
+-	f, e := os.OpenFile(filepath.Join(dir, "owner.lock"), os.O_CREATE|os.O_RDWR, 0600)
++	f, e := acquireOwnerLock(filepath.Join(dir, "owner.lock"))
+ 	if e != nil {
+ 		return e
+ 	}
+-	if e = syscall.Flock(int(f.Fd()), syscall.LOCK_EX|syscall.LOCK_NB); e != nil {
+-		f.Close()
+-		return e
+-	}
+ 	s.lock = f
+ 	success := false
+ 	defer func() {

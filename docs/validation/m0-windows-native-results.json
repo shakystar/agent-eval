@@ -1,0 +1,11 @@
+{
+  "os": "Windows",
+  "python": "3.12.3",
+  "inspect_ai": "0.3.292.dev17+gec5d110b1.d20261119",
+  "buffer_module_sha256": "9d07e09d803ae7ccfebe3dcbd2493f3c748ee67ba2c4a14a93728e177dc067cd",
+  "probe_sha256": "11e64ffc4b6b129a61ad8e3d2449e592fb291d7c4524c6e7404f6247d1ace204",
+  "status": "success",
+  "native_log_read_and_rescore": true,
+  "solver_calls": 1,
+  "external_model_calls": 0
+}

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-11-19T16:11:48.867493+00:00",
+  "scope": "M0 synthetic public API probe; not agent performance",
+  "python": "3.12.3",
+  "os": "Windows",
+  "inspect_ai": "0.3.292.dev17+gec5d110b1.d20261119",
+  "inspect_commit": "ec5d110b1704a6eb31e2efedec59a12190df80e1",
+  "probe_sha256": "17799641c3d6d38280f336af86824c2e556834ceea6592f8456be9bae0758202",
+  "checks": {
+    "identity_conflict_rejected": true,
+    "C01_native_roundtrip_and_dedup": true,
+    "rescore_keeps_native_eval_id": true,
+    "C02_append_rescore_preserves_prior_files": true,
+    "rescore_failure_surface": "ValueError",
+    "C03_scoring_error_no_execution_replay": true,
+    "C04_denominators": true,
+    "C07_private_target_and_passive_import": true,
+    "existing_python_validator_shared_vectors": 26,
+    "validated_bridge_receipt_to_native_log_and_score": true
+  },
+  "counts": {
+    "planned": 4,
+    "executed": 4,
+    "judgeable": 2,
+    "unscored": 1,
+    "scoring_error": 1,
+    "success": 1,
+    "planned_success_rate": 0.25,
+    "judgeable_success_rate": 0.5,
+    "native_accuracy": 0.5,
+    "native_denominator": 2
+  },
+  "execution_fixture_calls": 6,
+  "rescore_execution_calls": 0,
+  "external_model_calls": 0,
+  "task_validity": "not_applicable_contract_fixture",
+  "native_eval": "not exercised by this posthoc probe; see m0-native-eval-results.json",
+  "real_runtime_integration": "not_run: orchestrator/engine state store require Linux/macOS",
+  "sources": {
+    "role-orchestrator": "5d2b51840e56284b6902e41cf76a00bc486dc3a2",
+    "role-runtime": "bba4f3a6afc9b4ebc6adaf1c010feeb5a5434d2b"
+  },
+  "limitations": [
+    "C05/C06 capability audit only",
+    "No human grader calibration",
+    "External execution is a deterministic stand-in, not Inspect eval or Go runtime",
+    "Interrupted and partial-error states are serialized fixtures, not crash recovery",
+    "No production importer or live model integration"
+  ]
+}
