@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "experiment": "m1-demo",
+  "evaluation": "second",
+  "criterion_bundle": {
+    "id": "m1-fixture",
+    "sha256": "68ecdd96758f471f625321059e0f13c96bb2779ac9a350a1777b9821de851a09",
+    "version": "1"
+  },
+  "parent_evaluation": "first",
+  "confirmation": "draft",
+  "conclusion": "withheld_pending_task_validity_and_human_reference",
+  "aggregation": "equal weight per planned task/repeat; missing runs stay in denominator",
+  "conditions": [
+    {
+      "condition": "baseline",
+      "planned": 3,
+      "imported": 3,
+      "judgeable": 2,
+      "unknown": 1,
+      "status_counts": {
+        "completed": 2,
+        "uncertain": 1
+      },
+      "exclusion_counts": {
+        "insufficient_evidence": 1
+      },
+      "overall_confirmed_success_rate": {
+        "numerator": 0,
+        "denominator": 3,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "confirmed_success_note": "No human confirmation in M1; rule judgments remain draft.",
+      "provisional_success_rate": {
+        "numerator": 1,
+        "denominator": 3,
+        "value": 0.3333333333333333,
+        "missing_reason": null
+      },
+      "provisional_judgeable_success_rate": {
+        "numerator": 1,
+        "denominator": 2,
+        "value": 0.5,
+        "missing_reason": null
+      },
+      "missing_run_rate": {
+        "numerator": 0,
+        "denominator": 3,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "missing_measurement_rates": {
+        "time": {
+          "numerator": 3,
+          "denominator": 3,
+          "value": 1.0,
+          "missing_reason": null
+        },
+        "tokens": {
+          "numerator": 3,
+          "denominator": 3,
+          "value": 1.0,
+          "missing_reason": null
+        },
+        "cost": {
+          "numerator": 3,
+          "denominator": 3,
+          "value": 1.0,
+          "missing_reason": null
+        }
+      },
+      "condition_differences": [],
+      "unplanned_differences": [],
+      "comparable": true,
+      "comparison_reasons": [],
+      "tasks": {
+        "decision": {
+          "planned": 3,
+          "outcomes": {
+            "met": 1,
+            "unmet": 1,
+            "unknown": 1
+          }
+        }
+      },
+      "runs": [
+        {
+          "task": "decision",
+          "repeat": 1,
+          "run": "run-1",
+          "status": "completed",
+          "outcome": "met",
+          "exclusion_reason": null,
+          "attempt_id": "attempt-1",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "met": 1
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "seconds",
+              "value": null
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "time": "not_measured",
+            "tokens": "not_measured"
+          }
+        },
+        {
+          "task": "decision",
+          "repeat": 2,
+          "run": "run-2",
+          "status": "completed",
+          "outcome": "unmet",
+          "exclusion_reason": null,
+          "attempt_id": "attempt-2",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "unmet": 1
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "seconds",
+              "value": null
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "time": "not_measured",
+            "tokens": "not_measured"
+          }
+        },
+        {
+          "task": "decision",
+          "repeat": 3,
+          "run": "run-3",
+          "status": "uncertain",
+          "outcome": "unknown",
+          "exclusion_reason": "insufficient_evidence",
+          "attempt_id": "attempt-3",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "unknown": 1
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "seconds",
+              "value": null
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "time": "not_measured",
+            "tokens": "not_measured"
+          }
+        }
+      ]
+    },
+    {
+      "condition": "changed",
+      "planned": 3,
+      "imported": 0,
+      "judgeable": 0,
+      "unknown": 3,
+      "status_counts": {
+        "not_imported": 3
+      },
+      "exclusion_counts": {
+        "missing_run": 3
+      },
+      "overall_confirmed_success_rate": {
+        "numerator": 0,
+        "denominator": 3,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "confirmed_success_note": "No human confirmation in M1; rule judgments remain draft.",
+      "provisional_success_rate": {
+        "numerator": 0,
+        "denominator": 3,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "provisional_judgeable_success_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "missing_reason": "zero_denominator"
+      },
+      "missing_run_rate": {
+        "numerator": 3,
+        "denominator": 3,
+        "value": 1.0,
+        "missing_reason": null
+      },
+      "missing_measurement_rates": {
+        "time": {
+          "numerator": 3,
+          "denominator": 3,
+          "value": 1.0,
+          "missing_reason": null
+        },
+        "tokens": {
+          "numerator": 3,
+          "denominator": 3,
+          "value": 1.0,
+          "missing_reason": null
+        },
+        "cost": {
+          "numerator": 3,
+          "denominator": 3,
+          "value": 1.0,
+          "missing_reason": null
+        }
+      },
+      "condition_differences": [
+        "model.settings.temperature"
+      ],
+      "unplanned_differences": [],
+      "comparable": true,
+      "comparison_reasons": [],
+      "tasks": {
+        "decision": {
+          "planned": 3,
+          "outcomes": {
+            "unknown": 3
+          }
+        }
+      },
+      "runs": [
+        {
+          "task": "decision",
+          "repeat": 1,
+          "run": null,
+          "status": "not_imported",
+          "outcome": "unknown",
+          "exclusion_reason": "missing_run"
+        },
+        {
+          "task": "decision",
+          "repeat": 2,
+          "run": null,
+          "status": "not_imported",
+          "outcome": "unknown",
+          "exclusion_reason": "missing_run"
+        },
+        {
+          "task": "decision",
+          "repeat": 3,
+          "run": null,
+          "status": "not_imported",
+          "outcome": "unknown",
+          "exclusion_reason": "missing_run"
+        }
+      ]
+    }
+  ],
+  "native_aggregates": [],
+  "limitations": [
+    "Evidence-only M1; no execution, injection or semantic evaluator.",
+    "Task validity and evaluator reliability are not established.",
+    "No automatic human confirmation; raw outputs and private criteria omitted."
+  ]
+}

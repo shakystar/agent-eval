@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-eval"
+version = "0.1.0"
+description = "Local evidence registration and post-hoc agent evaluation"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.optional-dependencies]
+inspect = ["inspect-ai @ git+https://github.com/UKGovernmentBEIS/inspect_ai.git@ec5d110b1704a6eb31e2efedec59a12190df80e1"]
+
+[project.scripts]
+agent-eval = "agent_eval.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["agent_eval*"]

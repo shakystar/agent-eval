@@ -2,7 +2,7 @@
 
 과제와 협업 조건을 주입하고, 에이전트의 수행 성능과 평가 신뢰성을 반복 측정하는 실험 도구입니다.
 
-**상태: M0 계약 검증과 Docker/Linux의 실제 workflow→Inspect 통합 검증을 통과했습니다. [실행 기록](docs/validation/m0-linux.md)과 [재현 절차](containers/linux/README.md)를 보존합니다. 임의 과제 주입과 제품 기능 M1~M4는 미완료입니다.**
+**상태: M1 저장 증거 등록·Inspect 규칙 재평가·보고를 구현하고 검증했습니다. [M1 사용 계약](docs/m1-contract.md)과 [검증 결과](docs/validation/m1.md)를 보존합니다. M2~M4는 미완료입니다.**
 
 ## 목적
 

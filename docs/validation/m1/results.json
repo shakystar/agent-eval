@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-20",
+  "status": "passed",
+  "python": "3.12.3",
+  "platform": "Linux",
+  "image_id": "sha256:39572d88a88aabb775b9df4111940745b613b343f00916bde560ffb021c450d3",
+  "backend": {
+    "name": "inspect-ai",
+    "version": "0.3.292.dev1+gec5d110b1",
+    "source_commit": "ec5d110b1704a6eb31e2efedec59a12190df80e1",
+    "adapter_version": "1"
+  },
+  "tests_passed": 20,
+  "test_ids": [
+    "test_m1.AdapterTests.test_blob_tamper_blocks_regrade",
+    "test_m1.AdapterTests.test_criterion_change_requires_version_and_input_change_is_rejected",
+    "test_m1.AdapterTests.test_native_conflict_and_invalid_sample_map",
+    "test_m1.AdapterTests.test_native_passive_import_states_and_reserialization",
+    "test_m1.AdapterTests.test_regrade_append_error_and_no_execution",
+    "test_m1.AdapterTests.test_report_denominators_missing_and_confounds",
+    "test_m1.AdapterTests.test_report_refuses_modified_original",
+    "test_m1.AdapterTests.test_unplanned_condition_and_actual_environment_are_separate",
+    "test_m1.CoreTests.test_conflict_atomic_rollback",
+    "test_m1.CoreTests.test_core_report_without_inspect_import",
+    "test_m1.CoreTests.test_duplicate_json_key_and_nonfinite",
+    "test_m1.CoreTests.test_evidence_alias_cannot_double_count",
+    "test_m1.CoreTests.test_experiment_is_immutable_and_bound_to_bundle",
+    "test_m1.CoreTests.test_import_idempotence_survives_restart",
+    "test_m1.CoreTests.test_input_excludes_private_criteria",
+    "test_m1.CoreTests.test_missing_duplicate_unknown_schema_and_hash",
+    "test_m1.CoreTests.test_missing_source_and_corrupt_artifact_rejected",
+    "test_m1.CoreTests.test_path_escape_and_private_alias_rejected",
+    "test_m1.CoreTests.test_rules_strict_json_pointer_and_values",
+    "test_m1.CoreTests.test_slot_collision_and_unsupported_format"
+  ],
+  "skipped": 0,
+  "failed": 0,
+  "cli": {
+    "commands_passed": 8,
+    "duplicate_report_write_rejected": true,
+    "baseline_provisional_success": {
+      "numerator": 1,
+      "denominator": 3
+    },
+    "model_calls": 0
+  },
+  "saved_m0_live_log": {
+    "status": "passed",
+    "samples": 2,
+    "original_sha256": "a406b7951d579de876faf4c54afca1562d60eea4be3a0677d329cd889592e6ff",
+    "original_unchanged": true,
+    "original_attempt_ids_preserved": true,
+    "duplicate_import_no_extra_runs": true,
+    "regrade_history_preserved": true,
+    "new_model_calls": 0,
+    "process_launches_during_import_and_regrade": 0,
+    "scope": "Nonempty artifact contract only; M0 execution metadata is preserved in native source, not revalidated."
+  },
+  "external_model_calls": 0,
+  "elapsed_seconds": 5.629,
+  "source_sha256": {
+    "agent_eval/service.py": "445de030a17c3d990be9f8fe7e55635af83e162c762d9cacf06067a6d4a52967",
+    "agent_eval/inspect_adapter.py": "0afab1928a1b2f8b3227e70b678557be289e1288f627a20f2ff2908d8ecdc12a",
+    "agent_eval/__init__.py": "6543054274dd9d7d1de2f3a2873eab2b67d255dd2ffbf1c04839ebc284cc0317",
+    "agent_eval/cli.py": "d078f711cd0332ca5c7e240a93f0d9da248fe1fd6c77a149bae8921c139114c4",
+    "agent_eval/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "agent_eval/contracts.py": "a0e061f3c4118616f54b1b835dfff3816e3546a81826873b70e75b96b971f936",
+    "agent_eval/report.py": "29c312ede31fa6da03c5009c64cc8a27e4c67b87629cb908185efdd274624f56",
+    "agent_eval/store.py": "f3049f223bdd1ab55aa85b3784a083876b11ffaac66fccf3c9ba4059d12563ce",
+    "tests/validate_m1.py": "e5dccf2508af36a0e4c6daa7f0d0edfd52bfbbb3cae56a03434ce02abc54458c",
+    "tests/test_m1.py": "1462a3109d7571e81f36774e624c12f1a314095c88e698fbf892ace1140acf58",
+    "examples/m1/create_example.py": "6b14b2ca228ec95e9eb2fc8c9fbd2a6b30b4d126dee2f7ecc6e44f5ac6b481ea"
+  }
+}

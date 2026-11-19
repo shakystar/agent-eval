@@ -1,0 +1,25 @@
+test_blob_tamper_blocks_regrade (test_m1.AdapterTests.test_blob_tamper_blocks_regrade) ... ok
+test_criterion_change_requires_version_and_input_change_is_rejected (test_m1.AdapterTests.test_criterion_change_requires_version_and_input_change_is_rejected) ... ok
+test_native_conflict_and_invalid_sample_map (test_m1.AdapterTests.test_native_conflict_and_invalid_sample_map) ... ok
+test_native_passive_import_states_and_reserialization (test_m1.AdapterTests.test_native_passive_import_states_and_reserialization) ... ok
+test_regrade_append_error_and_no_execution (test_m1.AdapterTests.test_regrade_append_error_and_no_execution) ... ok
+test_report_denominators_missing_and_confounds (test_m1.AdapterTests.test_report_denominators_missing_and_confounds) ... ok
+test_report_refuses_modified_original (test_m1.AdapterTests.test_report_refuses_modified_original) ... ok
+test_unplanned_condition_and_actual_environment_are_separate (test_m1.AdapterTests.test_unplanned_condition_and_actual_environment_are_separate) ... ok
+test_conflict_atomic_rollback (test_m1.CoreTests.test_conflict_atomic_rollback) ... ok
+test_core_report_without_inspect_import (test_m1.CoreTests.test_core_report_without_inspect_import) ... ok
+test_duplicate_json_key_and_nonfinite (test_m1.CoreTests.test_duplicate_json_key_and_nonfinite) ... ok
+test_evidence_alias_cannot_double_count (test_m1.CoreTests.test_evidence_alias_cannot_double_count) ... ok
+test_experiment_is_immutable_and_bound_to_bundle (test_m1.CoreTests.test_experiment_is_immutable_and_bound_to_bundle) ... ok
+test_import_idempotence_survives_restart (test_m1.CoreTests.test_import_idempotence_survives_restart) ... ok
+test_input_excludes_private_criteria (test_m1.CoreTests.test_input_excludes_private_criteria) ... ok
+test_missing_duplicate_unknown_schema_and_hash (test_m1.CoreTests.test_missing_duplicate_unknown_schema_and_hash) ... ok
+test_missing_source_and_corrupt_artifact_rejected (test_m1.CoreTests.test_missing_source_and_corrupt_artifact_rejected) ... ok
+test_path_escape_and_private_alias_rejected (test_m1.CoreTests.test_path_escape_and_private_alias_rejected) ... ok
+test_rules_strict_json_pointer_and_values (test_m1.CoreTests.test_rules_strict_json_pointer_and_values) ... ok
+test_slot_collision_and_unsupported_format (test_m1.CoreTests.test_slot_collision_and_unsupported_format) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 1.521s
+
+OK
