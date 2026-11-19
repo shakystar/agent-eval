@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-20",
+  "platform": "windows/amd64",
+  "go": "go1.26.11",
+  "go_install": "workspace-local official archive, no global PATH change",
+  "go_archive_sha256": "71ae086f0137e665f855a811cc119152b6a783e0bbc1b906e709f46d80141eb0",
+  "role_orchestrator_commit": "5d2b51840e56284b6902e41cf76a00bc486dc3a2",
+  "role_runtime_commit": "bba4f3a6afc9b4ebc6adaf1c010feeb5a5434d2b",
+  "runtime_codex_adapter_dependency": "v0.0.0-20261119053648-3ab5b920bf6c",
+  "checks": [
+    {
+      "cwd": "role-orchestrator",
+      "command": "python -m unittest discover -s tests -p test_contracts.py -v",
+      "exit_code": 0,
+      "tests": 3,
+      "result": "passed"
+    },
+    {
+      "cwd": "role-runtime",
+      "command": "go test ./cmd/runtime-bridge -run '^TestSharedContractVectors$' -count=1 -v",
+      "exit_code": 0,
+      "subtests": 26,
+      "result": "passed"
+    },
+    {
+      "cwd": "role-runtime",
+      "command": "go test ./cmd/runtime-workflow -run '^$' -count=1",
+      "exit_code": 1,
+      "result": "build_failed",
+      "errors": [
+        "internal/control/server.go:177:17: undefined: syscall.Flock",
+        "internal/control/server.go:177:44: undefined: syscall.LOCK_EX",
+        "internal/control/server.go:177:60: undefined: syscall.LOCK_NB"
+      ]
+    }
+  ],
+  "live_model_calls": 0,
+  "conclusion": "Python and Go bridge request contract checks passed. Windows owner-workflow build is blocked; full integration not verified. No portability patch or alternate execution path introduced."
+}

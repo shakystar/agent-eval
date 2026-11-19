@@ -1,0 +1,11 @@
+{
+  "os": "Windows",
+  "python": "3.12.3",
+  "inspect_ai": "0.3.292.dev17+gec5d110b1",
+  "probe_sha256": "066b7a012555f584a95cb19e91d5cb5cf5f9bfcbe52972669e5e0015669acaa7",
+  "status": "blocked",
+  "error_type": "OperationalError",
+  "error": "unable to open database file",
+  "solver_calls": 0,
+  "external_model_calls": 0
+}
