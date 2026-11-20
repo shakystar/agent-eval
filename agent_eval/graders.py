@@ -19,12 +19,33 @@ def unknown_failure(code):
     return dict(version=1, stage='grader_call', code=code, execution='unknown', retryable=False)
 
 
+def codex_failure(stderr):
+    # Progress and the terminal error share the official CLI's stderr stream.
+    for line in reversed(stderr.splitlines()):
+        try:
+            event = c.loads(line)
+            if event.get('event') != 'error':
+                continue
+            failure = event['failure']
+            if failure['version'] == 1 and failure['execution'] in ('not_started', 'unknown', 'started', 'completed'):
+                return failure
+        except (TypeError, KeyError, ValueError, AttributeError):
+            continue
+    return unknown_failure('unclassified_adapter_exit')
+
+
 class CodexGrader:
     def __init__(self, model, root):
         self.model = model
         self.root = root
-        self.executable = shutil.which(os.environ.get('AGENT_EVAL_CODEX_GRADER', 'codex-grader'))
-        c.require(self.executable is not None, 'build codex-grader and set AGENT_EVAL_CODEX_GRADER')
+        official = os.environ.get('AGENT_EVAL_CODEX_ADAPTER')
+        legacy = os.environ.get('AGENT_EVAL_CODEX_GRADER')
+        self.legacy = bool(legacy and not official)
+        self.executable = shutil.which(official or legacy or 'codex-adapter')
+        if not self.executable and not (official or legacy):
+            self.executable = shutil.which('codex-grader')
+            self.legacy = bool(self.executable)
+        c.require(self.executable is not None, 'install codex-adapter or set AGENT_EVAL_CODEX_ADAPTER')
         self.backend = dict(name='codex-adapter', executable_sha256=c.digest(Path(self.executable).read_bytes()))
 
     async def call(self, key, prompt, payload):
@@ -41,17 +62,14 @@ class CodexGrader:
             raise GraderFailure(str(error), dict(version=1, stage='adapter_start', code='spawn_failed',
                                                  execution='not_started', retryable=False, attempts=0)) from error
         if result.returncode:
-            failure = unknown_failure('unclassified_adapter_exit')
-            try:
-                event = c.loads(result.stderr)
-                candidate = event['failure']
-                if candidate['version'] == 1 and candidate['execution'] in ('not_started', 'unknown', 'started', 'completed'):
-                    failure = candidate
-            except (TypeError, KeyError, ValueError):
-                pass
+            failure = codex_failure(result.stderr)
             raise GraderFailure(result.stderr or 'adapter exited without a result', failure)
-        receipt = c.loads(result.stdout)
-        return receipt.pop('text'), receipt
+        event = c.loads(result.stdout)
+        if self.legacy:
+            return event.pop('text'), event
+        c.require(event.get('event') == 'result', 'expected codex-adapter result event')
+        result = event['result']
+        return result['text'], dict(session=result['session'], usage=event['usage'])
 
 
 class InspectGrader:

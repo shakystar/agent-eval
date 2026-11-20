@@ -1,5 +1,6 @@
 import json
 import sqlite3
+import shlex
 from unittest.mock import AsyncMock, Mock, patch
 
 from agent_eval import contracts, graders, semantic
@@ -67,10 +68,28 @@ class RecoveryTests(FixtureCase):
         exe = self.root/'grader'
         failure = dict(version=1, stage='turn_submit', code='timeout', execution='unknown',
                        retryable=False, attempts=1)
-        exe.write_text('#!/bin/sh\ncat >/dev/null\necho '+ "'" +json.dumps(dict(failure=failure))+"' >&2\nexit 1\n")
+        error_event = json.dumps(dict(event='error', failure=failure))
+        exe.write_text("#!/bin/sh\ncat >/dev/null\necho '{\"event\":\"status\"}' >&2\n"
+                       f"echo {shlex.quote(error_event)} >&2\nexit 1\n")
         exe.chmod(0o700)
-        with patch.dict('os.environ', AGENT_EVAL_CODEX_GRADER=str(exe)):
+        with patch.dict('os.environ', AGENT_EVAL_CODEX_ADAPTER=str(exe)):
             semantic.grade(self.store,'m1-demo','decision','private.txt','failed','codex-adapter/test')
         report = semantic.reliability(self.store,'failed')
         self.assertEqual(report['cases'][0]['failure'], failure)
         self.assertEqual(report['cases'][0]['error_kind'], 'dispatch')
+
+    def test_official_cli_success_reaches_store(self):
+        self.ingest()
+        exe = self.root / 'codex-adapter'
+        result = dict(text='{"verdict":"met","reason":"test"}', session='session-1', pid=42)
+        usage = dict(known=True, inputTokens=50, outputTokens=10)
+        event = json.dumps(dict(event='result', result=result, usage=usage))
+        exe.write_text('#!/bin/sh\ncat >/dev/null\n'
+                       '[ "$1" = "--model" ] && [ "$2" = "test" ] || exit 2\n'
+                       f'echo {shlex.quote(event)}\n')
+        exe.chmod(0o700)
+        with patch.dict('os.environ', AGENT_EVAL_CODEX_ADAPTER=str(exe)):
+            semantic.grade(self.store, 'm1-demo', 'decision', 'private.txt', 'official', 'codex-adapter/test')
+        row = self.store.get('semantic', 'official')['judgments'][0]
+        self.assertEqual(row['verdict'], 'met')
+        self.assertEqual(row['adapter_receipt'], dict(session='session-1', usage=usage))

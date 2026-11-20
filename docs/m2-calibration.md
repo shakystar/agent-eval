@@ -35,15 +35,16 @@ Qwen2.5-1.5B-Instruct Q4_K_M으로 A와 B를 채점했습니다. 원본 응답�
 
 ## Codex 어댑터 채점
 
-Codex에 로그인된 호스트에서 Go 1.26 이상으로 채점기를 빌드합니다. Go 모듈과 체크섬은 adapters/codex에 고정되어 있습니다. 저장소 루트에서 실행합니다.
+Python 채점기는 모델 선택과 사용량 출력을 지원하는 공식 `codex-adapter` CLI를 호출합니다. 두 저장소를 나란히 체크아웃했다면 Codex에 로그인된 호스트에서 다음과 같이 빌드합니다. 작업 디렉터리는 `agent-eval` 루트이며 Go 1.26 이상이 필요합니다. [검증한 어댑터 커밋 af74d4a](https://github.com/shakystar/codex-adapter/commit/af74d4a72892afcbe6f0afc7a8cceb1765a41f27)
 
 ```sh
-mkdir -p artifacts/bin
-(cd adapters/codex && go build -o ../../artifacts/bin/codex-grader .)
-export AGENT_EVAL_CODEX_GRADER="$PWD/artifacts/bin/codex-grader"
+(cd ../codex-adapter && go build -o bin/codex-adapter ./cmd/codex-adapter)
+export AGENT_EVAL_CODEX_ADAPTER="$PWD/../codex-adapter/bin/codex-adapter"
 python3.12 -m agent_eval --store artifacts/m2-local/store semantic-grade \
   notice-demo notice rubric.txt notice-sol-new --model codex-adapter/gpt-6.2-sol
 ```
+
+PATH에 설치한 공식 CLI는 환경 변수 없이 사용할 수 있습니다. 기존 전용 래퍼를 사용하는 설치에서는 `AGENT_EVAL_CODEX_GRADER` 설정이 계속 적용됩니다. 두 경로를 모두 지정하면 공식 CLI를 사용합니다.
 
 공지문 예제가 등록된 store와 새 평가 ID를 사용합니다. 각 산출물은 별도 advisory 세션에서 평가합니다. 로그인은 설치된 Codex가 관리하고 모델 호출은 원격에서 수행합니다. 원본 응답·세션 ID·사용량은 로컬 store에 기록합니다.
 
