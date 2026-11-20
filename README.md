@@ -2,7 +2,7 @@
 
 과제와 협업 조건을 주입하고, 에이전트의 수행 성능과 평가 신뢰성을 반복 측정하는 실험 도구입니다.
 
-**M3 실행·주입 검증을 완료했습니다.** Docker Linux 실모델에서 단독·협업·자료 주입·인계 읽기 장애를 각 2회 완료했습니다. 별도 실행에서 수정과 최종 수락을 확인했고, 9건 모두 저장 증거로 재평가했습니다. 실행 컨테이너에만 임시 주소 고정을 적용했습니다. M4는 미착수입니다. [M1 검증](docs/validation/m1.md) · [M2 보정](docs/m2-calibration.md) · [M3 실행 방법](docs/m3-execution.md) · [M3 검증](docs/validation/m3.md)
+**M3 실행·주입 검증을 완료했습니다.** Docker Linux 실모델에서 단독·협업·자료 주입·인계 읽기 장애를 각 2회 완료했습니다. 별도 실행에서 수정과 최종 수락을 확인했고, 9건 모두 저장 증거로 재평가했습니다. 실행 컨테이너에만 임시 주소 고정을 적용했습니다. M4 개발 전 재고 대사·보충 결정 과제로 [공통 CLI 재사용을 검증했습니다](docs/validation/m4-preflight.md). [M1 검증](docs/validation/m1.md) · [M2 보정](docs/m2-calibration.md) · [M3 실행 방법](docs/m3-execution.md) · [M3 검증](docs/validation/m3.md)
 
 ## 목적
 

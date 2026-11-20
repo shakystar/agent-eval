@@ -1,0 +1,30 @@
+{
+  "notice": {
+    "bundle": {
+      "id": "notice-calibration",
+      "version": "1",
+      "sha256": "24c4ac989e8c5119ffe1329d589648e11d61028fd47a719b2b414efcaded510e"
+    },
+    "planned": 1,
+    "outcomes": {
+      "met": 1
+    },
+    "judgments_per_evaluation": 1,
+    "scorer_errors": 0
+  },
+  "replenish": {
+    "bundle": {
+      "id": "inventory-preflight",
+      "version": "1",
+      "sha256": "f966f123bac11e9988ecd56fab965fb2c7721ebb911b725e01ba7bf6126f099d"
+    },
+    "planned": 8,
+    "outcomes": {
+      "met": 2,
+      "unmet": 5,
+      "unknown": 1
+    },
+    "judgments_per_evaluation": 24,
+    "scorer_errors": 0
+  }
+}
