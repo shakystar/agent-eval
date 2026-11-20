@@ -1,6 +1,6 @@
 """Public reports exclude source text and private criteria."""
 from collections import Counter
-from .contracts import require
+from .contracts import loads, require
 from .service import context
 
 
@@ -19,6 +19,24 @@ def rate(n, d):
             'missing_reason': None if d else 'zero_denominator'}
 
 
+def execution_summary(store, run):
+    execution = store.find('execution_result', run['id'])
+    if execution is None:
+        return None
+    execution = loads(store.read_blob(run['receipt']))
+    require(store.observed('execution_result', run['id'], execution) and
+            execution['id'] == run['id'] and execution['runtime_run'] == run['attempt_id'],
+            'execution receipt mismatch')
+    stages = []
+    for stage in execution['stages']:
+        for field in ('input_sha256', 'before_sha256', 'wire_sha256', 'receipt_sha256', 'output_sha256'):
+            if stage.get(field):
+                store.read_blob(stage[field])
+        stages.append({key: stage[key] for key in ('stage', 'attempt_id', 'status', 'failure') if key in stage})
+    return dict(backend=execution['backend'], scenario=execution['scenario'], stages=stages,
+                review=execution['review'], injections=execution['injections'])
+
+
 def report(store, experiment_id, evaluation_id):
     exp, tasks = context(store, experiment_id)
     ev = store.get('evaluation', evaluation_id)
@@ -31,6 +49,8 @@ def report(store, experiment_id, evaluation_id):
             if judgment.get(field):
                 store.read_blob(judgment[field])
     runs = [r for r in store.all('run') if r['experiment'] == experiment_id]
+    if 'run_snapshots' in ev:
+        runs = [loads(store.read_blob(sha)) for sha in ev['run_snapshots'].values()]
     base = next(c for c in exp['conditions'] if c['id'] == exp['baseline'])
     base_flat = flatten({k:v for k,v in base.items() if k != 'id'})
     conditions = []
@@ -68,6 +88,9 @@ def report(store, experiment_id, evaluation_id):
                                item_met_rate=rate(sum(j['verdict']=='met' for j in js),sum(j['verdict']!='not_applicable' for j in js)),
                                measurements={k:{f:v for f,v in m.items() if f!='missing_reason'} for k,m in r['measurements'].items()},
                                missing_measurement_reasons={k:'not_measured' for k,m in r['measurements'].items() if m['value'] is None})
+                    workflow = execution_summary(store, r)
+                    if workflow is not None:
+                        row['workflow'] = workflow
                 rows.append(row)
         counts = Counter(r['outcome'] for r in rows)
         absent = sum(r['run'] is None for r in rows)
@@ -101,7 +124,7 @@ def report(store, experiment_id, evaluation_id):
             'confirmation':'draft','conclusion':'withheld_pending_task_validity_and_human_reference',
             'aggregation':'equal weight per planned task/repeat; missing runs stay in denominator',
             'conditions':conditions,'native_aggregates':native,
-            'limitations':['Evidence-only M1; no execution, injection or semantic evaluator.',
+            'limitations':['Task outcomes in this report use the selected rule evaluation.',
                            'Task validity and evaluator reliability are not established.',
                            'No automatic human confirmation; raw outputs and private criteria omitted.']}
 

@@ -10,6 +10,10 @@ class ContractError(ValueError):
     pass
 
 
+class PreflightError(ContractError):
+    """A known request rejection before runtime dispatch."""
+
+
 def require(ok, message):
     if not ok:
         raise ContractError(message)
@@ -152,7 +156,7 @@ def experiment(obj, registered_bundle):
         else:
             require(type(b['limit']) in (int, float) and math.isfinite(b['limit']) and b['limit'] >= 0, 'invalid budget')
     for c in obj['conditions']:
-        fields(c, ['id', 'target', 'model', 'roles', 'skills', 'environment'])
+        fields(c, ['id', 'target', 'model', 'roles', 'skills', 'environment'], ['workflow'])
         fields(c['target'], ['adapter', 'version', 'execution_owner', 'retry_owner', 'auth_method'])
         for v in c['target'].values():
             text(v)

@@ -1,10 +1,29 @@
 """SQLite index plus immutable, hash-verified local source blobs."""
+from contextlib import contextmanager
 import json
 import sqlite3
 import os
 import tempfile
 from pathlib import Path
-from .contracts import ContractError, canonical, digest, require
+from .contracts import ContractError, canonical, digest, identity, require
+
+
+@contextmanager
+def operation_lock(directory, key):
+    # A separate database per operation gives a cross-platform, crash-released
+    # process lock without holding a write transaction on the shared store.
+    directory.mkdir(exist_ok=True)
+    lock = sqlite3.connect(directory / identity(key), timeout=0)
+    try:
+        try:
+            lock.execute('BEGIN IMMEDIATE')
+        except sqlite3.OperationalError as exc:
+            if exc.sqlite_errorcode in (sqlite3.SQLITE_BUSY, sqlite3.SQLITE_LOCKED):
+                raise ContractError('operation already in progress') from exc
+            raise
+        yield
+    finally:
+        lock.close()
 
 
 class Store:
@@ -16,6 +35,10 @@ class Store:
         self.db.execute('PRAGMA foreign_keys=ON')
         self.db.executescript('''
             CREATE TABLE IF NOT EXISTS objects(kind TEXT, id TEXT, body TEXT NOT NULL, PRIMARY KEY(kind,id));
+            CREATE TABLE IF NOT EXISTS revisions(
+                kind TEXT NOT NULL, id TEXT NOT NULL, body TEXT NOT NULL,
+                sequence INTEGER PRIMARY KEY);
+            CREATE INDEX IF NOT EXISTS revision_key ON revisions(kind,id,sequence);
             CREATE TABLE IF NOT EXISTS slots(experiment TEXT, task TEXT, condition TEXT, repeat INTEGER,
                 run TEXT UNIQUE, PRIMARY KEY(experiment,task,condition,repeat));
         ''')
@@ -43,6 +66,34 @@ class Store:
 
     def all(self, kind):
         return [json.loads(r[0]) for r in self.db.execute('SELECT body FROM objects WHERE kind=? ORDER BY rowid', (kind,))]
+
+    def latest(self, kind, key):
+        row = self.db.execute(
+            'SELECT body FROM revisions WHERE kind=? AND id=? ORDER BY sequence DESC LIMIT 1',
+            (kind, key)).fetchone()
+        return json.loads(row[0]) if row else self.find(kind, key)
+
+    def observed(self, kind, key, value):
+        if self.find(kind, key) == value:
+            return True
+        return self.db.execute('SELECT 1 FROM revisions WHERE kind=? AND id=? AND body=? LIMIT 1',
+                               (kind, key, canonical(value))).fetchone() is not None
+
+    def current_runs(self):
+        for base in self.all('run'):
+            yield self.latest('run', base['id'])
+
+    def observe(self, kind, key, value):
+        if self.find(kind, key) is None:
+            self.put(kind, key, value)
+        elif self.latest(kind, key) != value:
+            self.db.execute('INSERT INTO revisions(kind,id,body) VALUES(?,?,?)',
+                            (kind, key, canonical(value)))
+
+    def reserve_execution(self, experiment, slot, binding):
+        require(self.find('run', slot['id']) is None, 'slot already has imported evidence')
+        self.slot(experiment, slot)
+        self.put('execution_binding', slot['id'], binding)
 
     def blob(self, data):
         sha = digest(data)

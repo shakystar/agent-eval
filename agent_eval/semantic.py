@@ -1,12 +1,11 @@
 """Grade saved artifacts against a registered private rubric."""
 import asyncio
 import re
-import sqlite3
-from contextlib import contextmanager
 from collections import Counter
 
 from . import contracts as c
 from . import graders
+from .store import operation_lock
 from .service import context
 from .reviews import review, review_task, reliability
 
@@ -50,23 +49,8 @@ def reparse(store, source, evaluation):
     return dict(id=evaluation, parent=source)
 
 
-@contextmanager
 def evaluation_lock(root, evaluation):
-    # A separate database per evaluation gives a cross-platform, crash-released
-    # process lock without holding a write transaction on the shared store.
-    directory = root / 'grading-locks'
-    directory.mkdir(exist_ok=True)
-    lock = sqlite3.connect(directory / c.identity(evaluation), timeout=0)
-    try:
-        try:
-            lock.execute('BEGIN IMMEDIATE')
-        except sqlite3.OperationalError as exc:
-            if exc.sqlite_errorcode in (sqlite3.SQLITE_BUSY, sqlite3.SQLITE_LOCKED):
-                raise c.ContractError('evaluation already in progress') from exc
-            raise
-        yield
-    finally:
-        lock.close()
+    return operation_lock(root / 'grading-locks', evaluation)
 
 
 async def grade_items(store, job, provider, task_input, rubric):
@@ -125,7 +109,7 @@ def grade(store, experiment, task_id, rubric_id, evaluation_id, model_name):
                         prompt_sha256=c.digest(PROMPT.encode()))
         job = store.find('grading_job', evaluation_id)
         if job is None:
-            items = [dict(run=r['id'], evidence_sha256=r['output_sha256']) for r in store.all('run')
+            items = [dict(run=r['id'], evidence_sha256=r['output_sha256']) for r in store.current_runs()
                      if r['experiment'] == experiment and r['task'] == task_id]
             c.require(items, 'import saved evidence first')
             job = dict(**metadata, items=items)

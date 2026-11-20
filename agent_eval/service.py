@@ -46,7 +46,7 @@ def execution_input(store, experiment_id, task_id):
                 for r in t['inputs']]}
 
 
-def import_evidence(store, manifest_path):
+def import_evidence(store, manifest_path, *, execution_receipt=None):
     manifest = c.load(manifest_path)
     c.fields(manifest, ['schema_version', 'id', 'experiment', 'format', 'source', 'runs'])
     c.require(manifest['schema_version'] == 1, 'unsupported evidence schema')
@@ -116,6 +116,7 @@ def import_evidence(store, manifest_path):
               'native_id': native_key, 'semantic_sha256': semantic, 'backend': backend,
               'run_ids': [r['id'] for r in entries], 'native_results': native['results'] if native else None}
     with store.db:
+        store.db.execute('BEGIN IMMEDIATE')
         # Native ID and semantic content are independent of file compression/serialization.
         store.put('native_identity', manifest['format'] + ':' + native_key, {'sha256': semantic, 'evidence': manifest['id']})
         created = store.put('evidence', manifest['id'], record)
@@ -126,7 +127,15 @@ def import_evidence(store, manifest_path):
             store.blob(data)
         for r in entries:
             store.slot(exp['id'], r)
-            store.put('run', r['id'], r)
+            if execution_receipt is not None:
+                c.require(r['receipt'] == execution_receipt and store.find('execution_binding', r['id']),
+                          'execution evidence binding mismatch')
+                store.observe('run', r['id'], r)
+            else:
+                if store.find('execution_binding', r['id']) and not store.find('run', r['id']):
+                    raise c.ContractError('slot reserved for execution')
+                if not store.observed('run', r['id'], r):
+                    store.put('run', r['id'], r)
     return {'id': manifest['id'], 'duplicate': not created, 'runs': len(entries)}
 
 
@@ -161,9 +170,11 @@ def evaluate(store, experiment_id, evaluation_id, reviewer, reason, parent=None,
     from . import inspect_adapter
     backend = inspect_adapter.backend()
     judgments = []
-    for r in store.all('run'):
+    run_snapshots = {}
+    for r in store.current_runs():
         if r['experiment'] != experiment_id:
             continue
+        run_snapshots[r['id']] = store.blob(c.canonical(r).encode())
         sha = r['output_sha256']
         output = store.read_blob(sha).decode('utf-8') if sha else None
         for criterion in tasks[r['task']]['criteria']:
@@ -187,7 +198,7 @@ def evaluate(store, experiment_id, evaluation_id, reviewer, reason, parent=None,
             judgments.append(judgment)
     obj = {'id': evaluation_id, 'experiment': experiment_id, 'parent': parent, 'reviewer': reviewer,
            'reason': reason, 'criterion_bundle': criterion_bundle, 'backend': backend,
-           'confirmation': 'draft', 'judgments': judgments}
+           'confirmation': 'draft', 'judgments': judgments, 'run_snapshots': run_snapshots}
     with store.db:
         store.put('evaluation', evaluation_id, obj)
     return obj

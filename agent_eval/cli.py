@@ -1,15 +1,16 @@
 import argparse
 import json
 import sys
+import sqlite3
 from pathlib import Path
 from .store import Store
-from .contracts import ContractError
+from .contracts import ContractError, PreflightError
 from . import service, semantic
 from .report import report, markdown
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Local evidence-only evaluation; never executes an agent.')
+    parser = argparse.ArgumentParser(description='Local agent execution and evidence evaluation.')
     parser.add_argument('--store', type=Path, required=True)
     commands = parser.add_subparsers(dest='command', required=True)
     for name in ('bundle','experiment','import'):
@@ -30,12 +31,26 @@ def main():
     p = commands.add_parser('semantic-reparse')
     p.add_argument('source'); p.add_argument('id')
     commands.add_parser('reliability').add_argument('evaluation')
+    for name, help_text in [('execute','Run one planned repetition via role-orchestrator'),
+                            ('reconcile','Inspect an existing attempt without submitting work')]:
+        p = commands.add_parser(name, help=help_text)
+        for key in ('experiment','task','condition'):
+            p.add_argument(key)
+        p.add_argument('repeat', type=int)
+        p.add_argument('--bridge', default='runtime-bridge')
+        p.add_argument('--codex', default='codex')
     args = parser.parse_args()
     store = Store(args.store)
     try:
         if args.command in ('bundle','experiment','import'):
             fn = {'bundle':service.register_bundle,'experiment':service.register_experiment,'import':service.import_evidence}[args.command]
             result = fn(store,args.manifest)
+        elif args.command in ('execute','reconcile'):
+            from .execution import execute
+            result = execute(store,args.experiment,args.task,args.condition,args.repeat,args.bridge,args.codex,
+                             inspect_only=args.command=='reconcile')
+            print(json.dumps(result,ensure_ascii=False))
+            return 0 if result['status'] == 'completed' else 1
         elif args.command == 'semantic-grade':
             result = semantic.grade(store, args.experiment, args.task, args.rubric, args.id, args.model)
             if result['counts'].get('scorer_error'):
@@ -62,11 +77,18 @@ def main():
             result = {'report':str(args.output)}
         print(json.dumps(result,ensure_ascii=False,allow_nan=False))
         return 1 if args.command=='evaluate' and result['errors'] else 0
-    except (ValueError,OSError,KeyError,TypeError) as exc:
+    except PreflightError as exc:
+        print(json.dumps({'error':'request_validation', 'execution':'not_started', 'message':str(exc)}),
+              file=sys.stderr)
+        return 2
+    except (ValueError,OSError,sqlite3.Error,KeyError,TypeError) as exc:
         print(json.dumps({'error':type(exc).__name__,'operation':args.command,
                           'message':str(exc) if isinstance(exc,ContractError) else 'Invalid input or local file operation failed.'}),file=sys.stderr)
         return 2
     except ImportError:
+        if args.command in ('execute','reconcile'):
+            print(json.dumps({'error':'missing_optional_dependency','message':'Use the role-orchestrator environment.'}),file=sys.stderr)
+            return 2
         print(json.dumps({'error':'missing_optional_dependency','message':'Install the pinned Inspect adapter environment.'}),file=sys.stderr)
         return 2
     finally:

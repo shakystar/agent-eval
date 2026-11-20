@@ -1,0 +1,253 @@
+{
+  "date": "2026-11-20",
+  "platform": "linux/amd64",
+  "image_sha256": "d39bf1bdb3cec66853c25476a51d39d1886a91743993165d17112295281cda89",
+  "codex_cli": "0.170.0",
+  "runtime_sources": {
+    "role-runtime": "2be08fc0787c4ac67b934ff1f178806958021634",
+    "role-orchestrator": "5d2b51840e56284b6902e41cf76a00bc486dc3a2",
+    "inspect": "ec5d110b1704a6eb31e2efedec59a12190df80e1",
+    "uv": "0.13.9"
+  },
+  "network": {
+    "temporary_hosts": {
+      "chatgpt.com": "104.18.32.47"
+    }
+  },
+  "comparison": {
+    "planned": 8,
+    "completed": 8,
+    "previously_completed": 1
+  },
+  "revision_probe": {
+    "planned": 1,
+    "completed": 1
+  },
+  "offline_grading": {
+    "rule": "has-notice",
+    "judgments": 9,
+    "errors": 0,
+    "confirmed_semantic_judgments": 0
+  },
+  "verified_model": "gpt-6.2-astra",
+  "turn_contexts": 17,
+  "missing_model_metadata": [
+    "solo-1"
+  ],
+  "regression_tests": {
+    "m1": 20,
+    "m2": 8,
+    "m3": 7
+  },
+  "slots": [
+    {
+      "slot": "solo-1",
+      "stages": [
+        "write"
+      ],
+      "review": [],
+      "document_sha256": "54fb607f980029e0d93eae0187e34bd2be470a4abfed5258cff44af58b183ff0",
+      "status": "completed",
+      "runtime_run": "r-2833c4c79e4443e8a98c41a4becd8772",
+      "injections": [],
+      "receipt_sha256": [
+        "591607fdb6888a13a982c9f03f48e8c9688dae8b4a5d5ebd0fca14ee6960a020"
+      ]
+    },
+    {
+      "slot": "solo-2",
+      "stages": [
+        "write"
+      ],
+      "review": [],
+      "document_sha256": "7285ee92f1cce56d232eb6444a51e7739a1172ca3bb05d08673036468f729f9f",
+      "status": "completed",
+      "runtime_run": "r-9ab5ee005ff74d57aa86daca77b367df",
+      "injections": [],
+      "receipt_sha256": [
+        "0e18949d7101f3ea5f19f6955c1afd1eb3d85a08a59df31ec63e04b065981472"
+      ]
+    },
+    {
+      "slot": "team-1",
+      "stages": [
+        "write",
+        "review"
+      ],
+      "review": [
+        "accept"
+      ],
+      "document_sha256": "86a5d4f13c93e5007517255e36420b205fffae667d7a2a08e3ac3f0a296bd368",
+      "status": "completed",
+      "runtime_run": "r-75c135feaff1477cad2bbc3c5afb0839",
+      "injections": [],
+      "receipt_sha256": [
+        "744cccd77f5014ed021357508fb44768ae995ef17663af96111f5018793aa34e",
+        "d4fbd13bd5d278c1583b991da9b566d76ac093d9ee639f6664cf5e33feffb3eb"
+      ]
+    },
+    {
+      "slot": "team-2",
+      "stages": [
+        "write",
+        "review"
+      ],
+      "review": [
+        "accept"
+      ],
+      "document_sha256": "bff80e6125704f088fc6b8af76ef15a3e87e180d076019405aa1d18fc426ac67",
+      "status": "completed",
+      "runtime_run": "r-83395eec8c654fcda3158498c3d53830",
+      "injections": [],
+      "receipt_sha256": [
+        "8a771609a37c9a85886221a9662a4d74391c75d2a3642dacf3ff12bebde1715e",
+        "fda67856b56471d91542b68e7b13b2df461278f3e7db0a6c02ac39c8cda419fd"
+      ]
+    },
+    {
+      "slot": "material-1",
+      "stages": [
+        "write",
+        "review"
+      ],
+      "review": [
+        "accept"
+      ],
+      "document_sha256": "bff80e6125704f088fc6b8af76ef15a3e87e180d076019405aa1d18fc426ac67",
+      "status": "completed",
+      "runtime_run": "r-aec75b2853f34f9bb161be71008a8012",
+      "injections": [
+        {
+          "id": "update",
+          "stage": "review",
+          "kind": "material",
+          "status": "applied",
+          "count": 1
+        }
+      ],
+      "receipt_sha256": [
+        "e28bdf5ccc1b6bde8608c006d59ca29ca5616ccf630006a2a8703f2e824752d0",
+        "e75a860640ad55ae328798585341bcbabd87d56918b8b24a34425becfe7f29f1"
+      ]
+    },
+    {
+      "slot": "material-2",
+      "stages": [
+        "write",
+        "review"
+      ],
+      "review": [
+        "accept"
+      ],
+      "document_sha256": "bff80e6125704f088fc6b8af76ef15a3e87e180d076019405aa1d18fc426ac67",
+      "status": "completed",
+      "runtime_run": "r-89b946fd6765489581fc17033d7bec62",
+      "injections": [
+        {
+          "id": "update",
+          "stage": "review",
+          "kind": "material",
+          "status": "applied",
+          "count": 1
+        }
+      ],
+      "receipt_sha256": [
+        "583fcf039aad2dd3a270df08d98708d1cfd50aa28d612cce43e02e4f9875b36a",
+        "6d6fa6545df3f966738d331da200efafde5e701fa89a6652b068384c31183882"
+      ]
+    },
+    {
+      "slot": "fault-1",
+      "stages": [
+        "write",
+        "review"
+      ],
+      "review": [
+        "accept"
+      ],
+      "document_sha256": "bff80e6125704f088fc6b8af76ef15a3e87e180d076019405aa1d18fc426ac67",
+      "status": "completed",
+      "runtime_run": "r-1c076dfd1b9044409be4183331da0e2c",
+      "injections": [
+        {
+          "id": "unavailable",
+          "stage": "review",
+          "kind": "tool_failure",
+          "status": "applied",
+          "count": 1,
+          "tool": "read_handoff",
+          "error": "temporarily_unavailable",
+          "recovery": "read_succeeded"
+        }
+      ],
+      "receipt_sha256": [
+        "22c1e98a80c1a3ae60d487b279c425ee8bed7c97c8464ab5528b73fa9c044d1f",
+        "c25c279c922b8703dab08323fa6bfff32f8192990d568f18bf4779bb19712f91"
+      ]
+    },
+    {
+      "slot": "fault-2",
+      "stages": [
+        "write",
+        "review"
+      ],
+      "review": [
+        "accept"
+      ],
+      "document_sha256": "bff80e6125704f088fc6b8af76ef15a3e87e180d076019405aa1d18fc426ac67",
+      "status": "completed",
+      "runtime_run": "r-85becd494abe457dbe98cf25c68e6f69",
+      "injections": [
+        {
+          "id": "unavailable",
+          "stage": "review",
+          "kind": "tool_failure",
+          "status": "applied",
+          "count": 1,
+          "tool": "read_handoff",
+          "error": "temporarily_unavailable",
+          "recovery": "read_succeeded"
+        }
+      ],
+      "receipt_sha256": [
+        "aa79ee3a647a1291c70e786b42b602f25014a2f4232eb31a69e302dd5acfb0e0",
+        "3025ddb38948c3d4ab4fe612a36d5886b3e41c6298fbc1aed7f1cd0d8065e29f"
+      ]
+    },
+    {
+      "slot": "revision",
+      "stages": [
+        "write",
+        "review",
+        "revise",
+        "final-review"
+      ],
+      "review": [
+        "revise",
+        "accept"
+      ],
+      "document_sha256": "fbc0301ba7ff5d310a0dc09e17afdb7f94c08013b400b0945877fddf4bb17f84",
+      "status": "completed",
+      "runtime_run": "r-4444e58490b74a01a819bcee3b896807",
+      "injections": [
+        {
+          "id": "update",
+          "stage": "review",
+          "kind": "material",
+          "status": "applied",
+          "count": 1
+        }
+      ],
+      "receipt_sha256": [
+        "89732d59ece910cd6829689de74c4e28ea8ea33298bf3ac1886c702902af4ff3",
+        "132ce8f329945949815159270c4956c4dc9c5d6df0cbb1452609345ca4de6a57",
+        "638557066b0762a8f1621c3e6ceacd08274a2281e510f05e1a5832d15ce638a1",
+        "02d9890d182fe0834e94134188d04e53c045d737c5db72240aa47f5e4d07ac85"
+      ]
+    }
+  ],
+  "runs": 9,
+  "stages": 18,
+  "sessions": 16,
+  "model_observed_sessions": 15
+}
