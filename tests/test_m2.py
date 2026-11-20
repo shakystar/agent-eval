@@ -13,7 +13,7 @@ class SemanticTests(FixtureCase):
 
         self.ingest()
         outputs = [
-            ModelOutput.from_content('mockllm/model', '{"verdict":"met","reason":"artifact matches"}'),
+            ModelOutput.from_content('mockllm/model', '{"verdict":"met","rationale":"artifact matches","citations":[{"source":"output","quote":"decision"}]}'),
             ModelOutput.from_content('mockllm/model', 'malformed')]
         for output in outputs:
             output.usage = ModelUsage(input_tokens=1, output_tokens=1, total_tokens=2)
@@ -25,9 +25,9 @@ class SemanticTests(FixtureCase):
         self.assertEqual(original['judgments'][1]['error_kind'], 'response_format')
         self.assertEqual(semantic.reliability(self.store, 's1')['status'], 'unverified')
         for run in ('run-1', 'run-2'):
-            path = self.write('review.json', dict(evaluation='s1', run=run, reviewer='synthetic test',
+            path = self.write('review.json', dict(evaluation='s1', run=run, reviewer='fixture-human',
                                                   reason='test only', verdict='unmet'))
-            semantic.review(self.store, path)
+            semantic.review(self.store, path, True)
         report = semantic.reliability(self.store, 's1')
         self.assertEqual((report['false_positive'], report['compared'], report['evaluator_unknown'],
                           report['missing_reference']), (1, 1, 1, 1))
@@ -46,10 +46,10 @@ class SemanticTests(FixtureCase):
             self.store.put('semantic', 'matrix', ev)
         for i, verdict in enumerate(('met', 'unmet', 'met', 'unmet', 'unmet', 'unknown')):
             semantic.review(self.store, self.write('human.json', dict(
-                evaluation='matrix', run=str(i), reviewer='synthetic', verdict=verdict, reason='test')))
-        task_review = dict(bundle='m1-fixture@1', task='decision', reviewer='synthetic',
+                evaluation='matrix', run=str(i), reviewer='fixture-human', verdict=verdict, reason='test')), True)
+        task_review = dict(bundle='m1-fixture@1', task='decision', reviewer='fixture-human',
                            reason='test only', validity='rejected')
-        semantic.review_task(self.store, self.write('task-review.json', task_review))
+        semantic.review_task(self.store, self.write('task-review.json', task_review), True)
         report = semantic.reliability(self.store, 'matrix')
         self.assertEqual(report['task_validity'], 'rejected')
         self.assertEqual(report['compared'], 5)

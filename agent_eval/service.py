@@ -139,7 +139,12 @@ def import_evidence(store, manifest_path, *, execution_receipt=None):
     return {'id': manifest['id'], 'duplicate': not created, 'runs': len(entries)}
 
 
-def evaluate(store, experiment_id, evaluation_id, reviewer, reason, parent=None, bundle_ref=None):
+def require_free_evaluation_id(store, evaluation_id):
+    c.require(all(store.find(kind, evaluation_id) is None
+                  for kind in ('evaluation', 'semantic', 'grading_job')), 'evaluation ID already exists or is reserved')
+
+
+def evaluate(store, experiment_id, evaluation_id, reviewer, reason, parent=None, bundle_ref=None, judge=None):
     c.text(evaluation_id); c.text(reviewer); c.text(reason)
     exp, tasks = context(store, experiment_id)
     if bundle_ref:
@@ -160,9 +165,13 @@ def evaluate(store, experiment_id, evaluation_id, reviewer, reason, parent=None,
         criterion_bundle = {'id': b['id'], 'version': b['version'], 'sha256': c.identity(b)}
     else:
         criterion_bundle = exp['bundle']
+    if any(cn['rule']['type'] == 'semantic' for t in tasks.values() for cn in t['criteria']):
+        from .semantic import SavedJudge
+        c.require(type(judge) is SavedJudge,
+                  'saved semantic evaluation requires recorded responses; use semantic-grade for live grading')
     if parent:
         c.require(store.get('evaluation', parent)['experiment'] == experiment_id, 'parent experiment mismatch')
-    c.require(not any(e['id'] == evaluation_id for e in store.all('evaluation')), 'evaluation ID already exists')
+    require_free_evaluation_id(store, evaluation_id)
     # Verify preserved originals before using derived evidence.
     for src in store.all('source'):
         if store.get('evidence', src['evidence'])['experiment'] == experiment_id:
@@ -187,10 +196,15 @@ def evaluate(store, experiment_id, evaluation_id, reviewer, reason, parent=None,
                 judgment['reason_code'] = 'missing_output'
             else:
                 try:
-                    result, data = inspect_adapter.evaluate(output, criterion, r['native_id'],
-                                                             r.get('sample_id', r['id']), r.get('epoch', 1))
+                    if criterion['rule']['type'] == 'semantic':
+                        from .semantic import evaluate as semantic_evaluate
+                        result, data = semantic_evaluate(store, r, tasks[r['task']], criterion, judge)
+                    else:
+                        result, data = inspect_adapter.evaluate(output, criterion, r['native_id'],
+                                                               r.get('sample_id', r['id']), r.get('epoch', 1))
                     judgment.update(result)
-                    store.blob(data)
+                    if data is not None:
+                        store.blob(data)
                 except Exception as exc:
                     # Error text may contain hidden criteria; retain details only in private blob.
                     error_hash = store.blob(str(exc).encode('utf-8'))
@@ -198,7 +212,10 @@ def evaluate(store, experiment_id, evaluation_id, reviewer, reason, parent=None,
             judgments.append(judgment)
     obj = {'id': evaluation_id, 'experiment': experiment_id, 'parent': parent, 'reviewer': reviewer,
            'reason': reason, 'criterion_bundle': criterion_bundle, 'backend': backend,
-           'confirmation': 'draft', 'judgments': judgments, 'run_snapshots': run_snapshots}
+           'confirmation': 'draft', 'judgments': judgments, 'run_snapshots': run_snapshots,
+           'evaluator': judge.identity if judge else {'id': 'inspect-rules', 'kind': 'rule', 'version': '1'}}
     with store.db:
+        store.db.execute('BEGIN IMMEDIATE')
+        require_free_evaluation_id(store, evaluation_id)
         store.put('evaluation', evaluation_id, obj)
     return obj

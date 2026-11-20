@@ -33,7 +33,7 @@ class RecoveryTests(FixtureCase):
             calls.append(key)
             if len(calls) == 2:
                 raise KeyboardInterrupt()
-            return '{"verdict":"met","reason":"observed"}', {}
+            return '{"verdict":"met","rationale":"observed","citations":[{"source":"output","quote":"decision"}]}', {}
         provider = Mock(backend={'name':'fixture'}, call=call)
         with patch.object(graders, 'provider', return_value=provider):
             with self.assertRaises(KeyboardInterrupt):
@@ -48,18 +48,18 @@ class RecoveryTests(FixtureCase):
     def test_legacy_reference_reuse_and_correction(self):
         self.ingest()
         provider = Mock(backend={'name':'fixture'}, call=AsyncMock(return_value=(
-            '{"verdict":"met","reason":"observed"}', {})))
+            '{"verdict":"met","rationale":"observed","citations":[{"source":"output","quote":"decision"}]}', {})))
         with patch.object(graders, 'provider', return_value=provider):
             self.grade()
         initial = dict(evaluation='audit',run='run-1',reviewer='human',reason='initial',verdict='unknown')
         with self.store.db:
             self.store.put('semantic_review', contracts.identity(['audit','run-1']), initial)
         semantic.reparse(self.store, 'audit', 'reparsed')
-        self.assertEqual(semantic.reliability(self.store, 'reparsed')['human_unknown'], 1)
+        self.assertEqual(semantic.reliability(self.store, 'reparsed')['unattested_reference'], 1)
         ref = dict(initial, evaluation='reparsed', reason='corrected', verdict='met')
         path = self.write('ref.json', ref)
-        semantic.review(self.store, path)
-        semantic.review(self.store, path)
+        semantic.review(self.store, path, True)
+        semantic.review(self.store, path, True)
         self.assertEqual(semantic.reliability(self.store, 'audit')['agree'], 1)
         self.assertEqual([r['previous'] for r in self.store.all('reference_revision')], [initial])
 
@@ -81,7 +81,7 @@ class RecoveryTests(FixtureCase):
     def test_official_cli_success_reaches_store(self):
         self.ingest()
         exe = self.root / 'codex-adapter'
-        result = dict(text='{"verdict":"met","reason":"test"}', session='session-1', pid=42)
+        result = dict(text='{"verdict":"met","rationale":"observed","citations":[{"source":"output","quote":"decision"}]}', session='session-1', pid=42)
         usage = dict(known=True, inputTokens=50, outputTokens=10)
         event = json.dumps(dict(event='result', result=result, usage=usage))
         exe.write_text('#!/bin/sh\ncat >/dev/null\n'

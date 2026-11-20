@@ -118,10 +118,14 @@ def bundle(obj, root):
 
 
 def rule(obj):
-    fields(obj, ['type', 'source'], ['value', 'pointer'])
+    fields(obj, ['type', 'source'], ['value', 'pointer', 'rubric', 'needs'])
     require(obj['source'] == 'output', 'M1 only supports saved output rules')
-    require(obj['type'] in ('nonempty', 'contains', 'json_equals'), 'unsupported rule')
-    if obj['type'] == 'contains':
+    require(obj['type'] in ('nonempty', 'contains', 'json_equals', 'semantic'), 'unsupported rule')
+    if obj['type'] == 'semantic':
+        fields(obj, ['type', 'source', 'rubric', 'needs'])
+        text(obj['rubric'])
+        require(isinstance(obj['needs'], list) and set(obj['needs']) <= {'output', 'inputs'} and 'output' in obj['needs'], 'invalid semantic evidence requirements')
+    elif obj['type'] == 'contains':
         fields(obj, ['type', 'source', 'value']); text(obj['value'])
     elif obj['type'] == 'json_equals':
         fields(obj, ['type', 'source', 'pointer', 'value'])

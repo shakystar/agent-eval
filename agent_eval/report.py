@@ -45,9 +45,12 @@ def report(store, experiment_id, evaluation_id):
         if store.get('evidence', source['evidence'])['experiment'] == experiment_id:
             store.read_blob(source['sha256'])
     for judgment in ev['judgments']:
-        for field in ('evidence_sha256', 'native_log_sha256', 'error_sha256'):
+        for field in ('evidence_sha256', 'native_log_sha256', 'error_sha256', 'request_sha256', 'response_sha256', 'rationale_sha256'):
             if judgment.get(field):
                 store.read_blob(judgment[field])
+    from .review import get_bundle, validity, effective_judgment
+    grading_tasks = {t['id']:t for t in get_bundle(store, ev['criterion_bundle'])['tasks']}
+    task_validity = {key:validity(store, ev['criterion_bundle'], t) for key,t in grading_tasks.items()}
     runs = [r for r in store.all('run') if r['experiment'] == experiment_id]
     if 'run_snapshots' in ev:
         runs = [loads(store.read_blob(sha)) for sha in ev['run_snapshots'].values()]
@@ -63,11 +66,16 @@ def report(store, experiment_id, evaluation_id):
             for repeat in range(1, exp['repetitions']+1):
                 match = [r for r in runs if (r['condition'],r['task'],r['repeat']) == (cond['id'],task,repeat)]
                 row = {'task':task, 'repeat':repeat, 'run':None, 'status':'not_imported',
-                       'outcome':'unknown', 'exclusion_reason':'missing_run'}
+                       'outcome':'unknown', 'exclusion_reason':'missing_run',
+                       'confirmed_outcome':'unknown', 'task_validity':task_validity[task]}
                 if match:
                     r = match[0]
                     js = [j for j in ev['judgments'] if j['run'] == r['id']]
-                    required = [j for j in js if j['required']]
+                    required = [j for j in js if j['required'] and j['verdict'] != 'not_applicable']
+                    reviewed = [effective_judgment(store, evaluation_id, j) for j in js if j['required']]
+                    active_reviews = [j for j in reviewed if j['verdict'] != 'not_applicable']
+                    confirmed = bool(active_reviews) and all(j['confirmation']=='confirmed' and j['verdict']!='unknown' for j in reviewed)
+                    confirmed_outcome = ('met' if all(j['verdict']=='met' for j in active_reviews) else 'unmet') if confirmed and r['execution_status']=='completed' else 'unknown'
                     errors = sum(j['processing'] == 'error' for j in js)
                     required_errors = sum(j['processing']=='error' for j in required)
                     if not required or required_errors or any(j['verdict']=='unknown' for j in required):
@@ -79,6 +87,7 @@ def report(store, experiment_id, evaluation_id):
                         why = None
                     row.update(run=r['id'], attempt_id=r['attempt_id'], status=r['execution_status'],
                                outcome=outcome, exclusion_reason=why,
+                               confirmed_outcome=confirmed_outcome,
                                environment_mismatch=r['environment'] != cond['environment'],
                                native_sample_id=r.get('sample_id'), native_epoch=r.get('epoch'),
                                native_score_states=dict(Counter(s['state'] for s in r['native']['scores'].values())),
@@ -95,12 +104,19 @@ def report(store, experiment_id, evaluation_id):
         counts = Counter(r['outcome'] for r in rows)
         absent = sum(r['run'] is None for r in rows)
         mismatch = any(r.get('environment_mismatch') for r in rows)
+        confirmed = [r for r in rows if r['confirmed_outcome'] != 'unknown']
+        eligible = [r for r in confirmed if r['task_validity'] == 'approved']
+        confirmed_rate = rate(sum(r['confirmed_outcome'] == 'met' for r in eligible), len(rows))
+        if not eligible:
+            reason = 'no_approved_reviewed_outcomes' if confirmed else 'no_confirmed_outcomes'
+            confirmed_rate.update(value=None, missing_reason=reason)
         conditions.append({'condition':cond['id'], 'planned':len(rows), 'imported':len(rows)-absent,
             'judgeable':counts['met']+counts['unmet'], 'unknown':counts['unknown'],
             'status_counts':dict(Counter(r['status'] for r in rows)),
             'exclusion_counts':dict(Counter(r['exclusion_reason'] for r in rows if r['exclusion_reason'])),
-            'overall_confirmed_success_rate':rate(0,len(rows)),
-            'confirmed_success_note':'No human confirmation in M1; rule judgments remain draft.',
+            'overall_confirmed_success_rate':confirmed_rate,
+            'confirmed_judgeable':len(confirmed),
+            'confirmed_success_note':'Only explicit human reviews on approved task versions count as confirmed successes.',
             'provisional_success_rate':rate(counts['met'],len(rows)),
             'provisional_judgeable_success_rate':rate(counts['met'],counts['met']+counts['unmet']),
             'missing_run_rate':rate(absent,len(rows)),
@@ -119,24 +135,33 @@ def report(store, experiment_id, evaluation_id):
                        'completed_samples':result.get('completed_samples'),
                        'metrics':[{'scorer':s.get('name'),'metrics':{k:v.get('value') for k,v in s.get('metrics',{}).items()}} for s in result.get('scores',[])],
                        'denominator_policy':'Inspect native metrics; not planned-run success rate'})
+    reviewed_count = sum(item['confirmed_judgeable'] for item in conditions)
+    all_reviewed = reviewed_count == sum(item['planned'] for item in conditions)
+    approved = all(value == 'approved' for value in task_validity.values())
     return {'schema_version':1,'experiment':experiment_id,'evaluation':evaluation_id,
             'criterion_bundle':ev['criterion_bundle'],'parent_evaluation':ev['parent'],
-            'confirmation':'draft','conclusion':'withheld_pending_task_validity_and_human_reference',
+            'confirmation':'confirmed' if all_reviewed else 'partial' if reviewed_count else 'draft',
+            'conclusion':'human_reviewed_results_on_approved_tasks' if all_reviewed and approved else 'withheld_pending_task_validity_or_judgment_review',
+            'task_validity':task_validity,
+            'review_ledger_ids':[x['id'] for x in store.all('judgment_review') if x['evaluation']==evaluation_id],
             'aggregation':'equal weight per planned task/repeat; missing runs stay in denominator',
             'conditions':conditions,'native_aggregates':native,
-            'limitations':['Task outcomes in this report use the selected rule evaluation.',
-                           'Task validity and evaluator reliability are not established.',
+            'limitations':['Task approvals and human reviews apply to the selected task and criterion versions.',
+                           'Evaluator reliability is measured in the reference report.',
                            'No automatic human confirmation; raw outputs and private criteria omitted.']}
 
 
 def markdown(obj):
     lines = ['# Evidence evaluation report','',f"Experiment: {obj['experiment']}; evaluation: {obj['evaluation']}.",'',
-             'Draft rule judgments. Performance conclusions withheld.','',
-             '| Condition | Planned | Imported | Judgeable | Provisional successes | Comparable |',
-             '| --- | ---: | ---: | ---: | ---: | --- |']
+             'Review status: '+obj['confirmation']+'. Conclusion: '+obj['conclusion']+'.','',
+             '| Condition | Planned | Imported | Judgeable | Provisional successes | Confirmed success rate | Comparable |',
+             '| --- | ---: | ---: | ---: | ---: | ---: | --- |']
     for c in obj['conditions']:
         label = c['condition'].replace('|','/').replace('\n',' ')
-        lines.append(f"| {label} | {c['planned']} | {c['imported']} | {c['judgeable']} | {c['provisional_success_rate']['numerator']} | {c['comparable']} |")
+        confirmed = c['overall_confirmed_success_rate']
+        displayed = (f"{confirmed['numerator']}/{confirmed['denominator']}" if confirmed['value'] is not None
+                     else confirmed['missing_reason'])
+        lines.append(f"| {label} | {c['planned']} | {c['imported']} | {c['judgeable']} | {c['provisional_success_rate']['numerator']} | {displayed} | {c['comparable']} |")
     for condition in obj['conditions']:
         lines += ['', '## '+condition['condition'].replace('\n',' '), '',
                   'Condition differences: '+', '.join(condition['condition_differences']),

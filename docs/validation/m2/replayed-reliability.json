@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "evaluation": "final-offline-replay",
+  "reference": "handoff-reference@1",
+  "peer": null,
+  "status": "measured_on_human_references",
+  "reference_origin": "human",
+  "split": "calibration",
+  "reference_cases": 4,
+  "compared": 4,
+  "coverage": {
+    "numerator": 4,
+    "denominator": 4,
+    "value": 1.0,
+    "missing_reason": null
+  },
+  "unreferenced_judgments": 0,
+  "agreement": {
+    "numerator": 4,
+    "denominator": 4,
+    "value": 1.0,
+    "missing_reason": null
+  },
+  "disagreement": {
+    "numerator": 0,
+    "denominator": 4,
+    "value": 0.0,
+    "missing_reason": null
+  },
+  "confusion_matrix": {
+    "TP": 2,
+    "TN": 2,
+    "FP": 0,
+    "FN": 0
+  },
+  "false_positive_rate": {
+    "numerator": 0,
+    "denominator": 2,
+    "value": 0.0,
+    "missing_reason": null
+  },
+  "false_negative_rate": {
+    "numerator": 0,
+    "denominator": 2,
+    "value": 0.0,
+    "missing_reason": null
+  },
+  "excluded": {},
+  "task_validity_approved": true,
+  "independent_identities": true,
+  "limits": [
+    "Identity provenance is caller-attested, not externally authenticated.",
+    "Rates apply only to the included cases; calibration is not held-out validation.",
+    "Reference agreement does not confirm model judgments or establish general reliability."
+  ]
+}

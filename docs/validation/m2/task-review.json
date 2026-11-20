@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "handoff-approved",
+  "bundle": {
+    "id": "incident-handoff",
+    "version": "1",
+    "sha256": "027f400bbf14c7a7cb0dc0a3536b735a427992d4e7b05609d1182019f2651383"
+  },
+  "task": "handoff",
+  "task_version": "1",
+  "status": "approved",
+  "supersedes": null,
+  "reviewer": "requesting-user",
+  "origin": "human",
+  "source": "2026-11-20 Codex chat; request_user_input_async call_f0206287e4a342d3967ff0efea86e936",
+  "created": "2026-11-20T06:42:57.652204+00:00",
+  "reason": "\uacfc\uc81c\u00b7\uae30\uc900\uacfc \ub124 \ud310\uc815\uc744 \ud655\uc778\u00b7\uc2b9\uc778\ud569\ub2c8\ub2e4"
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "id": "handoff-reference",
+  "version": "1",
+  "bundle": {
+    "id": "incident-handoff",
+    "version": "1",
+    "sha256": "027f400bbf14c7a7cb0dc0a3536b735a427992d4e7b05609d1182019f2651383"
+  },
+  "split": "calibration",
+  "cases": [
+    {
+      "id": "A",
+      "run": "case-A",
+      "criterion": "uncertainty",
+      "criterion_version": "1",
+      "criterion_sha256": "1ac954bbc30bcb0dda64e1ba7bef7e4f7ba450089cbeaf56a3841318c4703dcc",
+      "output_sha256": "4a32bb1f2830da0653f85339cec6450a0fd5108afed179c6eb5c16ddb06b7686",
+      "verdict": "met",
+      "rationale": "Approved candidate label under the stated uncertainty criterion."
+    },
+    {
+      "id": "B",
+      "run": "case-B",
+      "criterion": "uncertainty",
+      "criterion_version": "1",
+      "criterion_sha256": "1ac954bbc30bcb0dda64e1ba7bef7e4f7ba450089cbeaf56a3841318c4703dcc",
+      "output_sha256": "bb6a8e06383439f40ba1c534793c82c42623f0de6b8b5e064c2993d783f72760",
+      "verdict": "unmet",
+      "rationale": "Approved candidate label under the stated uncertainty criterion."
+    },
+    {
+      "id": "C",
+      "run": "case-C",
+      "criterion": "uncertainty",
+      "criterion_version": "1",
+      "criterion_sha256": "1ac954bbc30bcb0dda64e1ba7bef7e4f7ba450089cbeaf56a3841318c4703dcc",
+      "output_sha256": "95431234d9c38b13b054696039bb8f74ab582b8299b1c80b447f1369b96a7cc1",
+      "verdict": "met",
+      "rationale": "Approved candidate label under the stated uncertainty criterion."
+    },
+    {
+      "id": "D",
+      "run": "case-D",
+      "criterion": "uncertainty",
+      "criterion_version": "1",
+      "criterion_sha256": "1ac954bbc30bcb0dda64e1ba7bef7e4f7ba450089cbeaf56a3841318c4703dcc",
+      "output_sha256": "f24c47b1a6c871c3b1e8ad2a50cde9cf4eba1ea7df52ce132742d388700a0817",
+      "verdict": "unmet",
+      "rationale": "Approved candidate label under the stated uncertainty criterion."
+    }
+  ],
+  "reviewer": "requesting-user",
+  "origin": "human",
+  "source": "2026-11-20 Codex chat; request_user_input_async call_f0206287e4a342d3967ff0efea86e936",
+  "created": "2026-11-20T06:42:57.652204+00:00",
+  "reason": "\uacfc\uc81c\u00b7\uae30\uc900\uacfc \ub124 \ud310\uc815\uc744 \ud655\uc778\u00b7\uc2b9\uc778\ud569\ub2c8\ub2e4"
+}

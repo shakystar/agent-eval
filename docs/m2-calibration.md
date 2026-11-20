@@ -21,11 +21,11 @@ ae reliability grade-1
 검토자는 brief.txt, rubric.txt와 각 산출물을 읽고 독립적으로 판정합니다.
 누락된 산출물은 unknown으로 기록할 수 있습니다. 아래 필드에 실제 값을 작성한 후 파일을 등록합니다.
 
-- `ae human-review review.json`은 evaluation, run, reviewer, reason, verdict를 받습니다. verdict는 met, unmet, unknown 중 하나입니다.
-- `ae task-review validity.json`은 bundle(이 예제에서는 notice-calibration@1), task(notice), reviewer, reason, validity(approved 또는 rejected)를 받습니다.
+- `ae human-review review.json --human-attested`은 evaluation, run, reviewer, reason, verdict를 받습니다. verdict는 met, unmet, unknown, not_applicable 중 하나입니다.
+- `ae task-review validity.json --human-attested`은 bundle(이 예제에서는 notice-calibration@1), task(notice), reviewer, reason, validity(approved 또는 rejected)를 받습니다.
 - `ae reliability grade-1`은 판정 가능한 쌍의 수, 일치·불일치, 오탐·미탐, 기준 누락과 판정 불가 건수를 출력합니다. 비교 가능한 쌍이 없으면 unverified입니다.
 
-원본 채점 응답과 근거는 로컬 store에 보관합니다. 한 평가·실행 쌍에는 사람 기준 하나를 등록합니다. 이 예제의 과제 타당성과 사람 기준은 미확정입니다.
+원본 채점 응답과 근거는 로컬 store에 보관합니다. 한 평가·실행 쌍에는 사람 기준 하나를 등록합니다. 과제 승인과 산출물별 기준 판정은 별도로 등록합니다.
 
 ## 실제 모델 검증 결과
 
@@ -49,6 +49,8 @@ PATH에 설치한 공식 CLI는 환경 변수 없이 사용할 수 있습니다.
 공지문 예제가 등록된 store와 새 평가 ID를 사용합니다. 각 산출물은 별도 advisory 세션에서 평가합니다. 로그인은 설치된 Codex가 관리하고 모델 호출은 원격에서 수행합니다. 원본 응답·세션 ID·사용량은 로컬 store에 기록합니다.
 
 동일한 A·B 산출물에서 Sol은 사람 판정과 2/2 일치했습니다. C는 원본 출력 누락으로 모델 호출과 이진 비교에서 제외했습니다. [사례별 결과 및 사용량](validation/m2/codex-sol.json)
+
+새 모델 응답은 `verdict`, `rationale`, `citations`를 사용합니다. 충족·미충족 판정에는 입력 또는 산출물에 실제로 있는 인용문이 필요합니다. 기존 응답의 재파싱은 해당 평가에 기록된 파서 계약을 따릅니다. [장애 인계 예제와 검토 계약](m2-contract.md)
 
 ## 실패 상태와 재개
 

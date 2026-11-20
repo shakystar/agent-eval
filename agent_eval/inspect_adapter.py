@@ -108,3 +108,34 @@ def evaluate(output, criterion, native_id, sample_id, epoch):
     value = result.samples[0].scores['artifact_rule'].value
     return {'verdict': 'met' if value == 'C' else 'unmet', 'processing': 'completed',
             'native_value': value, 'backend': meta, 'native_log_sha256': digest(data)}, data
+
+
+def semantic_score(run, criterion, parsed):
+    """Reuse public scorer/log APIs for externally obtained semantic judgments."""
+    from inspect_ai import score
+    from inspect_ai.log import EvalLog, EvalSpec, EvalDataset, EvalConfig, EvalSample, write_eval_log
+    from inspect_ai.model import ModelOutput
+    from inspect_ai.scorer import Score, accuracy, scorer
+
+    @scorer(metrics=[accuracy()])
+    def semantic_rubric():
+        async def grade(state, target):
+            metadata = {'criterion_id': criterion['id'], 'criterion_version': criterion['version'],
+                        'verdict': parsed['verdict'], 'citations': parsed['citations']}
+            if parsed['verdict'] in ('unknown', 'not_applicable'):
+                return Score.unscored(reason=parsed['verdict'], explanation=parsed['rationale'], metadata=metadata)
+            return Score(value='C' if parsed['verdict'] == 'met' else 'I', explanation=parsed['rationale'], metadata=metadata)
+        return grade
+
+    log = EvalLog(status='success', total_samples=1,
+                  eval=EvalSpec(created=datetime.now(timezone.utc).isoformat(), task='agent_eval_semantic',
+                                eval_id=run['native_id'], dataset=EvalDataset(samples=1), model='mockllm/model', config=EvalConfig()),
+                  samples=[EvalSample(id=run.get('sample_id', run['id']), epoch=run.get('epoch', 1), input='', target='',
+                                      output=ModelOutput.from_content('mockllm/model', 'Saved artifact: '+run['output_sha256']))])
+    result = score(log, semantic_rubric(), model='mockllm/model', display='none')
+    with tempfile.TemporaryDirectory() as tmp:
+        path = Path(tmp)/'semantic.eval'
+        write_eval_log(result, path)
+        data = path.read_bytes()
+    return {'verdict': parsed['verdict'], 'processing': 'completed', 'backend': backend(),
+            'native_log_sha256': digest(data)}, data

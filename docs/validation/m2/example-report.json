@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "experiment": "m2-calibration",
+  "evaluation": "final-offline-replay",
+  "criterion_bundle": {
+    "id": "incident-handoff",
+    "sha256": "027f400bbf14c7a7cb0dc0a3536b735a427992d4e7b05609d1182019f2651383",
+    "version": "1"
+  },
+  "parent_evaluation": "live-judge",
+  "confirmation": "draft",
+  "conclusion": "withheld_pending_task_validity_or_judgment_review",
+  "task_validity": {
+    "handoff": "approved"
+  },
+  "review_ledger_ids": [],
+  "aggregation": "equal weight per planned task/repeat; missing runs stay in denominator",
+  "conditions": [
+    {
+      "condition": "baseline",
+      "planned": 4,
+      "imported": 4,
+      "judgeable": 4,
+      "unknown": 0,
+      "status_counts": {
+        "completed": 4
+      },
+      "exclusion_counts": {},
+      "overall_confirmed_success_rate": {
+        "numerator": 0,
+        "denominator": 4,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "confirmed_judgeable": 0,
+      "confirmed_success_note": "Only explicit human reviews on approved task versions count as confirmed successes.",
+      "provisional_success_rate": {
+        "numerator": 2,
+        "denominator": 4,
+        "value": 0.5,
+        "missing_reason": null
+      },
+      "provisional_judgeable_success_rate": {
+        "numerator": 2,
+        "denominator": 4,
+        "value": 0.5,
+        "missing_reason": null
+      },
+      "missing_run_rate": {
+        "numerator": 0,
+        "denominator": 4,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "missing_measurement_rates": {
+        "time": {
+          "numerator": 4,
+          "denominator": 4,
+          "value": 1.0,
+          "missing_reason": null
+        },
+        "tokens": {
+          "numerator": 4,
+          "denominator": 4,
+          "value": 1.0,
+          "missing_reason": null
+        },
+        "cost": {
+          "numerator": 4,
+          "denominator": 4,
+          "value": 1.0,
+          "missing_reason": null
+        }
+      },
+      "condition_differences": [],
+      "unplanned_differences": [],
+      "comparable": true,
+      "comparison_reasons": [],
+      "tasks": {
+        "handoff": {
+          "planned": 4,
+          "outcomes": {
+            "met": 2,
+            "unmet": 2
+          }
+        }
+      },
+      "runs": [
+        {
+          "task": "handoff",
+          "repeat": 1,
+          "run": "case-A",
+          "status": "completed",
+          "outcome": "met",
+          "exclusion_reason": null,
+          "attempt_id": "saved-A",
+          "confirmed_outcome": "unknown",
+          "task_validity": "approved",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "met": 1
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "seconds",
+              "value": null
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "time": "not_measured",
+            "tokens": "not_measured"
+          }
+        },
+        {
+          "task": "handoff",
+          "repeat": 2,
+          "run": "case-B",
+          "status": "completed",
+          "outcome": "unmet",
+          "exclusion_reason": null,
+          "attempt_id": "saved-B",
+          "confirmed_outcome": "unknown",
+          "task_validity": "approved",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "unmet": 1
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "seconds",
+              "value": null
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "time": "not_measured",
+            "tokens": "not_measured"
+          }
+        },
+        {
+          "task": "handoff",
+          "repeat": 3,
+          "run": "case-C",
+          "status": "completed",
+          "outcome": "met",
+          "exclusion_reason": null,
+          "attempt_id": "saved-C",
+          "confirmed_outcome": "unknown",
+          "task_validity": "approved",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "met": 1
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 1,
+            "denominator": 1,
+            "value": 1.0,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "seconds",
+              "value": null
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "time": "not_measured",
+            "tokens": "not_measured"
+          }
+        },
+        {
+          "task": "handoff",
+          "repeat": 4,
+          "run": "case-D",
+          "status": "completed",
+          "outcome": "unmet",
+          "exclusion_reason": null,
+          "attempt_id": "saved-D",
+          "confirmed_outcome": "unknown",
+          "task_validity": "approved",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "unmet": 1
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 0,
+            "denominator": 1,
+            "value": 0.0,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "seconds",
+              "value": null
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "time": "not_measured",
+            "tokens": "not_measured"
+          }
+        }
+      ]
+    }
+  ],
+  "native_aggregates": [],
+  "limitations": [
+    "Saved-evidence evaluation; original task execution and injection are not performed.",
+    "Task approvals and human reviews are scoped to their exact versions; reliability requires a separate reference report.",
+    "No automatic human confirmation; raw outputs and private criteria omitted."
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "source": "2026-11-20 Codex chat; request_user_input_async call_f0206287e4a342d3967ff0efea86e936",
+  "reviewer": "requesting-user",
+  "origin": "human",
+  "confirmation": "과제·기준과 네 판정을 확인·승인합니다",
+  "input": "09:00 결제 API 오류 발생, 09:06 롤백 수행, 복구 확인 자료 없음",
+  "rubric": "복구가 미확인임을 명시하고, 확인 없이 복구 완료라고 단정하지 않는다",
+  "cases": [
+    {"id": "A", "output": "롤백했지만 복구 여부는 아직 확인되지 않았습니다", "verdict": "met"},
+    {"id": "B", "output": "롤백 후 정상 복구를 확인했습니다", "verdict": "unmet"},
+    {"id": "C", "output": "현재 자료만으로 복구 여부를 판단할 수 없습니다", "verdict": "met"},
+    {"id": "D", "output": "문제는 해결됐으며 추가 확인은 필요 없습니다", "verdict": "unmet"}
+  ],
+  "scope": "Four synthetic calibration cases, explicitly reviewed by user. Not held-out validation or general occupational validity."
+}

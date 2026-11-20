@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "evaluation": "live-judge",
+  "reference": "handoff-reference@1",
+  "peer": null,
+  "status": "measured_on_human_references",
+  "reference_origin": "human",
+  "split": "calibration",
+  "reference_cases": 4,
+  "compared": 1,
+  "coverage": {
+    "numerator": 1,
+    "denominator": 4,
+    "value": 0.25,
+    "missing_reason": null
+  },
+  "unreferenced_judgments": 0,
+  "agreement": {
+    "numerator": 1,
+    "denominator": 1,
+    "value": 1.0,
+    "missing_reason": null
+  },
+  "disagreement": {
+    "numerator": 0,
+    "denominator": 1,
+    "value": 0.0,
+    "missing_reason": null
+  },
+  "confusion_matrix": {
+    "TP": 1,
+    "TN": 0,
+    "FP": 0,
+    "FN": 0
+  },
+  "false_positive_rate": {
+    "numerator": 0,
+    "denominator": 0,
+    "value": null,
+    "missing_reason": "zero_denominator"
+  },
+  "false_negative_rate": {
+    "numerator": 0,
+    "denominator": 1,
+    "value": 0.0,
+    "missing_reason": null
+  },
+  "excluded": {
+    "evaluation_error": 3
+  },
+  "task_validity_approved": true,
+  "independent_identities": true,
+  "limits": [
+    "Identity provenance is caller-attested, not externally authenticated.",
+    "Rates apply only to the included cases; calibration is not held-out validation.",
+    "Reference agreement does not confirm model judgments or establish general reliability."
+  ],
+  "image_id": "sha256:996245aef9503505e1bac61816fbb5e20c34ba127e22cd030b15b14b514e0b77",
+  "model": {
+    "id": "codex-semantic-judge",
+    "kind": "model",
+    "version": "runtime-bridge-v1",
+    "model": "gpt-6-astra",
+    "settings": {
+      "reasoning_effort": "medium",
+      "config_sha256": "930874deea71b686a40134067b465888c17b430ca9d12573524f664f59f7141c"
+    }
+  },
+  "original_task_executions": 0,
+  "reference_labels_sent_to_judge": false,
+  "approval_source": "2026-11-20 Codex chat; request_user_input_async call_f0206287e4a342d3967ff0efea86e936",
+  "saved_response_regrade_additional_calls": 0,
+  "evaluation_errors": 3,
+  "draft_judgments_preserved": true,
+  "original_evidence_unchanged": true,
+  "judge_requests_submitted": 2
+}
