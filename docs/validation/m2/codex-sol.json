@@ -1,0 +1,98 @@
+{
+  "cases": [
+    {
+      "run": "run-1",
+      "draft": "met",
+      "processing": "graded",
+      "reference": "met",
+      "comparison": "true_positive",
+      "response": "{\"verdict\":\"met\",\"reason\":\"The notice says browsing remains available, checkout pauses from 14:00 to 15:00 UTC, and customers should retry payment after 15:00 UTC. Nothing contradicts the task.\"}",
+      "usage": {
+        "cachedInputTokens": 4224,
+        "completedTurns": 1,
+        "inputTokens": 6081,
+        "known": true,
+        "measuredTurns": 1,
+        "outputTokens": 52,
+        "scope": "successful-turn-last-notification"
+      }
+    },
+    {
+      "run": "run-2",
+      "draft": "unmet",
+      "processing": "graded",
+      "reference": "unmet",
+      "comparison": "true_negative",
+      "response": "{\"verdict\":\"unmet\",\"reason\":\"The notice says all services are unavailable until further notice, contradicting continued browsing and the fixed checkout outage window. It omits the 14:00–15:00 UTC window and does not tell customers to retry checkout after 15:00 UTC.\"}",
+      "usage": {
+        "cachedInputTokens": 4224,
+        "completedTurns": 1,
+        "inputTokens": 6057,
+        "known": true,
+        "measuredTurns": 1,
+        "outputTokens": 65,
+        "scope": "successful-turn-last-notification"
+      }
+    },
+    {
+      "run": "run-3",
+      "draft": "unknown",
+      "processing": "missing_output",
+      "reference": "unmet",
+      "comparison": "evaluator_unknown"
+    }
+  ],
+  "task_validity": "unreviewed",
+  "evaluation": "notice-sol-live",
+  "total": 3,
+  "compared": 2,
+  "status": "compared",
+  "disagreement": 0,
+  "model": "codex-adapter/gpt-6.2-sol",
+  "rubric_sha256": "e42d6f63ddbf356e0cef960156a925b32fc26592e42c0c0935d622ce0ea56a6b",
+  "grader_status_counts": {
+    "graded": 2,
+    "missing_output": 1
+  },
+  "agree": 2,
+  "agreement_rate": 1.0,
+  "rates": {
+    "agreement": {
+      "numerator": 2,
+      "denominator": 2,
+      "value": 1.0,
+      "missing_reason": null
+    },
+    "disagreement": {
+      "numerator": 0,
+      "denominator": 2,
+      "value": 0.0,
+      "missing_reason": null
+    },
+    "false_positive": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0.0,
+      "missing_reason": null
+    },
+    "false_negative": {
+      "numerator": 0,
+      "denominator": 1,
+      "value": 0.0,
+      "missing_reason": null
+    }
+  },
+  "true_positive": 1,
+  "true_negative": 1,
+  "false_positive": 0,
+  "false_negative": 0,
+  "missing_reference": 0,
+  "human_unknown": 0,
+  "evaluator_unknown": 1,
+  "backend": {
+    "executable_sha256": "eae26634d88198c1e3e6ab662b6e6be244d7d05d189b642cbf50d073f8341873",
+    "name": "codex-adapter"
+  },
+  "adapter_commit": "42d568d33e2b763205336edf59f10adc0f471e4d",
+  "prompt_sha256": "e1587f0300cde3928b09700f19792b61606e19506c24ba0ba389c8fb341b149b"
+}

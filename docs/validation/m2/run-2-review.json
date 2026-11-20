@@ -1,0 +1,7 @@
+{
+  "evaluation": "notice-v1-reparsed",
+  "run": "run-2",
+  "reviewer": "project-owner",
+  "reason": "모든 서비스가 중단된다는 안내가 탐색은 가능하다는 과제 조건과 충돌함. 검토자가 최초 보류 판정을 정정함.",
+  "verdict": "unmet"
+}

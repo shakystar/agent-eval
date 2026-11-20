@@ -1,6 +1,8 @@
 """SQLite index plus immutable, hash-verified local source blobs."""
 import json
 import sqlite3
+import os
+import tempfile
 from pathlib import Path
 from .contracts import ContractError, canonical, digest, require
 
@@ -30,10 +32,14 @@ class Store:
         self.db.execute('INSERT INTO objects VALUES(?,?,?)', (kind, key, encoded))
         return True
 
-    def get(self, kind, key):
+    def find(self, kind, key):
         row = self.db.execute('SELECT body FROM objects WHERE kind=? AND id=?', (kind, key)).fetchone()
-        require(row is not None, f'unknown {kind}: {key}')
-        return json.loads(row[0])
+        return json.loads(row[0]) if row else None
+
+    def get(self, kind, key):
+        value = self.find(kind, key)
+        require(value is not None, f'unknown {kind}: {key}')
+        return value
 
     def all(self, kind):
         return [json.loads(r[0]) for r in self.db.execute('SELECT body FROM objects WHERE kind=? ORDER BY rowid', (kind,))]
@@ -41,11 +47,20 @@ class Store:
     def blob(self, data):
         sha = digest(data)
         path = self.root / 'blobs' / sha
-        try:
-            with path.open('xb') as f:
-                f.write(data)
-        except FileExistsError:
+        if path.exists():
             require(path.read_bytes() == data, 'stored blob corruption')
+            return sha
+        # Publish complete bytes atomically when several graders save the same hash.
+        with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as pending:
+            temporary = Path(pending.name)
+        try:
+            temporary.write_bytes(data)
+            try:
+                os.link(temporary, path)
+            except FileExistsError:
+                require(path.read_bytes() == data, 'stored blob corruption')
+        finally:
+            temporary.unlink(missing_ok=True)
         return sha
 
     def read_blob(self, sha):

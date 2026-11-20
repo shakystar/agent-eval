@@ -3,7 +3,7 @@ ARG BASE_IMAGE=agent-eval-linux:m0
 FROM ${BASE_IMAGE}
 COPY --chown=evaluator:evaluator agent_eval /opt/agent-eval-m1/agent_eval
 COPY --chown=evaluator:evaluator tests /opt/agent-eval-m1/tests
-COPY --chown=evaluator:evaluator examples/m1 /opt/agent-eval-m1/examples/m1
+COPY --chown=evaluator:evaluator examples /opt/agent-eval-m1/examples
 ENV PYTHONPATH=/opt/agent-eval-m1
 WORKDIR /opt/agent-eval-m1
 ENTRYPOINT ["/opt/inspect-env/bin/python", "-m", "agent_eval"]

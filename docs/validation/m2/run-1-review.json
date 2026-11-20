@@ -1,0 +1,7 @@
+{
+  "evaluation": "notice-v1-reparsed",
+  "run": "run-1",
+  "reviewer": "project-owner",
+  "reason": "검토자가 A를 충족으로 판정함.",
+  "verdict": "met"
+}

@@ -1,0 +1,7 @@
+{
+  "evaluation": "notice-v1-reparsed",
+  "run": "run-3",
+  "reviewer": "project-owner",
+  "reason": "응답하지 않았다고 해석해 미충족으로 판정함.",
+  "verdict": "unmet"
+}
