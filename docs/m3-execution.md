@@ -31,6 +31,25 @@ docker run --rm --network none --entrypoint sh \
 
 리뷰 수정본의 재현 소스는 role-runtime `9ca52f26cddf428149f7a99e7bd754038c2de59c`와 role-orchestrator `72261711b4f8b9eb4216a9ff4be51791c588d360`이다.
 
+## 특정 codex-adapter 커밋으로 빌드
+
+기본 빌드는 role-runtime의 `go.mod`에 지정된 어댑터를 사용한다. 어댑터의 커밋을 따로 검증하려면 로컬 Git 저장소와 커밋 SHA 전체를 함께 전달한다.
+
+```sh
+adapter_sha=2b8c204b0cb7e3c63c60a3fa7923e4e9ca4d02bb
+tag=agent-eval-m3:adapter-pin
+python3 containers/linux/build_m3.py --adapter ../codex-adapter \
+  --adapter-commit "$adapter_sha" --tag "$tag"
+
+docker image inspect "$tag" --format '{{json .Config.Labels}}'
+docker run --rm --network=none --entrypoint go "$tag" \
+  version -m /opt/src/role-runtime/bin/runtime-bridge
+```
+
+`--adapter-commit`은 40자리 소문자 SHA-1을 받는다. HEAD의 위치와 무관하게 지정한 커밋에서 `git archive`로 어댑터를 추출한다. 미커밋 파일과 추적되지 않는 파일은 어댑터 빌드 입력에서 제외한다. agent-eval, role-runtime, role-orchestrator는 기존과 같이 지정한 작업 트리를 사용하므로 네 저장소를 함께 재현할 때는 이 세 트리의 버전과 로컬 변경도 확인해야 한다.
+
+최종 이미지의 `org.agent-eval.codex-adapter.commit`과 `org.agent-eval.codex-adapter.archive-sha256` 라벨에 각각 커밋과 tar의 SHA-256이 있다. Docker 빌드는 tar 해시, tar에 기록된 커밋, Go 모듈 이름을 확인한다. 컴파일한 브리지의 `go version -m`에서 `github.com/shakystar/codex-adapter` 바로 다음 줄이 `=> /tmp/pinned-codex-adapter/<전체 SHA> (devel)`인 경우에만 고정 빌드를 완료한다. 이 경로는 빌드 단계의 경로다. 확인 실패 시 기본 모듈로 전환하지 않는다. [표준 빌더 검증 기록](validation/m3-adapter-pin.md)
+
 ## 실행 경계
 
 | 계층 | 책임 |
