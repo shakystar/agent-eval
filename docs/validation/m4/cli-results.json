@@ -1,0 +1,392 @@
+{
+  "schema_version": 1,
+  "validation": "m4-two-bundle-cli",
+  "backend": "fixture",
+  "real_model_calls": 0,
+  "published_codex_experiment": "inventory-reconciliation-v1-codex",
+  "conclusions": "withheld_unreviewed_tasks",
+  "fixture_wire_contains_canned_output": true,
+  "bundles": [
+    {
+      "bundle": {
+        "id": "notice-calibration",
+        "version": "1",
+        "sha256": "24c4ac989e8c5119ffe1329d589648e11d61028fd47a719b2b414efcaded510e"
+      },
+      "experiment": "m4-notice-fixture",
+      "planned": 3,
+      "judgments_per_grade": 3,
+      "outcomes": {
+        "met": 1,
+        "unmet": 1,
+        "unknown": 1
+      },
+      "validity": {
+        "notice": "unreviewed"
+      },
+      "original_evaluation_sha256": "44007120c6975ecbadbf60a48058bdaf8bc998adc208f69dd47c55a5ff5ad60d",
+      "evidence_state_sha256": "aa297f25f4ca22c54a9e3684e781cf362410875eb9f9beeb3b5bbb78aab45f73",
+      "initial": "m4-notice-fixture-initial",
+      "child": "m4-notice-fixture-regrade",
+      "fixture_receipts": {
+        "notice": {
+          "run": "m3-e7e6bd9550b96aed05ffc3d8bf15abcdacbf36f2a2287f4b6f3966514b8164c7",
+          "attempt": "a-62bc9ee7b2eff8edade3a9873ece6690",
+          "input_sha256": "84c680c9b60f0b58c7463aa74c7fa724075739c805c70ed467fdc9791477d6e4",
+          "wire_sha256": "102507cf592ce5fc3d5d8851b53395e3309e4f16e0de8d85b046c3df9df6fc88",
+          "receipt_sha256": "be9993bf6d2116ed48beefb6713ff0a7ed4e96461be8312c38e7c8e1b963305c",
+          "output_sha256": "60d74d04ee9a862bd30a481666d4697be609886e4834a3e40cdcd687c9ba0e94",
+          "backend": "fixture"
+        }
+      },
+      "cases": [
+        {
+          "task": "notice",
+          "repeat": 1,
+          "case": "bridge-notice",
+          "outcome": "met",
+          "items": {
+            "has-notice": "met"
+          }
+        },
+        {
+          "task": "notice",
+          "repeat": 2,
+          "case": "captured-empty",
+          "outcome": "unmet",
+          "items": {
+            "has-notice": "unmet"
+          }
+        },
+        {
+          "task": "notice",
+          "repeat": 3,
+          "case": "missing-output",
+          "outcome": "unknown",
+          "items": {
+            "has-notice": "unknown"
+          }
+        }
+      ]
+    },
+    {
+      "bundle": {
+        "id": "inventory-reconciliation",
+        "version": "1",
+        "sha256": "ecc6c617d22502e30609950e9bc03e271dee9206f1753dbeeb04e024b885ce87"
+      },
+      "experiment": "m4-inventory-fixture",
+      "planned": 24,
+      "judgments_per_grade": 72,
+      "outcomes": {
+        "unmet": 18,
+        "met": 3,
+        "unknown": 3
+      },
+      "validity": {
+        "inventory-a": "unreviewed",
+        "inventory-b": "unreviewed",
+        "inventory-c": "unreviewed"
+      },
+      "original_evaluation_sha256": "d9e5e8000cd45381b29399f9e91c29c8ac856798b933c6d4fda88a68be95639c",
+      "evidence_state_sha256": "96b5371d7ba2b2e77facd070b61378ff54b375c73640add3c6f816c378f9b72d",
+      "initial": "m4-inventory-fixture-initial",
+      "child": "m4-inventory-fixture-regrade",
+      "fixture_receipts": {
+        "inventory-a": {
+          "run": "m3-dcc7f215240a6ac988ca2c1d5b7b23670dee34ed5083cc03768385aa3a82ca91",
+          "attempt": "a-79c93b770ea02aea6669d151f1f35373",
+          "input_sha256": "a51be4953517cb3ecf3bdd4740fe4c667442fef9f5b3e3ec11ced77374a80f0f",
+          "wire_sha256": "6bc78fbd9a28bb3ce138c15dd2f3ac70da96af6a7607849b2f950d4e08f793bd",
+          "receipt_sha256": "da1f9020078459480379d3f8bf1b4827a914593b51e232db13db8788905e9d61",
+          "output_sha256": "d3d2b4f77d9c1507cd2c7b4d68ac6892162fdf714f16c8bc50e26fe6fba1a9b4",
+          "backend": "fixture"
+        },
+        "inventory-b": {
+          "run": "m3-4645e92b0556841787d1275daa26e79bbbbd32a48f7c605948b81151a849c9e1",
+          "attempt": "a-101d2e96eca0167510db20a7c110823b",
+          "input_sha256": "3574ed172ede5a8dcd99af6e5f24faf3ed7d9224e7fcca0d519303cf52eab7f7",
+          "wire_sha256": "2d3a9bd4ddd6044d9cc2c6c7191440365fcfc4550a58417e54a2b4acdb70c20d",
+          "receipt_sha256": "3626a28b4e4b50dd3cdbf3bec6179c95ad3fe85ba17372d5226ccf7c245cb709",
+          "output_sha256": "d3d2b4f77d9c1507cd2c7b4d68ac6892162fdf714f16c8bc50e26fe6fba1a9b4",
+          "backend": "fixture"
+        },
+        "inventory-c": {
+          "run": "m3-77fddb40d992b3d2c5d2752498d69db3ef56595bbe170dd1c714f2d164ee0e84",
+          "attempt": "a-39d29cdcba1c9d8d0d7ed60d42a4c429",
+          "input_sha256": "9316f50e2379d54ca1ffb348ae20cbafdb3c6221497f47ac3745cf860ef42b03",
+          "wire_sha256": "cc1472ec40607cb317d9eda4864c48630cb5bef06b8b1cc40900c4fa674109a1",
+          "receipt_sha256": "5d138db91fe1f4123d689b8f6f8b0b8c1aa3c22c3da37b145901e0cc7f94bf79",
+          "output_sha256": "d3d2b4f77d9c1507cd2c7b4d68ac6892162fdf714f16c8bc50e26fe6fba1a9b4",
+          "backend": "fixture"
+        }
+      },
+      "cases": [
+        {
+          "task": "inventory-a",
+          "repeat": 1,
+          "case": "bridge-fixed-output",
+          "outcome": "unmet",
+          "items": {
+            "available": "unmet",
+            "reorder": "unmet",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-a",
+          "repeat": 2,
+          "case": "correct-reordered-keys",
+          "outcome": "met",
+          "items": {
+            "available": "met",
+            "reorder": "met",
+            "order_units": "met"
+          }
+        },
+        {
+          "task": "inventory-a",
+          "repeat": 3,
+          "case": "wrong-policy-branch",
+          "outcome": "unmet",
+          "items": {
+            "available": "met",
+            "reorder": "unmet",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-a",
+          "repeat": 4,
+          "case": "wrong-quantity",
+          "outcome": "unmet",
+          "items": {
+            "available": "met",
+            "reorder": "met",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-a",
+          "repeat": 5,
+          "case": "wrong-json-type",
+          "outcome": "unmet",
+          "items": {
+            "available": "unmet",
+            "reorder": "met",
+            "order_units": "met"
+          }
+        },
+        {
+          "task": "inventory-a",
+          "repeat": 6,
+          "case": "malformed-json",
+          "outcome": "unmet",
+          "items": {
+            "available": "unmet",
+            "reorder": "unmet",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-a",
+          "repeat": 7,
+          "case": "captured-empty",
+          "outcome": "unmet",
+          "items": {
+            "available": "unmet",
+            "reorder": "unmet",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-a",
+          "repeat": 8,
+          "case": "missing-output",
+          "outcome": "unknown",
+          "items": {
+            "available": "unknown",
+            "reorder": "unknown",
+            "order_units": "unknown"
+          }
+        },
+        {
+          "task": "inventory-b",
+          "repeat": 1,
+          "case": "bridge-fixed-output",
+          "outcome": "unmet",
+          "items": {
+            "available": "unmet",
+            "reorder": "met",
+            "order_units": "met"
+          }
+        },
+        {
+          "task": "inventory-b",
+          "repeat": 2,
+          "case": "correct-reordered-keys",
+          "outcome": "met",
+          "items": {
+            "available": "met",
+            "reorder": "met",
+            "order_units": "met"
+          }
+        },
+        {
+          "task": "inventory-b",
+          "repeat": 3,
+          "case": "wrong-policy-branch",
+          "outcome": "unmet",
+          "items": {
+            "available": "met",
+            "reorder": "unmet",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-b",
+          "repeat": 4,
+          "case": "wrong-quantity",
+          "outcome": "unmet",
+          "items": {
+            "available": "met",
+            "reorder": "met",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-b",
+          "repeat": 5,
+          "case": "wrong-json-type",
+          "outcome": "unmet",
+          "items": {
+            "available": "met",
+            "reorder": "unmet",
+            "order_units": "met"
+          }
+        },
+        {
+          "task": "inventory-b",
+          "repeat": 6,
+          "case": "malformed-json",
+          "outcome": "unmet",
+          "items": {
+            "available": "unmet",
+            "reorder": "unmet",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-b",
+          "repeat": 7,
+          "case": "captured-empty",
+          "outcome": "unmet",
+          "items": {
+            "available": "unmet",
+            "reorder": "unmet",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-b",
+          "repeat": 8,
+          "case": "missing-output",
+          "outcome": "unknown",
+          "items": {
+            "available": "unknown",
+            "reorder": "unknown",
+            "order_units": "unknown"
+          }
+        },
+        {
+          "task": "inventory-c",
+          "repeat": 1,
+          "case": "bridge-fixed-output",
+          "outcome": "unmet",
+          "items": {
+            "available": "unmet",
+            "reorder": "met",
+            "order_units": "met"
+          }
+        },
+        {
+          "task": "inventory-c",
+          "repeat": 2,
+          "case": "correct-reordered-keys",
+          "outcome": "met",
+          "items": {
+            "available": "met",
+            "reorder": "met",
+            "order_units": "met"
+          }
+        },
+        {
+          "task": "inventory-c",
+          "repeat": 3,
+          "case": "wrong-policy-branch",
+          "outcome": "unmet",
+          "items": {
+            "available": "met",
+            "reorder": "unmet",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-c",
+          "repeat": 4,
+          "case": "wrong-quantity",
+          "outcome": "unmet",
+          "items": {
+            "available": "met",
+            "reorder": "met",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-c",
+          "repeat": 5,
+          "case": "wrong-json-type",
+          "outcome": "unmet",
+          "items": {
+            "available": "met",
+            "reorder": "met",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-c",
+          "repeat": 6,
+          "case": "malformed-json",
+          "outcome": "unmet",
+          "items": {
+            "available": "unmet",
+            "reorder": "unmet",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-c",
+          "repeat": 7,
+          "case": "captured-empty",
+          "outcome": "unmet",
+          "items": {
+            "available": "unmet",
+            "reorder": "unmet",
+            "order_units": "unmet"
+          }
+        },
+        {
+          "task": "inventory-c",
+          "repeat": 8,
+          "case": "missing-output",
+          "outcome": "unknown",
+          "items": {
+            "available": "unknown",
+            "reorder": "unknown",
+            "order_units": "unknown"
+          }
+        }
+      ]
+    }
+  ]
+}

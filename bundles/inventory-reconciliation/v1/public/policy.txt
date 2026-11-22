@@ -1,0 +1,4 @@
+Reconcile the units of one stock item using the supplied ledger.
+Start with opening units, add receipts, and subtract shipments and damage. All ledger quantities are positive counts of units.
+Reorder only if the final available units are strictly below 3. When reordering, order enough units to reach 7. Otherwise order zero units.
+Return a JSON object with the integer fields available and order_units and the boolean field reorder. Use whole numbers without a decimal point or exponent. Key order is unrestricted.

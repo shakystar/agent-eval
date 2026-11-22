@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "id": "inventory-reconciliation-v1-codex",
+  "hypothesis": "A single agent can reconcile the ledger and apply the replenishment policy across all three stock levels.",
+  "bundle": {
+    "id": "inventory-reconciliation",
+    "version": "1",
+    "sha256": "ecc6c617d22502e30609950e9bc03e271dee9206f1753dbeeb04e024b885ce87"
+  },
+  "baseline": "solo",
+  "conditions": [
+    {
+      "id": "solo",
+      "target": {
+        "adapter": "role-orchestrator/runtime-bridge",
+        "version": "1",
+        "execution_owner": "role-runtime",
+        "retry_owner": "role-runtime",
+        "auth_method": "codex"
+      },
+      "model": {
+        "name": null,
+        "settings": {},
+        "missing_reason": "Runtime inherits local Codex configuration."
+      },
+      "roles": [
+        {
+          "id": "writer",
+          "version": "v1"
+        }
+      ],
+      "skills": [],
+      "environment": {
+        "initial_state": "empty-v1",
+        "reset": "verified",
+        "isolation": "per-repeat",
+        "shared_state": "shared-role-workspace-and-handoffs",
+        "session_policy": "role-isolated"
+      },
+      "workflow": {
+        "backend": "codex",
+        "scenario": "solo",
+        "max_revisions": 0,
+        "injections": []
+      }
+    }
+  ],
+  "repetitions": 1,
+  "budget": {
+    "execution": {
+      "limit": null,
+      "unit": "USD",
+      "mode": "observational",
+      "missing_reason": "No cost limit configured."
+    },
+    "evaluation": {
+      "limit": null,
+      "unit": "USD",
+      "mode": "observational",
+      "missing_reason": "No cost limit configured."
+    }
+  },
+  "varying_fields": [],
+  "comparison_policy": "same-task-criteria-budget"
+}

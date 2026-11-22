@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "id": "inventory-reconciliation",
+  "version": "1",
+  "split": "calibration",
+  "family": "inventory-reconciliation",
+  "tasks": [
+    {
+      "id": "inventory-a",
+      "version": "1",
+      "domain": "inventory reconciliation",
+      "source": "Synthetic single-item inventory ledger and replenishment policy.",
+      "inputs": [
+        {
+          "id": "ledger.csv",
+          "path": "public/ledger-a.csv",
+          "sha256": "c1ad41bc3d0989717ff2f7eda3279fc14d417c904252e7d2b163d046a5165190"
+        },
+        {
+          "id": "policy.txt",
+          "path": "public/policy.txt",
+          "sha256": "845c305461a76ab7d4dc1a298938775e70c8acfa0dc34d456a26b1795b9960e2"
+        }
+      ],
+      "evaluation": [
+        {
+          "id": "rubric.txt",
+          "path": "private/rubric-a.txt",
+          "sha256": "23c1bea09356b04aa8a9d958c890a7725c6c6be4441cba2da9036b0a01647f05"
+        }
+      ],
+      "allowed_actions": [
+        "Read the supplied ledger and replenishment policy."
+      ],
+      "outputs": [
+        "JSON object with available, reorder, and order_units."
+      ],
+      "completion": "All three required fields agree with the supplied ledger and policy.",
+      "criteria": [
+        {
+          "id": "available",
+          "version": "1",
+          "required": true,
+          "kind": "artifact",
+          "rule": {
+            "type": "json_equals",
+            "source": "output",
+            "pointer": "/available",
+            "value": 1
+          }
+        },
+        {
+          "id": "reorder",
+          "version": "1",
+          "required": true,
+          "kind": "artifact",
+          "rule": {
+            "type": "json_equals",
+            "source": "output",
+            "pointer": "/reorder",
+            "value": true
+          }
+        },
+        {
+          "id": "order_units",
+          "version": "1",
+          "required": true,
+          "kind": "artifact",
+          "rule": {
+            "type": "json_equals",
+            "source": "output",
+            "pointer": "/order_units",
+            "value": 6
+          }
+        }
+      ],
+      "reference_path": [],
+      "validity": "unreviewed"
+    },
+    {
+      "id": "inventory-b",
+      "version": "1",
+      "domain": "inventory reconciliation",
+      "source": "Synthetic single-item inventory ledger and replenishment policy.",
+      "inputs": [
+        {
+          "id": "ledger.csv",
+          "path": "public/ledger-b.csv",
+          "sha256": "47fb3e98e266ab1810bfcc0a8443234ccd674c60ed98717786e7c3c200561911"
+        },
+        {
+          "id": "policy.txt",
+          "path": "public/policy.txt",
+          "sha256": "845c305461a76ab7d4dc1a298938775e70c8acfa0dc34d456a26b1795b9960e2"
+        }
+      ],
+      "evaluation": [
+        {
+          "id": "rubric.txt",
+          "path": "private/rubric-b.txt",
+          "sha256": "97c307143625dc36ad7569a474ed17c671396c3acc33b698d8c91aa204ff841a"
+        }
+      ],
+      "allowed_actions": [
+        "Read the supplied ledger and replenishment policy."
+      ],
+      "outputs": [
+        "JSON object with available, reorder, and order_units."
+      ],
+      "completion": "All three required fields agree with the supplied ledger and policy.",
+      "criteria": [
+        {
+          "id": "available",
+          "version": "1",
+          "required": true,
+          "kind": "artifact",
+          "rule": {
+            "type": "json_equals",
+            "source": "output",
+            "pointer": "/available",
+            "value": 3
+          }
+        },
+        {
+          "id": "reorder",
+          "version": "1",
+          "required": true,
+          "kind": "artifact",
+          "rule": {
+            "type": "json_equals",
+            "source": "output",
+            "pointer": "/reorder",
+            "value": false
+          }
+        },
+        {
+          "id": "order_units",
+          "version": "1",
+          "required": true,
+          "kind": "artifact",
+          "rule": {
+            "type": "json_equals",
+            "source": "output",
+            "pointer": "/order_units",
+            "value": 0
+          }
+        }
+      ],
+      "reference_path": [],
+      "validity": "unreviewed"
+    },
+    {
+      "id": "inventory-c",
+      "version": "1",
+      "domain": "inventory reconciliation",
+      "source": "Synthetic single-item inventory ledger and replenishment policy.",
+      "inputs": [
+        {
+          "id": "ledger.csv",
+          "path": "public/ledger-c.csv",
+          "sha256": "a8572b4676369d17608551b09983ed8e6cbf06069019ec22adce4e4c4bbbe6e3"
+        },
+        {
+          "id": "policy.txt",
+          "path": "public/policy.txt",
+          "sha256": "845c305461a76ab7d4dc1a298938775e70c8acfa0dc34d456a26b1795b9960e2"
+        }
+      ],
+      "evaluation": [
+        {
+          "id": "rubric.txt",
+          "path": "private/rubric-c.txt",
+          "sha256": "71350665dcd764b0da31ec5005011ddbf5c3979814b43152f9f0fa4ccf88b899"
+        }
+      ],
+      "allowed_actions": [
+        "Read the supplied ledger and replenishment policy."
+      ],
+      "outputs": [
+        "JSON object with available, reorder, and order_units."
+      ],
+      "completion": "All three required fields agree with the supplied ledger and policy.",
+      "criteria": [
+        {
+          "id": "available",
+          "version": "1",
+          "required": true,
+          "kind": "artifact",
+          "rule": {
+            "type": "json_equals",
+            "source": "output",
+            "pointer": "/available",
+            "value": 9
+          }
+        },
+        {
+          "id": "reorder",
+          "version": "1",
+          "required": true,
+          "kind": "artifact",
+          "rule": {
+            "type": "json_equals",
+            "source": "output",
+            "pointer": "/reorder",
+            "value": false
+          }
+        },
+        {
+          "id": "order_units",
+          "version": "1",
+          "required": true,
+          "kind": "artifact",
+          "rule": {
+            "type": "json_equals",
+            "source": "output",
+            "pointer": "/order_units",
+            "value": 0
+          }
+        }
+      ],
+      "reference_path": [],
+      "validity": "unreviewed"
+    }
+  ]
+}

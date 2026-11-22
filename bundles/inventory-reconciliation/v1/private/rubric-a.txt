@@ -1,0 +1,3 @@
+Inventory A scoring key
+Available units equal 8 + 3 - 8 - 2 = 1. Available stock is below the reorder point, so order 7 minus 1 units.
+Score each required field independently. available must be the integer 1, reorder must be the JSON boolean true, and order_units must be the integer 6. The run satisfies the task only when all three fields meet their respective criteria. A missing field or incorrectly typed value fails its criterion. Key order is unrestricted.

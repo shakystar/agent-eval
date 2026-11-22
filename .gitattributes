@@ -1,2 +1,7 @@
 # Unified diff context prefixes intentionally include whitespace.
 experiments/m0/patches/*.patch text eol=lf -whitespace
+# Bundle reference hashes cover the checked-out bytes.
+bundles/inventory-reconciliation/v1/** text eol=lf
+# Preserve the source and result hashes in the M4 validation record.
+tests/validate_m4.py text eol=lf
+docs/validation/m4/cli-results.json text eol=lf

@@ -2,7 +2,9 @@
 
 과제와 협업 조건을 주입하고, 에이전트의 수행 성능과 평가 신뢰성을 반복 측정하는 실험 도구입니다.
 
-**M3 실행·주입 검증을 완료했습니다.** Docker Linux 실모델에서 단독·협업·자료 주입·인계 읽기 장애를 각 2회 완료했습니다. 별도 실행에서 수정과 최종 수락을 확인했고, 9건 모두 저장 증거로 재평가했습니다. 실행 컨테이너에만 임시 주소 고정을 적용했습니다. M4 개발 전 재고 대사·보충 결정 과제로 [공통 CLI 재사용을 검증했습니다](docs/validation/m4-preflight.md). [M1 검증](docs/validation/m1.md) · [M2 보정](docs/m2-calibration.md) · [M3 실행 방법](docs/m3-execution.md) · [M3 검증](docs/validation/m3.md)
+[재고 대사·보충 결정 v1](bundles/inventory-reconciliation/v1/bundle.json)과 결제 점검 공지문을 같은 CLI로 등록·실행·재평가할 수 있습니다. M4의 오프라인 회귀와 첫 버전 완료 기준별 결과는 [M4 검증 기록](docs/validation/m4.md)에 있습니다.
+
+Docker Linux 실제 모델의 단독·협업·주입 비교는 네 조건을 각 2회 실행했고, 별도 실행에서 수정과 최종 수락을 확인했습니다. [M1 검증](docs/validation/m1.md) · [M2 보정](docs/m2-calibration.md) · [M3 실행 방법](docs/m3-execution.md) · [M3 검증](docs/validation/m3.md)
 
 장애 인계 과제의 사람 기준 4건, 승인 철회, 원문 인용 검사, 확정 성공률을 지원합니다. [사용 계약](docs/m2-contract.md) · [통합 검증](docs/validation/m2-integration.md)
 
@@ -90,7 +92,7 @@ Inspect AI의 채점·재평가·로그 API·뷰어를 첫 재사용 대상으�
 
 첫 실제 실행은 기존 role-orchestrator → role-runtime → codex-adapter 경로를 유지합니다. 외부 하네스의 모델 라우팅으로 자동 교체하지 않으며, 실행과 재시도 소유자를 하나로 고정합니다. M0 계약 검증을 거친 범위만 연결하고, 기능 구현·통합 성공과 기획 결정을 구분합니다.
 
-[기획 명세 v0.3](docs/planning-spec.md) · [Inspect AI·Harbor 비교와 결정 근거](docs/research/inspect-harbor.md)
+[기획 명세](docs/planning-spec.md) · [Inspect AI·Harbor 비교와 결정 근거](docs/research/inspect-harbor.md)
 
 ## 초기 구현 방향
 
@@ -129,4 +131,4 @@ Python 라이브러리와 CLI를 제공하는 단일 저장소의 모듈형 모�
 
 이 README를 프로젝트 진입 문서이자 방향성의 기준으로 사용합니다. 목적·책임 경계·평가 원칙을 바꿀 때에는 변경 이유와 영향을 기록합니다. 이후 AGENTS.md에는 진입 문서·작업 제약·필수 검증만 두고, 작업별 상세 절차는 프로젝트 스킬로 분리합니다.
 
-구현 상태, 합성 검사, 실제 모델 실행, 평가 신뢰성 검증은 각각 구분해 기록합니다. 이 문서의 완료 기준은 향후 검증할 기준이며 현재의 실행 결과가 아닙니다.
+구현 상태, 합성 검사, 실제 모델 실행, 평가 신뢰성 검증은 각각 구분해 기록합니다. 각 기준의 확인 결과와 남은 불확실성은 [첫 버전 완료 기준 대조](docs/validation/m4.md#첫-버전-완료-기준-대조)에 기록했습니다.
