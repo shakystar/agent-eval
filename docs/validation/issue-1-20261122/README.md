@@ -33,7 +33,7 @@ fixture의 검토 결정은 미리 설정했습니다. 실모델에는 fixture �
 
 ## 재현
 
-네 저장소를 같은 상위 디렉터리에 두고 이 보고서가 포함된 `agent-eval`에서 실행합니다. 빌더는 현재 작업 파일 대신 위 커밋의 Git 객체를 사용합니다. Linux용 Codex 실행 파일과 인증·설정 경로를 각각 `CODEX_BIN`, `CODEX_AUTH`, `CODEX_CONFIG` 환경변수에 지정합니다. 결과 경로는 컨테이너 UID 1000이 쓸 수 있는 새 디렉터리를 사용합니다.
+네 저장소를 같은 상위 디렉터리에 두고 이 보고서가 포함된 `agent-eval`에서 실행합니다. 빌더는 현재 작업 파일 대신 위 커밋의 Git 객체를 사용합니다. Linux용 Codex 실행 파일과 읽기 전용으로 제공할 인증·설정 파일의 절대 경로를 각각 `CODEX_BIN`, `CODEX_AUTH`, `CODEX_CONFIG` 환경변수에 지정합니다. 아래 명령은 Linux의 로컬 Docker에서 실행합니다. 컨테이너의 실제 UID 매핑으로 새 결과 디렉터리에 쓰기를 시험하고, 실패하면 해당 디렉터리만 컨테이너 UID 1000이 소유하게 합니다.
 
 ```bash
 set -eu
@@ -43,16 +43,34 @@ python3 "$D/verify_four_commits.py"
 IMAGE=$(docker image inspect agent-eval-m3:inventory-four-6db70ed --format '{{.Id}}')
 WORK=$(mktemp -d)
 mounts=(--mount "type=bind,src=$D/driver.py,dst=/issue1/driver.py,readonly"
+        --mount "type=bind,src=$D/verify_review_paths.py,dst=/issue1/verify_review_paths.py,readonly"
         --mount "type=bind,src=$WORK,dst=/work")
 runner=(--entrypoint /opt/src/role-orchestrator/.venv/bin/python "$IMAGE" /issue1/driver.py)
+offline=(docker run --rm --network none "${mounts[@]}")
+write_check=(--entrypoint sh "$IMAGE" -ec 'test "$(id -u)" = 1000; mkdir /work/.uid-test; rmdir /work/.uid-test')
+if ! "${offline[@]}" "${write_check[@]}"; then
+  "${offline[@]}" --user 0 --entrypoint chown "$IMAGE" 1000 /work
+  "${offline[@]}" "${write_check[@]}"
+fi
 docker run --rm --network none "${mounts[@]}" "${runner[@]}" run fixture /work/fixture
 docker run --rm --network none "${mounts[@]}" "${runner[@]}" verify fixture /work/fixture
-docker run --rm "${mounts[@]}" \
-  --mount "type=bind,src=$CODEX_BIN,dst=/usr/local/bin/codex,readonly" \
-  --mount "type=bind,src=$CODEX_AUTH,dst=/home/evaluator/.codex/auth.json,readonly" \
-  --mount "type=bind,src=$CODEX_CONFIG,dst=/home/evaluator/.codex/config.toml,readonly" \
-  "${runner[@]}" run codex /work/codex
+live_mounts=(--mount "type=bind,src=$CODEX_BIN,dst=/usr/local/bin/codex,readonly"
+             --mount "type=bind,src=$CODEX_AUTH,dst=/home/evaluator/.codex/auth.json,readonly"
+             --mount "type=bind,src=$CODEX_CONFIG,dst=/home/evaluator/.codex/config.toml,readonly")
+"${offline[@]}" "${live_mounts[@]}" --entrypoint sh "$IMAGE" -ec '
+  test -x /usr/local/bin/codex && test -r /home/evaluator/.codex/auth.json && test -r /home/evaluator/.codex/config.toml ||
+    { echo "Codex 실행 파일과 인증·설정 파일에 대한 컨테이너 UID 1000의 접근 권한을 확인하십시오." >&2; exit 1; }'
+docker run --rm "${mounts[@]}" "${live_mounts[@]}" "${runner[@]}" run codex /work/codex
 docker run --rm --network none "${mounts[@]}" "${runner[@]}" verify codex /work/codex
+for backend in fixture codex; do
+  "${offline[@]}" --entrypoint sh "$IMAGE" -ec '
+    backend=$1
+    set -- "/work/$backend"/verification-*/summary.json
+    test "$#" -eq 1
+    python /issue1/verify_review_paths.py "$backend" "$1" "/work/$backend/store"' sh "$backend"
+done
 ```
 
 각 `verify`는 원본을 다시 제출하지 않고 새로운 검증 디렉터리에 결과를 씁니다. 공개 결과에는 단계별 시도 식별자, 해시, 검토 결정과 규칙 판정을 담았습니다. 실제 요청·산출물·원본 영수증은 로컬 실행 저장소에 보존했습니다.
+
+[검토 분기 사후 검사](verify_review_paths.py)는 공개 결과와 저장된 영수증·판정 원문을 대조합니다. 단독은 작성 한 단계, 협업은 작성과 첫 검토가 필요합니다. 첫 판정이 `revise`이면 수정과 최종 검토가 이어져야 하며 `accept` 또는 `defer`이면 첫 검토에서 끝나야 합니다. 보존한 fixture 9건·30단계와 실모델 9건·18단계가 통과했습니다. 원본의 메모리 복사본에서 첫 검토를 제거하거나 수락 뒤 수정을 추가한 경우, 수정 요구 뒤 최종 검토를 생략한 경우, 기록된 판정을 바꾼 경우는 모두 거부됐습니다.
