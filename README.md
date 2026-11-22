@@ -2,6 +2,8 @@
 
 과제와 협업 조건을 주입하고, 에이전트의 수행 성능과 평가 신뢰성을 반복 측정하는 실험 도구입니다.
 
+[문서 색인](docs/README.md)에서 단계별 사용 계약, 검증 근거와 릴리스 기록 현황을 확인할 수 있습니다.
+
 [재고 대사·보충 결정 v1](bundles/inventory-reconciliation/v1/bundle.json)과 결제 점검 공지문을 같은 CLI로 등록·실행·재평가할 수 있습니다. M4의 오프라인 회귀와 첫 버전 완료 기준별 결과는 [M4 검증 기록](docs/validation/m4.md)에 있습니다.
 
 Docker Linux 실제 모델의 단독·협업·주입 비교는 네 조건을 각 2회 실행했고, 별도 실행에서 수정과 최종 수락을 확인했습니다. [M1 검증](docs/validation/m1.md) · [M2 보정](docs/m2-calibration.md) · [M3 실행 방법](docs/m3-execution.md) · [M3 검증](docs/validation/m3.md)
@@ -53,7 +55,7 @@ agent-eval은 실험 명세, 평가용 시나리오와 주입 계획, 증거 계
 | [codex-adapter](https://github.com/shakystar/codex-adapter) | Codex 프로토콜·세션·호출 실패 정보 | 실행 어댑터를 통한 결과 수집 |
 | [role-runtime](https://github.com/shakystar/role-runtime) | 실행 슬롯·역할 상태·영수증·산출물 | 실행 사실과 결과물 참조 수집 |
 | [role-orchestrator](https://github.com/shakystar/role-orchestrator) | 작업 의존성과 흐름·인계·재개 | 시나리오 전달과 실행 기록 회수 |
-| [skill-search-engine](https://github.com/shakystar/skill-search-engine) | 검색·스킬 버전·검색 관련성 기준 | 과제별 평가 모듈 또는 실행 대상 연결 |
+| [skill-search-engine](https://github.com/shakystar/skill-search-engine) (비공개, 읽기 권한 필요) | 검색·스킬 버전·검색 관련성 기준 | 과제별 평가 모듈 또는 실행 대상 연결 |
 
 위 연결은 개발 방향이며 구현 완료를 의미하지 않습니다. 특정 실행 시스템 없이도 저장된 증거를 평가할 수 있어야 합니다. 대상 저장소의 내부 코드를 직접 가져오지 않고 버전이 명시된 공개 계약으로 연결합니다.
 
