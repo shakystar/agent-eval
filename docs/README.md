@@ -18,7 +18,15 @@ M0는 연동 사전 검사이며, M1~M4는 구현·검증 범위를 가리키는
 
 [패키지 메타데이터](../pyproject.toml)의 버전은 `0.1.0`이며, [재고 과제 묶음](../bundles/inventory-reconciliation/v1/bundle.json)의 `v1`은 과제 데이터의 버전입니다. M1~M4 검증 기록은 개발 단계별 결과를 담고 있습니다.
 
-- 2026-11-22 확인 시점에 원격 Git 태그와 저장소 내 릴리스 노트가 없었습니다. M1~M4를 승인된 배포 버전이나 릴리스 커밋에 대응시키는 기록도 확인되지 않았습니다.
-- M3의 초기 단독 실행 1건과 M4의 재고 A 실행은 실제 영수증이 있으나 해당 턴의 모델명 기록이 없습니다. 재고 3건의 과제 타당성은 승인됐으며, 재고 산출물에 대한 독립적인 사람 판정 일치율은 미측정입니다. [M3 실행 기록](validation/m3.md) · [재고 실행 증거](validation/m4/inventory-codex.md) · [M4 기준 대조](validation/m4.md)
+2026-11-22 기준 원격 Git 태그와 저장소 내 릴리스 노트는 없습니다. M1~M4를 배포 버전에 대응시키는 기록도 없습니다.
+
+| 필요한 문서 | 필요한 이유 | 작성 완료 조건 |
+| --- | --- | --- |
+| 개별 릴리스 기록 | 배포 시 패키지 버전과 실제 배포 소스를 연결해야 합니다. | 릴리스를 확정하면 태그·커밋 SHA·주요 변경점·검증 근거를 기록합니다. |
+| 네 레포 통합 마일스톤 기록 | 재현할 소스 조합과 실험의 완료 조건을 한곳에서 확인할 수 있어야 합니다. [통합 검증 이슈 #1](https://github.com/shakystar/agent-eval/issues/1) | 통합 버전·목표·완료 조건을 합의하면 `docs/milestones/vX.Y.Z/README.md`에 네 레포 SHA와 완료 조건을 기록하고, 검증 후 실행 결과·근거·남은 범위를 연결합니다. |
+
+## 기존 검증에서 확인할 수 없는 항목
+
+M3의 초기 단독 실행 1건과 M4의 재고 A 실행은 실제 영수증이 있으나 해당 턴의 모델명 기록이 없습니다. 재고 3건의 과제 타당성은 승인됐으며, 재고 산출물에 대한 독립적인 사람 판정 일치율은 미측정입니다. [M3 실행 기록](validation/m3.md) · [재고 실행 증거](validation/m4/inventory-codex.md) · [M4 기준 대조](validation/m4.md)
 
 문서 작성과 새 마일스톤 기록에 사용하는 두 자료는 비공개 저장소의 접근 권한이 필요합니다. [공통 문서 정책](https://github.com/shakystar/agent-collaboration-lab/blob/main/docs/documentation-policy.md) · [마일스톤 템플릿](https://github.com/shakystar/agent-collaboration-lab/blob/main/templates/milestone.md)
