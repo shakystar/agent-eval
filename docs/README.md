@@ -4,7 +4,7 @@
 
 ## 개발 단계와 검증 기록
 
-M0는 연동 사전 검사이며, M1~M4는 구현·검증 범위를 가리키는 개발 마일스톤입니다.
+M0는 연동 사전 검사이며, M1~M4는 첫 버전의 개발 마일스톤입니다. M5.1은 고정 협업 사례를 사용하는 후속 검증입니다.
 
 | 단계 | 확인할 동작 | 계약과 검증 근거 |
 | --- | --- | --- |
@@ -13,6 +13,7 @@ M0는 연동 사전 검사이며, M1~M4는 구현·검증 범위를 가리키는
 | M2 | 의미 평가, 근거 인용, 사람 검토와 승인 철회, 장애 인계 보정 사례 4건 | [사용 계약](m2-contract.md) · [공지문 보정](m2-calibration.md) · [장애 인계 최초 검증](validation/m2.md) · [통합 검증](validation/m2-integration.md) · [보고서 예시](validation/m2/example-report.md) |
 | M3 | 실제 Codex에서 단독·협업·자료 주입·인계 장애를 조건별 2회 실행하고, 별도 1회에서 수정과 최종 수락 확인 | [실행·복구 방법](m3-execution.md) · [사전 검사](validation/m3-preflight.md) · [검증 기록](validation/m3.md) · [실행별 결과](validation/m3/linux-results.json) |
 | M4 | 공지문·재고 과제의 공통 CLI 회귀, 실제 Codex의 재고 과제 3건 완료와 규칙 9건 충족 | [사전 검증](validation/m4-preflight.md) · [검증·첫 버전 기준 대조](validation/m4.md) · [실제 모델 실행](validation/m4/inventory-codex.md) · [과제 타당성 승인](validation/m4/inventory-task-review.md) |
+| M5.1 | 모델 호출 없이 최종 산출물 판정, 필수 정보 인계율, 복구 성공률의 분모·제외 사유 대조 | [사례별 결과·재현 절차](validation/m5.1.md) · [JSON](validation/m5.1/recovery.json) · [Markdown](validation/m5.1/recovery.md) |
 
 ## 릴리스 기록과 누락 항목
 

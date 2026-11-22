@@ -5,3 +5,5 @@ bundles/inventory-reconciliation/v1/** text eol=lf
 # Preserve the source and result hashes in the M4 validation record.
 tests/validate_m4.py text eol=lf
 docs/validation/m4/cli-results.json text eol=lf
+# Keep generated M5.1 Linux reports byte-comparable on Windows.
+docs/validation/m5.1/* text eol=lf

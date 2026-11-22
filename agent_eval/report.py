@@ -1,7 +1,8 @@
 """Public reports exclude source text and private criteria."""
 from collections import Counter
-from .contracts import loads, require
+from .contracts import loads, rate, require
 from .service import context
+from . import collaboration
 
 
 def flatten(obj, prefix=''):
@@ -14,12 +15,15 @@ def flatten(obj, prefix=''):
     return result
 
 
-def rate(n, d):
-    return {'numerator': n, 'denominator': d, 'value': n/d if d else None,
-            'missing_reason': None if d else 'zero_denominator'}
+def artifact_grade(required):
+    if any(j['processing'] == 'error' for j in required):
+        return 'unknown', 'scorer_error'
+    if not required or any(j['verdict'] == 'unknown' for j in required):
+        return 'unknown', 'insufficient_evidence'
+    return ('met' if all(j['verdict'] == 'met' for j in required) else 'unmet'), None
 
 
-def execution_summary(store, run):
+def execution_summary(store, run, required_handoff=()):
     execution = store.find('execution_result', run['id'])
     if execution is None:
         return None
@@ -33,8 +37,12 @@ def execution_summary(store, run):
             if stage.get(field):
                 store.read_blob(stage[field])
         stages.append({key: stage[key] for key in ('stage', 'attempt_id', 'status', 'failure') if key in stage})
-    return dict(backend=execution['backend'], scenario=execution['scenario'], stages=stages,
-                review=execution['review'], injections=execution['injections'])
+    summary = dict(backend=execution['backend'], scenario=execution['scenario'], stages=stages,
+                   review=execution['review'], injections=execution['injections'])
+    if required_handoff and execution['scenario'] == 'collaboration':
+        document = collaboration.received_document(store, execution)
+        summary['handoff'] = collaboration.handoff_observation(required_handoff, execution['scenario'], document)
+    return summary
 
 
 def report(store, experiment_id, evaluation_id):
@@ -58,6 +66,7 @@ def report(store, experiment_id, evaluation_id):
     base_flat = flatten({k:v for k,v in base.items() if k != 'id'})
     conditions = []
     for cond in exp['conditions']:
+        plan = cond.get('workflow')
         flat = flatten({k:v for k,v in cond.items() if k != 'id'})
         diffs = [k for k in sorted(flat.keys() | base_flat.keys()) if flat.get(k) != base_flat.get(k)]
         confounds = [k for k in diffs if k not in exp['varying_fields']]
@@ -67,7 +76,10 @@ def report(store, experiment_id, evaluation_id):
                 match = [r for r in runs if (r['condition'],r['task'],r['repeat']) == (cond['id'],task,repeat)]
                 row = {'task':task, 'repeat':repeat, 'run':None, 'status':'not_imported',
                        'outcome':'unknown', 'exclusion_reason':'missing_run',
+                       'artifact_verdict':'unknown', 'artifact_reason':'missing_run',
                        'confirmed_outcome':'unknown', 'task_validity':task_validity[task]}
+                workflow = None
+                requirements = grading_tasks[task].get('required_handoff', [])
                 if match:
                     r = match[0]
                     js = [j for j in ev['judgments'] if j['run'] == r['id']]
@@ -77,15 +89,14 @@ def report(store, experiment_id, evaluation_id):
                     confirmed = bool(active_reviews) and all(j['confirmation']=='confirmed' and j['verdict']!='unknown' for j in reviewed)
                     confirmed_outcome = ('met' if all(j['verdict']=='met' for j in active_reviews) else 'unmet') if confirmed and r['execution_status']=='completed' else 'unknown'
                     errors = sum(j['processing'] == 'error' for j in js)
-                    required_errors = sum(j['processing']=='error' for j in required)
-                    if not required or required_errors or any(j['verdict']=='unknown' for j in required):
-                        outcome, why = 'unknown', 'scorer_error' if required_errors else 'insufficient_evidence'
-                    elif r['execution_status'] != 'completed':
-                        outcome, why = 'unknown', 'execution_'+r['execution_status']
-                    else:
-                        outcome = 'met' if all(j['verdict']=='met' for j in required) else 'unmet'
-                        why = None
-                    row.update(run=r['id'], attempt_id=r['attempt_id'], status=r['execution_status'],
+                    artifact, artifact_reason = artifact_grade(required)
+                    outcome, why = artifact, artifact_reason
+                    if r['execution_status'] != 'completed':
+                        # A writer draft can survive an interrupted collaboration.
+                        artifact, artifact_reason = 'unknown', 'final_artifact_not_reached'
+                        outcome, why = 'unknown', why or 'execution_'+r['execution_status']
+                    row.update(artifact_verdict=artifact, artifact_reason=artifact_reason,
+                               run=r['id'], attempt_id=r['attempt_id'], status=r['execution_status'],
                                outcome=outcome, exclusion_reason=why,
                                confirmed_outcome=confirmed_outcome,
                                environment_mismatch=r['environment'] != cond['environment'],
@@ -97,9 +108,15 @@ def report(store, experiment_id, evaluation_id):
                                item_met_rate=rate(sum(j['verdict']=='met' for j in js),sum(j['verdict']!='not_applicable' for j in js)),
                                measurements={k:{f:v for f,v in m.items() if f!='missing_reason'} for k,m in r['measurements'].items()},
                                missing_measurement_reasons={k:'not_measured' for k,m in r['measurements'].items() if m['value'] is None})
-                    workflow = execution_summary(store, r)
+                    workflow = execution_summary(store, r, requirements)
                     if workflow is not None:
                         row['workflow'] = workflow
+                        if 'handoff' in workflow:
+                            row['handoff'] = workflow.pop('handoff')
+                if plan:
+                    if 'handoff' not in row:
+                        row['handoff'] = collaboration.handoff_observation(requirements, plan.get('scenario'), None)
+                    row['fault_recovery'] = collaboration.recovery_observation(plan, workflow)
                 rows.append(row)
         counts = Counter(r['outcome'] for r in rows)
         absent = sum(r['run'] is None for r in rows)
@@ -126,6 +143,8 @@ def report(store, experiment_id, evaluation_id):
             'comparison_reasons':(['unplanned_condition_difference'] if confounds else [])+(['actual_environment_differs_from_plan'] if mismatch else []),
             'tasks':{t:{'planned':exp['repetitions'],'outcomes':dict(Counter(r['outcome'] for r in rows if r['task']==t))} for t in tasks},
             'runs':rows})
+        if plan:
+            conditions[-1].update(collaboration.condition_metrics(rows))
     native = []
     for e in store.all('evidence'):
         if e['experiment'] != experiment_id or not e['native_results']:
@@ -167,10 +186,21 @@ def markdown(obj):
                   'Condition differences: '+', '.join(condition['condition_differences']),
                   'Comparison restrictions: '+', '.join(condition['comparison_reasons']),
                   'Missing measurements: '+', '.join(k+'='+str(v['numerator'])+'/'+str(v['denominator']) for k,v in condition['missing_measurement_rates'].items()), '',
-                  '| Task | Repeat | Execution | Outcome | Exclusion |',
-                  '| --- | ---: | --- | --- | --- |']
+                  '| Task | Repeat | Execution | Artifact verdict | Outcome | Exclusion |',
+                  '| --- | ---: | --- | --- | --- | --- |']
         for row in condition['runs']:
             task=row['task'].replace('|','/').replace('\n',' ')
-            lines.append(f"| {task} | {row['repeat']} | {row['status']} | {row['outcome']} | {row['exclusion_reason'] or ''} |")
+            reasons = ', '.join(dict.fromkeys(filter(None, [row.get('artifact_reason'), row['exclusion_reason']])))
+            artifact = row.get('artifact_verdict', 'unreported')
+            lines.append(f"| {task} | {row['repeat']} | {row['status']} | {artifact} | {row['outcome']} | {reasons} |")
+        if 'required_handoff_rate' in condition:
+            lines += ['', '| Metric | Count / denominator | Unmeasured reason | Other outcomes | Excluded slots |',
+                      '| --- | ---: | --- | --- | --- |']
+            for key, label in [('required_handoff_rate', 'Required handoff items'), ('recovery_success_rate', 'Fault recovery')]:
+                metric = condition[key]
+                excluded = metric['excluded_slots']
+                reasons = ', '.join(f'{k}={v}' for k, v in sorted(metric['reason_counts'].items()) if k not in excluded)
+                omitted = ', '.join(f'{k}={v}' for k, v in sorted(excluded.items()))
+                lines.append(f"| {label} | {metric['numerator']}/{metric['denominator']} | {metric['missing_reason'] or ''} | {reasons} | {omitted} |")
     lines += ['','Native metrics use their original Inspect denominator; see report.json for values.','']
-    return '\n'.join(lines)
+    return '\n'.join(line.rstrip() for line in lines)

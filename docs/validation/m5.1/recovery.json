@@ -1,0 +1,407 @@
+{
+  "schema_version": 1,
+  "experiment": "m51-recovery",
+  "evaluation": "m51-recovery-initial",
+  "criterion_bundle": {
+    "id": "m51-maintenance-handoff",
+    "sha256": "10262970b44f25ec688da3aa9481edb5ce9572796b11e963f798f81e6c102bee",
+    "version": "1"
+  },
+  "parent_evaluation": null,
+  "confirmation": "draft",
+  "conclusion": "withheld_pending_task_validity_or_judgment_review",
+  "task_validity": {
+    "notice": "unreviewed"
+  },
+  "review_ledger_ids": [],
+  "aggregation": "equal weight per planned task/repeat; missing runs stay in denominator",
+  "conditions": [
+    {
+      "condition": "fault",
+      "planned": 3,
+      "imported": 3,
+      "judgeable": 1,
+      "unknown": 2,
+      "status_counts": {
+        "completed": 1,
+        "failed": 1,
+        "uncertain": 1
+      },
+      "exclusion_counts": {
+        "execution_failed": 1,
+        "insufficient_evidence": 1
+      },
+      "overall_confirmed_success_rate": {
+        "numerator": 0,
+        "denominator": 3,
+        "value": null,
+        "missing_reason": "no_confirmed_outcomes"
+      },
+      "confirmed_judgeable": 0,
+      "confirmed_success_note": "Only explicit human reviews on approved task versions count as confirmed successes.",
+      "provisional_success_rate": {
+        "numerator": 1,
+        "denominator": 3,
+        "value": 0.3333333333333333,
+        "missing_reason": null
+      },
+      "provisional_judgeable_success_rate": {
+        "numerator": 1,
+        "denominator": 1,
+        "value": 1.0,
+        "missing_reason": null
+      },
+      "missing_run_rate": {
+        "numerator": 0,
+        "denominator": 3,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "missing_measurement_rates": {
+        "time": {
+          "numerator": 0,
+          "denominator": 3,
+          "value": 0.0,
+          "missing_reason": null
+        },
+        "tokens": {
+          "numerator": 3,
+          "denominator": 3,
+          "value": 1.0,
+          "missing_reason": null
+        },
+        "cost": {
+          "numerator": 3,
+          "denominator": 3,
+          "value": 1.0,
+          "missing_reason": null
+        }
+      },
+      "condition_differences": [],
+      "unplanned_differences": [],
+      "comparable": true,
+      "comparison_reasons": [],
+      "tasks": {
+        "notice": {
+          "planned": 3,
+          "outcomes": {
+            "met": 1,
+            "unknown": 2
+          }
+        }
+      },
+      "runs": [
+        {
+          "task": "notice",
+          "repeat": 1,
+          "run": "m3-80bb9a54c3aa450fa3c0dc764e62deab67fe1d1cdbd9482c8571814590d2850d",
+          "status": "completed",
+          "outcome": "met",
+          "exclusion_reason": null,
+          "artifact_verdict": "met",
+          "artifact_reason": null,
+          "confirmed_outcome": "unknown",
+          "task_validity": "unreviewed",
+          "attempt_id": "r-72bedc5e64f542ed838fe29afc9205b7",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "met": 3
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 3,
+            "denominator": 3,
+            "value": 1.0,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "complete",
+              "scope": "wall_elapsed_including_recovery",
+              "unit": "seconds",
+              "value": 1.417345
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "tokens": "not_measured"
+          },
+          "workflow": {
+            "backend": "fixture",
+            "scenario": "collaboration",
+            "stages": [
+              {
+                "stage": "write",
+                "attempt_id": "a-38751912ced1cae0009dad216e8c65aa",
+                "status": "completed"
+              },
+              {
+                "stage": "review",
+                "attempt_id": "a-7fd960efc8b8edf3c00672b98788e2f8",
+                "status": "completed"
+              },
+              {
+                "stage": "revise",
+                "attempt_id": "a-8230abf34fc8eec5d8ec7caec94eac1a",
+                "status": "completed"
+              },
+              {
+                "stage": "final-review",
+                "attempt_id": "a-0e9f1c1c4b230c395e1a735e2d4f8649",
+                "status": "completed"
+              }
+            ],
+            "review": "accept",
+            "injections": [
+              {
+                "count": 1,
+                "error": "temporarily_unavailable",
+                "id": "unavailable",
+                "kind": "tool_failure",
+                "recovery": "read_succeeded",
+                "stage": "review",
+                "status": "applied",
+                "tool": "read_handoff"
+              }
+            ]
+          },
+          "handoff": {
+            "items": {
+              "outage": "delivered",
+              "browsing": "delivered",
+              "retry": "absent"
+            },
+            "reason": null
+          },
+          "fault_recovery": "read_succeeded"
+        },
+        {
+          "task": "notice",
+          "repeat": 2,
+          "run": "m3-e77538eca4f930396c77861b4ca80bfed5902b642cecb5fcd6a209391c4a56b5",
+          "status": "failed",
+          "outcome": "unknown",
+          "exclusion_reason": "execution_failed",
+          "artifact_verdict": "unknown",
+          "artifact_reason": "final_artifact_not_reached",
+          "confirmed_outcome": "unknown",
+          "task_validity": "unreviewed",
+          "attempt_id": "r-9cfbe6bb61434c22b904ca7d99a92908",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "met": 2,
+            "unmet": 1
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 2,
+            "denominator": 3,
+            "value": 0.6666666666666666,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "complete",
+              "scope": "wall_elapsed_including_recovery",
+              "unit": "seconds",
+              "value": 0.559591
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "tokens": "not_measured"
+          },
+          "workflow": {
+            "backend": "fixture",
+            "scenario": "collaboration",
+            "stages": [
+              {
+                "stage": "write",
+                "attempt_id": "a-9c59f25fd0a3185b452fb2276e07da44",
+                "status": "completed"
+              },
+              {
+                "stage": "review",
+                "attempt_id": "a-bc82e377b9e0852fde1420069193c0a3",
+                "status": "failed",
+                "failure": {
+                  "code": "OSError",
+                  "execution": "not_started",
+                  "stage": "read_handoff"
+                }
+              }
+            ],
+            "review": null,
+            "injections": [
+              {
+                "count": 1,
+                "error": "temporarily_unavailable",
+                "id": "unavailable",
+                "kind": "tool_failure",
+                "recovery": "read_failed",
+                "stage": "review",
+                "status": "applied",
+                "tool": "read_handoff"
+              }
+            ]
+          },
+          "handoff": {
+            "items": {
+              "outage": "unknown",
+              "browsing": "unknown",
+              "retry": "unknown"
+            },
+            "reason": "missing_handoff_evidence"
+          },
+          "fault_recovery": "read_failed"
+        },
+        {
+          "task": "notice",
+          "repeat": 3,
+          "run": "m3-5bdee9a9ffbcf92c7840e846594bb4f370c38b0fc70e6388923541cd79f12c8b",
+          "status": "uncertain",
+          "outcome": "unknown",
+          "exclusion_reason": "insufficient_evidence",
+          "artifact_verdict": "unknown",
+          "artifact_reason": "final_artifact_not_reached",
+          "confirmed_outcome": "unknown",
+          "task_validity": "unreviewed",
+          "attempt_id": "r-911d191ef9304ed08a38cc66b0bd42d0",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "unknown": 3
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 0,
+            "denominator": 3,
+            "value": 0.0,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "complete",
+              "scope": "wall_elapsed_including_recovery",
+              "unit": "seconds",
+              "value": 0.313607
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "tokens": "not_measured"
+          },
+          "workflow": {
+            "backend": "fixture",
+            "scenario": "collaboration",
+            "stages": [
+              {
+                "stage": "write",
+                "attempt_id": "a-c3db6d4cfef9cc775ad5915906dff9b6",
+                "status": "uncertain"
+              }
+            ],
+            "review": null,
+            "injections": [
+              {
+                "count": 0,
+                "id": "unavailable",
+                "reason": "stage_not_reached",
+                "status": "not_applied"
+              }
+            ]
+          },
+          "handoff": {
+            "items": {
+              "outage": "unknown",
+              "browsing": "unknown",
+              "retry": "unknown"
+            },
+            "reason": "missing_handoff_evidence"
+          },
+          "fault_recovery": "stage_not_reached"
+        }
+      ],
+      "required_handoff_rate": {
+        "numerator": 2,
+        "denominator": 9,
+        "value": 0.2222222222222222,
+        "missing_reason": null,
+        "reason_counts": {
+          "item_absent": 1,
+          "missing_handoff_evidence": 6
+        },
+        "excluded_slots": {}
+      },
+      "recovery_success_rate": {
+        "numerator": 1,
+        "denominator": 2,
+        "value": 0.5,
+        "missing_reason": null,
+        "reason_counts": {
+          "read_failed": 1,
+          "stage_not_reached": 1
+        },
+        "excluded_slots": {
+          "stage_not_reached": 1
+        }
+      }
+    }
+  ],
+  "native_aggregates": [],
+  "limitations": [
+    "Task approvals and human reviews apply to the selected task and criterion versions.",
+    "Evaluator reliability is measured in the reference report.",
+    "No automatic human confirmation; raw outputs and private criteria omitted."
+  ]
+}

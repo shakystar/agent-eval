@@ -60,6 +60,11 @@ def positive(value):
     require(type(value) is int and value > 0, 'positive integer required')
 
 
+def rate(n, d):
+    return {'numerator': n, 'denominator': d, 'value': n/d if d else None,
+            'missing_reason': None if d else 'zero_denominator'}
+
+
 def unique(items, key='id'):
     require(isinstance(items, list), 'list required')
     ids = [item[key] for item in items]
@@ -91,7 +96,15 @@ def bundle(obj, root):
     blobs = {}
     for t in obj['tasks']:
         fields(t, ['id', 'version', 'domain', 'source', 'inputs', 'evaluation', 'allowed_actions',
-                   'outputs', 'completion', 'criteria', 'reference_path', 'validity'])
+                   'outputs', 'completion', 'criteria', 'reference_path', 'validity'], ['required_handoff'])
+        if 'required_handoff' in t:
+            items = t['required_handoff']
+            unique(items)
+            require(bool(items), 'required_handoff must contain at least one item')
+            for item in items:
+                fields(item, ['id', 'contains'])
+                text(item['contains'])
+            require(len({item['contains'] for item in items}) == len(items), 'duplicate handoff literal')
         for k in ('version', 'domain', 'source', 'completion'):
             text(t[k])
         for k in ('allowed_actions', 'outputs', 'reference_path'):

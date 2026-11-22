@@ -1,0 +1,26 @@
+{
+  "validation": "M5.1",
+  "cases": 6,
+  "external_model_calls": 0,
+  "fixture_executions": 5,
+  "saved_output_imports": 1,
+  "regrade_execution_intents_added": 0,
+  "experiments": [
+    {
+      "evidence_sha256": "5d6f2603b390a1fe9a4ccf3d4b983823cb7fec6963bb4b35a2af598a97ff98d3",
+      "original_evaluation_sha256": "92d9f961ef57c216cf4b1e37cf1c0deae8715b5a51e48891f251c768035ee324",
+      "validated_reports": [
+        "m51-outcomes-initial",
+        "m51-outcomes-regrade"
+      ]
+    },
+    {
+      "evidence_sha256": "5d6f2603b390a1fe9a4ccf3d4b983823cb7fec6963bb4b35a2af598a97ff98d3",
+      "original_evaluation_sha256": "cb4d51ba30c275b302ac9cb0ea746e623169d77376ff493c609ed28f24fee52c",
+      "validated_reports": [
+        "m51-recovery-initial",
+        "m51-recovery-regrade"
+      ]
+    }
+  ]
+}

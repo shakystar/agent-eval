@@ -1,0 +1,548 @@
+{
+  "schema_version": 1,
+  "experiment": "m51-outcomes",
+  "evaluation": "m51-outcomes-initial",
+  "criterion_bundle": {
+    "id": "m51-maintenance-handoff",
+    "sha256": "10262970b44f25ec688da3aa9481edb5ce9572796b11e963f798f81e6c102bee",
+    "version": "1"
+  },
+  "parent_evaluation": null,
+  "confirmation": "draft",
+  "conclusion": "withheld_pending_task_validity_or_judgment_review",
+  "task_validity": {
+    "notice": "unreviewed"
+  },
+  "review_ledger_ids": [],
+  "aggregation": "equal weight per planned task/repeat; missing runs stay in denominator",
+  "conditions": [
+    {
+      "condition": "accepted",
+      "planned": 1,
+      "imported": 1,
+      "judgeable": 1,
+      "unknown": 0,
+      "status_counts": {
+        "completed": 1
+      },
+      "exclusion_counts": {},
+      "overall_confirmed_success_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "value": null,
+        "missing_reason": "no_confirmed_outcomes"
+      },
+      "confirmed_judgeable": 0,
+      "confirmed_success_note": "Only explicit human reviews on approved task versions count as confirmed successes.",
+      "provisional_success_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "provisional_judgeable_success_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "missing_run_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "missing_measurement_rates": {
+        "time": {
+          "numerator": 0,
+          "denominator": 1,
+          "value": 0.0,
+          "missing_reason": null
+        },
+        "tokens": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1.0,
+          "missing_reason": null
+        },
+        "cost": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1.0,
+          "missing_reason": null
+        }
+      },
+      "condition_differences": [],
+      "unplanned_differences": [],
+      "comparable": true,
+      "comparison_reasons": [],
+      "tasks": {
+        "notice": {
+          "planned": 1,
+          "outcomes": {
+            "unmet": 1
+          }
+        }
+      },
+      "runs": [
+        {
+          "task": "notice",
+          "repeat": 1,
+          "run": "m3-dbfcf1031626241d7f2afd542fa42b760c2b95e4ab0e996201118ed4e95bd611",
+          "status": "completed",
+          "outcome": "unmet",
+          "exclusion_reason": null,
+          "artifact_verdict": "unmet",
+          "artifact_reason": null,
+          "confirmed_outcome": "unknown",
+          "task_validity": "unreviewed",
+          "attempt_id": "r-dba1ef1540534ac5bb4cfde4e5073eec",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "met": 2,
+            "unmet": 1
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 2,
+            "denominator": 3,
+            "value": 0.6666666666666666,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "complete",
+              "scope": "wall_elapsed_including_recovery",
+              "unit": "seconds",
+              "value": 0.799478
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "tokens": "not_measured"
+          },
+          "workflow": {
+            "backend": "fixture",
+            "scenario": "collaboration",
+            "stages": [
+              {
+                "stage": "write",
+                "attempt_id": "a-fffbed45b3dd0949e8c99a07e042052a",
+                "status": "completed"
+              },
+              {
+                "stage": "review",
+                "attempt_id": "a-387fffa005778ae109f732cfb459512f",
+                "status": "completed"
+              }
+            ],
+            "review": "accept",
+            "injections": []
+          },
+          "handoff": {
+            "items": {
+              "outage": "delivered",
+              "browsing": "delivered",
+              "retry": "absent"
+            },
+            "reason": null
+          },
+          "fault_recovery": "no_fault_planned"
+        }
+      ],
+      "required_handoff_rate": {
+        "numerator": 2,
+        "denominator": 3,
+        "value": 0.6666666666666666,
+        "missing_reason": null,
+        "reason_counts": {
+          "item_absent": 1
+        },
+        "excluded_slots": {}
+      },
+      "recovery_success_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "missing_reason": "zero_denominator",
+        "reason_counts": {
+          "no_fault_planned": 1
+        },
+        "excluded_slots": {
+          "no_fault_planned": 1
+        }
+      }
+    },
+    {
+      "condition": "corrected",
+      "planned": 1,
+      "imported": 1,
+      "judgeable": 1,
+      "unknown": 0,
+      "status_counts": {
+        "completed": 1
+      },
+      "exclusion_counts": {},
+      "overall_confirmed_success_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "value": null,
+        "missing_reason": "no_confirmed_outcomes"
+      },
+      "confirmed_judgeable": 0,
+      "confirmed_success_note": "Only explicit human reviews on approved task versions count as confirmed successes.",
+      "provisional_success_rate": {
+        "numerator": 1,
+        "denominator": 1,
+        "value": 1.0,
+        "missing_reason": null
+      },
+      "provisional_judgeable_success_rate": {
+        "numerator": 1,
+        "denominator": 1,
+        "value": 1.0,
+        "missing_reason": null
+      },
+      "missing_run_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "missing_measurement_rates": {
+        "time": {
+          "numerator": 0,
+          "denominator": 1,
+          "value": 0.0,
+          "missing_reason": null
+        },
+        "tokens": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1.0,
+          "missing_reason": null
+        },
+        "cost": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1.0,
+          "missing_reason": null
+        }
+      },
+      "condition_differences": [
+        "workflow.fixture.review.reason",
+        "workflow.fixture.review.verdict"
+      ],
+      "unplanned_differences": [],
+      "comparable": true,
+      "comparison_reasons": [],
+      "tasks": {
+        "notice": {
+          "planned": 1,
+          "outcomes": {
+            "met": 1
+          }
+        }
+      },
+      "runs": [
+        {
+          "task": "notice",
+          "repeat": 1,
+          "run": "m3-b32f722265e3ff9fa6d1dd329af03e126a25d1d11a5e2606f3ea61619551d3f1",
+          "status": "completed",
+          "outcome": "met",
+          "exclusion_reason": null,
+          "artifact_verdict": "met",
+          "artifact_reason": null,
+          "confirmed_outcome": "unknown",
+          "task_validity": "unreviewed",
+          "attempt_id": "r-87c428bab8014f9e9495db72dc5f40b3",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "met": 3
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 3,
+            "denominator": 3,
+            "value": 1.0,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "complete",
+              "scope": "wall_elapsed_including_recovery",
+              "unit": "seconds",
+              "value": 1.489927
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "tokens": "not_measured"
+          },
+          "workflow": {
+            "backend": "fixture",
+            "scenario": "collaboration",
+            "stages": [
+              {
+                "stage": "write",
+                "attempt_id": "a-07de08ce15c254fd0c650f7bc0ef94bf",
+                "status": "completed"
+              },
+              {
+                "stage": "review",
+                "attempt_id": "a-947c956bb9e227bef54a89b24e3bdea8",
+                "status": "completed"
+              },
+              {
+                "stage": "revise",
+                "attempt_id": "a-bb22093f071a3982e6132fd5fb48a43c",
+                "status": "completed"
+              },
+              {
+                "stage": "final-review",
+                "attempt_id": "a-edec11fade417b28059838c71cf006be",
+                "status": "completed"
+              }
+            ],
+            "review": "accept",
+            "injections": []
+          },
+          "handoff": {
+            "items": {
+              "outage": "delivered",
+              "browsing": "delivered",
+              "retry": "absent"
+            },
+            "reason": null
+          },
+          "fault_recovery": "no_fault_planned"
+        }
+      ],
+      "required_handoff_rate": {
+        "numerator": 2,
+        "denominator": 3,
+        "value": 0.6666666666666666,
+        "missing_reason": null,
+        "reason_counts": {
+          "item_absent": 1
+        },
+        "excluded_slots": {}
+      },
+      "recovery_success_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "missing_reason": "zero_denominator",
+        "reason_counts": {
+          "no_fault_planned": 1
+        },
+        "excluded_slots": {
+          "no_fault_planned": 1
+        }
+      }
+    },
+    {
+      "condition": "output-only",
+      "planned": 1,
+      "imported": 1,
+      "judgeable": 1,
+      "unknown": 0,
+      "status_counts": {
+        "completed": 1
+      },
+      "exclusion_counts": {},
+      "overall_confirmed_success_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "value": null,
+        "missing_reason": "no_confirmed_outcomes"
+      },
+      "confirmed_judgeable": 0,
+      "confirmed_success_note": "Only explicit human reviews on approved task versions count as confirmed successes.",
+      "provisional_success_rate": {
+        "numerator": 1,
+        "denominator": 1,
+        "value": 1.0,
+        "missing_reason": null
+      },
+      "provisional_judgeable_success_rate": {
+        "numerator": 1,
+        "denominator": 1,
+        "value": 1.0,
+        "missing_reason": null
+      },
+      "missing_run_rate": {
+        "numerator": 0,
+        "denominator": 1,
+        "value": 0.0,
+        "missing_reason": null
+      },
+      "missing_measurement_rates": {
+        "time": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1.0,
+          "missing_reason": null
+        },
+        "tokens": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1.0,
+          "missing_reason": null
+        },
+        "cost": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1.0,
+          "missing_reason": null
+        }
+      },
+      "condition_differences": [
+        "workflow.fixture.review.reason",
+        "workflow.fixture.review.verdict",
+        "workflow.fixture.revise",
+        "workflow.fixture.write",
+        "workflow.injections"
+      ],
+      "unplanned_differences": [],
+      "comparable": true,
+      "comparison_reasons": [],
+      "tasks": {
+        "notice": {
+          "planned": 1,
+          "outcomes": {
+            "met": 1
+          }
+        }
+      },
+      "runs": [
+        {
+          "task": "notice",
+          "repeat": 1,
+          "run": "saved-only",
+          "status": "completed",
+          "outcome": "met",
+          "exclusion_reason": null,
+          "artifact_verdict": "met",
+          "artifact_reason": null,
+          "confirmed_outcome": "unknown",
+          "task_validity": "unreviewed",
+          "attempt_id": "saved-only-1",
+          "environment_mismatch": false,
+          "native_sample_id": null,
+          "native_epoch": null,
+          "native_score_states": {},
+          "native_error": false,
+          "native_score_absent": true,
+          "item_counts": {
+            "met": 3
+          },
+          "scorer_errors": 0,
+          "item_met_rate": {
+            "numerator": 3,
+            "denominator": 3,
+            "value": 1.0,
+            "missing_reason": null
+          },
+          "measurements": {
+            "cost": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "USD",
+              "value": null
+            },
+            "time": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "seconds",
+              "value": null
+            },
+            "tokens": {
+              "completeness": "missing",
+              "scope": "execution",
+              "unit": "tokens",
+              "value": null
+            }
+          },
+          "missing_measurement_reasons": {
+            "cost": "not_measured",
+            "time": "not_measured",
+            "tokens": "not_measured"
+          },
+          "handoff": {
+            "items": {
+              "outage": "unknown",
+              "browsing": "unknown",
+              "retry": "unknown"
+            },
+            "reason": "missing_handoff_evidence"
+          },
+          "fault_recovery": "missing_injection_evidence"
+        }
+      ],
+      "required_handoff_rate": {
+        "numerator": 0,
+        "denominator": 3,
+        "value": null,
+        "missing_reason": "missing_handoff_evidence",
+        "reason_counts": {
+          "missing_handoff_evidence": 3
+        },
+        "excluded_slots": {}
+      },
+      "recovery_success_rate": {
+        "numerator": 0,
+        "denominator": 0,
+        "value": null,
+        "missing_reason": "zero_denominator",
+        "reason_counts": {
+          "missing_injection_evidence": 1
+        },
+        "excluded_slots": {
+          "missing_injection_evidence": 1
+        }
+      }
+    }
+  ],
+  "native_aggregates": [],
+  "limitations": [
+    "Task approvals and human reviews apply to the selected task and criterion versions.",
+    "Evaluator reliability is measured in the reference report.",
+    "No automatic human confirmation; raw outputs and private criteria omitted."
+  ]
+}
