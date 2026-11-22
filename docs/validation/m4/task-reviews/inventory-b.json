@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "id": "inventory-b-v1-approved",
+  "bundle": {
+    "id": "inventory-reconciliation",
+    "version": "1",
+    "sha256": "ecc6c617d22502e30609950e9bc03e271dee9206f1753dbeeb04e024b885ce87"
+  },
+  "task": "inventory-b",
+  "task_version": "1",
+  "status": "approved",
+  "supersedes": null,
+  "reviewer": "requesting-user",
+  "origin": "human",
+  "source": "Codex project chat, 2026-11-22 (Asia/Seoul), explicit approval of tasks A, B and C",
+  "created": "2026-11-22T04:17:00.4353150+00:00",
+  "reason": "응, A·B·C 세 과제의 타당성을 모두 승인한다. 내 판정을 레포에 기록하라."
+}

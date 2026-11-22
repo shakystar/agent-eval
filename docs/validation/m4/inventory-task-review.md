@@ -1,6 +1,6 @@
 # 재고 대사·보충 결정 v1 타당성 검토지
 
-검토 대상은 단일 품목 원장을 읽어 가용 수량을 대사하고, 명시된 발주 정책을 JSON으로 적용하는 능력입니다. 세 과제의 상태는 각각 `unreviewed`입니다. 검토자는 사례별로 모델 응답을 보기 전에 원장과 공개 정책만으로 기대값을 기록할 수 있습니다. [묶음 명세](../../../bundles/inventory-reconciliation/v1/bundle.json) · [공개 정책](../../../bundles/inventory-reconciliation/v1/public/policy.txt)
+검토 대상은 단일 품목 원장을 읽어 가용 수량을 대사하고, 명시된 발주 정책을 JSON으로 적용하는 능력입니다. 2026-11-22에 사용자가 세 과제의 타당성을 모두 승인했습니다. [묶음 명세](../../../bundles/inventory-reconciliation/v1/bundle.json) · [공개 정책](../../../bundles/inventory-reconciliation/v1/public/policy.txt)
 
 | 검토 기준 | 판단에 필요한 근거 |
 | --- | --- |
@@ -27,10 +27,12 @@
 
 검토 대상은 `inventory-reconciliation@1`이며 묶음 해시는 `ecc6c617d22502e30609950e9bc03e271dee9206f1753dbeeb04e024b885ce87`입니다. 세 사례 모두 과제 버전 1입니다.
 
-| 과제 | 검토자 독립 계산값 | 타당성 판정 | 사유·근거 또는 보완할 점 |
-| --- | --- | --- | --- |
-| inventory-a | | | |
-| inventory-b | | | |
-| inventory-c | | | |
+| 과제 | 검토한 정책 적용 사례 | 사용자 판정 |
+| --- | --- | --- |
+| inventory-a | 가용 1개에서 목표 7개까지 6개 발주 | [승인](task-reviews/inventory-a.json) |
+| inventory-b | 가용 3개는 발주점과 같으므로 0개 발주 | [승인](task-reviews/inventory-b.json) |
+| inventory-c | 가용 9개는 목표를 초과하므로 0개 발주 | [승인](task-reviews/inventory-c.json) |
 
-입력·정답·채점 기준이 측정 목적에 적합하면 `approved`, 결함이 있으면 `rejected`, 근거가 더 필요하면 `unreviewed`로 기록합니다. 사람 검토를 완료한 경우 해당 과제 ID와 버전 1, 검토자, 근거 출처, 시각, 사유를 포함한 기록을 `task-review --human-attested`로 등록할 수 있습니다. 과제 승인은 별도 실험에서 나온 모델 응답을 확정하지 않습니다. [검토 기록 계약](../../m2-contract.md)
+사용자 판정 원문은 “응, A·B·C 세 과제의 타당성을 모두 승인한다. 내 판정을 레포에 기록하라.”입니다. 위 계산은 원장과 정책에서 산출한 검토 자료이며, 사용자는 세 과제에 대한 공통 판정을 제출했습니다.
+
+기존 Codex 실행 저장소에 `task-review --human-attested`로 세 건을 등록했습니다. `inventory-live-rules` 보고서를 다시 생성해 세 과제 모두 `approved`임을 확인했습니다. 모델 응답의 사람 확정 건수는 0건이며 보고서 상태는 `draft`입니다. [검토 기록 계약](../../m2-contract.md)
