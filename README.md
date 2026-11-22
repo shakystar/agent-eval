@@ -55,7 +55,7 @@ agent-eval은 실험 명세, 평가용 시나리오와 주입 계획, 증거 계
 | [codex-adapter](https://github.com/shakystar/codex-adapter) | Codex 프로토콜·세션·호출 실패 정보 | 실행 어댑터를 통한 결과 수집 |
 | [role-runtime](https://github.com/shakystar/role-runtime) | 실행 슬롯·역할 상태·영수증·산출물 | 실행 사실과 결과물 참조 수집 |
 | [role-orchestrator](https://github.com/shakystar/role-orchestrator) | 작업 의존성과 흐름·인계·재개 | 시나리오 전달과 실행 기록 회수 |
-| [skill-search-engine](https://github.com/shakystar/skill-search-engine) | 검색·스킬 버전·검색 관련성 기준 | 과제별 평가 모듈 또는 실행 대상 연결 |
+| [skill-search-engine](https://github.com/shakystar/skill-search-engine) (비공개, 읽기 권한 필요) | 검색·스킬 버전·검색 관련성 기준 | 과제별 평가 모듈 또는 실행 대상 연결 |
 
 위 연결은 개발 방향이며 구현 완료를 의미하지 않습니다. 특정 실행 시스템 없이도 저장된 증거를 평가할 수 있어야 합니다. 대상 저장소의 내부 코드를 직접 가져오지 않고 버전이 명시된 공개 계약으로 연결합니다.
 
