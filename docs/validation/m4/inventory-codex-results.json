@@ -1,0 +1,137 @@
+{
+  "experiment": "inventory-reconciliation-v1-codex",
+  "bundle": {
+    "id": "inventory-reconciliation",
+    "sha256": "ecc6c617d22502e30609950e9bc03e271dee9206f1753dbeeb04e024b885ce87",
+    "version": "1"
+  },
+  "evaluation": "inventory-live-rules",
+  "bundle_repo_commit": "6fff0f16771004128d6b2858490088878accd43a",
+  "image": "sha256:df130e0925f664fd2224d757b4d60171d451eb1791bf7586866bc2b21d923619",
+  "codex_cli": "0.167.0",
+  "backend": "codex",
+  "condition": "solo",
+  "attempts": 3,
+  "completed": 3,
+  "evaluated_criteria": 9,
+  "scorer_errors": 0,
+  "report_sha256": "7a5dc148b23180681ef7f45f8c936c1fed60aa3429e772814fb3dc706e7c832b",
+  "provisional_success_rate": {
+    "numerator": 3,
+    "denominator": 3,
+    "value": 1.0,
+    "missing_reason": null
+  },
+  "confirmed_success_rate": {
+    "numerator": 0,
+    "denominator": 3,
+    "value": null,
+    "missing_reason": "no_confirmed_outcomes"
+  },
+  "report_confirmation": "draft",
+  "report_conclusion": "withheld_pending_task_validity_or_judgment_review",
+  "declared_model": {
+    "missing_reason": "Runtime inherits local Codex configuration.",
+    "name": null,
+    "settings": {}
+  },
+  "observed_model_source": "Only retained matching Codex turn_context events",
+  "cost_and_tokens": "not reported by runtime bridge v1",
+  "grading_network": "none",
+  "execution_input_checks": {
+    "project_or_bundle_bind_mounted_during_execute": false,
+    "private_evaluator_store_mounted": true,
+    "wire_and_native_receipt_input_match": true,
+    "wire_input_exactly_public_projection": true,
+    "fixture_payload_absent": true,
+    "full_private_rubric_text_absent_from_wire": true
+  },
+  "cases": [
+    {
+      "task": "inventory-a",
+      "repeat": 1,
+      "run": "m3-42f5d72911fe765e408a9031715ac4cae6086147a0b2feb47e3cd988bdb86ba6",
+      "runtime_run": "r-a9ae8a77678b458fafaf2eee19f47f92",
+      "attempt": "a-d3f4139cc9c1b714057886f4b49297ee",
+      "session_id_sha256": "5024bde6c5dbe3534762f73d2f76cd6c92a2014d10180bf590e334268b00a0b4",
+      "started_utc": "2026-11-22T04:00:45.315440+00:00",
+      "ended_utc": "2026-11-22T04:00:50.226723+00:00",
+      "elapsed_seconds": 4.911283,
+      "output": "{\"available\":1,\"reorder\":true,\"order_units\":6}",
+      "output_sha256": "0613fde6e5c64a972dd9db965f16843e6bb80057b95481fbec50fa89f7896d0a",
+      "input_sha256": "57e4c8edd520b55f6981c80e3287060dfd44b9f415e5956d691cf2c3b679a88c",
+      "wire_sha256": "07fd82b8b084d993ecc6bdc77ba59cf6692e9661a0846a2e6848c4b4fe10e01f",
+      "native_receipt_sha256": "7d12f4e1eb8b562a9ba2bcdef2c1019b8b135a153a5c968fd638a4301c47e690",
+      "execution_receipt_sha256": "76eff2f009ebda3af8824b3c64bb2479f01fcf972c82f5dc8c29d5ab41c3b46a",
+      "native_status": "succeeded",
+      "task_validity": "unreviewed",
+      "model_observation": null,
+      "model_evidence": "session_transcript_not_retained",
+      "criteria": {
+        "available": "met",
+        "reorder": "met",
+        "order_units": "met"
+      }
+    },
+    {
+      "task": "inventory-b",
+      "repeat": 1,
+      "run": "m3-cb1c0cddede068842794d3fd36de88a375e200e432624535e0dde03399c18c06",
+      "runtime_run": "r-3ea22b378c784d92821f91c5f13e9196",
+      "attempt": "a-ec50eb18345caa3c6978a518e7c68ccb",
+      "session_id_sha256": "5a7a5583338fe50eedb04f58ae31cdf596fa0f0c2a5fedcfcfbeb17362882da4",
+      "started_utc": "2026-11-22T04:01:27.369351+00:00",
+      "ended_utc": "2026-11-22T04:01:31.892541+00:00",
+      "elapsed_seconds": 4.52319,
+      "output": "{\"available\":3,\"reorder\":false,\"order_units\":0}",
+      "output_sha256": "ca114e886a90fc518cd3dbbb60bde470604216752787f4c78e0d59dcc06cdee3",
+      "input_sha256": "fbdfaf54de1fa3039231ae1fc1373e1737b247acdd197e994ecf6c3e6bce0031",
+      "wire_sha256": "4cc1745952484bdff8d7121f73f703c43f58df89eceeb848d08ed0796c994817",
+      "native_receipt_sha256": "6eefb5e229b2ec0c57a4a65354e9171f0e54eadab792c974b1a0c0065a37620a",
+      "execution_receipt_sha256": "5b6f0bfa86bc21015542123861a057611e1f33e2436c18af6f7fcbdc762ff29d",
+      "native_status": "succeeded",
+      "task_validity": "unreviewed",
+      "model_observation": {
+        "model": "gpt-6-astra",
+        "effort": "medium",
+        "turn_context_line_sha256": "5eeec8967ffaa3aa74bc674e33f6ecb473335aec4db251634823567cc1538bc6"
+      },
+      "model_evidence": "codex_session_turn_context",
+      "criteria": {
+        "available": "met",
+        "reorder": "met",
+        "order_units": "met"
+      }
+    },
+    {
+      "task": "inventory-c",
+      "repeat": 1,
+      "run": "m3-fa5d3ad3549146222a114ace8319ac4bcb6d8835c3607d152962b0061577b88f",
+      "runtime_run": "r-47c9dffdbbfa4a7287e76409bda5a36d",
+      "attempt": "a-197eb3c6d26dec7cbc7eb52145e6363a",
+      "session_id_sha256": "777491ace85e9e25fa19496c757548b5a55977e8324de7782452a92b94ade04e",
+      "started_utc": "2026-11-22T04:01:42.438987+00:00",
+      "ended_utc": "2026-11-22T04:01:48.078867+00:00",
+      "elapsed_seconds": 5.63988,
+      "output": "{\"available\":9,\"reorder\":false,\"order_units\":0}",
+      "output_sha256": "0a24d0cd46ace97a196f7a69eec46b4feb5ec7498aa8e97abffbd7de851fc365",
+      "input_sha256": "f7b8fd646221756f81cc948ad25fc90fd7224879575c7bd3c21b0c19a3d36526",
+      "wire_sha256": "cba9b6bcdad0b74cef7d16cce4552b547ff7a685dc22811d2c060e7ead49524e",
+      "native_receipt_sha256": "6e0daa2828ce28bdb7d5d02ae4c0d671980d81cfc6e27094d901bc9aea89f639",
+      "execution_receipt_sha256": "d8972acf33c6367cae34c7caa274d5688deb6c37a7b6c223ac48edc1313b3afa",
+      "native_status": "succeeded",
+      "task_validity": "unreviewed",
+      "model_observation": {
+        "model": "gpt-6-astra",
+        "effort": "medium",
+        "turn_context_line_sha256": "b0ad9ba219dd272d06120589a5894148d966d89cc85b71ea7cac536bbb0a28cc"
+      },
+      "model_evidence": "codex_session_turn_context",
+      "criteria": {
+        "available": "met",
+        "reorder": "met",
+        "order_units": "met"
+      }
+    }
+  ]
+}
