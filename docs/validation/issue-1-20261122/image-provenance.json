@@ -1,0 +1,32 @@
+{
+  "image": "sha256:42f66ed5a1b7204df1399639a04e62a83ffa613e781eb0dc046c45ddeb930249",
+  "base": "sha256:1d517bc86d8d0a22cd188ad8f1d0c0c6f899e97d1b29b988c1c64484a9c4ccfc",
+  "platform": "linux/amd64",
+  "source_commits": {
+    "agent-eval": "6db70ed063b2d993670f56408da0493524a02bfa",
+    "role-orchestrator": "66657b78210fd16697175abec4b1807e95ed1a28",
+    "role-runtime": "7b2f83702fac83e4004bf7b105a343872e3e53d6",
+    "codex-adapter": "2b8c204b0cb7e3c63c60a3fa7923e4e9ca4d02bb"
+  },
+  "verified_trees": {
+    "agent_eval": {
+      "files": 16,
+      "manifest_sha256": "3a754e33efb372c75b2960cc4dfa7c363ad687def5464f9fa082cf663cfe2430"
+    },
+    "bundles": {
+      "files": 9,
+      "manifest_sha256": "3ad90ff27ecf6c36b7bdd39c0d721a5ff233c28258438c6cb46da55d9f12e3e3"
+    },
+    "role_orchestrator": {
+      "files": 18,
+      "manifest_sha256": "05530bf5ea61af00beb204e8f2ea4720563654d3498931ffcbe3fd005852d56f"
+    }
+  },
+  "local_adapter_replacement_verified": true,
+  "runtime_bridge_sha256": "c87002a8624ebbaaa5c0eefa2e14e9a8facb51fdd67395356b94ede7c89fefb1",
+  "bridge_capabilities": {
+    "bridge": 1,
+    "fixture_text": 1,
+    "inspect_attempt": 1
+  }
+}
