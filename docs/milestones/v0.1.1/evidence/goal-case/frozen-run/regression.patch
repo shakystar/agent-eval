@@ -1,0 +1,40 @@
+diff --git a/tests/test_strict_json_unicode.py b/tests/test_strict_json_unicode.py
+new file mode 100644
+--- /dev/null
++++ b/tests/test_strict_json_unicode.py
+@@ -0,0 +1,35 @@
++import unittest
++
++from role_orchestrator.contracts import strict_json
++
++
++class StrictJSONUnicodeTests(unittest.TestCase):
++    def test_reject_unpaired_surrogates_without_duplicates(self):
++        templates = {
++            'top_level_string': '"A{s}Z"',
++            'nested_array_string': '{"items":["A{s}Z"]}',
++            'nested_object_member_name': '{"outer":{"A{s}Z":0}}',
++        }
++        for code_point in (0xD800, 0xDC00):
++            for representation, surrogate in (
++                ('escaped', chr(92) + 'u' + format(code_point, '04X')),
++                ('literal', chr(code_point)),
++            ):
++                for location, template in templates.items():
++                    with self.subTest(code_point=code_point, representation=representation, location=location):
++                        with self.assertRaises(ValueError):
++                            strict_json(template.replace('{s}', surrogate))
++
++    def test_reject_overwritten_surrogate(self):
++        with self.assertRaises(ValueError):
++            strict_json(r'{"x":"\uD800","x":"ok"}')
++
++    def test_preserve_valid_strings_and_member_names(self):
++        text = (
++            r'{"한":"é","😀":"🚀","\uD83D\uDE80":"\uD83D\uDE00",'
++            r'"\\uD800":"\\uDC00"}'
++        )
++        self.assertEqual(
++            strict_json(text),
++            {'한': 'é', '😀': '🚀', '🚀': '😀', r'\uD800': r'\uDC00'},
++        )

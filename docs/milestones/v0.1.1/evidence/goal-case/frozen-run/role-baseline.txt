@@ -1,0 +1,116 @@
+test_preserve_valid_strings_and_member_names (test_strict_json_unicode.StrictJSONUnicodeTests.test_preserve_valid_strings_and_member_names) ... ok
+test_reject_overwritten_surrogate (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_overwritten_surrogate) ... ok
+test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) ... 
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='escaped', location='top_level_string') ... FAIL
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='escaped', location='nested_array_string') ... FAIL
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='escaped', location='nested_object_member_name') ... FAIL
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='literal', location='top_level_string') ... FAIL
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='literal', location='nested_array_string') ... FAIL
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='literal', location='nested_object_member_name') ... FAIL
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='escaped', location='top_level_string') ... FAIL
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='escaped', location='nested_array_string') ... FAIL
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='escaped', location='nested_object_member_name') ... FAIL
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='literal', location='top_level_string') ... FAIL
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='literal', location='nested_array_string') ... FAIL
+  test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='literal', location='nested_object_member_name') ... FAIL
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='escaped', location='top_level_string')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='escaped', location='nested_array_string')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='escaped', location='nested_object_member_name')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='literal', location='top_level_string')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='literal', location='nested_array_string')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=55296, representation='literal', location='nested_object_member_name')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='escaped', location='top_level_string')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='escaped', location='nested_array_string')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='escaped', location='nested_object_member_name')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='literal', location='top_level_string')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='literal', location='nested_array_string')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='literal', location='nested_object_member_name')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode.py", line 20, in test_reject_unpaired_surrogates_without_duplicates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.005s
+
+FAILED (failures=12)

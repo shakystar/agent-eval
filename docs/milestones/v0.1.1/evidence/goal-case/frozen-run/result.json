@@ -1,0 +1,256 @@
+{
+  "controller_commit": "dd07d43136dda2020e60612e56f47ee530c208af",
+  "case_input_file_sha256": "608165388cc9635df95b28e249b496e1df4112c6ea8b734bc160151cc4bb764e",
+  "same_input_as_first_experiment": true,
+  "code_edited_during_trial": false,
+  "manual_model_artifact_edits": false,
+  "clean_state_at_start": true,
+  "development_run_invocations": 1,
+  "acceptance_run_invocations_before_replay": 1,
+  "elapsed_measurement": "Elapsed seconds between plan and verdict file publication mtimes on the same Linux filesystem.",
+  "native_attempts": 10,
+  "distinct_members": 8,
+  "revision_assignments": 1,
+  "records": [
+    {
+      "task_id": "scenario",
+      "member_id": "acl-001",
+      "role": "scenario-writer",
+      "run_id": "r-ed96949cc65b4e029522f2d00a2094b2",
+      "attempt_id": "a-44303659d770e7d8f8e16a2c1a29e376",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "medium",
+        "model": "gpt-6.2-sol"
+      },
+      "status": "succeeded",
+      "input_sha256": "edad477ac4a1c433956b079dd977e582027032e1502f7c99a539442823010679",
+      "contract_sha256": "bfbf484bd1c53f33ad09e9d05500c69bf46d3338f127b8cce0e43517bb8dfbbd",
+      "wire_sha256": "fb206a4970eedd55d2ccf6302408b5a0fee5376cc5a7855a785b635957f40312",
+      "receipt_sha256": "7ca99051326ca6c01854551488103364fd3b4692985d0161693ba353246933f7",
+      "output_sha256": "2d4ec9ec3eba357ba0ce98d78463d4bd0e98991b376f8ee9e1396a44cc4b503a",
+      "assignment_elapsed_seconds": 20.234
+    },
+    {
+      "task_id": "identity",
+      "member_id": "acl-002",
+      "role": "identity-designer",
+      "run_id": "r-85154fb2d4fe4405adb2111dd90906cd",
+      "attempt_id": "a-880ae0f38de421cac6631c1d26ffa046",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "high",
+        "model": "gpt-6.2-sol"
+      },
+      "status": "succeeded",
+      "input_sha256": "9ca4fb06e2a0af1890f93389151c4eddc20fe4c7e92bb50e0e2072fe97f04602",
+      "contract_sha256": "53ce269e8d1de439e3e251dad8eb4f38f2dc86767e8a03b1ea8aad2fed855a4d",
+      "wire_sha256": "ee62b32ad92db21d7198e10675abb103904385bbbc6a7fd9a31b827034ac7aa2",
+      "receipt_sha256": "e6292c484fa81133c7a821a0a2fbe1bc14924aa396f471635a9fab47d144f1a6",
+      "output_sha256": "498914e6aca9e444a310978d51d9e65879e51cdbf47219881432120f0af4da80",
+      "assignment_elapsed_seconds": 343.881
+    },
+    {
+      "task_id": "windows",
+      "member_id": "acl-003",
+      "role": "crash-window-analyst",
+      "run_id": "r-0edc57e2c93f4c1a82a1b31f766f20f1",
+      "attempt_id": "a-f40aba309211d37b2387ec0a9e7feed1",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "high",
+        "model": "gpt-6.2-astra"
+      },
+      "status": "succeeded",
+      "input_sha256": "6bb5a64059cee650914eaf82ea2414a35d91da8560e3c13dfbb22347f74d237c",
+      "contract_sha256": "9526a2745d086488834d1c3d685960db10bc8ef30967a6ad6957049f1b08d61f",
+      "wire_sha256": "3c6950010198b2158f06eee32917d6e01df45b5734cd5b5ed9e0ceae66bd2e64",
+      "receipt_sha256": "33f5c25c313787bf28a63f1f1de91645b2a9a1ed6d0708bef4f1f30e8e9e39b0",
+      "output_sha256": "54848d1c0c4fd9e4856aee614e6138c385682a7646d23fe79d2c9e9dd24efc05",
+      "assignment_elapsed_seconds": 29.721
+    },
+    {
+      "task_id": "vectors",
+      "member_id": "acl-004",
+      "role": "fixture-author-v2",
+      "run_id": "r-bc115a974ffc404c8bf3d1aaf81acdf3",
+      "attempt_id": "a-944d883858592d4b382209779fc3ff23",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "medium",
+        "model": "gpt-6.2-sol"
+      },
+      "status": "succeeded",
+      "input_sha256": "d1b4130cac46d63c7ca75092b59ec8dfa170fb95238b625a2c2b507ec48e6c60",
+      "contract_sha256": "4c5888539f546348cd371d3c11c7ad9c99fe6f7ad01e3a133464335b47fddc7f",
+      "wire_sha256": "c094188e0281509604645d92328c790a8ce447008198e2cc8f863af6c535a755",
+      "receipt_sha256": "d1801bb62bbcbbb5fbe8b9a4ce4cb0722f3faac3e5eeed8c776dc5d57ee84978",
+      "output_sha256": "4c9711e48d40a630b1b0cfda75557c231c86c132d7a94cd59bb92024048727af",
+      "assignment_elapsed_seconds": 18.781
+    },
+    {
+      "task_id": "oracle",
+      "member_id": "acl-005",
+      "role": "oracle-reviewer-v2",
+      "run_id": "r-e51619ea80e440d6915001de18fce8c7",
+      "attempt_id": "a-3400a68f59b7dfbb366dd82bd9aed5e7",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "high",
+        "model": "gpt-6.2-astra"
+      },
+      "status": "succeeded",
+      "input_sha256": "573b484e85efa5bbec19219265b7e776b614b7be5177de51d1eda7ac4e8c17be",
+      "contract_sha256": "0f8d92b858d9fdf04c7484a275baebed566c04838654cf3d176c8c1ed9b4ef8f",
+      "wire_sha256": "16b2651b589db6050473a6b4567b665585e3d99cea8449be4bc06d2c13d81c18",
+      "receipt_sha256": "6b730f76adb81a6b5af341674b2acd47218c3525da9d590ab705763f61f9370a",
+      "output_sha256": "a8a165d65e8283dead7d2e3cb7ab9fbc6a05e1cefd99e158854b2c0d9c2bed6e",
+      "assignment_elapsed_seconds": 24.213
+    },
+    {
+      "task_id": "regression",
+      "member_id": "acl-008",
+      "role": "regression-author-v2",
+      "run_id": "r-658e65bbef6f47439afb72768b860968",
+      "attempt_id": "a-f1c7c0e14b128a536e6f1d1809ee7fb2",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "medium",
+        "model": "gpt-6.2-sol"
+      },
+      "status": "succeeded",
+      "input_sha256": "293deecd99f819b9800fa0fd68479afb9c98dea9bd1497ea0dcac1ff797195f0",
+      "contract_sha256": "663551e4109b25e104763c23dd672da4e9985168fc70f145f687381f4575d311",
+      "wire_sha256": "af56fcd33fc9f3ca6f15aa5464f7231d03921cc2ffcc2664a9cbd43ab99d3f31",
+      "receipt_sha256": "2269e8d0e2ca1603427329215099155a80b364b56b270ecb758e63150969b25c",
+      "output_sha256": "2d6c501d57dbde4cef5bd4d91443b2b4395639a2db55a04ed33aa1760ff17688",
+      "assignment_elapsed_seconds": 20.605
+    },
+    {
+      "task_id": "author",
+      "member_id": "acl-007",
+      "role": "python-resume-author",
+      "run_id": "r-24698671f8c3464b8c46f6d9385eaf7e",
+      "attempt_id": "a-4f1170acb0cc25227b3d58e9e95cf84f",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "high",
+        "model": "gpt-6.2-sol"
+      },
+      "status": "succeeded",
+      "input_sha256": "51d820226b2a1dae00855d7485d1fc70970def98b92897f3e68e51e77c51bc5d",
+      "contract_sha256": "95f0d8f1b76266d487fc6f4524b381a41e8d12ef31250c497615b236efee6cb6",
+      "wire_sha256": "e75c9b55decb4ce5bc5c566f44f6fc100b27c1093e1d392e5579b0accb928c2b",
+      "receipt_sha256": "58953e8c551c72bc11060809c47006707b08c69ad3b443e2b41963f61c942a0a",
+      "output_sha256": "48bb72ce4027b242db671acf1b7e5c99d5d09714944b11fb65ba047857fc3666",
+      "assignment_elapsed_seconds": 39.676
+    },
+    {
+      "task_id": "reviewer",
+      "member_id": "acl-005",
+      "role": "oracle-reviewer-v2",
+      "run_id": "r-a95df76938b147ce9712696b57aa3138",
+      "attempt_id": "a-72b230a3e0b200d340cad1315c6f6cf6",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "high",
+        "model": "gpt-6.2-astra"
+      },
+      "status": "failed",
+      "input_sha256": "e72bc7b9da14cc381c8260b75c42ab7eb9f805c463ce066b1892489e49d5d73e",
+      "contract_sha256": "a6950391f774e819014b4d163f6688fae7d967a8bf686dbd0e1b23eace30c501",
+      "wire_sha256": "17e94116af093679fc07b874a8cf3232293cd1d0ea2878cdc9b763dd8f221a8f",
+      "receipt_sha256": "1d36af8f906f7d1c8a6fa2950ffec83de12a362f8e8ebaba31a796fbea26b342",
+      "reason": "invalid_role_output",
+      "assignment_elapsed_seconds": 15.533
+    },
+    {
+      "task_id": "reviewer-r1",
+      "member_id": "acl-005",
+      "role": "oracle-reviewer-v2",
+      "run_id": "r-7494007bd9de4d809b9ad3d874e11dae",
+      "attempt_id": "a-a05d051f64b5168b373e31ab19ba9763",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "high",
+        "model": "gpt-6.2-astra"
+      },
+      "status": "succeeded",
+      "input_sha256": "d8e69456561abd0ea4d46864689d855055403ca16cfb59e7c59a17cdec5187b0",
+      "contract_sha256": "a6950391f774e819014b4d163f6688fae7d967a8bf686dbd0e1b23eace30c501",
+      "wire_sha256": "35ab50d9c7d2d3df730968a6ac39f6d6103158d349671d6b44a6c43047e2985d",
+      "receipt_sha256": "e80356d90303a179e2e8b7dc4e1a49c5667560fc040e745fa9c6c9fd4ea093e8",
+      "output_sha256": "ca82a670321efeb539bd146f769a9814b658f923a0fdccfb7471dbf1195800e8",
+      "assignment_elapsed_seconds": 16.701
+    },
+    {
+      "task_id": "evidence",
+      "member_id": "acl-009",
+      "role": "evidence-reader",
+      "run_id": "r-373b6a4f8695425aad01123de99924ca",
+      "attempt_id": "a-e79ea30296b265d09650005d9a49548a",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "low",
+        "model": "gpt-6.2-sol"
+      },
+      "status": "succeeded",
+      "input_sha256": "7a2f419f26e1b9239c25247d43de82fed04d556101e17f5d56f5e4a3a36d6f7f",
+      "contract_sha256": "857fcf565f2614da146ce639f4fded0e5a0b04d697331e9b48ee8a184023ef06",
+      "wire_sha256": "486d87951e33da85c30d7c2f6f8dc731c1f70cd8ea7a1159a65143fbf6f2e6dd",
+      "receipt_sha256": "037b1e9b39bbf2347faa8a84327a8ba97878610cbb434083eb131c37802f8509",
+      "output_sha256": "864a2f1541c01dcd233776384be866054bdb752ef78a253f390ed3a9d8ab7e8d",
+      "assignment_elapsed_seconds": 12.22
+    }
+  ],
+  "state": "accepted",
+  "result": {
+    "criteria": [
+      {
+        "comparison": {
+          "baseline_sha": "2ac1621890141f69fb2f603467eb1f288bed392f",
+          "candidate_sha": "31f00c9a914e3bfec7857d2631bcaf421b61835c",
+          "oracle_command": "python /oracle.py /source",
+          "oracle_exit_codes": {
+            "baseline": 1,
+            "candidate": 0,
+            "implementation_only": 0
+          },
+          "regression_command": "python -m unittest discover -s tests -p test_strict_json_unicode.py -v",
+          "regression_exit_codes": {
+            "baseline": 1,
+            "candidate": 0
+          }
+        },
+        "criterion_id": "strict-json-unicode-scalars",
+        "finding": "기준 빌드는 짝 없는 서로게이트를 허용해 검증에 실패했다. 후보 빌드와 구현 변경만 적용한 빌드는 오라클을 통과했다. 후보 빌드는 회귀 테스트 3개를 모두 통과해 짝 없는 서로게이트를 ValueError로 거부하고, 중복 키에 의해 덮어써지는 값도 검사하며, 유효한 유니코드와 리터럴 이스케이프 텍스트를 보존한다는 점을 확인했다.",
+        "status": "pass"
+      }
+    ],
+    "evidence_refs": [
+      "d73f92c7014d5efa3ba665ea85973b846d200667d3f65c8583f588cb4379ee53"
+    ],
+    "unresolved": []
+  },
+  "patch_sha256": "4fbfe848d9c1a0aebf3282737b7f3ccc04bcf04b921121c070c0c29a130340e2",
+  "execution_sha256": "9aa9555ad723b01ee81171383eba70b39cd5030327d375cc1b9ee92ee790e626",
+  "offline_replay": {
+    "network": "none",
+    "state_mount": "read_only",
+    "credentials_mounted": false,
+    "status_and_run_match_live_result_bytes": true,
+    "state_files_hashed": 141,
+    "changed_state_files": 0,
+    "new_dispatches": 0
+  }
+}
