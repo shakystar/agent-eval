@@ -1,0 +1,33 @@
+{
+  "legacy_source": "6935f81582aa5e1f0e8414cbf4bba31e47089fd9",
+  "legacy_package_lf_sha256": "edd2f999113a9a2f5ef1b4de45f7a6bff169e9aeb8d395fbde417fca04a9e135",
+  "candidate_source": "2ac1621890141f69fb2f603467eb1f288bed392f",
+  "candidate_package_lf_sha256": "547a4cf82bd15222c71c3e3e076ac8a1b3635cd812f858692ac54d29adeafbba",
+  "bridge_sha256": "3defa3971cc89577ee1ce55fe5e99001c809b8c7701603183b901060e895b723",
+  "local_image_id": "sha256:32656edb8264720aacfc82466b5e1153e4d838a38ee16188913302924a15ccf2",
+  "backend": "fixture",
+  "members": ["acl-007", "acl-005"],
+  "scenarios": {
+    "completed": {
+      "legacy_status": "completed",
+      "candidate_status": "completed",
+      "candidate_dispatches": 0,
+      "runtime_files_unchanged": true,
+      "fresh_process_replays": 2
+    },
+    "pending": {
+      "legacy_status": "blocked",
+      "candidate_status": "blocked",
+      "candidate_dispatches": 0,
+      "runtime_files_unchanged": true,
+      "fresh_process_replays": 2
+    },
+    "uncertain": {
+      "legacy_status": "uncertain",
+      "candidate_status": "uncertain",
+      "candidate_dispatches": 0,
+      "runtime_files_unchanged": true,
+      "fresh_process_replays": 2
+    }
+  }
+}

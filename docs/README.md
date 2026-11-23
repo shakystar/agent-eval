@@ -35,3 +35,5 @@ M3의 초기 단독 실행 1건과 M4의 재고 A 실행은 실제 영수증이 
 문서 작성과 새 마일스톤 기록에 사용하는 두 자료는 비공개 저장소의 접근 권한이 필요합니다. [공통 문서 정책](https://github.com/shakystar/agent-collaboration-lab/blob/main/docs/documentation-policy.md) · [마일스톤 템플릿](https://github.com/shakystar/agent-collaboration-lab/blob/main/templates/milestone.md)
 
 [통합 마일스톤 v0.1.0](milestones/v0.1.0/README.md)
+
+[통합 마일스톤 v0.1.1 · 개발 산출물 인계와 누락 원인 검증](milestones/v0.1.1/README.md)

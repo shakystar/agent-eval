@@ -1,0 +1,6 @@
+{
+  "criterion_id": "status-read-only",
+  "patch_sha256": "91f17a28615678ee58056842023fd634c46ca241dd476521368dd28ccec7f06b",
+  "reason": "By inspection, normal initialization still creates and validates an identity. Status passes create=False: a valid identity matching the manifest passes the existing checks, a missing identity raises before the file is opened for creation, and an invalid identity is rejected rather than replaced. A false-pass counterexample for the tests: inject a same-byte rewrite after validation on the status path and call status twice. Both calls could succeed and leave the same file and bytes, yet each would violate read-only behavior. Observing write operations during each call would expose the defect. No such rewrite appears in the diff. Neither the patched regression nor the supplemental tests were run; file creation by the owner lock or SQLite remains unverified.",
+  "verdict": "accept"
+}
