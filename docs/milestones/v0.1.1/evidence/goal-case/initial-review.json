@@ -1,0 +1,151 @@
+{
+  "input": {
+    "case_id": "strict-json-unicode-scalars",
+    "goal": "Make role_orchestrator.contracts.strict_json reject an unpaired UTF-16 surrogate anywhere in a JSON string or object member name with ValueError. Preserve valid Unicode, supplementary characters, and ordinary literal escape text. Deliver a Python patch and a regression test for this defect.",
+    "base_sha": "2ac1621890141f69fb2f603467eb1f288bed392f",
+    "source": {
+      "path": "/source",
+      "files": [
+        "role_orchestrator/contracts.py"
+      ]
+    }
+  },
+  "image": "sha256:e6178edc7946e737885d4e079bb8e052e417ea651fe0e94ce9706f6cbb486b23",
+  "orchestrator_overlay": {
+    "role_orchestrator/__init__.py": "d3b6141b2dbfde9e5868f9522f828dfd2ffd9317cd32d518bfdcecf977e37e67",
+    "role_orchestrator/__main__.py": "b93b51000d5716bdaa0575cafc7a8d633e92062c83cd9b5d9ff622d01fd7d6da",
+    "role_orchestrator/approval.py": "81b1ad8e3d6fdafa2a215efeae20431c70004f65dd0e2dfabb30962c7aee55cd",
+    "role_orchestrator/assignment.py": "e410be224965aedb9054037295dd2dc400969d9e022aa5fdb2bcd0142a7a2681",
+    "role_orchestrator/attempts.py": "4f36c8ce5d1d2e09c4a6ea62b1b6e7e5a9bd68693b9c0ffeb496082f29870d9b",
+    "role_orchestrator/contracts.py": "4efa32a190c7cd46d24431543b1cfe21a7f05843109bf20ee1187da53d702d0b",
+    "role_orchestrator/development_acceptance.py": "6988a570b8edeec08258f61b94dcd9f2c13e881504bc848029a1f4024783b3b7",
+    "role_orchestrator/development_case.py": "16a2ffb8e4c2174cdf876c612ffb1990b19a31cac0a786ca792bc8c016c136fb",
+    "role_orchestrator/evaluation/__init__.py": "4835309d3457fe21e9d9ee2280ab1d9d67393c7c085e202a3a54a50ca067a7bc",
+    "role_orchestrator/evaluation/__main__.py": "58a309d0764e9fc29b673520dea3669a6672c7fea2c97911f4da3b184354b115",
+    "role_orchestrator/goal_pipeline.py": "0ddfb2554a2648b2cc4d8a75077954f5c411c0fa91ddc3044040815fbc5ebf0c",
+    "role_orchestrator/graph.py": "4a768110843e5f7a2c270e6ac22d8a21a58a174c97b9c83e6799b270e2999ad1",
+    "role_orchestrator/handoff_policy.py": "a73848ae10a866104bc4457c7d5a49c498518cd6e4ad23170ea1ce681293f292",
+    "role_orchestrator/handoff_runner.py": "65a33cc3a9bef5943a4a5a87990d1b242606dbc19666281da02013bd01b6c7c1",
+    "role_orchestrator/handoffs.py": "b0e4dbf585a9863d3b2f7fade890892dffcffb0193e33ab71206e859b09d393b",
+    "role_orchestrator/metrics/__init__.py": "c977eff82868995ceaf0f9ccd9741ce069ab47b32d98843231c1f6d31de61af9",
+    "role_orchestrator/metrics/__main__.py": "f033a70c72f31ede02b85cd00d5ebb8cca7333792b30d43fcfb1c50d46197fc1",
+    "role_orchestrator/metrics/store.py": "515cebcb45ca711a68b0b77970ee1b0f8b0efe2e6a2296b0192cd4ba4d580bf0",
+    "role_orchestrator/observability.py": "97bb9d533922a39f912ac00b7257594e953bdb753cee2aa20167f9874a316e2b",
+    "role_orchestrator/role_contracts.py": "3ea67295ed92d1442e10eab5ef62395dfbf822af98135ec89a9cd2d3eed1a7e5",
+    "role_orchestrator/roster.py": "c72c9121ba42472db4a0eb0599b0b50f8aff21d180db1d0a7093f1f33e05d2e4",
+    "role_orchestrator/runtime.py": "d5a2ca9e021f21d75e25dfb3e46a1f1011ed009e9bb794733e6aef4a2ff3875f",
+    "role_orchestrator/workflow/__init__.py": "c4bc1d0633bbb7e416f7e6345650984ff2c0c038a78bffd9dc383ad84465540f",
+    "role_orchestrator/workflow/__main__.py": "a3a2bf5e31e81dad4b3734d6cc87f2593fc988b21afce18a20b2e581357cb23d",
+    "role_orchestrator/workflow/client.py": "9f7d210a11f8edaac63356384a2c2b072f8e7fc5a6dfdcfc9fa785855c7a26fb",
+    "role_orchestrator/workflow/handoff.py": "6b5c8dd3d6fda4fe90789a547ee75260492b1b55c0ddd789084bfb869293b646",
+    "role_orchestrator/workflow/review.py": "041b822c36b0a80f5939adb91988ab64e4a36021593983583f521a364d23d9cf",
+    "role_orchestrator/workflow/runner.py": "20f1278affae549f154db391bad6c21fff622ce01f0e4d31b794cef94185c75a"
+  },
+  "status": "blocked",
+  "stage": "oracle",
+  "reason": "vectors not approved",
+  "observed_oracle_verdict": "revise",
+  "vectors_sha256": "cbf74e7e5471548a3649d37715fff1fa3a9464d6e03169293cb2be0c2d20c922",
+  "reviewed_vectors_sha256": "cbf74e7e5471548a3649d37715fff1fa3a9464d6e03169293cb2be0c2d20c922",
+  "independent_oracle_sha256": "1378319dd8c6e3d2a09445e4419c7dbc24d9a26034247fc9efde5f83fa98ef57",
+  "baseline_exit_code": 1,
+  "additional_dispatches_on_status": 0,
+  "same_status_report": true,
+  "native_records": [
+    {
+      "task_id": "identity",
+      "member_id": "acl-002",
+      "role": "identity-designer",
+      "run_id": "r-d8776ef254a54e85b4bff135ddf6aee9",
+      "attempt_id": "a-8ea82df892573633f2c55af2be3a3a2a",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "high",
+        "model": "gpt-6.2-sol"
+      },
+      "status": "succeeded",
+      "input_sha256": "fee1a68f9233ae6ce129de59c87cdc50cbbe764c9445b3a947a13d77550d07d1",
+      "contract_sha256": "53ce269e8d1de439e3e251dad8eb4f38f2dc86767e8a03b1ea8aad2fed855a4d",
+      "wire_sha256": "3da49a95e469986ee68beaaef9305a11d4db5456876488dd855f05a00f6192e6",
+      "receipt_sha256": "2a2510c9202a5b6d62d830feb99862f943375556c3a1d455f3c6ffe790777dab",
+      "output_sha256": "959337d48178be25056dd466369c795858fa1dcdc49802f48824c02a1d335568"
+    },
+    {
+      "task_id": "oracle",
+      "member_id": "acl-005",
+      "role": "oracle-reviewer-v2",
+      "run_id": "r-893914fbbb9049d29a3890cbd735b147",
+      "attempt_id": "a-b3e1a2bfdd7762f02b85d6f33408bb6f",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "high",
+        "model": "gpt-6.2-astra"
+      },
+      "status": "succeeded",
+      "input_sha256": "22a248d7041313cfab836043e09f6f987881f38938e39e52c2a6286d848530ac",
+      "contract_sha256": "0f8d92b858d9fdf04c7484a275baebed566c04838654cf3d176c8c1ed9b4ef8f",
+      "wire_sha256": "b972c0ed67a943063ab8bb1571d11f5a9eaff0f79d387297c1fbade6730de26a",
+      "receipt_sha256": "1893e9c935c10dda79be77b6dd61059800761a83192be6cfbaee3dd8dfc92499",
+      "output_sha256": "dd41f882b2483a0f6ebb8da23ef2ef66974a222c465d8049e077958075e99e52"
+    },
+    {
+      "task_id": "scenario",
+      "member_id": "acl-001",
+      "role": "scenario-writer",
+      "run_id": "r-e9bd3c437f3d485a8360e90c0a3ac227",
+      "attempt_id": "a-37abfdcdb10c9f2822f6218932eed0c8",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "medium",
+        "model": "gpt-6.2-sol"
+      },
+      "status": "succeeded",
+      "input_sha256": "edad477ac4a1c433956b079dd977e582027032e1502f7c99a539442823010679",
+      "contract_sha256": "bfbf484bd1c53f33ad09e9d05500c69bf46d3338f127b8cce0e43517bb8dfbbd",
+      "wire_sha256": "f79cdbc2a2307157de89d7781dc28ad1a8649368a95acac82dba9e5e861ce129",
+      "receipt_sha256": "acfb83d7f5b03a0a64c6cb42e68e66c7b41caf318a656b18cff19078275db7e0",
+      "output_sha256": "bfea3e50a41e514b5251384b7fa942f3dc296739e0f4c7b0ff33c951337a7057"
+    },
+    {
+      "task_id": "vectors",
+      "member_id": "acl-004",
+      "role": "fixture-author-v2",
+      "run_id": "r-a0c01fff1d3448f49050b3c384e2f7c4",
+      "attempt_id": "a-4628cad126a7cf0b2d12bd773a4525bb",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "medium",
+        "model": "gpt-6.2-sol"
+      },
+      "status": "succeeded",
+      "input_sha256": "ff5973c33f7ae2dc9374b2611ee22c2b1960d47b1fbdebf9c2225ed4d645c834",
+      "contract_sha256": "4c5888539f546348cd371d3c11c7ad9c99fe6f7ad01e3a133464335b47fddc7f",
+      "wire_sha256": "5ade1751b900f0052f7de274c9c13cd63ce28c61fcb276137834ede5aaa1b1db",
+      "receipt_sha256": "0021cc965c32284663a4708b2128a9ab905b450b959f432c5f47d6fe7c989b7e",
+      "output_sha256": "c8254fd0a0a1b4df1ef1eaf9d8eb2bbcacfa467c2798d56f4448a1d237ffba92"
+    },
+    {
+      "task_id": "windows",
+      "member_id": "acl-003",
+      "role": "crash-window-analyst",
+      "run_id": "r-75e36b0972c24160acb82cf7c9425000",
+      "attempt_id": "a-b844edbaf81113635aa1c81b920904b3",
+      "backend": "codex",
+      "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+      "requested": {
+        "effort": "high",
+        "model": "gpt-6.2-astra"
+      },
+      "status": "succeeded",
+      "input_sha256": "bf1f7e329de4fa4906fb6cf2b31fcd7f92ffaf7cbef9b78b39f0af2585299d12",
+      "contract_sha256": "9526a2745d086488834d1c3d685960db10bc8ef30967a6ad6957049f1b08d61f",
+      "wire_sha256": "2dc3d2a203a4c7513772304b68ab173a793dcc2ce3fbefe3b9c71acf076bbab3",
+      "receipt_sha256": "9e734fff9b6039cd2fdbc0ac6044335873e37e5d692ee16fc3ca1b65eddc76c6",
+      "output_sha256": "62ffe6a8817984ce36b6a9866ed6034140c876c34a6b0fbd527d57711f57e00a"
+    }
+  ]
+}

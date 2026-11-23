@@ -11,3 +11,7 @@ docs/validation/m5.1/* text eol=lf
 docs/milestones/v0.1.1/evidence/*.json -text
 docs/milestones/v0.1.1/evidence/*.py text eol=lf
 docs/milestones/v0.1.1/evidence/*.sh text eol=lf
+# Preserve the isolated executor's exact input and result bytes.
+docs/milestones/v0.1.1/evidence/goal-case/** -text
+docs/milestones/v0.1.1/evidence/goal-case/author.patch -whitespace
+docs/milestones/v0.1.1/evidence/goal-case/role-baseline.txt -whitespace

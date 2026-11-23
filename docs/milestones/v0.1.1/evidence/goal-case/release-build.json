@@ -1,0 +1,19 @@
+{
+  "candidate_commit": "83ebf3801951521c5f30474c1a1871037aa8f3c5",
+  "git_tree": "4eb4e5fa42f7ac686769670ffe07b799f7289234",
+  "checked_out_tree_clean": true,
+  "matched_applied_patch_blobs": {
+    "role_orchestrator/contracts.py": "7f24df397a504a9c5a9985635e7b4ec7f31ee988",
+    "tests/test_strict_json_unicode_scalars.py": "0789f6482c34f0d4e6a74d48dc0c45df8f5fe911"
+  },
+  "oracle": {
+    "exit_code": 0,
+    "log_sha256": "dd7373025afbd32ebe4580637dd29067e9e4a1579b23ef1f883cb3ac7335f234",
+    "observed_log": "PASS nested lone surrogates rejected; Unicode and literal escapes preserved\n"
+  },
+  "role_regression": {
+    "exit_code": 0,
+    "log_sha256": "2a7d8bd63a81596f21536f194b3c5bdc339cdeee52c41b137fb5a111a262cb77",
+    "observed_log": "test_preserves_valid_strings (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_preserves_valid_strings) ... ok\ntest_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.004s\n\nOK\n"
+  }
+}

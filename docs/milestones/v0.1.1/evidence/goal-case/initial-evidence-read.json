@@ -1,0 +1,22 @@
+{
+  "state": "needs_review",
+  "patch_sha256": "82dd33f6b340bff5a8f659d37a303e148535df0bc177150fa13ff6d33c65e4e1",
+  "execution_sha256": "621cd21ac0c7b12752aa33ed0403e31e05fbf788eff2a24f48e5e4375bbba68c",
+  "verdict": {
+    "criteria": [
+      {
+        "comparison": "The supplied oracle and targeted regression both exited 1 on baseline 2ac1621890141f69fb2f603467eb1f288bed392f and 0 on the candidate. The candidate checks confirmed rejection of lone surrogates with ValueError and preservation of valid Unicode and literal escape text.",
+        "criterion_id": "strict-json-unicode-scalars",
+        "status": "pass"
+      }
+    ],
+    "evidence_refs": [
+      "51161983220f4b94781eaed16a1010382a2ff85929d17cb7fdc6a242b74f8da8"
+    ],
+    "unresolved": [
+      "The execution record supplies a patch digest and receipts but no explicit candidate build SHA, so the passing results cannot be tied to a specific release build SHA from the supplied evidence."
+    ]
+  },
+  "member_id": "acl-009",
+  "receipt_sha256": "737237978edbd45e2bc94de2be69be98aa12a6046fafccf0dd9d7fe35334ce58"
+}

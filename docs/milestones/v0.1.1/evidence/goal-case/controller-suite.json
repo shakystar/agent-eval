@@ -1,0 +1,12 @@
+{
+  "controller_commit": "dd07d43136dda2020e60612e56f47ee530c208af",
+  "task_commit": "401080b2002948a8d707591cb2f2690adae0e27e",
+  "image": "sha256:444e0ee85be83586681ec3584401f0e297fc180c2d1d98216a4b8d094117563f",
+  "runner": "evidence/check_candidate.sh",
+  "command": "python -m unittest discover -s tests -v",
+  "tests": 122,
+  "skipped": 0,
+  "seconds": 487.101,
+  "exit_code": 0,
+  "log_sha256": "f4de8dc6db78349431f2d6eb9a5455e97aca80723848272745f75db9ca8c5ba9"
+}

@@ -1,0 +1,223 @@
+test_preserves_valid_strings (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_preserves_valid_strings) ... ok
+test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) ... 
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\ud800'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\ud800'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\ud800'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\udc00'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\udc00'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\udc00'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\\\uD800'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\\\uD800'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\\\uD800'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\\\uDC00'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\\\uDC00'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\\\uDC00'", embedded=False) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\ud800'", embedded=True) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\ud800'", embedded=True) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\ud800'", embedded=True) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\udc00'", embedded=True) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\udc00'", embedded=True) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\udc00'", embedded=True) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\\\uD800'", embedded=True) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\\\uD800'", embedded=True) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\\\uD800'", embedded=True) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\\\uDC00'", embedded=True) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\\\uDC00'", embedded=True) ... FAIL
+  test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\\\uDC00'", embedded=True) ... FAIL
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\ud800'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\ud800'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\ud800'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\udc00'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\udc00'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\udc00'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\\\uD800'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\\\uD800'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\\\uD800'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\\\uDC00'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\\\uDC00'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\\\uDC00'", embedded=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\ud800'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\ud800'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\ud800'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\udc00'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\udc00'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\udc00'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\\\uD800'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\\\uD800'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\\\uD800'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form="'\\\\uDC00'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form="'\\\\uDC00'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form="'\\\\uDC00'", embedded=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/source/tests/test_strict_json_unicode_scalars.py", line 21, in test_rejects_lone_surrogates
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.008s
+
+FAILED (failures=24)

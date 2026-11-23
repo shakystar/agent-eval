@@ -1,0 +1,7 @@
+test_preserves_valid_strings (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_preserves_valid_strings) ... ok
+test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.003s
+
+OK
