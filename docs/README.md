@@ -33,3 +33,5 @@ M0는 연동 사전 검사이며, M1~M4는 첫 버전의 개발 마일스톤입�
 M3의 초기 단독 실행 1건과 M4의 재고 A 실행은 실제 영수증이 있으나 해당 턴의 모델명 기록이 없습니다. 재고 3건의 과제 타당성은 승인됐으며, 재고 산출물에 대한 독립적인 사람 판정 일치율은 미측정입니다. [M3 실행 기록](validation/m3.md) · [재고 실행 증거](validation/m4/inventory-codex.md) · [M4 기준 대조](validation/m4.md)
 
 문서 작성과 새 마일스톤 기록에 사용하는 두 자료는 비공개 저장소의 접근 권한이 필요합니다. [공통 문서 정책](https://github.com/shakystar/agent-collaboration-lab/blob/main/docs/documentation-policy.md) · [마일스톤 템플릿](https://github.com/shakystar/agent-collaboration-lab/blob/main/templates/milestone.md)
+
+[통합 마일스톤 v0.1.0](milestones/v0.1.0/README.md)
