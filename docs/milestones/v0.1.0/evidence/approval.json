@@ -1,0 +1,171 @@
+{
+  "version": 1,
+  "baseline": {
+    "agent-eval": "6db70ed063b2d993670f56408da0493524a02bfa",
+    "role-orchestrator": "66657b78210fd16697175abec4b1807e95ed1a28",
+    "role-runtime": "7b2f83702fac83e4004bf7b105a343872e3e53d6",
+    "codex-adapter": "2b8c204b0cb7e3c63c60a3fa7923e4e9ca4d02bb"
+  },
+  "candidate": {
+    "agent-eval": "f217804010233c727fc7b2e44d6c05776cc93bf0",
+    "role-orchestrator": "6935f81582aa5e1f0e8414cbf4bba31e47089fd9",
+    "role-runtime": "722c9f620a707a8dc42c43a44f3666a3ba4fc87e",
+    "codex-adapter": "17b36ab24d29f45799af705cca2e35c35af1a609"
+  },
+  "cases": [
+    {
+      "artifact": null,
+      "attempts_after": [],
+      "attempts_before": [],
+      "id": "stale",
+      "model_backend": "fixture",
+      "native_leases_after": [],
+      "native_leases_before": [],
+      "observed_status": "conflict",
+      "review_sha256": "e813967b5922894241e001185ae9acf61ae37c55764c57066096989f6d3854eb",
+      "run_id": "ar-1192065852"
+    },
+    {
+      "artifact": null,
+      "attempts_after": [],
+      "attempts_before": [],
+      "id": "interrupted",
+      "model_backend": "fixture",
+      "native_leases_after": [],
+      "native_leases_before": [],
+      "observed_status": "uncertain",
+      "review_sha256": "e813967b5922894241e001185ae9acf61ae37c55764c57066096989f6d3854eb",
+      "run_id": "ar-2747290596"
+    },
+    {
+      "artifact": {
+        "id": "revision-a0194f1f34935c6557ba56709787ac1753cbbbe025f047c1060354c818824b2b.json",
+        "sha256": "f35f34d8cf971ceeb37a16e84102a77b270f53015b80ec2bc7e7985befe3eef3"
+      },
+      "artifact_file": "ar-400773804/first/artifact.bin",
+      "attempts_after": [
+        "[\"a0194f1f34935c6557ba56709787ac1753cbbbe025f047c1060354c818824b2b\",1]"
+      ],
+      "attempts_before": [],
+      "id": "first",
+      "model_backend": "fixture",
+      "native_leases_after": [
+        {
+          "task_id": "a0194f1f34935c6557ba56709787ac1753cbbbe025f047c1060354c818824b2b",
+          "generation": 1
+        }
+      ],
+      "native_leases_before": [],
+      "observed_status": "completed",
+      "review_sha256": "e813967b5922894241e001185ae9acf61ae37c55764c57066096989f6d3854eb",
+      "run_id": "ar-400773804"
+    },
+    {
+      "artifact": {
+        "id": "revision-a0194f1f34935c6557ba56709787ac1753cbbbe025f047c1060354c818824b2b.json",
+        "sha256": "f35f34d8cf971ceeb37a16e84102a77b270f53015b80ec2bc7e7985befe3eef3"
+      },
+      "artifact_file": "ar-400773804/repeat/artifact.bin",
+      "attempts_after": [
+        "[\"a0194f1f34935c6557ba56709787ac1753cbbbe025f047c1060354c818824b2b\",1]"
+      ],
+      "attempts_before": [
+        "[\"a0194f1f34935c6557ba56709787ac1753cbbbe025f047c1060354c818824b2b\",1]"
+      ],
+      "id": "repeat",
+      "model_backend": "fixture",
+      "native_leases_after": [
+        {
+          "task_id": "a0194f1f34935c6557ba56709787ac1753cbbbe025f047c1060354c818824b2b",
+          "generation": 1
+        }
+      ],
+      "native_leases_before": [
+        {
+          "task_id": "a0194f1f34935c6557ba56709787ac1753cbbbe025f047c1060354c818824b2b",
+          "generation": 1
+        }
+      ],
+      "observed_status": "completed",
+      "review_sha256": "e813967b5922894241e001185ae9acf61ae37c55764c57066096989f6d3854eb",
+      "run_id": "ar-400773804"
+    },
+    {
+      "artifact": {
+        "id": "revision-3464666e1b1369d83df9219f44a9d764e0a1f43869dbf5aa1786222374740e83.json",
+        "sha256": "f35f34d8cf971ceeb37a16e84102a77b270f53015b80ec2bc7e7985befe3eef3"
+      },
+      "artifact_file": "ar-4105206425/concurrent/artifact.bin",
+      "attempts_after": [
+        "[\"3464666e1b1369d83df9219f44a9d764e0a1f43869dbf5aa1786222374740e83\",1]"
+      ],
+      "attempts_before": [],
+      "id": "concurrent",
+      "model_backend": "fixture",
+      "native_leases_after": [
+        {
+          "task_id": "3464666e1b1369d83df9219f44a9d764e0a1f43869dbf5aa1786222374740e83",
+          "generation": 1
+        }
+      ],
+      "native_leases_before": [],
+      "observed_status": "completed",
+      "review_sha256": "e813967b5922894241e001185ae9acf61ae37c55764c57066096989f6d3854eb",
+      "run_id": "ar-4105206425"
+    },
+    {
+      "artifact": null,
+      "attempts_after": [],
+      "attempts_before": [],
+      "id": "unsupported",
+      "model_backend": "fixture",
+      "native_leases_after": [],
+      "native_leases_before": [],
+      "observed_status": "unsupported",
+      "review_sha256": "713be2f879329ddf184df1d6dd7b41fb7ec2a5e82cb52ad0f0969899bc8f6ec2",
+      "run_id": "ar-591353512"
+    },
+    {
+      "artifact": {
+        "id": "revision-7a16415399534de441370b2b3a79eda7569da06a756d9f26e6d7c22777e06e2b.json",
+        "sha256": "f35f34d8cf971ceeb37a16e84102a77b270f53015b80ec2bc7e7985befe3eef3"
+      },
+      "artifact_file": "ar-760195075/recover/artifact.bin",
+      "attempts_after": [
+        "[\"7a16415399534de441370b2b3a79eda7569da06a756d9f26e6d7c22777e06e2b\",1]"
+      ],
+      "attempts_before": [
+        "[\"7a16415399534de441370b2b3a79eda7569da06a756d9f26e6d7c22777e06e2b\",1]"
+      ],
+      "id": "recover",
+      "model_backend": "fixture",
+      "native_leases_after": [
+        {
+          "task_id": "7a16415399534de441370b2b3a79eda7569da06a756d9f26e6d7c22777e06e2b",
+          "generation": 1
+        }
+      ],
+      "native_leases_before": [
+        {
+          "task_id": "7a16415399534de441370b2b3a79eda7569da06a756d9f26e6d7c22777e06e2b",
+          "generation": 1
+        }
+      ],
+      "observed_status": "completed",
+      "review_sha256": "e813967b5922894241e001185ae9acf61ae37c55764c57066096989f6d3854eb",
+      "run_id": "ar-760195075"
+    }
+  ],
+  "legacy": {
+    "fixture": {
+      "expected": 9,
+      "completed": 9,
+      "source": "fixture-regression.json"
+    },
+    "live": {
+      "expected": 9,
+      "completed": 9,
+      "source": "codex-regression.json"
+    }
+  }
+}
