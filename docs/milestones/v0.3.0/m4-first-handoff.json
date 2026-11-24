@@ -1,0 +1,109 @@
+{
+  "candidate": "d464dfb4daeddf544a6ab976caf43fa12f4cc5d9",
+  "review": {
+    "member": "acl-012",
+    "receipt": "ca10fbaf714bbb6144ac5af12599d265653dbc71fe730e93428b9daa313893be",
+    "reason": "role_orchestrator/research_handoff.py의 apply()에서 observe가 기록한 미확인 사실은 synthesize의 주장별 판정에 반영되지 않는다. SYN-SIG-01에서 관찰 단계가 S1의 분모 누락을 기록하더라도, 분모에 의존하는 범위 확장 주장이 requires에서 이를 빠뜨리고 검토가 missing 없이 support를 반환하면 해당 주장이 eligible로 분류되어 select_followup으로 선택될 수 있다. 원작성자(acl-007)는 관찰 단계의 미확인 사실을 해당 사실에 의존하는 주장에 연결하고, 이 조건에서 범위 확장 주장만 revision_hold로 남고 제한된 관찰은 eligible을 유지하는 회귀 테스트를 추가해야 한다. 실모델 통합과 전체 회귀는 M5에서 별도로 확인한다."
+  },
+  "live": {
+    "request": {
+      "decision": {
+        "action": "hold",
+        "phase": "observe",
+        "reason": "invalid_observation",
+        "terminal": true
+      },
+      "verified_member": "acl-023",
+      "receipt": "7015d8cbcb74842387a45606f3b2729fc66ace1eb0ba1977cb940120187406dd",
+      "received_fields": [
+        "access_scope",
+        "approved_goal",
+        "case_id",
+        "case_sha256",
+        "clarification_requests",
+        "constraints",
+        "decision_question",
+        "evidence",
+        "falsifiers",
+        "handoff",
+        "hypotheses",
+        "kind",
+        "needs",
+        "observations",
+        "phase",
+        "recommendation",
+        "request",
+        "signals",
+        "synthetic",
+        "unknowns"
+      ],
+      "extra_fields": [
+        "access_scope",
+        "approved_goal",
+        "case_id",
+        "case_sha256",
+        "clarification_requests",
+        "constraints",
+        "decision_question",
+        "evidence",
+        "handoff",
+        "kind",
+        "phase",
+        "recommendation",
+        "request",
+        "synthetic"
+      ]
+    },
+    "signal": {
+      "decision": {
+        "action": "hold",
+        "phase": "observe",
+        "reason": "invalid_observation",
+        "terminal": true
+      },
+      "verified_member": "acl-023",
+      "receipt": "13799b2d681383d7246f5be698285ef033d766d4bb429e7d63875455ce7b234f",
+      "received_fields": [
+        "access_scope",
+        "approved_goal",
+        "case_id",
+        "case_sha256",
+        "constraints",
+        "decision_question",
+        "deferred_conclusions",
+        "evidence",
+        "falsifiers",
+        "follow_up_requests",
+        "handoff",
+        "hypotheses",
+        "kind",
+        "needs",
+        "observations",
+        "phase",
+        "planning_owner",
+        "signal_source",
+        "signals",
+        "synthetic",
+        "unknowns"
+      ],
+      "extra_fields": [
+        "access_scope",
+        "approved_goal",
+        "case_id",
+        "case_sha256",
+        "constraints",
+        "decision_question",
+        "deferred_conclusions",
+        "evidence",
+        "follow_up_requests",
+        "handoff",
+        "kind",
+        "phase",
+        "planning_owner",
+        "signal_source",
+        "synthetic"
+      ]
+    }
+  },
+  "classification": "Both live observers provided required fields and additional descriptive metadata. Strict equality rejected the whole handoff. Independent code review also found a claim eligibility defect."
+}
