@@ -1,0 +1,32 @@
+{
+  "candidate": "f4fb972931ac42181108a9be75bd33721b4ce001",
+  "backend": "fixture",
+  "history": [
+    {
+      "fault": "lost-terminal-and-trailing-member",
+      "terminal_record_present": false,
+      "observed": "hold",
+      "code": 3,
+      "new_frames": []
+    }
+  ],
+  "policy_diagnostic": [
+    {
+      "action": "run",
+      "state": "hold",
+      "reason": "Expecting value: line 1 column 1 (char 0)",
+      "member": null,
+      "new_frames": [
+        "[\"author\", \"acl-007\"]",
+        "[\"acl-012\", \"acl-012\"]"
+      ]
+    },
+    {
+      "action": "status",
+      "state": "hold",
+      "reason": "Expecting value: line 1 column 1 (char 0)",
+      "member": null,
+      "new_frames": []
+    }
+  ]
+}
