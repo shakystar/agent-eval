@@ -117,7 +117,6 @@
       }
     }
   },
-  "outcome": "adopt",
   "runs": [
     {
       "case": "CAL01",
@@ -1115,5 +1114,7 @@
         }
       ]
     }
-  }
+  },
+  "semantic_threshold_result": "adopt",
+  "independent_adjudication": "retain_current"
 }
