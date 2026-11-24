@@ -1,0 +1,40 @@
+{
+  "runs": [
+    {
+      "file": "m0-regression.log",
+      "sha256": "1768fd38c7ebe5fd935ab9b64e01c8b10f157b669134df21a1b16bb60bc2273b",
+      "tests": 132,
+      "seconds": 140.388,
+      "failures": [
+        "test_ack_crash (test_live_workflow.LiveWorkflowTests.test_ack_crash)",
+        "test_active_query (test_live_workflow.LiveWorkflowTests.test_active_query)",
+        "test_artifact_invalid (test_live_workflow.LiveWorkflowTests.test_artifact_invalid)",
+        "test_checkpoint_crash (test_live_workflow.LiveWorkflowTests.test_checkpoint_crash)",
+        "test_inbox_crash (test_live_workflow.LiveWorkflowTests.test_inbox_crash)",
+        "test_langfuse_down (test_live_workflow.LiveWorkflowTests.test_langfuse_down)",
+        "test_producer_uncertain (test_live_workflow.LiveWorkflowTests.test_producer_uncertain)",
+        "test_restart_and_rebuild (test_live_workflow.LiveWorkflowTests.test_restart_and_rebuild)",
+        "test_sms_duplicate (test_live_workflow.LiveWorkflowTests.test_sms_duplicate)",
+        "test_sms_early (test_live_workflow.LiveWorkflowTests.test_sms_early)",
+        "test_sms_normal (test_live_workflow.LiveWorkflowTests.test_sms_normal)",
+        "test_sms_scope (test_live_workflow.LiveWorkflowTests.test_sms_scope)"
+      ],
+      "socket_bind_denied": 12,
+      "ok": false
+    },
+    {
+      "file": "m0-host-socket-retry.log",
+      "sha256": "0fe143c2801dc5f77850157e7304583fcb5e4ae601a3623ec87cecd9adf44a00",
+      "tests": 12,
+      "seconds": 46.82,
+      "failures": [],
+      "socket_bind_denied": 0,
+      "ok": true
+    }
+  ],
+  "executables": {
+    ".team-candidates/runtime-bridge-m2": "09ae541d5da177cf9199acb8913061228475ae7b4d7f8b64903293bc207cce08",
+    ".team-candidates/runtime-workflow-m5": "5ece78f939d94e5f97958d0355e8b882ddaa6de8fa2291a197ed92dce898e19a",
+    "role-runtime/bin/workflow-probe": "7f7451ab8f0ad77a26ee2969bf09796b45ce406c03f76a150c4ab2c3fd117940"
+  }
+}
