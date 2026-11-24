@@ -1,0 +1,11 @@
+{
+  "candidate": "1415bbaa20c0a49349ebfe7488be0d5f574d0df1",
+  "native_missing_cached_verdict": "accept",
+  "both_missing": "hold",
+  "reason": "assignment status did not yield a valid succeeded receipt: assignment did not report success",
+  "changed_input": {
+    "reason": "review input changed; use a new review revision",
+    "state": "error"
+  },
+  "new_submissions": 0
+}

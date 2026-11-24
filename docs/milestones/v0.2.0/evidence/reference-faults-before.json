@@ -1,0 +1,22 @@
+{
+  "candidate": "44316f364c8a9542c2328d51e6f5ce82ffd90796",
+  "first": [
+    0,
+    "accepted"
+  ],
+  "replay_after_trailing_history_loss": [
+    0,
+    "accepted"
+  ],
+  "replay_new_frames": [
+    "[\"acl-005\", \"acl-005\"]"
+  ],
+  "incomplete_fixture": [
+    2,
+    "rejected"
+  ],
+  "invalid_created_state": true,
+  "invalid_new_frames": [
+    "[\"acl-010\", \"acl-010\"]"
+  ]
+}

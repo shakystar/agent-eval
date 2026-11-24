@@ -1,0 +1,11 @@
+{
+  "producer": "dd07d43136dda2020e60612e56f47ee530c208af",
+  "reader": "1415bbaa20c0a49349ebfe7488be0d5f574d0df1",
+  "backend": "fixture",
+  "initial": "accept",
+  "lookup": "accept",
+  "equal_result": true,
+  "unchanged_files": true,
+  "file_count": 27,
+  "extra_frames": 0
+}

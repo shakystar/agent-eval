@@ -1,0 +1,16 @@
+{
+  "reader": "44316f364c8a9542c2328d51e6f5ce82ffd90796",
+  "case_id": "v020-live-parent-criteria",
+  "revision": 2,
+  "decision": "revise",
+  "same_result": true,
+  "files_unchanged": true,
+  "file_count": 53,
+  "receipts": [
+    {
+      "member": "acl-010",
+      "hash": "bfb695bcbdd8771729c1284e75e5a2fd2be373a0f9570afd94c4e4b86c686324",
+      "attempt": "a-13d32c9755c04c80c5f5f3c11d49ebc3"
+    }
+  ]
+}

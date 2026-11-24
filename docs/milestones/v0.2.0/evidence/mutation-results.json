@@ -1,0 +1,156 @@
+{
+  "scope": "Synthetic reviewer classification, not integrated candidate execution",
+  "policy_sha": "9bda89879d1587a74d91aff5d8f9d28c103542f6",
+  "revisions": [
+    {
+      "revision": 1,
+      "member": "acl-012",
+      "receipt_sha256": "8a228f7d4582ee94b980cc897d81b8e974f4ec515cc89eb85dd4d50178b9bbfd",
+      "attempt_id": "a-0a7d5cec0a88cb821900393ae702ac75",
+      "cases": [
+        {
+          "case_id": "c17",
+          "rule": "OWN-01",
+          "expected": "revise",
+          "observed": "blocked",
+          "observed_rules": [
+            "OWN-01"
+          ],
+          "matches": false,
+          "evidence": "c17 | OWN-01 | blocked — 조회 전후 업무 영수증이 []에서 [success]로 바뀌었지만 조회가 쓰기를 유발했는지는 확인되지 않았다. 다른 쓰기 주체를 배제한 빈 상태에서 조회를 재현하고 영수증 작성 경로를 추적한다."
+        },
+        {
+          "case_id": "c24",
+          "rule": "REC-01",
+          "expected": "accept",
+          "observed": "accept",
+          "observed_rules": [
+            "REC-01"
+          ],
+          "matches": true,
+          "evidence": "c24 | REC-01 | accept — 동일 attempt의 기존 영수증을 회수했고 브리지 진입 계수가 1로 유지되어, 이 재개 경로에서는 재제출이 관측되지 않았다."
+        },
+        {
+          "case_id": "c38",
+          "rule": "SER-01",
+          "expected": "accept",
+          "observed": "accept",
+          "observed_rules": [
+            "SER-01"
+          ],
+          "matches": true,
+          "evidence": "c38 | SER-01 | accept — 저장 JSON과 산출물 해시 입력에 서로 다른 인코딩을 사용하면서 두 소비자의 기존 바이트 기준 벡터를 보존했다."
+        },
+        {
+          "case_id": "c42",
+          "rule": "REC-01",
+          "expected": "revise",
+          "observed": "revise",
+          "observed_rules": [
+            "REC-01"
+          ],
+          "matches": true,
+          "evidence": "c42 | REC-01 | revise — 응답 유실 복구 중 같은 논리 키의 제출 경로에 두 번 진입했다. 재제출 전에 기존 의도와 영수증을 대조하고, 실행 여부가 불확실하면 보류하도록 수정한 뒤 제출 진입 횟수를 재검증한다."
+        },
+        {
+          "case_id": "c59",
+          "rule": "OWN-01",
+          "expected": "accept",
+          "observed": "accept",
+          "observed_rules": [
+            "OWN-01"
+          ],
+          "matches": true,
+          "evidence": "c59 | OWN-01 | accept — 별도 관측 로그만 추가됐고 업무 파일 목록과 내용 해시는 그대로였으며 신규 제출은 0회였다."
+        },
+        {
+          "case_id": "c63",
+          "rule": "SER-01",
+          "expected": "revise",
+          "observed": "revise",
+          "observed_rules": [
+            "SER-01",
+            "API-01"
+          ],
+          "matches": true,
+          "evidence": "c63 | SER-01, API-01 | revise — 새 저장 인코더를 해시 입력에 재사용해 동일한 한글 페이로드의 기존 다이제스트가 달라졌다. 기존 해시용 UTF-8 직렬화를 복원하고 고정 벡터를 회귀 검사한다."
+        }
+      ]
+    },
+    {
+      "revision": 2,
+      "member": "acl-012",
+      "receipt_sha256": "00b06268ca59eab2b6698647547ae6a85aa7a72e8c81ab9f30497ce330e324e6",
+      "attempt_id": "a-c414d2d0933760e93eedb1ee51853f6b",
+      "cases": [
+        {
+          "case_id": "c17",
+          "rule": "OWN-01",
+          "expected": "revise",
+          "observed": "revise",
+          "observed_rules": [
+            "OWN-01"
+          ],
+          "matches": true,
+          "evidence": "c17 | OWN-01 | revise — 조회 본문의 `write_bytes` 호출이 빈 업무 디렉터리에 `receipt.json`을 생성하므로 읽기 전용 계약을 위반한다."
+        },
+        {
+          "case_id": "c24",
+          "rule": "REC-01",
+          "expected": "accept",
+          "observed": "accept",
+          "observed_rules": [
+            "REC-01"
+          ],
+          "matches": true,
+          "evidence": "c24 | REC-01 | accept — 재개 시 동일 attempt의 기존 영수증을 회수했고 브리지 진입 계수가 1로 유지됐다."
+        },
+        {
+          "case_id": "c38",
+          "rule": "SER-01",
+          "expected": "accept",
+          "observed": "accept",
+          "observed_rules": [
+            "SER-01"
+          ],
+          "matches": true,
+          "evidence": "c38 | SER-01 | accept — 저장 JSON의 비ASCII 이스케이프와 산출물 해시의 정규 UTF-8 표현을 분리했고, 두 소비자 모두 각자의 기존 바이트 벡터와 일치했다."
+        },
+        {
+          "case_id": "c42",
+          "rule": "REC-01",
+          "expected": "revise",
+          "observed": "revise",
+          "observed_rules": [
+            "REC-01"
+          ],
+          "matches": true,
+          "evidence": "c42 | REC-01 | revise — 첫 응답 유실 후 동일 논리 키로 제출 경로에 두 번 진입했다. 이는 중복 실행을 입증하지는 않지만, 재제출 전에 동일 키의 기록을 대조해야 한다."
+        },
+        {
+          "case_id": "c59",
+          "rule": "OWN-01",
+          "expected": "accept",
+          "observed": "accept",
+          "observed_rules": [
+            "OWN-01"
+          ],
+          "matches": true,
+          "evidence": "c59 | OWN-01 | accept — 조회는 별도 관측 로그만 남겼으며 업무 파일 목록과 내용 해시가 그대로였고 신규 제출도 없었다."
+        },
+        {
+          "case_id": "c63",
+          "rule": "SER-01",
+          "expected": "revise",
+          "observed": "revise",
+          "observed_rules": [
+            "SER-01",
+            "API-01"
+          ],
+          "matches": true,
+          "evidence": "c63 | SER-01, API-01 | revise — 저장 인코더를 해시 경로에 적용하자 동일한 과거 한글 페이로드의 고정 다이제스트가 달라졌다."
+        }
+      ]
+    }
+  ]
+}
