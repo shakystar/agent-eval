@@ -29,3 +29,7 @@
 [기획팀 계약](https://github.com/shakystar/agent-collaboration-lab/blob/ff370f3fcc2fe4479851ee7d9592546dae9ac5e8/docs/team/planning-team.md)은 최초 반려 후 독립 수락됐다. 기획팀이 실제로 담당자를 선택해 최초 실모델 과제를 완료했다. 중단·경합 이후 제출 키별 실측과 근거의 실행별 분리를 거쳐 수정 후보가 인수됐다. [중간 판정](m2-intermediate.json) · [복구 시험](m2-recovery.json) · [출처 목록](m2-provenance.json) · [최종 인수](m2-acceptance.json)
 
 M2 최종 후보 3037d84에서 기존·신규 전체 호스트 회귀 138건이 179.684초에 통과했고 건너뛴 검사는 0건이었다. 로그 SHA-256은 `44d3df15490f0c7dedc034d6394548e74150a00f37a7b5e6594e084074bea0dd`이다.
+
+## M3 기획팀의 첫 연구팀 명세
+
+[기획팀 원작성 명세](https://github.com/shakystar/role-orchestrator/blob/c964a0cc8196b931e9e3cbb4f365e4320a2f7042/docs/features/research-team.md)를 개발팀과 독립 리뷰팀에 인계했다. [최초 보완 요구](m3-first-handoff.json) 및 [개정 후 개발 착수·리뷰 판정 가능 확인](m3-acceptance.json)을 함께 기록한다. M4·M5 실행 인수에서 한 하위 배정의 관찰 대기 예산은 기존 subprocess와 같은 600초다. 그 뒤에는 불확실 상태를 조회한다.
