@@ -1,0 +1,117 @@
+{
+  "candidate": "0ad0ccbf7ba9822435e298ed75a76127831e75e0",
+  "live_decision": "accept",
+  "native_receipts": [
+    {
+      "member_id": "acl-021",
+      "task_id": "planning--1",
+      "receipt_sha256": "82457ce3878aeb20cc916b793d75264ef6efe83c2c0bf4e9f783160d99d68f76",
+      "attempt_id": "a-8674d422143b70ac1689aec531e49519",
+      "run_id": "r-c5d0d5ed4f6447c99ed4918f12768afb"
+    },
+    {
+      "member_id": "acl-021",
+      "task_id": "planning--3",
+      "receipt_sha256": "2dadfc33ecde43649672a4edcad95b289286277b407f7c60990f08a46b648ce9",
+      "attempt_id": "a-2c25d147d1a8968e51933b7805de2235",
+      "run_id": "r-bffa5835240e4c8daa24c14eb967bf1d"
+    },
+    {
+      "member_id": "acl-001",
+      "task_id": "planning--2",
+      "receipt_sha256": "8d3fe9a7f10c99f1cf2a77df774622d53be330b35e415097c01c4489205fb47d",
+      "attempt_id": "a-875c93ae224f3a8882beef939557d727",
+      "run_id": "r-6e73b0a4d70d4690ad37d048aafe2a79"
+    }
+  ],
+  "fixtures": {
+    "clarify": {
+      "branch": {
+        "action": "clarify",
+        "intent": {
+          "counterevidence": [
+            "선호한 원안과 상충하는 관찰"
+          ],
+          "explicit": [
+            "근거"
+          ],
+          "hypotheses": [
+            "원인 미상"
+          ]
+        },
+        "question": "어느 사용자의 목표인가?",
+        "reply_to": "planning--1"
+      },
+      "same": true,
+      "specialists": 0
+    },
+    "revise": {
+      "branch": {
+        "action": "revise",
+        "intent": {
+          "counterevidence": [
+            "선호한 원안과 상충하는 관찰"
+          ],
+          "explicit": [
+            "근거"
+          ],
+          "hypotheses": [
+            "원인 미상"
+          ]
+        },
+        "reply_to": "planning--1",
+        "request": "원작성자에게 누락 원문 요청"
+      },
+      "same": true,
+      "specialists": 0
+    },
+    "hold": {
+      "branch": {
+        "action": "hold",
+        "intent": {
+          "counterevidence": [
+            "선호한 원안과 상충하는 관찰"
+          ],
+          "explicit": [
+            "근거"
+          ],
+          "hypotheses": [
+            "원인 미상"
+          ]
+        },
+        "reason": "반증의 근거가 상충함",
+        "reply_to": "planning--1"
+      },
+      "same": true,
+      "specialists": 0
+    },
+    "assign": {
+      "branch": {
+        "action": "hold",
+        "reason": "unknown_or_duplicate_member",
+        "terminal": true
+      },
+      "same": true,
+      "specialists": 0
+    }
+  },
+  "first_submission": {
+    "M2-first": {
+      "test_command": "python -m unittest discover -s tests -p test_planning_team.py",
+      "observations": [
+        "신규 합성 카탈로그의 full model ID와 로더의 명칭 계약 불일치",
+        "기존 assignment CLI에서 팀 프로필 누락"
+      ],
+      "first_receipt": "14dcd6aca454bef61c4a8ce5bd9a54c0d9e57c0aaefcb4df423fbfcf60314949",
+      "owner": "acl-007",
+      "action": "원작성자 보완 요청",
+      "gate": "실제 native 실행을 막으므로 M2에서 수정"
+    }
+  },
+  "independent_review": {
+    "decision": "revise",
+    "owner": "신도윤",
+    "reason": "role_orchestrator/planning_team.py의 run()은 상태 디렉터리의 소유자와 권한을 검사한 뒤, 같은 경로를 다시 열어 .lock과 team.json에 접근합니다. 상위 디렉터리에서 경로를 교체할 수 있으면 검사한 디렉터리와 실제로 잠그고 읽는 디렉터리가 달라져, 비공개 상태와 중복 제출 방지 보장이 깨집니다. 원작성자에게 O_NOFOLLOW로 연 디렉터리 FD를 fstat으로 검증하고, 잠금·체크포인트·native 상태 접근을 검증된 디렉터리에 고정하도록 수정과 회귀 테스트를 요청하세요."
+  },
+  "status": "보완 진행 중"
+}
