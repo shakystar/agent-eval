@@ -1,0 +1,115 @@
+{
+  "controller": "c348d15a5635067c872a8a29f9e0a850158ab4a3",
+  "backend": "fixture",
+  "results": [
+    {
+      "case": "criteria",
+      "state": "accept",
+      "route": [
+        "acl-010",
+        "acl-005"
+      ],
+      "frames": [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "acl-010",
+          "acl-010"
+        ],
+        [
+          "acl-005",
+          "acl-005"
+        ]
+      ],
+      "replay_equal": true,
+      "unchanged": true,
+      "extra_frames": 0,
+      "file_count": 48
+    },
+    {
+      "case": "patch",
+      "state": "accept",
+      "route": [
+        "acl-012",
+        "acl-014",
+        "acl-015",
+        "acl-005"
+      ],
+      "frames": [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "acl-012",
+          "acl-012"
+        ],
+        [
+          "acl-014",
+          "acl-014"
+        ],
+        [
+          "acl-015",
+          "acl-015"
+        ],
+        [
+          "acl-005",
+          "acl-005"
+        ]
+      ],
+      "replay_equal": true,
+      "unchanged": true,
+      "extra_frames": 0,
+      "file_count": 79,
+      "evidence_hash_matches": true,
+      "tampered": "hold",
+      "restored": "accept"
+    },
+    {
+      "case": "stateful",
+      "state": "accept",
+      "route": [
+        "acl-012",
+        "acl-013",
+        "acl-014",
+        "acl-015",
+        "acl-005"
+      ],
+      "frames": [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "acl-012",
+          "acl-012"
+        ],
+        [
+          "acl-013",
+          "acl-013"
+        ],
+        [
+          "acl-014",
+          "acl-014"
+        ],
+        [
+          "acl-015",
+          "acl-015"
+        ],
+        [
+          "acl-005",
+          "acl-005"
+        ]
+      ],
+      "replay_equal": true,
+      "unchanged": true,
+      "extra_frames": 0,
+      "file_count": 94,
+      "evidence_hash_matches": true,
+      "tampered": "hold",
+      "restored": "accept"
+    }
+  ]
+}

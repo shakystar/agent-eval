@@ -1,0 +1,51 @@
+{
+  "controller": "c348d15a5635067c872a8a29f9e0a850158ab4a3",
+  "source_revisions": {
+    "role-runtime": "722c9f620a707a8dc42c43a44f3666a3ba4fc87e",
+    "codex-adapter": "17b36ab24d29f45799af705cca2e35c35af1a609",
+    "agent-eval": "227ce4e3a65b15c3a911dd77573b2b05c56cbf6a",
+    "role-orchestrator": "c348d15a5635067c872a8a29f9e0a850158ab4a3"
+  },
+  "policy_sha": "9bda89879d1587a74d91aff5d8f9d28c103542f6",
+  "roster_sha": "72fe33e40fdf505019b41b52679e851ebfbd16df",
+  "image_id": "sha256:634f1dc2d88d4c1c29ded404dd3c258c840a59390a5712a458c6f7452e98b641",
+  "host_suite": {
+    "tests": 130,
+    "skips": 0,
+    "log_sha256": "acc2e87d89985928aa05ebb77452e4e94ee489922b27ec6a96576eecfc997266"
+  },
+  "independent_oracle": {
+    "member": "acl-008",
+    "receipt_sha256": "2341deafea69d45310b148554d13b8685c0d2092728c4af0f12e512dd61ef2ee",
+    "source_sha256": "9b6ee97d64b22ddafec0be9e66304c380f5145fb779e6c8abfeee07dcad73bb0",
+    "host": "pass",
+    "image_network_none": "pass",
+    "image_python": "/opt/src/role-orchestrator/.venv/bin/python"
+  },
+  "intent_crash": {
+    "expected_task_id": "de97ff3ec32e21430d800257d92de2a23f4607425b6918c8774d4e31a16ba6cf",
+    "run": {
+      "status": "hold",
+      "cause": "member-unavailable",
+      "task_id": "de97ff3ec32e21430d800257d92de2a23f4607425b6918c8774d4e31a16ba6cf",
+      "attempt": {},
+      "member_id": "acl-010",
+      "reason": "dispatch intent exists but member state is missing or empty"
+    },
+    "status": {
+      "status": "hold",
+      "cause": "member-unavailable",
+      "task_id": "de97ff3ec32e21430d800257d92de2a23f4607425b6918c8774d4e31a16ba6cf",
+      "attempt": {},
+      "member_id": "acl-010",
+      "reason": "dispatch intent exists but member state is missing or empty"
+    },
+    "stored_task_id": "de97ff3ec32e21430d800257d92de2a23f4607425b6918c8774d4e31a16ba6cf",
+    "frames": []
+  },
+  "review": {
+    "decision": "revise",
+    "owner": "신도윤",
+    "reason": "c348d15는 이전 필수 항목을 해결했다. 의도 저장 직후 중단한 사례에서 run·status·저장 기록의 task_id가 요청과 멤버에서 파생한 값과 일치했고, attempt는 빈 객체였으며 새 프레임은 없었다. 다만 role_orchestrator/review_team.py의 terminal_attempts(420행대)는 필드 집합을 검사하기 전에 saved['reason']을 읽는다. 첫 멤버의 유효한 member-unavailable 종료 기록에서 reason만 제거하면, 이전 코드와 달리 run/status가 hold(3)를 반환하지 못하고 처리되지 않은 KeyError를 낸다(API-01/ERR-01). acl-007은 필드 집합을 먼저 검증하고 누락된 reason을 hold(3)로 처리하며 재제출하지 않는지 공개 진입점에서 회귀 테스트하라. 릴리스 판단에는 별도로 replay/link 호출자 계약과 동일 후보의 비ASCII 직렬화, 중단·복구 시 실제 제출 횟수 및 최종 파일 수 증거가 필요하다."
+  }
+}
