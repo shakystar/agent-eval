@@ -1,0 +1,25 @@
+{
+  "policy_sha": "9bda89879d1587a74d91aff5d8f9d28c103542f6",
+  "subject_repo": "role-orchestrator",
+  "candidate_sha": "699fe82cb79538fd1cd1dd68a246c96716ade75b",
+  "path": "role_orchestrator/review_team.py",
+  "author": "acl-007",
+  "reviewer": "acl-012",
+  "reviewer_receipt_sha256": "b5d67bafdddab4d6a44ac2916b23424b89eb3d8fceebfd44aca6559c9faca89a",
+  "attempt_id": "a-cdc54010bfa8384bdb356cac13faac75",
+  "run_id": "r-98e36559d99f42b896a55a5ad448bcb2",
+  "decision": "accept",
+  "independent_review": "후보 699fe82의 Q2 참조 모듈 변경을 수락한다. role_orchestrator/review_team.py의 terminal_attempts(423~441행)는 현행·레거시 진단 모두에서 필수 필드 집합을 확인한 뒤 reason을 읽는다. 직접 결함 주입에서 기존 KeyError는 일반·읽기 전용 경로 모두 hold(종료 코드 3)로 바뀌었고 추가 제출은 없었다. tests/test_review_team_terminal_attempts.py:10의 회귀 테스트는 두 경로의 terminal-outcome 원인, 저장 바이트 보존, 재제출 방지를 검증한다. 이전 필수 수정은 종결하되, 마일스톤 릴리스는 별도 판단으로 남긴다. 릴리스 승인 전 replay/link 호출자 계약과 동일 후보의 비ASCII 직렬화 및 중단·복구 시 실제 제출 횟수와 최종 파일 수를 확인하라.",
+  "previous_findings": [
+    "reference-audit-r1.json",
+    "reference-audit-r2.json",
+    "c348-intermediate-validation.json"
+  ],
+  "checks": {
+    "normal": "witness-candidate-routes.json",
+    "failure": "candidate-recovery.json",
+    "recovery": "candidate-recovery.json",
+    "serialization": "candidate-compatibility.json"
+  },
+  "remaining_required_module_changes": []
+}
