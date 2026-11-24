@@ -1,0 +1,682 @@
+{
+  "request": {
+    "case": {
+      "access_scope": "첨부된 합성 근거만",
+      "constraints": [
+        "합성 자료임을 유지",
+        "확정 목표·제품 우선순위 유지"
+      ],
+      "contributors": [
+        "scenario-owner"
+      ],
+      "evidence": {
+        "E1": {
+          "facts": {
+            "deduplicated": null,
+            "denominator": 20,
+            "method": "합성 명세의 관찰 발췌",
+            "scope": "명세에 표시된 단일 채널 또는 단일 문서",
+            "time": "week-1"
+          },
+          "owner": "source-E1",
+          "source": "synthetic-E1",
+          "synthetic": true,
+          "text": "1주차 한 채널 신규 세션 20개 중 8개가 첫 설정 화면에서 종료했다. 고유 사용자 수와 종료 이유는 미확인이다."
+        },
+        "E2": {
+          "facts": {
+            "deduplicated": null,
+            "denominator": null,
+            "method": "합성 명세의 관찰 발췌",
+            "scope": "명세에 표시된 단일 채널 또는 단일 문서",
+            "time": "week-1"
+          },
+          "owner": "source-E2",
+          "source": "synthetic-E2",
+          "synthetic": true,
+          "text": "같은 주 안내 관련 도움말 문의 3건이다. 세션 연결과 중복 여부는 미확인이다."
+        }
+      },
+      "id": "SYN-REQ-01",
+      "kind": "request",
+      "question": "신규 사용자가 첫 설정 단계에서 막히는지 조사하고, 안내 추가와 단계 단축 중 무엇을 먼저 검증할지 제안해 달라. 확정 목표는 바꾸지 않는다.",
+      "source": {
+        "author": "scenario-owner",
+        "ref": "SYN-REQ-01-source",
+        "requester": "planning",
+        "text": "신규 사용자가 첫 설정 단계에서 막히는지 조사하고, 안내 추가와 단계 단축 중 무엇을 먼저 검증할지 제안해 달라. 확정 목표는 바꾸지 않는다."
+      },
+      "synthetic": true
+    },
+    "backend": "codex",
+    "candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+    "catalog": "ce998e9031bb420ea13ebbaa9c2a3d3fa2d681dc",
+    "receipts": {
+      "decision": {
+        "attempt_id": "a-24ddfe0c0fe3759ee00278b1b6b6fbc9",
+        "case_id": "SYN-REQ-01",
+        "evidence_kind": "native-verified-codex",
+        "member_id": "acl-021",
+        "receipt_sha256": "4e2c9f2ceec45aa17c37c15802ad014a1e86f0bd97ace0209c673b61ed9715ef",
+        "role_version": "v1",
+        "run_id": "r-f35c949dd45848c0bf681bc18b50cf62",
+        "task_id": "planning--2",
+        "verified": true,
+        "go_executes": 1,
+        "raw_span_sha256": "1a2bc910ada6aaa1fdce963f83c345eccda833110dce939c937e694a3ebec480"
+      },
+      "draft": {
+        "attempt_id": "a-bf9a336bd6c1d30a3b74c29f4c76d0a3",
+        "case_id": "SYN-REQ-01",
+        "evidence_kind": "native-verified-codex",
+        "member_id": "acl-024",
+        "receipt_sha256": "23284c6fe635c96681d9da99d8b1a81afb7d511978e6196a88286874cdddcbd0",
+        "role_version": "v1",
+        "run_id": "r-c04efa94f163439cb68a2f2c8ddf8435",
+        "task_id": "research-evidence-route--2",
+        "verified": true,
+        "go_executes": 1,
+        "raw_span_sha256": "bec815b3d99497f6e5954f6b03cd450aba7adbc3555a537aa46054d2e6bf4aef"
+      },
+      "observe": {
+        "attempt_id": "a-02d6d4410445ec7e9c96b11c503b3595",
+        "case_id": "SYN-REQ-01",
+        "evidence_kind": "native-verified-codex",
+        "member_id": "acl-023",
+        "receipt_sha256": "1668039ed9e6891522078f79bbe1042b3e4f53ed81786c3283375a264789abc1",
+        "role_version": "v1",
+        "run_id": "r-2be3af96e64b45d2b634f4d212b914b2",
+        "task_id": "research-evidence-route--1",
+        "verified": true,
+        "go_executes": 1,
+        "raw_span_sha256": "f9dacf9b086e4883d381409f8f703b0601de8d8b04de1e517ed40d0a43ac2d63"
+      },
+      "review": {
+        "attempt_id": "a-df73ad3158c1207e35d4d6c1c279ac1f",
+        "case_id": "SYN-REQ-01",
+        "evidence_kind": "native-verified-codex",
+        "member_id": "acl-025",
+        "receipt_sha256": "bba88c668a6d26d3540b271229b0681d49a4732ace952160be46467c35deebd8",
+        "role_version": "v1",
+        "run_id": "r-47e488bd0acc4a3ba2b1e1a2673afb49",
+        "task_id": "research-evidence-route--3",
+        "verified": true,
+        "go_executes": 1,
+        "raw_span_sha256": "56a1f4dd7e30f940cd6231f43d511ec742732c07d06acf615c60134699a6f3cf"
+      },
+      "synthesize": {
+        "attempt_id": "a-b3b25255ea17cf01caa2d2d725002d46",
+        "case_id": "SYN-REQ-01",
+        "evidence_kind": "native-verified-codex",
+        "member_id": "acl-024",
+        "receipt_sha256": "0d466a445c8072b4d43759c809a6514fd0208adf3ae3797e9a169eef4636f390",
+        "role_version": "v1",
+        "run_id": "r-c8d0055150f8409caaa9d9d173fe5038",
+        "task_id": "research-evidence-route--4",
+        "verified": true,
+        "go_executes": 1,
+        "raw_span_sha256": "e303ba5e3c9d39bccdcc6e4d3446ecd6dc96e774ded2f4a0e097e0beb99063f6"
+      }
+    },
+    "planning_decision": {
+      "action": "select_followup",
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "packet_sha256": "6b8f2e83a3fd4c3dc2c8cdc6b9712cbf875455c65727001eb4281a7c84a46478",
+      "reason": "두 변경안의 검증 순위는 보류하고, 첫 설정 화면에서 실제로 진행이 막혔는지부터 확인하도록 권고한다. 후속 판단에 사용할 수 있는 관찰은 두 가지다. 1주차 단일 채널의 신규 세션 20개 중 8개(40%)가 첫 설정 화면에서 종료됐지만, 이는 사용자 막힘 비율이 아니다(c1·o1). 같은 주 안내 문의 3건이 기록됐지만 분모·중복 여부와 종료 세션과의 연결은 확인되지 않았다(c2·o2). 두 합성 기록은 합산하지 않는다. 기획팀 의뢰 담당자에게 제안할 보완 사항은 E1의 중복 처리와 종료 사유, E2의 분모·중복 처리와 첫 설정 세션 연결 여부다. 다음 행동을 몰라 멈춘 사례가 확인되면 안내 추가를, 안내를 이해했지만 입력 부담으로 멈춘 사례가 확인되면 단계 단축을 먼저 검증할 후보로 삼는다. 어느 쪽도 효과가 입증된 것은 아니다. 두 원인이 겹치거나 구분되지 않으면 순위를 정하지 않는다. 효과 비교에는 동일 채널·기간·신규 세션 기준에서 첫 설정 완료율과 현행 대비 최소 개선 폭을 사전에 정하고, 안내만 추가한 안과 단계만 줄인 안을 각각 현행과 비교한 기록이 필요하다. 현재는 이 근거가 없어 o3에 따라 c3의 보류를 유지한다. 보완 요청은 발송하지 않았다. 이 권고에는 사용자 결정이 필요하지 않으며, 확정 목표·제품 우선순위·자료 접근 범위의 변경은 사용자 승인 사항이다."
+    },
+    "intake": null,
+    "draft": {
+      "authors": [
+        "acl-023",
+        "acl-024",
+        "scenario-owner",
+        "source-E1",
+        "source-E2"
+      ],
+      "case_sha256": "8d3c8135864e2ad8fd18f1846381d7063a19f20147f4bafe1a37a2ac676e2568",
+      "claims": {
+        "c1": {
+          "alternatives": [
+            "종료 기록에는 실제로 막힌 경우 외에 자발적 중단, 완료 후 종료 또는 계측 오류가 포함됐을 수 있다."
+          ],
+          "claim_scope": "limited_observation",
+          "counter": [],
+          "falsifiers": [
+            "같은 채널·기간·신규 세션 정의로 집계했을 때 분모가 20이 아니거나 해당 화면 종료가 8건이 아니면 관측 비율을 수정한다. 종료가 일시 중단으로 밝혀지면 종료 기록은 유지하되 막힘의 근거로 쓰지 않는다."
+          ],
+          "limits": "E1은 source-E1이 작성한 synthetic-E1의 합성 관찰 발췌다. 세션 중복 제거 여부, 고유 사용자 수, 종료 이유는 미확인이다. 다른 채널·기간이나 사용자 단위로 일반화하지 않는다.",
+          "reproduction": "발췌의 수치로 8/20=40%라는 산술만 확인했다. 세션별 기록과 종료 분류 규칙이 없어 집계 자체는 독립 재현하지 못했다.",
+          "requires": [],
+          "statement": "현행 첫 설정 화면에서 week-1 단일 채널의 신규 세션 20개 중 8개가 종료된 것으로 기록됐다(40%). 이는 화면 종료 비율이지, 사용자가 설정을 진행하지 못한 비율이 아니다.",
+          "support": [
+            "E1"
+          ]
+        },
+        "c2": {
+          "alternatives": [
+            "한 사람이 반복 문의했거나 첫 설정이 아닌 다른 단계의 안내를 문의했을 수 있다."
+          ],
+          "claim_scope": "limited_observation",
+          "counter": [],
+          "falsifiers": [
+            "동일 문서·기간·분류 기준의 원기록에서 안내 관련 문의 수가 3건과 다르면 건수를 수정한다. 중복이나 다른 단계의 문의가 확인되면 그 건을 별개의 첫 설정 사례로 해석하지 않는다."
+          ],
+          "limits": "E2는 source-E2가 작성한 synthetic-E2의 합성 관찰 발췌로, 명세에 표시된 단일 채널 또는 문서에 한정된다. 분모와 중복 여부가 없어 문의율이나 문의자 수를 산출하지 않으며 E1과 합산하지 않는다.",
+          "reproduction": "발췌의 기재 건수만 확인했다. 문의별 기록과 분류·중복 처리 기준이 없어 독립 재집계나 세션 연결은 재현하지 못했다.",
+          "requires": [],
+          "statement": "week-1의 E2 발췌에는 안내 관련 도움말 문의 3건이 기록됐다. 이 3건이 E1의 종료 세션에서 나왔다는 연결 기록은 없다.",
+          "support": [
+            "E2"
+          ]
+        },
+        "c3": {
+          "alternatives": [
+            "현행 화면의 종료가 정상적인 중단이고 문의도 별개라면 두 변경안 모두 관측된 종료를 줄이지 못할 수 있다.",
+            "다음 행동이 불명확한 경우와 단계가 부담스러운 경우는 함께 존재할 수 있다. 문의가 있다는 사실만으로 안내 추가가 단계 단축보다 효과적이라고 볼 수 없다."
+          ],
+          "claim_scope": "broader_inference",
+          "counter": [],
+          "falsifiers": [
+            "종료 재분류 결과가 완료 후 종료·일시 중단·계측 오류라면 해당 세션을 막힘 사례에서 제외한다. 문의가 첫 설정과 무관하면 E2를 안내 우선의 근거에서 제외하되 안내 수요 자체가 없다고 판정하지 않는다.",
+            "기획팀이 대상 범위와 첫 설정 완료 지표·최소 개선 기준을 사전에 정한 뒤, 비교 가능한 신규 세션에서 현행 대비 안내만 바꾼 안과 단계만 줄인 안을 각각 비교한다. 한 안이 기준에 미달하고 다른 안이 충족하면 미달한 안을 우선한다는 가설을 낮춘다."
+          ],
+          "limits": "첨부된 두 합성 발췌만 사용했다. 논문·별도 기술 근거, 변경안별 결과, 직접 상충하는 근거는 제공되지 않았다. 확정 목표와 제품 우선순위는 유지한다. 보완 요청안: source-E1·source-E2에는 각 출처의 집계 및 재현 기록을, acl-023에는 SYN-REQ-01-source와 각 발췌의 연결 및 표본 범위를, planning 의뢰 담당자(개인 미상)에게는 허용되는 비교 채널·기간·지표·판정 기준을 확인한다. 기존 요청은 묶음에만 기록됐고 발송·회신은 없다. 이 누락은 원인·순위 결론을 제한하지만 c1·c2의 기재 건수까지 보류할 이유는 아니다.",
+          "reproduction": "현행과 각 변경안을 같은 조건에서 비교한 기록이 없어 효과 차이를 재현하지 못했다. acl-025 독립 검토용 고정본 식별: SYN-REQ-01, 제공 케이스 해시 8d3c8135864e2ad8fd18f1846381d7063a19f20147f4bafe1a37a2ac676e2568, 첨부 E1·E2, 이번 draft의 c1–c3. 작성 참여: scenario-owner(원문), acl-023(관찰), acl-024(종합). 관찰 영수증은 1668039ed9e6891522078f79bbe1042b3e4f53ed81786c3283375a264789abc1이다. 실제 전송이나 독립 검토는 하지 않았으며 이후 단계 영수증과 검토 의견 ID는 아직 없다. 종합자는 이 건의 독립 검토에서 제외한다. 검토 후 의견 ID별 반영 여부·남은 이견과 단계별 영수증을 연결해 planning에 인계하며, 핵심 주장·근거 변경분은 재검토 전까지 미검토로 표시한다.",
+          "requires": [
+            {
+              "field": "deduplicated",
+              "ref": "E1"
+            },
+            {
+              "field": "denominator",
+              "ref": "E2"
+            },
+            {
+              "field": "deduplicated",
+              "ref": "E2"
+            }
+          ],
+          "statement": "SYN-REQ-01-source의 결정 질문에 대해 실제 막힘 여부와 두 변경안의 검증 순위는 보류한다. 먼저 문의가 첫 설정에서 다음 행동을 몰라 멈춘 사례인지 확인한다. 그렇다면 안내 추가를 먼저 검증할 후보로, 안내를 이해했지만 입력 부담 때문에 멈춘 사례가 확인되면 단계 단축을 먼저 검증할 후보로 삼는다. 어느 쪽도 현행보다 낫다고 판단할 자료는 없다.",
+          "support": [
+            "E1",
+            "E2"
+          ]
+        }
+      },
+      "evidence_refs": [
+        "E1",
+        "E2"
+      ]
+    },
+    "independent_review": {
+      "conflict": false,
+      "draft_sha256": "0bc71c424d54a3ca4474153b5a02a72beedb7bfbe3caea2e48d0a7ace0a629c4",
+      "opinions": {
+        "o1": {
+          "claim": "c1",
+          "missing": [],
+          "reason": "SYN-REQ-01 검토자 acl-025는 제공된 참여자 목록과 관찰·종합 기록상 이 건의 선행 작성에 참여하지 않았다. o1–o3은 위 고정본에 대한 acl-024 반환용 의견이며 실제 전송하지 않았다. E1(source-E1 작성, synthetic-E1)은 합성 발췌다. week-1 단일 채널의 신규 세션 20개 중 8개가 첫 설정 화면에서 종료됐다는 기재와 8/20=40%라는 산술을 지지한다. 집계 자체를 독립 재현한 것은 아니다. source-E1에 보완할 항목은 세션별 집계 기록, 중복 처리 및 종료 분류 기준이다. 같은 정의로 재집계해 8건 또는 20세션이 달라지면 비율을 수정한다. 자발적 중단이나 완료 후 종료라면 종료 기록은 막힘의 증거가 아니다. 중복 여부와 종료 이유가 미확인인 점은 사용자 단위·원인 해석을 막지만 발췌의 기재값을 반박하지 않는다.",
+          "verdict": "support"
+        },
+        "o2": {
+          "claim": "c2",
+          "missing": [],
+          "reason": "E2(source-E2 작성, synthetic-E2)는 week-1 안내 관련 도움말 문의 3건을 기재한 합성 발췌다. 첨부 자료에 E1 종료 세션과의 연결 기록이 없다는 판단도 지지한다. 연결을 확인하지 못했다는 뜻이지 두 집단이 별개라는 뜻은 아니다. 같은 사람이 반복 문의했거나 다른 단계의 안내를 물었을 수 있다. source-E2에 보완할 항목은 문의별 분류·재집계 기록, 분모, 중복 기준과 세션 연결 기록이다. 같은 범위와 분류로 다시 센 결과가 다르면 3건을 수정하고, 연결 기록이 제시되면 해당 문의의 관련성을 다시 판단한다. 독립 재집계는 되지 않았으며, 분모·중복 정보가 없어도 기재 건수는 읽을 수 있지만 문의율이나 고유 문의자 수는 산출할 수 없다.",
+          "verdict": "support"
+        },
+        "o3": {
+          "claim": "c3",
+          "missing": [
+            {
+              "field": "deduplicated",
+              "ref": "E1"
+            },
+            {
+              "field": "denominator",
+              "ref": "E2"
+            },
+            {
+              "field": "deduplicated",
+              "ref": "E2"
+            }
+          ],
+          "reason": "실제 막힘과 두 변경안의 검증 순위는 판단할 수 없다. 초안의 보류는 타당하다. E1은 종료 이유를, E2는 문의가 첫 설정에서 다음 행동을 몰라 멈춘 사례인지를 보여주지 않는다. 입력 부담과 안내 부족이 함께 작용했거나 어느 쪽도 원인이 아닐 수 있다. source-E1의 중복 처리 정보, source-E2의 분모·중복 정보는 요청 묶음에만 있고 발송·회신은 없다. 이 누락은 두 신호의 규모와 중첩 해석을 제한한다. 해당 정보가 보완돼도 종료 사유, 문의와 세션의 연결, 변경안별 비교 기록 없이는 순위가 정해지지 않는다. 문의가 다른 단계와 연결되면 그 문의는 안내 우선의 근거에서 제외한다. 입력 부담이 확인되면 단계 단축을 검증할 이유는 생기지만 효과가 입증되는 것은 아니다. planning이 사전 지정한 동일 범위·완료 지표에서 한 변경안만 현행 대비 최소 개선 기준을 충족하면 다른 안의 우선 가설을 낮춘다. 그런 비교를 재현할 기록은 없으므로 확정 목표와 제품 우선순위는 변경하지 않는다.",
+          "verdict": "undetermined"
+        }
+      }
+    },
+    "gates": {
+      "c1": {
+        "opinions": [
+          "o1"
+        ],
+        "reasons": [],
+        "status": "eligible",
+        "upstream": []
+      },
+      "c2": {
+        "opinions": [
+          "o2"
+        ],
+        "reasons": [],
+        "status": "eligible",
+        "upstream": []
+      },
+      "c3": {
+        "opinions": [
+          "o3"
+        ],
+        "reasons": [
+          "independent_review:o3",
+          "missing_evidence"
+        ],
+        "status": "revision_hold",
+        "upstream": [
+          {
+            "field": "deduplicated",
+            "ref": "E1",
+            "status": "requested_in_packet",
+            "to": "source-E1"
+          },
+          {
+            "field": "deduplicated",
+            "ref": "E2",
+            "status": "requested_in_packet",
+            "to": "source-E2"
+          },
+          {
+            "field": "denominator",
+            "ref": "E2",
+            "status": "requested_in_packet",
+            "to": "source-E2"
+          }
+        ]
+      }
+    },
+    "synthesis": {
+      "dispositions": {
+        "o1": "acknowledge",
+        "o2": "acknowledge",
+        "o3": "retain_dissent"
+      },
+      "draft_sha256": "0bc71c424d54a3ca4474153b5a02a72beedb7bfbe3caea2e48d0a7ace0a629c4",
+      "next_question": "planning 의뢰 담당자에게 남길 질문: 확정 목표와 제품 우선순위를 유지하면서, 어떤 채널·기간·신규 세션을 대상으로 실제 첫 설정 막힘을 판별하고, 어떤 공통 완료 지표와 최소 개선 기준으로 안내만 추가한 안과 단계만 줄인 안을 각각 현행과 비교할 것인가? SYN-REQ-01-source에 대한 c1·c2는 합성 발췌의 기재값으로 유지한다. E1(source-E1, synthetic-E1)은 8/20=40%라는 산술만 확인됐고, E2(source-E2, synthetic-E2)의 문의 3건은 독립 재집계되지 않았다. 두 기록은 합산하지 않는다. o3에 따라 c3의 실제 막힘 여부와 검증 순위만 보류한다. source-E1에는 중복 처리·종료 분류·재집계 기록을, source-E2에는 분모·중복 처리·문의 분류·세션 연결 기록을, acl-023에는 원문 연결과 표본 범위를 확인할 필요가 있다. 보완 요청은 미발송이며 회신은 없다. 문의가 다른 단계의 것이면 안내 우선의 근거에서 제외하고, 입력 부담이 확인돼도 단계 단축의 효과로 단정하지 않는다. planning 인계용 SYN-REQ-01 고정본은 위 초안 해시와 동일하며 작성 참여자는 acl-023, acl-024, scenario-owner, source-E1, source-E2이고 독립 검토자는 acl-025다. 영수증 연결: 관찰 1668039ed9e6891522078f79bbe1042b3e4f53ed81786c3283375a264789abc1 → 초안 23284c6fe635c96681d9da99d8b1a81afb7d511978e6196a88286874cdddcbd0 → 검토 bba88c668a6d26d3540b271229b0681d49a4732ace952160be46467c35deebd8. 실제 인계는 하지 않았으며 핵심 주장이나 근거가 바뀌면 변경분은 독립 재검토 전까지 미검토로 표시한다."
+    },
+    "checkpoint_sha256": "348b9840dea5f674b28cd998c827d32ef69f74b4242a14374a4d65bc7d32cfdf",
+    "replay_equal": true
+  },
+  "signal": {
+    "case": {
+      "access_scope": "첨부된 합성 근거만",
+      "constraints": [
+        "합성 자료임을 유지",
+        "확정 목표·제품 우선순위 유지"
+      ],
+      "contributors": [
+        "scenario-owner"
+      ],
+      "evidence": {
+        "S1": {
+          "facts": {
+            "deduplicated": null,
+            "denominator": null,
+            "method": "합성 명세의 관찰 발췌",
+            "scope": "명세에 표시된 단일 채널 또는 단일 문서",
+            "time": "week-1"
+          },
+          "owner": "source-S1",
+          "source": "synthetic-S1",
+          "synthetic": true,
+          "text": "1주차 한 지원 채널의 발췌 4건이다. 전체 문의 수·고유 계정 수·선정 기준은 미확인이다."
+        },
+        "S2": {
+          "facts": {
+            "deduplicated": null,
+            "denominator": null,
+            "method": "합성 명세의 관찰 발췌",
+            "scope": "명세에 표시된 단일 채널 또는 단일 문서",
+            "time": "week-1"
+          },
+          "owner": "source-S2",
+          "source": "synthetic-S2",
+          "synthetic": true,
+          "text": "경쟁 제품 안내문 하나에 일괄 내보내기가 언급된다. 실제 동작·도입률은 미확인이다."
+        }
+      },
+      "id": "SYN-SIG-01",
+      "kind": "signal",
+      "question": "이번 주 지원 대화에서 일괄 내보내기를 찾는 문의가 반복된 것 같다.",
+      "source": {
+        "author": "scenario-owner",
+        "channel": "단일 지원 채널",
+        "hypothesis": "반복 문의의 원인이 기능 공백인지 추가 검증",
+        "observed_at": "week-1",
+        "ref": "SYN-SIG-01-source",
+        "scope": "문의 발췌 4건",
+        "text": "이번 주 지원 대화에서 일괄 내보내기를 찾는 문의가 반복된 것 같다."
+      },
+      "synthetic": true
+    },
+    "backend": "codex",
+    "candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+    "catalog": "ce998e9031bb420ea13ebbaa9c2a3d3fa2d681dc",
+    "receipts": {
+      "decision": {
+        "attempt_id": "a-ff25b97849d3db86a88d08dd01f15d35",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "native-verified-codex",
+        "member_id": "acl-021",
+        "receipt_sha256": "05c3e11ed4be316476e7147995f7b4fb931e7080cf6b3a41b9c11dc988ea02a7",
+        "role_version": "v1",
+        "run_id": "r-b3c879a5afd0483c849ed6ba17d3c82a",
+        "task_id": "planning--2",
+        "verified": true,
+        "go_executes": 1,
+        "raw_span_sha256": "ab639228d933b9cc6281acd9a0a844d206ed239126e94e3497737facb3884bc9"
+      },
+      "draft": {
+        "attempt_id": "a-84dadbed35c321ca2eefd359c07e3c0e",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "native-verified-codex",
+        "member_id": "acl-024",
+        "receipt_sha256": "a47806b90c6b641adeb232928af61076d9e0f3837df4ede378ab7afddaa3e8f7",
+        "role_version": "v1",
+        "run_id": "r-f0e47de3b6d245b5aaa9f6b755adfa19",
+        "task_id": "research-evidence-route--2",
+        "verified": true,
+        "go_executes": 1,
+        "raw_span_sha256": "23f4f508405920eadca4135c243c39698e26f245a615d7c8aa5fb587fc417a3e"
+      },
+      "intake": {
+        "attempt_id": "a-7f02bd84b6c918444819380f404a10cb",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "native-verified-codex",
+        "member_id": "acl-021",
+        "receipt_sha256": "d4a7ddc1dfbb8e065a8ddaea40a6ddf1b940d0cc8b17ef64a518b03979dd2050",
+        "role_version": "v1",
+        "run_id": "r-8a35bfeaea6d49c4bf1f71e21ff2ef3b",
+        "task_id": "planning--1",
+        "verified": true,
+        "go_executes": 1,
+        "raw_span_sha256": "842bd86fc6c896fba2115048504789ea059c1a19c8eda5af21d6c0914c589900"
+      },
+      "observe": {
+        "attempt_id": "a-75a9ee5dfb2597205b5b94ec90edee09",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "native-verified-codex",
+        "member_id": "acl-023",
+        "receipt_sha256": "55510132c9cdfccf82e402042b226695a903f174c3e5fd98e123a0c91320cd8a",
+        "role_version": "v1",
+        "run_id": "r-ab2362f300b24935ad510824e64af73b",
+        "task_id": "research-evidence-route--1",
+        "verified": true,
+        "go_executes": 1,
+        "raw_span_sha256": "54b9f413ba3b3999dd76f44f612b1875839686c8b38c80e11ccf6d8ab244d1ab"
+      },
+      "review": {
+        "attempt_id": "a-10c051d2ec514e163ad5b712e3956be7",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "native-verified-codex",
+        "member_id": "acl-025",
+        "receipt_sha256": "87bfa207e068f56b15a29065f09a077eee427778f814fc79fe978618417328bd",
+        "role_version": "v1",
+        "run_id": "r-77a81347f07f4afdbcd2e4dafaee5e2d",
+        "task_id": "research-evidence-route--3",
+        "verified": true,
+        "go_executes": 1,
+        "raw_span_sha256": "32d1a6b7a0c51e115f6933161043196b170fd7d1ce037fc23cf65166959e0e13"
+      },
+      "synthesize": {
+        "attempt_id": "a-13f8c4b0b159e3c0d987cfbbdf4670fb",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "native-verified-codex",
+        "member_id": "acl-024",
+        "receipt_sha256": "e855ef2e47782d85e83785ac6f2f2461a4cc222bcde67f6bc1d2339585cc6492",
+        "role_version": "v1",
+        "run_id": "r-8ce1f80b5e1848ac8a1e4c612c7e3b92",
+        "task_id": "research-evidence-route--4",
+        "verified": true,
+        "go_executes": 1,
+        "raw_span_sha256": "fd6ab00710aaead8aba38215f573fa963eb38dd487ab55046fb1bb1f9806b821"
+      }
+    },
+    "planning_decision": {
+      "action": "select_followup",
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "packet_sha256": "0963c4c74584d84712c3c7e63b3c15d072175a8d7c262b4a327d72c9b012b2f5",
+      "reason": "후속 검토에는 독립 검토가 지지한 두 관찰만 채택한다. S1에는 1주차 단일 지원 채널의 발췌 4건이 있다(c1/o1). 이는 서로 다른 계정의 일괄 내보내기 문의 4건이라는 뜻이 아니다. S2는 경쟁 제품 안내문 한 건의 언급만 뒷받침한다(c2/o2). 두 자료 모두 합성 근거다. 의뢰 기획팀 담당자의 보완 자료에는 S1의 선정 기준·전체 문의 수와 계정·스레드 중복 제거 후 같은 작업을 요청한 계정 수가 필요하다. 한 계정만 남으면 표본 내 계정 간 반복이라는 해석을 기각한다. 대안 비교 기준은 문의 당시와 같은 권한으로 대상 항목 전부를 요구 형식으로 내보낼 수 있는지다. 기존 경로 안내만으로 완료되면 해당 문의는 기능 공백의 근거에서 제외한다. 현행·안내 개선·기능 추가안·경쟁 제품을 이 기준으로 비교한 결과가 없으므로 기능 공백(c3/o3)과 경쟁 기능의 동등성·우위(c4/o4)는 보류한다. 도입률도 분모와 중복 처리 기준이 없어 비교하지 않는다. 이번 선택에는 사용자 결정이 필요하지 않다. 기능 추가를 과제화하지 않으며 확정 목표·제품 우선순위·접근 범위를 유지한다. 위임 범위가 불명확하거나 변경이 필요하면 사용자 승인 전까지 제안으로 남긴다."
+    },
+    "intake": {
+      "action": "start_review",
+      "case_sha256": "3bce2d761a4faec0c4d73d4e5a51a6acf010b73ff5633a563c0c43e670ae2cb5",
+      "reason": "반복 문의 여부를 검토하되 일괄 내보내기를 확정 요구로 보지 않는다. 합성 근거 S1은 1주차 단일 지원 채널의 발췌 4건으로, 전체 문의 수·고유 계정 수·선정 기준을 알 수 없어 문의 빈도나 기능 공백을 판단할 수 없다. S2는 경쟁 제품 안내문 한 건의 언급일 뿐 실제 동작이나 도입률을 뒷받침하지 않는다. 검토 착수에는 사용자 결정이 필요하지 않으며, 확정 목표와 제품 우선순위는 유지한다."
+    },
+    "draft": {
+      "authors": [
+        "acl-023",
+        "acl-024",
+        "scenario-owner",
+        "source-S1",
+        "source-S2"
+      ],
+      "case_sha256": "3bce2d761a4faec0c4d73d4e5a51a6acf010b73ff5633a563c0c43e670ae2cb5",
+      "claims": {
+        "c1": {
+          "alternatives": [
+            "같은 계정의 후속 대화가 여러 번 발췌됐을 수 있고, 발췌마다 문의 주제가 다를 수도 있다."
+          ],
+          "claim_scope": "limited_observation",
+          "counter": [],
+          "falsifiers": [
+            "원문과 발췌의 대응표에서 시점·채널이 다르거나 발췌 수가 4건이 아닌 것으로 확인되면 관찰 기록을 정정한다."
+          ],
+          "limits": "synthetic-S1은 source-S1이 작성한 합성 관찰 발췌다. 발췌 수를 채널 전체의 문의 빈도나 고유 계정 수로 환산하지 않는다.",
+          "reproduction": "첨부 S1의 건수·시점·채널 표기는 대조했다. 개별 대화 원문은 없어 재집계하지 못했다. acl-023에 원문 참조와 개별 발췌의 연결 및 표본 범위를 확인할 사항으로 기록한다. 요청은 발송하지 않았고 회신은 없다.",
+          "requires": [],
+          "statement": "S1에서 확인되는 수는 1주차 단일 지원 채널의 문의 발췌 4건이다. 원문(SYN-SIG-01-source)의 ‘반복된 것 같다’는 관찰자의 판단이지, 서로 다른 계정에서 확인된 일괄 내보내기 문의 4건이라는 집계가 아니다.",
+          "support": [
+            "S1"
+          ]
+        },
+        "c2": {
+          "alternatives": [
+            "문서의 ‘일괄 내보내기’가 문의자가 원하는 항목이나 작업 범위와 다른 기능을 가리킬 수 있다."
+          ],
+          "claim_scope": "limited_observation",
+          "counter": [],
+          "falsifiers": [
+            "대상 안내문과 발췌를 대조해 해당 언급이 없거나 다른 제품의 설명으로 확인되면 이 문서 관찰을 철회한다."
+          ],
+          "limits": "synthetic-S2는 source-S2가 작성한 week-1의 합성 문서 발췌다. 문서 언급에는 도입률 분모가 필요하지 않지만, 이 언급으로 실제 제공·성공률·도입률 또는 자사 수요를 판단할 수는 없다.",
+          "reproduction": "첨부 S2의 문구만 확인했다. 실행 환경과 결과 기록이 없어 경쟁 기능의 동작은 재현하지 못했다. source-S2에 원문 출처와 실행 기록 유무, 이용 집계가 있다면 분모·중복 처리 기준을 확인할 사항으로 남긴다. 패킷 밖으로 발송하지 않았고 회신은 없다.",
+          "requires": [],
+          "statement": "경쟁 대안에 대해 S2가 확인해 주는 것은 경쟁 제품 안내문 한 건에 ‘일괄 내보내기’가 언급된다는 점이다.",
+          "support": [
+            "S2"
+          ]
+        },
+        "c3": {
+          "alternatives": [
+            "기능을 찾기 어려운 경우에는 새 기능 없이 기존 경로를 안내해도 작업이 완료될 수 있다.",
+            "권한 제한으로 실패했다면 기능 추가 자체가 해결책은 아닐 수 있다."
+          ],
+          "claim_scope": "broader_inference",
+          "counter": [],
+          "falsifiers": [
+            "중복 제거 후 해당 문의가 한 계정에만 남으면 이 표본에서 계정 간 반복이 관측됐다는 해석을 기각한다.",
+            "문의 당시 권한에서 기존 경로를 안내하는 것만으로 같은 항목을 필요한 형식으로 모두 내보낼 수 있다면 해당 문의에 대한 기능 공백 설명을 기각한다."
+          ],
+          "limits": "S1은 가설의 출발점일 뿐 실패의 증거가 아니다. S2는 이 가설을 지지하지도 반박하지도 않는다. 선정 기준과 문의별 작업 분류가 없으므로 표본 밖으로 일반화하지 않는다. 확정 목표와 제품 우선순위는 유지한다.",
+          "reproduction": "현행·안내 개선·기능 추가를 비교하려면 같은 권한, 대상 항목, 출력 요건에서 작업 완료 여부를 대조해야 한다. 조건과 결과가 없어 미재현이다. source-S1에 출처·선정 방식·분모·계정 및 스레드 중복 기준·작업 실패 기록을, 의뢰 기획팀 담당자(성명 미제공)에게 공통 사용자 범위와 비교 제약을 확인할 사항으로 기록한다. 실제 연락·회신은 없다.",
+          "requires": [
+            {
+              "field": "deduplicated",
+              "ref": "S1"
+            },
+            {
+              "field": "denominator",
+              "ref": "S1"
+            }
+          ],
+          "statement": "서로 다른 계정에서 같은 작업을 요청했고 현행 기능으로 완료하지 못했다는 기능 공백 가설은 보류한다. 일괄 내보내기 추가는 비교할 변경안이지 확정 요구가 아니다.",
+          "support": [
+            "S1"
+          ]
+        },
+        "c4": {
+          "alternatives": [
+            "경쟁 제품이 일부 항목이나 특정 권한에서만 내보내기를 허용한다면 문구가 같아도 동등한 대안이 아니다."
+          ],
+          "claim_scope": "broader_inference",
+          "counter": [],
+          "falsifiers": [
+            "같은 권한·항목·출력 요건에서 경쟁 제품이 작업을 완료하지 못하면 해당 조건에서 동등한 기능을 제공한다는 해석을 기각한다."
+          ],
+          "limits": "성능이나 도입 효과를 비교하려면 작업·사용자·측정 기준이 일치해야 한다. S2의 분모·중복 처리 정보도 없어 이용률 비교는 할 수 없다. 이 보류는 c1·c2의 직접 관찰을 무효화하지 않는다.",
+          "reproduction": "현행·변경안·경쟁 대안의 공통 시험 기록이 없어 우열은 미재현이다. 독립 검토용 고정 대상: SYN-SIG-01 / 제공된 근거본 3bce2d761a4faec0c4d73d4e5a51a6acf010b73ff5633a563c0c43e670ae2cb5 / 초안 v1(c1–c4). 작성 참여자는 scenario-owner, acl-023(관찰), acl-024(종합)이며 종합자는 같은 건의 독립 검토에서 제외한다. 선행 영수증은 접수 d4a7ddc1dfbb8e065a8ddaea40a6ddf1b940d0cc8b17ef64a518b03979dd2050 → 관찰 55510132c9cdfccf82e402042b226695a903f174c3e5fd98e123a0c91320cd8a이다. acl-025 인계 대기이며 검토 의견·후속 영수증은 아직 없다. 검토 후 의견 ID별 반영 여부와 잔여 이견을 영수증에 연결해 기획팀에 인계한다. 핵심 주장이나 근거가 바뀌면 변경본을 재검토하거나 변경분을 미검토로 표시한다.",
+          "requires": [],
+          "statement": "경쟁 제품이 같은 작업을 실제로 지원하며 변경안보다 유리하다는 판단은 보류한다. 첨부 자료에는 이를 비교한 논문이나 동등 조건의 기술 시험 결과가 없다.",
+          "support": [
+            "S2"
+          ]
+        }
+      },
+      "evidence_refs": [
+        "S1",
+        "S2"
+      ]
+    },
+    "independent_review": {
+      "conflict": false,
+      "draft_sha256": "3540fa425ed7de374f5e1f774e49b6e7b573869d24f43187b4b303501860341a",
+      "opinions": {
+        "o1": {
+          "claim": "c1",
+          "missing": [],
+          "reason": "SYN-SIG-01 / 초안 v1(c1–c4) / 검토자 acl-025 / 반환 대상 acl-024. 제공된 참여자 목록과 선행 기록상 acl-025는 이 건의 가설 작성·수집·해석·재현·종합에 참여하지 않았다. S1(source-S1 작성, synthetic-S1)은 1주차 단일 지원 채널의 발췌 수를 4건으로 명시한다. 지지하는 것은 이 합성 기록의 건수뿐이다. 원문의 ‘반복된 것 같다’는 관찰자 판단이며, 같은 스레드의 후속 대화나 다른 주제의 문의가 포함됐을 수 있다. 개별 원문으로 재집계하지 못했다. source-S1 보완 사항은 원문과 발췌의 대응표이며, 회신 자료는 없다. 대응표에서 시점·채널·건수가 다르면 c1을 정정한다. 전체 문의 분모는 발췌 수 자체를 확인하는 데 필요하지 않다.",
+          "verdict": "support"
+        },
+        "o2": {
+          "claim": "c2",
+          "missing": [],
+          "reason": "S2(source-S2 작성, synthetic-S2)는 경쟁 제품 안내문 한 건에 ‘일괄 내보내기’가 언급된다고 기록한다. 지지 범위는 합성 발췌에 기록된 문서 언급까지이며, 이용률 분모나 실행 시험은 이 관찰의 전제가 아니다. 같은 표현이 다른 항목이나 출력 범위를 뜻할 수 있다. source-S2 보완 사항은 해당 안내문의 원문 참조와 문맥이며, 회신 자료가 없어 원문 대조는 하지 못했다. 원문에 해당 언급이 없거나 다른 제품의 설명이면 c2를 철회한다.",
+          "verdict": "support"
+        },
+        "o3": {
+          "claim": "c3",
+          "missing": [
+            {
+              "field": "denominator",
+              "ref": "S1"
+            },
+            {
+              "field": "deduplicated",
+              "ref": "S1"
+            }
+          ],
+          "reason": "서로 다른 계정에서 같은 작업을 반복 요청했고 기능 공백 때문에 실패했다는 가설은 판단할 수 없다. S1은 가설의 계기일 뿐 계정별 요청이나 작업 실패를 보여 주지 않으며, S2는 자사 수요의 근거가 아니다. source-S1에 대한 분모·중복 처리 보완 요청은 패킷에만 기록됐고 회신은 없다. 선정 기준, 문의별 작업과 당시 권한, 재현 조건·결과도 없다. 분모와 선정 기준이 없으면 채널 빈도를 추정할 수 없고, 중복 제거 후 한 계정만 남으면 표본 내 계정 간 반복 해석은 기각된다. 당시 권한에서 기존 경로를 안내하는 것만으로 요구한 출력을 얻으면 해당 사례는 기능 공백보다 발견성 문제로 설명된다. 기능 추가를 확정 요구로 삼지 않는다.",
+          "verdict": "undetermined"
+        },
+        "o4": {
+          "claim": "c4",
+          "missing": [
+            {
+              "field": "denominator",
+              "ref": "S2"
+            },
+            {
+              "field": "deduplicated",
+              "ref": "S2"
+            }
+          ],
+          "reason": "S2의 문구만으로는 경쟁 제품이 같은 작업을 완료하는지, 변경안보다 유리한지 판단할 수 없다. 일부 항목이나 특정 권한만 지원할 수도 있다. source-S2 보완 사항은 실행 조건·결과 기록이며, 첨부 자료에는 현행·변경안·경쟁 제품의 동등 조건 비교 기록이나 회신이 없다. 같은 권한·항목·출력 요건에서 경쟁 제품이 작업을 완료하지 못하면 그 조건에서의 기능 동등성은 기각된다. 완료하더라도 그것만으로 우위가 입증되지는 않는다. S2의 분모·중복 처리 요청도 패킷에만 기록되어 미회신이므로 도입률 비교는 별도로 보류한다. 이 누락은 c2의 문서 언급을 반박하지 않는다. 확정 목표와 제품 우선순위는 유지한다.",
+          "verdict": "undetermined"
+        }
+      }
+    },
+    "gates": {
+      "c1": {
+        "opinions": [
+          "o1"
+        ],
+        "reasons": [],
+        "status": "eligible",
+        "upstream": []
+      },
+      "c2": {
+        "opinions": [
+          "o2"
+        ],
+        "reasons": [],
+        "status": "eligible",
+        "upstream": []
+      },
+      "c3": {
+        "opinions": [
+          "o3"
+        ],
+        "reasons": [
+          "independent_review:o3",
+          "missing_evidence"
+        ],
+        "status": "revision_hold",
+        "upstream": [
+          {
+            "field": "deduplicated",
+            "ref": "S1",
+            "status": "requested_in_packet",
+            "to": "source-S1"
+          },
+          {
+            "field": "denominator",
+            "ref": "S1",
+            "status": "requested_in_packet",
+            "to": "source-S1"
+          }
+        ]
+      },
+      "c4": {
+        "opinions": [
+          "o4"
+        ],
+        "reasons": [
+          "independent_review:o4",
+          "missing_evidence"
+        ],
+        "status": "revision_hold",
+        "upstream": [
+          {
+            "field": "deduplicated",
+            "ref": "S2",
+            "status": "requested_in_packet",
+            "to": "source-S2"
+          },
+          {
+            "field": "denominator",
+            "ref": "S2",
+            "status": "requested_in_packet",
+            "to": "source-S2"
+          }
+        ]
+      }
+    },
+    "synthesis": {
+      "dispositions": {
+        "o1": "acknowledge",
+        "o2": "acknowledge",
+        "o3": "retain_dissent",
+        "o4": "retain_dissent"
+      },
+      "draft_sha256": "3540fa425ed7de374f5e1f774e49b6e7b573869d24f43187b4b303501860341a",
+      "next_question": "기획팀 결정 질문: 확정 목표와 제품 우선순위는 유지하고, 기능 추가를 결정하기 전에 서로 다른 계정이 같은 작업을 요청했는지와 당시 권한에서 기존 경로를 안내해도 필요한 출력을 얻지 못했는지부터 확인할 것인가?\n확인된 범위: o1은 S1(source-S1 작성, synthetic-S1)에 기록된 1주차 단일 지원 채널의 발췌 4건만, o2는 S2(source-S2 작성, synthetic-S2)에 기록된 경쟁 안내문 한 건의 언급만 지지한다. 둘 다 합성 자료다. 직접 상충하는 근거 ID는 없지만, 그것이 기능 공백이나 경쟁 우위의 증거는 아니다.\n남은 판단: o3은 계정 간 반복과 기능 공백을 미결로 남긴다. 중복 제거 후 한 계정만 남으면 이 표본에서 계정 간 반복이라는 해석을 기각한다. 기존 경로 안내만으로 작업이 완료되면 해당 사례는 기능 공백보다 발견성 문제로 설명된다. 분모와 선정 기준 없이는 채널 전체 빈도를 추정하지 않는다. o4는 경쟁 기능의 동등성·우위와 도입률 비교를 미결로 남긴다. 같은 권한·항목·출력 요건에서 현행, 안내 개선, 기능 추가안, 경쟁 제품의 작업 완료 여부를 비교한 실행 기록이나 적용 가능한 논문은 첨부되지 않았다. 경쟁 제품이 그 조건에서 실패하면 동등성은 기각되며, 성공해도 우위나 도입률은 입증되지 않는다.\n보완 요청 기록: acl-023은 SYN-SIG-01-source와 개별 발췌의 연결·표본 범위, source-S1은 원출처·선정 기준·분모·계정 및 스레드 중복 처리·작업 실패 기록, source-S2는 안내문 원출처·문맥·실행 조건과 결과·도입률 분모와 중복 처리, 의뢰 기획팀 담당자(성명 미제공)는 공통 사용자 범위와 비교 제약의 확인 대상이다. 요청은 패킷에만 기록했으며 실제 발송·회신은 없다. 원문 재집계와 동등 조건의 동작 재현은 하지 못했다.\n기획팀 인계용 고정본: SYN-SIG-01 / 근거본 3bce2d761a4faec0c4d73d4e5a51a6acf010b73ff5633a563c0c43e670ae2cb5 / 위 해시의 초안 v1(c1–c4), 주장 수정 없음. 작성 참여자: acl-023, acl-024, scenario-owner, source-S1, source-S2. 독립 검토자: acl-025(종합자 acl-024 제외). 영수증: 접수 d4a7ddc1dfbb8e065a8ddaea40a6ddf1b940d0cc8b17ef64a518b03979dd2050 → 관찰 55510132c9cdfccf82e402042b226695a903f174c3e5fd98e123a0c91320cd8a → 초안 a47806b90c6b641adeb232928af61076d9e0f3837df4ede378ab7afddaa3e8f7 → 독립 검토 87bfa207e068f56b15a29065f09a077eee427778f814fc79fe978618417328bd. 핵심 주장이나 근거가 바뀌면 변경본을 독립 재검토에 보내거나 변경분을 미검토로 표시한다."
+    },
+    "checkpoint_sha256": "e2234352bea257cadadef40be89b3fb8a6038fb338660ff5e04d6faf3177192e",
+    "replay_equal": true
+  }
+}

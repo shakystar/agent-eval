@@ -1,0 +1,142 @@
+{
+  "measurement_cutoff": "M5 independent verdict request before model dispatch",
+  "historical_comparison": {
+    "review_contract": "identical task/model/profile/inputs, one normal and one seeded semantic defect; supplementary benchmark measured side-by-side after source freeze",
+    "old_candidate": "699fe82cb79538fd1cd1dd68a246c96716ade75b",
+    "new_candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+    "rows": [
+      {
+        "group": "bench-new-A",
+        "task": "review-comparison",
+        "member": "acl-012",
+        "role": "code-review",
+        "run": "r-3ce0a6b79bf64bb292041f8250e406fe",
+        "attempt": "a-569abe5be80f1c51b6af137064e4093c",
+        "receipt": null,
+        "result": "uncertain",
+        "decision": null,
+        "elapsed_runtime_execute_seconds": 30.004,
+        "requested_model": "gpt-6.2-sol",
+        "requested_effort": "high"
+      },
+      {
+        "group": "bench-new-A-b",
+        "task": "review-comparison",
+        "member": "acl-012",
+        "role": "code-review",
+        "run": "r-c4301f695d164ee5a1b9f2cb644c46a6",
+        "attempt": "a-f7f5e977d92e42a5595afa7627094336",
+        "receipt": "6e712387093221af710ff014f88987afe463eeca71ebd3f8164e61fa5686e06a",
+        "result": "succeeded",
+        "decision": "accept",
+        "elapsed_runtime_execute_seconds": 15.29,
+        "requested_model": "gpt-6.2-sol",
+        "requested_effort": "high"
+      },
+      {
+        "group": "bench-new-B",
+        "task": "review-comparison",
+        "member": "acl-012",
+        "role": "code-review",
+        "run": "r-723fd4d71e2141d59a8ff9989dfb6f65",
+        "attempt": "a-f65dd2e6e070b460f8c2e9d39684ceb7",
+        "receipt": "ace57fe8f613aa6d6f6e15645d551bfa54840c90c2e157891babe6f6400c9b0e",
+        "result": "succeeded",
+        "decision": "revise",
+        "elapsed_runtime_execute_seconds": 37.812,
+        "requested_model": "gpt-6.2-sol",
+        "requested_effort": "high"
+      },
+      {
+        "group": "bench-old-A",
+        "task": "review-comparison",
+        "member": "acl-012",
+        "role": "code-review",
+        "run": "r-657c123daa614460b816e4aea85109cd",
+        "attempt": "a-024e735e8d5b4c70b1cb115323147bc7",
+        "receipt": "598f87112b1bbee4a24672264f0dbf630057dd0136711623e5f4dd81e7136c03",
+        "result": "succeeded",
+        "decision": "accept",
+        "elapsed_runtime_execute_seconds": 13.848,
+        "requested_model": "gpt-6.2-sol",
+        "requested_effort": "high"
+      },
+      {
+        "group": "bench-old-B",
+        "task": "review-comparison",
+        "member": "acl-012",
+        "role": "code-review",
+        "run": "r-e69834f281ef485e985e3e66115768f9",
+        "attempt": "a-63f22f257a054760a781a619a0b2e61b",
+        "receipt": "6013bcc46470b3fdc68caf5957018e681894e128284d2cb52a4abd8118c14588",
+        "result": "succeeded",
+        "decision": "revise",
+        "elapsed_runtime_execute_seconds": 20.453,
+        "requested_model": "gpt-6.2-sol",
+        "requested_effort": "high"
+      }
+    ],
+    "old": {
+      "detected": "1/1",
+      "false_rejections": "0/1"
+    },
+    "new": {
+      "detected": "1/1",
+      "false_rejections": "0/1",
+      "startup_not_started": 1
+    }
+  },
+  "first_code_delivery": {
+    "units": [
+      "M2 기획팀 구현",
+      "M4 연구팀 구현"
+    ],
+    "accepted_first": "0/2",
+    "submitted_revisions_with_artifacts": {
+      "M2": 3,
+      "M4": 2
+    },
+    "reasons": {
+      "M2": [
+        "CLI profile missing, model-name convention mismatch",
+        "state directory pinning"
+      ],
+      "M4": [
+        "extra model metadata rejected; upstream needs missing from broader claim gate"
+      ]
+    }
+  },
+  "m3_first_handoff": "first returned by both consumers; subsequent revision plus 1 name-only correction accepted by development and review",
+  "application_attempts_before_verdict": {
+    "all": 86,
+    "succeeded_envelope": 72,
+    "uncertain_with_startup_not_started": 14
+  },
+  "final_regression": {
+    "unique_tests": 143,
+    "skipped": 0,
+    "wall_seconds": 179.064,
+    "log_sha256": "ab951ec95c3f83b8f60daba89624fac07c9dbf947e1fcccd9acec4443e8944b1"
+  },
+  "duplicate_witness_sensitivity": {
+    "method": "duplicate a runtime.execute observation in an isolated copy before counting, final packet unchanged",
+    "control_counts": {
+      "research-evidence-route--3": 1
+    },
+    "duplicate_counts": {
+      "research-evidence-route--3": 2
+    },
+    "duplicate_detected": true
+  },
+  "unavailable": [
+    "per-model active time, token usage and cost",
+    "statistical reliability or achievement of repeatable best output",
+    "additional market evidence beyond synthetic scenarios"
+  ],
+  "v031_candidates": [
+    "contract field loss/extra metadata at handoff; evaluate first-pass quality across unseen equivalents",
+    "separate pre-execution account routing failures from model quality and study recovery cost",
+    "link evidence packet formats and role/roster registration to prevent duplicated names/unsupported effort; remeasure against frozen version",
+    "provenance linkage at first submission and quality of per-claim missing-evidence declarations"
+  ]
+}
