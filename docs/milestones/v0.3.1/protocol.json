@@ -1,0 +1,39 @@
+{
+  "blind": "Cases H1–H4 and keys are withheld from candidate author. Reviewer sees only source and frozen draft; no arm label or key. Sessions isolated. Synthetic free-text drafts and two retrospective native checkpoints are separately reported.",
+  "cases": {
+    "CAL01": {
+      "critical_missing": "deduplicated",
+      "observed": "q",
+      "unsupported": "t"
+    },
+    "CAL02": {
+      "critical_missing": "denominator",
+      "observed": "t",
+      "unsupported": "q"
+    },
+    "H1": {
+      "critical_missing": "deduplicated",
+      "observed": "b",
+      "unsupported": "a"
+    },
+    "H2": {
+      "critical_missing": "denominator",
+      "observed": "a",
+      "unsupported": "b"
+    },
+    "H3": {
+      "critical_missing": "deduplicated",
+      "observed": "y",
+      "unsupported": "x"
+    },
+    "H4": {
+      "critical_missing": "denominator",
+      "observed": "x",
+      "unsupported": "y"
+    }
+  },
+  "constraints": "Same controller, bridge, models, goals, roster composition, source and draft; isolated review change only. No context-memory feature, forced decision or automatic merge.",
+  "diagnostic": "Track independent review verdict plus missing prerequisites; wider claim has no author-declared dependency and no observer needs in controlled drafts to isolate review contribution. Historical native drafts retain their actual needs. Count rework only if observed; real token usage if available; no market claim.",
+  "primary": "Per arm: 8 eligible limited observations and 8 unsupported claims across 4 held-out cases repeated twice. Count false block and false pass after native synthesis. Candidate adoption requires >=2 fewer false blocks, zero false passes, no increase in false blocks on any case summed over the two repeats; all native receipt and scope checks pass. Tie, insufficient or failed quality gates => keep current.",
+  "runs_per_case_per_arm": 2
+}

@@ -1,0 +1,360 @@
+{
+  "scope": "Review-requested diagnostic pair only. Original terminal failures and primary scores retained verbatim. Additional paired H2 and additional full native signal for both arms. No author rework, new rubric or exclusion.",
+  "current": {
+    "h2": {
+      "case": "H2",
+      "rep": 3,
+      "arm": "current",
+      "revision": "112d4629d4261b4403ff33fbde43e36431c435f4",
+      "receipt": "7c7e004ed33fd5984cd022d6f9162c21760e1932b43f14634d2b2ec132017069",
+      "input_sha256": "b1baf823d8c1d0db966862184de22d75739b6974e315783903ccf55209b05a4b",
+      "draft_sha256": "347b753090379b40af476b6b0c9a45485247188bd38f164687fdd9244a49178c",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "usage": 7615,
+      "times": [
+        14.502440753974952
+      ],
+      "rework_requests": 3,
+      "review": {
+        "draft_sha256": "347b753090379b40af476b6b0c9a45485247188bd38f164687fdd9244a49178c",
+        "conflict": false,
+        "opinions": {
+          "o1": {
+            "claim": "a",
+            "verdict": "support",
+            "reason": "H2의 합성 근거 S는 첨부 개정 이력에서 ‘내보내기’를 언급한 문서를 3건으로 직접 집계했다고 명시한다. 분모가 없어도 이 건수는 보고할 수 있다. 다만 독립 재집계 결과는 제공되지 않았다. 같은 문서의 여러 개정 항목을 따로 셌을 가능성이 있으므로, 원작성자 synthetic-author에게 문서 식별 기준과 재집계 기록을 요청할 필요가 있다. 같은 범위에서 서로 다른 문서를 다시 센 결과가 3건이 아니면 주장은 반박된다.",
+            "missing": [
+              {
+                "ref": "S",
+                "field": "deduplicated"
+              }
+            ]
+          },
+          "o2": {
+            "claim": "b",
+            "verdict": "undetermined",
+            "reason": "합성 근거 S의 3건은 분자일 뿐이다. 같은 달, 같은 범위에서 같은 기준으로 센 전체 개정 문서가 10건이면 30%이지만, S에는 전체 문서 수가 없다. 원작성자 synthetic-author에게 해당 월의 전체 개정 문서 수와 분자·분모의 재집계 기록을 요청할 필요가 있다. 확인 전에는 30%를 전달할 수 없으며, 재집계한 건수가 3건이고 전체가 10건이 아니면 정확히 30%라는 주장은 반박된다.",
+            "missing": [
+              {
+                "ref": "S",
+                "field": "denominator"
+              },
+              {
+                "ref": "S",
+                "field": "deduplicated"
+              }
+            ]
+          }
+        }
+      },
+      "gates": {
+        "a": {
+          "status": "revision_hold",
+          "reasons": [
+            "missing_evidence"
+          ],
+          "opinions": [
+            "o1"
+          ],
+          "upstream": [
+            {
+              "ref": "S",
+              "field": "deduplicated",
+              "to": "synthetic-author",
+              "status": "requested_in_packet"
+            }
+          ]
+        },
+        "b": {
+          "status": "revision_hold",
+          "reasons": [
+            "independent_review:o2",
+            "missing_evidence"
+          ],
+          "opinions": [
+            "o2"
+          ],
+          "upstream": [
+            {
+              "ref": "S",
+              "field": "deduplicated",
+              "to": "synthetic-author",
+              "status": "requested_in_packet"
+            },
+            {
+              "ref": "S",
+              "field": "denominator",
+              "to": "synthetic-author",
+              "status": "requested_in_packet"
+            }
+          ]
+        }
+      }
+    },
+    "signal": {
+      "branch": {
+        "action": "select_followup",
+        "claims": [
+          "c1",
+          "c2"
+        ],
+        "packet_sha256": "40b20601899b97b325588856583907125eeb4045b611dc69d557a7ed6bb09594",
+        "reason": "후속 판단의 근거로 독립 검토가 지지한 관찰 두 건만 선택한다. 합성 S1에서 확인된 것은 1주차 단일 지원 채널의 발췌가 4건이라는 점이지, 서로 다른 계정 4곳이 같은 작업을 요청했다는 뜻이 아니다. 합성 S2에서 확인된 것은 경쟁 제품 안내문 한 건의 언급이지, 실제 동작이나 도입률이 아니다. 반복 수요(c3)와 기능 공백·대안 우위(c4)는 미결로 둔다. 재판단에 필요한 자료는 의뢰 기획팀 담당자에게 제시할 보완 요청안으로 남긴다. S1은 후속 문의를 합치고 사용법 질문을 구분한 뒤 같은 작업을 요청한 고유 계정 수가 필요하다. 둘 미만이면 발췌 내 계정 간 반복을 지지하지 않으며, 둘 이상이어도 전체 문의 수와 선정 기준 없이는 수요 비중을 정할 수 없다. 현행 기능·기능 추가안·경쟁 대안은 버전을 명시하고 같은 작업·입력·권한에서 요구한 출력을 얻는지 비교해야 한다. 현행 기능으로 완료할 수 있고 문의 원인이 사용법이라면 해당 문의는 기능 추가의 근거에서 제외한다. 보완 요청은 발송하지 않았으며 과제화와 도입 판단은 보류한다. 이번 관찰 선택에는 사용자 결정이 필요하지 않다. 확정 목표·제품 우선순위·접근 범위는 유지하며, 위임 밖 변경은 사용자 승인 전까지 제안으로만 남긴다."
+      },
+      "receipt_chain": {
+        "decision": {
+          "run": "r-85bcd059f80649c8b57be332089d1ca7",
+          "member": "acl-021",
+          "receipt_sha256": "a0dd80b25e9a4fedbb873115334178dc729c0729bd9e90394c39e75060cf7c87",
+          "go_executes": 1
+        },
+        "draft": {
+          "run": "r-7d6213177c4e4aa7b9036e00a145e5b3",
+          "member": "acl-024",
+          "receipt_sha256": "b236ba9425246f765eea3611b049feabcbff09407a962d7c07e976828baf5d25",
+          "go_executes": 1
+        },
+        "intake": {
+          "run": "r-5e7b8766fdac43d3a169c0e7e68ec4f3",
+          "member": "acl-021",
+          "receipt_sha256": "41ed0e7273d4a641fd479795e87b2bc787fbf72af9dec805f7ae0d4e6cf4115a",
+          "go_executes": 1
+        },
+        "observe": {
+          "run": "r-4ac3e6c49003436a918402e878808a6d",
+          "member": "acl-023",
+          "receipt_sha256": "e3f1b1ba8480b9889d589622bc8d2164cf4b8f30b7020daff9893283c28422dc",
+          "go_executes": 1
+        },
+        "review": {
+          "run": "r-bd5e1855c9bf44c7af82a0e28e7ce932",
+          "member": "acl-025",
+          "receipt_sha256": "add672f2ffc8722968915ea97195b3a3ce64d576fc5073ad7d39042e30fb9e5d",
+          "go_executes": 1
+        },
+        "synthesize": {
+          "run": "r-c8f97ed646da493a8cb861034bce5a4d",
+          "member": "acl-024",
+          "receipt_sha256": "53bd62cecbe57ee7425050585184052a878a42957c68eefbe02b57a4971dba5f",
+          "go_executes": 1
+        }
+      },
+      "acked": true,
+      "conflict": false,
+      "draft_authors": [
+        "acl-023",
+        "acl-024",
+        "scenario-owner",
+        "source-S1",
+        "source-S2"
+      ],
+      "draft_sha256": "e8a89d987203a32f20e1f62a90894f27450b4ade08ed8811dcb0a1dea6797f61",
+      "packet_sha256": "40b20601899b97b325588856583907125eeb4045b611dc69d557a7ed6bb09594"
+    }
+  },
+  "candidate": {
+    "h2": {
+      "case": "H2",
+      "rep": 3,
+      "arm": "candidate",
+      "revision": "bf4650c7a0c3d57f370f0ce73aca0ae5bacd2962",
+      "receipt": "0a2928fadd256c8de5f66431be40c1ba899115b3dbfe3b30baf18a9f0a21f112",
+      "input_sha256": "b1baf823d8c1d0db966862184de22d75739b6974e315783903ccf55209b05a4b",
+      "draft_sha256": "347b753090379b40af476b6b0c9a45485247188bd38f164687fdd9244a49178c",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "usage": 7709,
+      "times": [
+        15.15028874395648
+      ],
+      "rework_requests": 1,
+      "review": {
+        "draft_sha256": "347b753090379b40af476b6b0c9a45485247188bd38f164687fdd9244a49178c",
+        "conflict": false,
+        "opinions": {
+          "o1": {
+            "claim": "a",
+            "verdict": "support",
+            "reason": "H2 / 검토자 codex-review / 반환 대상 acl-024. 제공된 참여자 명단에는 synthetic-author만 있다. 합성 근거 S는 첨부 개정 이력을 직접 집계한 결과로 ‘내보내기’를 언급한 문서가 3건이라고 명시한다. 이는 해당 이력 안의 건수를 지지하며, 전체 문서 수는 이 판단에 필요하지 않다. 독립 재집계 결과는 제공되지 않았다. 같은 범위에서 같은 문서 단위로 재집계한 값이 3건과 다르면 이 주장은 반박된다.",
+            "missing": []
+          },
+          "o2": {
+            "claim": "b",
+            "verdict": "undetermined",
+            "reason": "S는 분자 3건만 제시한다. 이 3건이 이번 달 전체 개정 문서에서 센 언급 건수라면, 전체가 10건일 때 비율은 30%이고 전체가 다르면 비율도 달라진다. 보완 요청 대상은 S의 원작성자 synthetic-author이며, 필요한 자료는 같은 달·같은 문서 단위로 집계한 전체 개정 문서 수다. 비율을 재현한 기록이나 30%를 반박하는 독립 근거는 없다. 분모의 부재는 반박이 아니라 판단 유보 사유다.",
+            "missing": [
+              {
+                "ref": "S",
+                "field": "denominator"
+              }
+            ]
+          }
+        }
+      },
+      "gates": {
+        "a": {
+          "status": "eligible",
+          "reasons": [],
+          "opinions": [
+            "o1"
+          ],
+          "upstream": []
+        },
+        "b": {
+          "status": "revision_hold",
+          "reasons": [
+            "independent_review:o2",
+            "missing_evidence"
+          ],
+          "opinions": [
+            "o2"
+          ],
+          "upstream": [
+            {
+              "ref": "S",
+              "field": "denominator",
+              "to": "synthetic-author",
+              "status": "requested_in_packet"
+            }
+          ]
+        }
+      }
+    },
+    "signal": {
+      "branch": {
+        "action": "select_followup",
+        "claims": [
+          "c1",
+          "c2"
+        ],
+        "packet_sha256": "b794d26197d66c863818119dac541e10ca8c0cc7d9e664b0c5a8d2d21bf2d7fe",
+        "reason": "기획팀의 후속 판단에는 독립 검토가 지지한 두 관측만 선택한다. 합성 근거 S1의 c1은 1주차 단일 지원 채널의 발췌가 4건이라는 뜻이지, 서로 다른 계정 4개가 같은 기능을 요구했다는 뜻이 아니다. 합성 근거 S2의 c2는 경쟁 제품 안내문 한 건에 일괄 내보내기가 언급됐다는 뜻이지, 실제 동작이나 도입률의 증거가 아니다. c3에 대한 o3의 판단 불가를 유지한다. 분모와 중복 제거 결과가 없다는 점은 반복 수요의 반증도 아니다. 의뢰 기획팀 담당자에게 남길 보완 사항은 S1의 선정 기준, 전체 문의 수와 고유 계정 수, 중복 제거 후 과업별 계정 수, 동일 권한·제품 버전에서 안내 전후의 과업 완료 여부다. 보완 요청안은 미발송이다. 중복 제거 후 계정 간 반복이 사라지면 이 표본으로 기능 추가를 정당화하지 않는다. 기존 기능으로 완료된다면 해당 사례의 기능 공백 설명을 기각하고 안내·권한 문제를 구분한다. 같은 과업이 반복되고 안내 후에도 완료되지 않을 때에만 기능 추가를 비교 후보로 남긴다. 현재는 현행 유지·안내 또는 권한 개선·기능 추가 중 어느 안도 확정하지 않는다. 이번 선택은 과제 생성이나 우선순위 변경이 아니므로 사용자 결정은 필요 없다. 확정 목표·제품 우선순위·접근 범위를 유지하며, 위임 밖 변경은 사용자 승인 전까지 제안으로만 남긴다."
+      },
+      "receipt_chain": {
+        "decision": {
+          "run": "r-bbe655c2e02944ae9a895a7be2deb36b",
+          "member": "acl-021",
+          "receipt_sha256": "05765a9a1cae0ec072259a6cab78ef161b4b66b7beacc6648a08b23ad3faa210",
+          "go_executes": 1
+        },
+        "draft": {
+          "run": "r-b0cf5fcbd0a54add8fdbb70826eacf48",
+          "member": "acl-024",
+          "receipt_sha256": "b81ccbcca3a6884cde8a18f2e36bdcdfd7c7477424d8a62edc47e1f6d9a983f3",
+          "go_executes": 1
+        },
+        "intake": {
+          "run": "r-b2b65301ea0b48feb707b822fc2463a9",
+          "member": "acl-021",
+          "receipt_sha256": "1cf278d252785888efc120ad3817f069a19bf367a65651529f42d32017b34512",
+          "go_executes": 1
+        },
+        "observe": {
+          "run": "r-3626f6f10e9f4c1594c698496990dde8",
+          "member": "acl-023",
+          "receipt_sha256": "dd63d63ad25740ef6b936f8194e538747638d418f1495cda72cf20b0a875c567",
+          "go_executes": 1
+        },
+        "review": {
+          "run": "r-b23f0516fbf142c18ad2e42f0af76a5d",
+          "member": "acl-025",
+          "receipt_sha256": "cacb0cd3237538d57317bd0784f5221a5ac39e9b004e99aece07fd62cdb45049",
+          "go_executes": 1
+        },
+        "synthesize": {
+          "run": "r-e0a6818a0e7d42cdb190fd52a7d80556",
+          "member": "acl-024",
+          "receipt_sha256": "242ce25efb560a4bf88e312b14cd8841957af85a3b2bf2ee2befd8cb81a43eae",
+          "go_executes": 1
+        }
+      },
+      "acked": true,
+      "conflict": false,
+      "draft_authors": [
+        "acl-023",
+        "acl-024",
+        "scenario-owner",
+        "source-S1",
+        "source-S2"
+      ],
+      "draft_sha256": "3c292e24ec50035f8253560d07160a77f9374772e0d6b07967388e164e22911e",
+      "packet_sha256": "b794d26197d66c863818119dac541e10ca8c0cc7d9e664b0c5a8d2d21bf2d7fe"
+    }
+  },
+  "original_signal_hold": {
+    "reason": {
+      "action": "hold",
+      "phase": "review",
+      "reason": "invalid_or_conflicted_review",
+      "terminal": true
+    },
+    "draft_authors": [
+      "acl-023",
+      "acl-024",
+      "scenario-owner",
+      "source-S1",
+      "source-S2"
+    ],
+    "reviewer": "acl-025",
+    "raw_output": {
+      "artifact": {
+        "draft_sha256": "8745fe31f3e0fb60650319510d3b862b91fba16f8779c7963f7efbfeca4c5b3a",
+        "conflict": true,
+        "opinions": {
+          "o1": {
+            "claim": "c1",
+            "verdict": "undetermined",
+            "reason": "SYN-SIG-01 → acl-024 반환용 기록. 검토자 ID가 제공되지 않아 이 건의 가설 작성·수집·해석·재현·종합 참여자와 대조할 수 없다. conflict=true는 참여가 확인됐다는 뜻이 아니라 미관여를 확인하지 못해 검토를 중단했다는 뜻이다. 의뢰한 기획팀 담당자에게 미관여가 확인된 검토자로 재배정을 요청하는 안을 남긴다(미발송). S1의 발췌 4건에 대한 독립 의견은 내지 않았다. source-S1의 추출 기록이 없어 발췌 과정은 미재현이며, 분모와 중복 제거 정보의 누락은 발췌 건수 자체가 아니라 문의 비중과 계정 간 반복 판단에 영향을 준다.",
+            "missing": [
+              {
+                "ref": "S1",
+                "field": "denominator"
+              },
+              {
+                "ref": "S1",
+                "field": "deduplicated"
+              }
+            ]
+          },
+          "o2": {
+            "claim": "c2",
+            "verdict": "undetermined",
+            "reason": "같은 독립성 사유로 실질 검토를 진행하지 않았다. 기존 기록상 S2의 안내문 언급과 실제 기능 동작은 별개다. source-S2의 동일 버전 문서와 실행 기록이 없어 문구 대조와 동작 재현은 미완료다. 분모와 중복 처리에 관한 보완 요청은 패킷에만 있고 회신은 없다. 이 누락은 도입률 추론에 영향을 주며, 문구가 없었다는 반증은 아니다.",
+            "missing": [
+              {
+                "ref": "S2",
+                "field": "denominator"
+              },
+              {
+                "ref": "S2",
+                "field": "deduplicated"
+              }
+            ]
+          },
+          "o3": {
+            "claim": "c3",
+            "verdict": "undetermined",
+            "reason": "같은 독립성 사유로 수요 가설이나 제품 대안을 판정하지 않았다. 기존 보완 요청에 회신이 없어 S1만으로는 한 계정의 후속 문의와 여러 계정의 반복 수요를 구별할 수 없다. 고정본의 반증 조건은 중복 제거·주제 재분류 후 관련 계정이 하나 이하인지, 같은 조건에서 현행 기능으로 작업을 완료할 수 있고 문의가 사용법 질문이었는지 확인하는 것이다. 어느 조건도 시험한 기록은 없으며 S2의 문서 언급이 이를 대신하지 않는다. 확정 목표와 제품 우선순위는 변경하지 않는다.",
+            "missing": [
+              {
+                "ref": "S1",
+                "field": "deduplicated"
+              },
+              {
+                "ref": "S1",
+                "field": "denominator"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "policy": "conflict=true triggers a terminal safety hold before synthesis. The original run was not resumed or altered; separate new case execution used for diagnostics."
+  },
+  "first_independent_review": "패치는 acl-025 지시문에 한정되어 시험 범위에 부합하며, 회귀 테스트 143개가 통과했다. 집계상 오차단은 현행 3건에서 후보 0건으로 줄었고, 오통과는 양쪽 모두 0건이며 사례별 오차단 증가도 없었다. 다만 현행 H2-1은 반환 초안 해시 불일치로 종료되어 유효 리뷰가 7/8건이다. 이 종료를 의미상 오차단으로 계산하지 않는다. 별도의 현행 네이티브 signal 실행은 초안 해시가 일치했지만 이해충돌로 종료되어 종합·결정 영수증이 없다. 따라서 양쪽의 유효 비교와 네이티브 영수증 요건을 충족했다고 볼 수 없어 현행을 유지하고 마일스톤 인수는 보류한다. 동결된 입력과 키를 유지한 채 사전 절차에 따라 H2-1의 유효 비교를 보완하고, 네이티브 signal의 이해충돌 처리 및 필수 영수증 충족 여부를 증빙한 뒤 재판정한다. 운영 병합은 별도 승인 사항이다."
+}

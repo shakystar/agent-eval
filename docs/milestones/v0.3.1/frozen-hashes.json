@@ -1,0 +1,9 @@
+{
+  "calibration/CAL01.json": "f75737b051afeda7a779de0f6843078f7e7ab6c39d342366e8bb5743fb9ac578",
+  "calibration/CAL02.json": "6cd8a3c46979fd59716ea048902f59a88b9f7104f12b210355495cb622bec11c",
+  "protocol.json": "72b8fa16dd474d4787778c328f2cba59b91aad7cc3dc60f26f006ff61a1133e1",
+  "sealed/H1.json": "fec4511e234ec7d625a176ebed559eedf0bb99b6ded03fcb80df83e0e3dda243",
+  "sealed/H2.json": "92c1b2ea8372c9adddcf1d800e7b2a4339c37c281c9968f17570551a35c42584",
+  "sealed/H3.json": "7885365ce4f15c2ed8d37aa82ef9c4dc3dd8e10d76a269a589c6f93e75149646",
+  "sealed/H4.json": "c5b93a8be0f476aff1e178eda2406cd0188edaa700614c51bd54e2f4e6674ae6"
+}

@@ -1,0 +1,197 @@
+{
+  "planning": {
+    "branch": "accept",
+    "proposal": {
+      "개발_작업서": [
+        {
+          "인수시_확인": "AC-01: 승인된 연구팀 3인, 모델, 원문 범위와 고정 기준을 유지한다. 역할 추가, 모델 변경, 컨텍스트 메모리 도입, 제품 우선순위 변경은 제외한다.",
+          "작업": "현행 acl-025 독립 리뷰 지시문과 최소 개정 후보의 대조표를 작성한다. 변경 줄마다 필요한 이유와 대응 인수 조건을 표시하고, 어느 조건에도 필요하지 않은 변경은 뺀다."
+        },
+        {
+          "인수시_확인": "AC-02~04: 9줄은 사용자 진술이다. 사례 원문이 제공되면 지정 범위의 행을 다시 세고 그 결과를 별도로 적는다. 행 수만으로 9명을 확정하지 않으며, 인원 식별 근거 부족으로 행 수까지 기각하지 않는다. 직접 관측에는 원문 근거를 붙이고, 원문이 지지하지 않는 관찰은 보류한다. 제공된 독립 반증은 대상 주장·출처·내용을 남겨 단순한 근거 부족과 구분한다.",
+          "작업": "공개 교정 기록에 ‘이벤트 행 수’와 ‘고유 인원 수’를 별도 주장으로 적고, 각각 사용자 진술·원문 근거·판정 상태를 구분한다."
+        },
+        {
+          "인수시_확인": "AC-05~06: 공개 사례에서 채점 항목이나 임계값을 가져오지 않는다. 개선 기준 미달 또는 동률이면 기존 운영 계약을 유지한다. 개선 기준을 충족해도 후보 검토 결과만 기록하고 개정 승인을 선언하지 않는다.",
+          "작업": "공개 교정 기록과 분리된 비교표에서 현행 지시문과 후보를 새 미공개 과제의 동결 채점표로 평가하고, 결과와 운영 계약 처리 근거를 기록한다."
+        }
+      ],
+      "결정": "요청 범위와 planning--2의 인수 조건이 일치하므로 개발 작업서로 인계한다. 인계 대상은 후보 작성·검증 절차이며, 지시문 개정이나 운영 적용을 승인하는 것이 아니다.",
+      "문서": "v0.3.1 개발 인계서",
+      "사용자_결정": "이 작업서 인계에는 추가 결정이 필요하지 않다. 누락된 판정 자료는 해당 항목을 검증할 때 요청 팀 담당자에게 보완을 요청하고, 목표나 위임 범위를 바꾸는 안은 사용자 승인 전까지 제안으로 남긴다.",
+      "현재_보류": "AC-07: 현행 지시문이 없어 변경 경계는 미검증이고, 사례 원문이 없어 9줄을 독립적으로 확인하지 못했다. 고유 인원 9명은 식별 근거가 없어 보류한다. 동결 채점표와 비교 결과가 없어 기준 적용 및 개선 여부도 미검증이다. 자료 부재를 미달이나 동률로 처리하지 않으며, 구현 인수나 독립 검토 완료를 선언하지 않는다."
+    },
+    "receipts": [
+      {
+        "member": "acl-021",
+        "receipt": "5447d1b295ba986c90212d56bb0e06744abde8ed460862d948f20ebf78232f48"
+      },
+      {
+        "member": "acl-021",
+        "receipt": "72ababc7576d00af30be99ba18d621523e455afd6c306bb3e80d0163494c7c2f"
+      },
+      {
+        "member": "acl-001",
+        "receipt": "95da63ae0d473b0c0bfb91b568cba0b231ead3a811f1b4d00f7aaf8f979947ee"
+      }
+    ]
+  },
+  "development": {
+    "state": "accept",
+    "patch_sha256": "f8152136dd6a341ff57970fd70414409b1f55f4a6aa8e8056d0a058e2d986a7a",
+    "author": "acl-007",
+    "initial_review_and_correction": {
+      "initial": "a72fdddd4f6312dec03d06ec38cbf899f38f3d0a2f5e0129aa7d46b0132b87de",
+      "accepted_stage": "reviewer-r1",
+      "receipt": "a904f3f2ad4534f8b4f13ced928e98cac3c0062e272d29fb00d87ce4dfc0931b"
+    },
+    "reviewer": "acl-005",
+    "receipts": {
+      "author": "4ae26f2e84a1f9188f52626d75618c610ea3037f56ea97528f78c2aeb1e7aa0f",
+      "reviewer": "a904f3f2ad4534f8b4f13ced928e98cac3c0062e272d29fb00d87ce4dfc0931b"
+    }
+  },
+  "baseline_refs": {
+    "agent-eval": "ad1403358dbdb1c6a263179410c6f64b1be5c8d6",
+    "role-orchestrator": "3c7af3f464c652a27be9843a45dc418f1168e820",
+    "agent-collaboration-lab": "112d4629d4261b4403ff33fbde43e36431c435f4",
+    "role-runtime": "4c67eeef8b342994fc14367bd045d97f9b49e7bd",
+    "codex-adapter": "f447590be31eb8e262155a9ea325de082b7b2fe2"
+  },
+  "candidate": "bf4650c7a0c3d57f370f0ce73aca0ae5bacd2962",
+  "candidate_tree": "6de017a06e85e025f9cc2ba17390f60fd0a79728",
+  "changed_paths": "docs/team/planning-teams.json",
+  "regression": {
+    "command": "python -m unittest discover -s tests -v",
+    "runner_summary": [
+      "Ran 143 tests in 180.833s",
+      "",
+      "OK"
+    ],
+    "success_rows": 143,
+    "sha256": "6e1fdb7ee66acc39d8995c182e9ac5c4306d9bbf3ad5e4277429042030492814"
+  },
+  "e2e": {
+    "current-request": {
+      "completed": true,
+      "decision": "hold",
+      "claims": [],
+      "reviewer": "acl-025",
+      "packet": "10298da068f4d0847d5c75b934e2989c5d90206aafb963b961281661b95d4de6",
+      "catalog": "112d4629d4261b4403ff33fbde43e36431c435f4",
+      "receipts": {
+        "decision": {
+          "member": "acl-021",
+          "receipt": "21eaf1e506965da16c3ce0f69b5a8b7513c7ef6fde72526ce52e1805063a1e15"
+        },
+        "draft": {
+          "member": "acl-024",
+          "receipt": "f9f03d4348e7e4d1b359216d1f2e49a154326db3686b1874e461e0e8c6c151f8"
+        },
+        "observe": {
+          "member": "acl-023",
+          "receipt": "08762e71d2330c5a67ed7a8a22bc32a413c00e31f367d26fa75002e5325bd5ff"
+        },
+        "review": {
+          "member": "acl-025",
+          "receipt": "4efcc67b49ee729ca1fa6eabb6cbb2f8ec92c4cb616e44588933ed84054e5bbc"
+        },
+        "synthesize": {
+          "member": "acl-024",
+          "receipt": "bedd7b34ccdc4e7a354ee611d18ae7c035398e5822bf9c579c4c23753371830d"
+        }
+      }
+    },
+    "current-signal": {
+      "decision": {
+        "action": "hold",
+        "phase": "review",
+        "reason": "invalid_or_conflicted_review",
+        "terminal": true
+      },
+      "receipt_count": 4,
+      "completed": false,
+      "receipts": {
+        "draft": "10c3720c4a9ef245aa4ee6040e4658eda5e207975c8ec74934c123960864c492",
+        "intake": "6011b186eee071c7ef9d32c7b3f54abb3f1475100b81321ac8b393a876826525",
+        "observe": "710c6a8967994e556059efc217628b2e6e2dd34eb6311cdecf3a8d8246ef9e5b",
+        "review": "2e89f14b206593feae886a92ea894173c6cfc0b427d3770ba584049767260869"
+      },
+      "draft_binding": {
+        "expected": "8745fe31f3e0fb60650319510d3b862b91fba16f8779c7963f7efbfeca4c5b3a",
+        "returned": "8745fe31f3e0fb60650319510d3b862b91fba16f8779c7963f7efbfeca4c5b3a",
+        "conflict": true
+      }
+    },
+    "candidate-request": {
+      "completed": true,
+      "decision": "select_followup",
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "reviewer": "acl-025",
+      "packet": "1fff5ee2d91471a6642acecb54466ece68b1ba48a04f3749f3a21e543fe0db26",
+      "catalog": "bf4650c7a0c3d57f370f0ce73aca0ae5bacd2962",
+      "receipts": {
+        "decision": {
+          "member": "acl-021",
+          "receipt": "6f5cf2fc5c71f9613b5e384b59ea58ad6f4158c27c5241aaaf6689107aa59b10"
+        },
+        "draft": {
+          "member": "acl-024",
+          "receipt": "6a6257ab906eb22ff1f8b2545abbfc3ad54a5bf119bf4ea531d7d822dcc9d5ac"
+        },
+        "observe": {
+          "member": "acl-023",
+          "receipt": "69baccb031765fd2f5673bf5082b90fa8677aa8204ef753055497949a4f9e840"
+        },
+        "review": {
+          "member": "acl-025",
+          "receipt": "5713193dab121b7cb399379e61cd0b5db87bfa26ab0976a3476d4752b76b16e7"
+        },
+        "synthesize": {
+          "member": "acl-024",
+          "receipt": "9beb3bfc4928f4af326d312c22997258659c17db06f3c42dfc1b744395bfa9fd"
+        }
+      }
+    },
+    "candidate-signal": {
+      "completed": true,
+      "decision": "select_followup",
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "reviewer": "acl-025",
+      "packet": "5f290498b84d49988c3701ef67c706efef024e2f642f8282aa16907ebf46e8ae",
+      "catalog": "bf4650c7a0c3d57f370f0ce73aca0ae5bacd2962",
+      "receipts": {
+        "decision": {
+          "member": "acl-021",
+          "receipt": "ae2336dc358ee21f6107c58e7496a21644553ee72206dc8cf7c9706b032de20b"
+        },
+        "draft": {
+          "member": "acl-024",
+          "receipt": "f22679a37f9b7420a0e4b379c45405f76574a5094357010f413e027b20bb4031"
+        },
+        "intake": {
+          "member": "acl-021",
+          "receipt": "1f3d79c51592e0a859c8e231891d61a19120d256f9810ead3d5f8040f6d941ce"
+        },
+        "observe": {
+          "member": "acl-023",
+          "receipt": "27ccfd0cab11d99d663ec4e4cc1cdbdd7cf916ac783ce1218a97626b8c2a2549"
+        },
+        "review": {
+          "member": "acl-025",
+          "receipt": "f164ee1f28b7c0db33f6b297e5febaf7664497260f15aa8822f2d16bf9bd0862"
+        },
+        "synthesize": {
+          "member": "acl-024",
+          "receipt": "0700d059b0f004702b7f4ad75abf233fb8d3040cb208996886d6ddebb273b14f"
+        }
+      }
+    }
+  }
+}
