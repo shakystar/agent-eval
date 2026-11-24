@@ -33,3 +33,7 @@ M2 최종 후보 3037d84에서 기존·신규 전체 호스트 회귀 138건이 
 ## M3 기획팀의 첫 연구팀 명세
 
 [기획팀 원작성 명세](https://github.com/shakystar/role-orchestrator/blob/c964a0cc8196b931e9e3cbb4f365e4320a2f7042/docs/features/research-team.md)를 개발팀과 독립 리뷰팀에 인계했다. [최초 보완 요구](m3-first-handoff.json) 및 [개정 후 개발 착수·리뷰 판정 가능 확인](m3-acceptance.json)을 함께 기록한다. M4·M5 실행 인수에서 한 하위 배정의 관찰 대기 예산은 기존 subprocess와 같은 600초다. 그 뒤에는 불확실 상태를 조회한다.
+
+## M4 연구팀 구현 인수
+
+연구팀 세 구성원의 실행 계약을 등록했다. [기존 22명과 대조](m4-catalog.json). 원문 의뢰 또는 신호를 접수해 관찰·고정 초안·독립 반증·종합·기획 결정을 연결한다. [최초 제출 보완](m4-first-handoff.json), [수정 후보의 두 합성 경로와 자기 검토 거절](m4-fixed-fixtures.json), [중복 검토 재개 검사](m4-review-replay.json), [실행 출처](m4-provenance.json), [독립 개발 인수](m4-acceptance.json). 후보 c3e777f의 전체 호스트 회귀는 143건 통과, 건너뜀 0건이다.

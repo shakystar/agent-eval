@@ -1,0 +1,23 @@
+{
+  "case": "SYN-REQ-01",
+  "candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+  "checkpoint_after_review": {
+    "attempt_id": "a-48a5356a98278cbd284f4f9fbaa36eeb",
+    "case_id": "SYN-REQ-01",
+    "evidence_kind": "fixture",
+    "member_id": "acl-025",
+    "receipt_sha256": "e3a8a6fe7ac2700d4c01f36740a90892c42fa76f08cd2084e4886da87770f01d",
+    "role_version": "v1",
+    "run_id": "r-7ce191283c714059a2aa5e36e12381e6",
+    "task_id": "research-evidence-route--3"
+  },
+  "concurrent_resume_count": 2,
+  "same_review_receipt_after_resume": true,
+  "actual_review_executes": 1,
+  "final_decision": {
+    "action": "hold",
+    "claims": [],
+    "packet_sha256": "13a1cddcb902495771cf2267aa00b15e6f080f153df7ff6d4e0933c04cfce204",
+    "reason": "추가 자료 대기"
+  }
+}

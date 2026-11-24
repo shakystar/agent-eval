@@ -1,0 +1,14 @@
+{
+  "baseline": "290562cae7a26f74daead12db68fb7a31a950230",
+  "candidate": "ce998e9031bb420ea13ebbaa9c2a3d3fa2d681dc",
+  "previous_distinct_member_count": 22,
+  "existing_roster_rows_unchanged": 15,
+  "existing_planning_team_equal": true,
+  "added_members": [
+    "acl-023",
+    "acl-024",
+    "acl-025"
+  ],
+  "catalog_sha256": "07740a6559664d6ace4f6c6fd8dad328432bca3c73d2b640f556801d9c0994f7",
+  "registration_receipt": "6540263d6cd85e724e81adf233724700d550ca67fc321e2d3cf46d829503eb10"
+}
