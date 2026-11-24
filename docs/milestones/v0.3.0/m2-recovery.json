@@ -1,0 +1,101 @@
+{
+  "before": {
+    "submits": {},
+    "actual_go_executes": {},
+    "pending": "planning--1",
+    "applied_receipts": [],
+    "final_branch": null,
+    "replay_same": true,
+    "events": [
+      {
+        "event": "started",
+        "task": null,
+        "pid": 35537
+      },
+      {
+        "event": "intent-persisted",
+        "task": "planning--1",
+        "pid": 35537
+      },
+      {
+        "event": "started",
+        "task": null,
+        "pid": 35540
+      },
+      {
+        "event": "started",
+        "task": null,
+        "pid": 35546
+      }
+    ]
+  },
+  "after": {
+    "submits": {
+      "planning--1": 1,
+      "planning--2": 1,
+      "planning--3": 1
+    },
+    "actual_go_executes": {
+      "planning--2": 1,
+      "planning--3": 1,
+      "planning--1": 1
+    },
+    "pending": null,
+    "applied_receipts": [
+      [
+        "planning--1",
+        "acl-021",
+        "a81f28043f71dec24c5977be6ba24cc14da09cebf89d989c36797441916289af"
+      ],
+      [
+        "planning--2",
+        "acl-001",
+        "0a28d427e72b08df2c03c9178170a829c891dd2d553fc70c57d78b851422bbcd"
+      ],
+      [
+        "planning--3",
+        "acl-021",
+        "b833855ab722ccf2d0145d7d1ee7aa82e08a9610364fd673682678da66c7cd23"
+      ]
+    ],
+    "final_branch": "accept",
+    "replay_same": true,
+    "events": [
+      {
+        "event": "started",
+        "task": null,
+        "pid": 35652
+      },
+      {
+        "event": "native-dispatch",
+        "task": "planning--1",
+        "pid": 35652
+      },
+      {
+        "event": "started",
+        "task": null,
+        "pid": 35656
+      },
+      {
+        "event": "native-succeeded-before-team-checkpoint",
+        "task": "planning--1",
+        "pid": 35652
+      },
+      {
+        "event": "native-dispatch",
+        "task": "planning--2",
+        "pid": 35656
+      },
+      {
+        "event": "native-dispatch",
+        "task": "planning--3",
+        "pid": 35656
+      },
+      {
+        "event": "started",
+        "task": null,
+        "pid": 36868
+      }
+    ]
+  }
+}
