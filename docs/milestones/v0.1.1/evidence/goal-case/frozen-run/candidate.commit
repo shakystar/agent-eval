@@ -1,0 +1,6 @@
+tree eb28f75ccf42f89fa6c4c52fb7dc02ec3e6e9eb2
+parent 2ac1621890141f69fb2f603467eb1f288bed392f
+author Isolated executor <frozen@invalid> 1795445086 +0900
+committer Isolated executor <frozen@invalid> 1795445086 +0900
+
+fixture: record frozen case candidate

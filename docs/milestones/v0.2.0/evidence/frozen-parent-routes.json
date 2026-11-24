@@ -1,0 +1,102 @@
+{
+  "candidate": "de681b07c992838d7c9a81e86824f43a360b4b42",
+  "cases": [
+    {
+      "case": "r1",
+      "route": [
+        "acl-010",
+        "acl-005"
+      ],
+      "submissions": [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "acl-010",
+          "acl-010"
+        ],
+        [
+          "acl-005",
+          "acl-005"
+        ]
+      ],
+      "replay_equal": true,
+      "extra_submissions": 0,
+      "state": "accept"
+    },
+    {
+      "case": "r2a",
+      "route": [
+        "acl-012",
+        "acl-014",
+        "acl-015",
+        "acl-005"
+      ],
+      "submissions": [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "acl-012",
+          "acl-012"
+        ],
+        [
+          "acl-014",
+          "acl-014"
+        ],
+        [
+          "acl-015",
+          "acl-015"
+        ],
+        [
+          "acl-005",
+          "acl-005"
+        ]
+      ],
+      "replay_equal": true,
+      "extra_submissions": 0,
+      "state": "accept"
+    },
+    {
+      "case": "r2b",
+      "route": [
+        "acl-012",
+        "acl-013",
+        "acl-014",
+        "acl-015",
+        "acl-005"
+      ],
+      "submissions": [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "acl-012",
+          "acl-012"
+        ],
+        [
+          "acl-013",
+          "acl-013"
+        ],
+        [
+          "acl-014",
+          "acl-014"
+        ],
+        [
+          "acl-015",
+          "acl-015"
+        ],
+        [
+          "acl-005",
+          "acl-005"
+        ]
+      ],
+      "replay_equal": true,
+      "extra_submissions": 0,
+      "state": "accept"
+    }
+  ]
+}

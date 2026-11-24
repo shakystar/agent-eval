@@ -1,0 +1,33 @@
+{
+  "candidate": "de681b07c992838d7c9a81e86824f43a360b4b42",
+  "history": [
+    {
+      "fault": "lost-terminal-and-trailing-member",
+      "terminal_record_present": false,
+      "observed": "accepted",
+      "code": 0,
+      "new_frames": [
+        "[\"acl-005\", \"acl-005\"]"
+      ]
+    }
+  ],
+  "policy_diagnostic": [
+    {
+      "action": "run",
+      "state": "hold",
+      "reason": "Expecting value: line 1 column 1 (char 0)",
+      "member": null,
+      "new_frames": [
+        "[\"author\", \"acl-007\"]",
+        "[\"acl-012\", \"acl-012\"]"
+      ]
+    },
+    {
+      "action": "status",
+      "state": "hold",
+      "reason": "invalid terminal outcome: invalid terminal outcome fields",
+      "member": null,
+      "new_frames": []
+    }
+  ]
+}

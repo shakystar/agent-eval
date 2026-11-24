@@ -1,0 +1,41 @@
+{
+  "case_id": "strict-json-unicode-scalars",
+  "base_sha": "2ac1621890141f69fb2f603467eb1f288bed392f",
+  "patch_sha256": "82dd33f6b340bff5a8f659d37a303e148535df0bc177150fa13ff6d33c65e4e1",
+  "regression_sha256": "1378319dd8c6e3d2a09445e4419c7dbc24d9a26034247fc9efde5f83fa98ef57",
+  "criterion_id": "strict-json-unicode-scalars",
+  "command": "python /oracle.py /source",
+  "baseline": {
+    "exit_code": 1,
+    "log_sha256": "ef30809d59d5217ec1e47bbdf55d7f3ee995d34f6c13005b1f495f445351c16b",
+    "observed_log": "Traceback (most recent call last):\n  File \"/oracle.py\", line 33, in <module>\n    main()\n  File \"/oracle.py\", line 28, in main\n    raise AssertionError(f\"accepted a lone surrogate: {raw!r}\")\nAssertionError: accepted a lone surrogate: '\"\\\\ud800\"'\n"
+  },
+  "candidate": {
+    "exit_code": 0,
+    "log_sha256": "dd7373025afbd32ebe4580637dd29067e9e4a1579b23ef1f883cb3ac7335f234",
+    "observed_log": "PASS nested lone surrogates rejected; Unicode and literal escapes preserved\n"
+  },
+  "author_receipt": "ad9e073da1447ef792ad947879ef0acd5e87c42dc7ee902c04390036cf43014d",
+  "review_receipt": "f8f726f1cffc75f6241dd857879ea0a2eb5c85bfa46e04931101e28a7f9858ca",
+  "role_regression": {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_strict_json_unicode_scalars.py",
+      "-v"
+    ],
+    "receipt_sha256": "b9fec9148a65c499da20397daf182e18d84ca4e03bc5804edc17d36abb1fef0b",
+    "diff_sha256": "bf88e1f39ca35a3299030811b3699619e27c1716bb2c2052c7d198ba469a531d",
+    "baseline_exit_code": 1,
+    "candidate_exit_code": 0,
+    "baseline_log_sha256": "b68d8e43b6dd0b1ee32c6ef5f24d2101648ed2ca383ddfe81c8bfb7d7c525275",
+    "candidate_log_sha256": "e2ac5cc6d3c9bf9338e6a1598de96b474f19faf2e3d6429c669cee241476482f",
+    "baseline_observation": "self.assertRaises(ValueError):\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='root', form=\"'\\\\\\\\uDC00'\", embedded=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/source/tests/test_strict_json_unicode_scalars.py\", line 21, in test_rejects_lone_surrogates\n    with self.assertRaises(ValueError):\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='array', form=\"'\\\\\\\\uDC00'\", embedded=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/source/tests/test_strict_json_unicode_scalars.py\", line 21, in test_rejects_lone_surrogates\n    with self.assertRaises(ValueError):\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) (location='name', form=\"'\\\\\\\\uDC00'\", embedded=True)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/source/tests/test_strict_json_unicode_scalars.py\", line 21, in test_rejects_lone_surrogates\n    with self.assertRaises(ValueError):\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 2 tests in 0.008s\n\nFAILED (failures=24)\n",
+    "candidate_observation": "test_preserves_valid_strings (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_preserves_valid_strings) ... ok\ntest_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.003s\n\nOK\n"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "candidate": "44316f364c8a9542c2328d51e6f5ce82ffd90796",
+  "first": [
+    0,
+    "accepted"
+  ],
+  "replay_after_trailing_history_loss": [
+    0,
+    "accepted"
+  ],
+  "replay_new_frames": [
+    "[\"acl-005\", \"acl-005\"]"
+  ],
+  "incomplete_fixture": [
+    2,
+    "rejected"
+  ],
+  "invalid_created_state": true,
+  "invalid_new_frames": [
+    "[\"acl-010\", \"acl-010\"]"
+  ],
+  "standalone_note": "Standalone CLI does not persist outcome.json. The separate parent-broker probes below verify behavior with that terminal record present.",
+  "parent_broker_probes": [
+    {
+      "fault": "lost-trailing-member",
+      "terminal_record_present": true,
+      "observed": "accepted",
+      "code": 0,
+      "new_frames": [
+        "[\"acl-005\", \"acl-005\"]"
+      ]
+    },
+    {
+      "fault": "malformed-terminal-record",
+      "terminal_record_present": true,
+      "observed": "KeyError",
+      "code": null,
+      "new_frames": []
+    }
+  ]
+}

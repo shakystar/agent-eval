@@ -1,0 +1,341 @@
+{
+  "backend": "codex",
+  "slots": {
+    "solo-1": {
+      "status": "completed",
+      "checks_passed": true,
+      "errors": [],
+      "decisions": {},
+      "document": "9dd69d20db301377cbf071de47bd7abd36b32d2cb9c6224bf7959fbc3f24a23e",
+      "stages": [
+        {
+          "stage": "write",
+          "status": "completed",
+          "attempt_id": "a-b5da348b8fad9cda002a642caace72a8",
+          "wire_sha256": "8ed45949ae5ad08d9ae3f143d8570fa956ba06ac7d0b78e2bae9515629ecf4f6",
+          "receipt_sha256": "e98c9aa73d7a41447e55dd4e08cab047fa484f06662bc4f53e3093e2b229ec3e",
+          "input_sha256": "f639e35eeb0c97ea2d6c6cfdaf61e6f8304c2f86a62fb3598d9447e0c5b0bd1a",
+          "output_sha256": "9dd69d20db301377cbf071de47bd7abd36b32d2cb9c6224bf7959fbc3f24a23e"
+        }
+      ],
+      "injections": []
+    },
+    "solo-2": {
+      "status": "completed",
+      "checks_passed": true,
+      "errors": [],
+      "decisions": {},
+      "document": "29ed1c0fde4aa3d17f927bc36ef1f42a43896c81a2fcc5a22e59b8f773b15f71",
+      "stages": [
+        {
+          "stage": "write",
+          "status": "completed",
+          "attempt_id": "a-9a66409a6031d969f41b595570a7bbda",
+          "wire_sha256": "842c9a0adc4b02e56a8fe7172e9aa49f59979205f78a8ddd91a040da326b2bef",
+          "receipt_sha256": "e00952fc5840824aac7850ad5638ea656827a9d5caa51126e9eb5bdf8c919846",
+          "input_sha256": "f639e35eeb0c97ea2d6c6cfdaf61e6f8304c2f86a62fb3598d9447e0c5b0bd1a",
+          "output_sha256": "29ed1c0fde4aa3d17f927bc36ef1f42a43896c81a2fcc5a22e59b8f773b15f71"
+        }
+      ],
+      "injections": []
+    },
+    "team-1": {
+      "status": "completed",
+      "checks_passed": true,
+      "errors": [],
+      "decisions": {
+        "review": "accept"
+      },
+      "document": "e303271bd99482812b95f2f7c6151f9e6f5d0e4e23dfb8a10c92912d96d061db",
+      "stages": [
+        {
+          "stage": "write",
+          "status": "completed",
+          "attempt_id": "a-6bc91c26e507441559e936972dd34257",
+          "wire_sha256": "1116582d612e1241fca235bb8747c5a9dafead75116d73ffe325ebfcbf3c6b1e",
+          "receipt_sha256": "ed8ac42082e2f8af07828bab5cd7c478bb3364f6b2e334996267ff8c11448de8",
+          "input_sha256": "f639e35eeb0c97ea2d6c6cfdaf61e6f8304c2f86a62fb3598d9447e0c5b0bd1a",
+          "output_sha256": "e303271bd99482812b95f2f7c6151f9e6f5d0e4e23dfb8a10c92912d96d061db"
+        },
+        {
+          "stage": "review",
+          "status": "completed",
+          "attempt_id": "a-30053af06148c7bb8cea7b3084402d10",
+          "wire_sha256": "26f5a503745c55f6761bc43c628c9b4d63cb93a0b9bade6225162f77bacc78ac",
+          "receipt_sha256": "0cca8529b54af2a717169f2b6872384778d337d16e32d55780ca4938a4983e59",
+          "input_sha256": "ccafb514410df915591bbfab871362fbd74aa5321c9d2c86d2b8f5d4a2576dc0",
+          "output_sha256": "bfe581b3c707ae74b6d793140b8112dde15cbe356975ae858b414ab0adc711e9"
+        }
+      ],
+      "injections": []
+    },
+    "team-2": {
+      "status": "completed",
+      "checks_passed": true,
+      "errors": [],
+      "decisions": {
+        "review": "accept"
+      },
+      "document": "e303271bd99482812b95f2f7c6151f9e6f5d0e4e23dfb8a10c92912d96d061db",
+      "stages": [
+        {
+          "stage": "write",
+          "status": "completed",
+          "attempt_id": "a-5eb7837995252fd45fd574cc06a30485",
+          "wire_sha256": "962f5c2bc4168bb3766a23c87a18e11bb2cf43390628ef4ae28a267d698a566f",
+          "receipt_sha256": "99673eea9847dc8f9d21b81dfc5eede43cdcf018b6dd0e0b178af12890a481d4",
+          "input_sha256": "f639e35eeb0c97ea2d6c6cfdaf61e6f8304c2f86a62fb3598d9447e0c5b0bd1a",
+          "output_sha256": "e303271bd99482812b95f2f7c6151f9e6f5d0e4e23dfb8a10c92912d96d061db"
+        },
+        {
+          "stage": "review",
+          "status": "completed",
+          "attempt_id": "a-6a53f57e9679b822bca7a979aab67f9a",
+          "wire_sha256": "95b70f5fb4da8eaa515c74ac3753054ebbe152ef7e04e4a67b57c3019326eacb",
+          "receipt_sha256": "64730451cf67b49cc2e11cb5b754b617d1adcb1a0682546378213dd3972f686c",
+          "input_sha256": "ccafb514410df915591bbfab871362fbd74aa5321c9d2c86d2b8f5d4a2576dc0",
+          "output_sha256": "805d6592f6f299d78b5cd4109c80f99ee56aacbf20b45b1a668b525402b5df43"
+        }
+      ],
+      "injections": []
+    },
+    "material-1": {
+      "status": "completed",
+      "checks_passed": true,
+      "errors": [],
+      "decisions": {
+        "review": "accept"
+      },
+      "document": "86a5d4f13c93e5007517255e36420b205fffae667d7a2a08e3ac3f0a296bd368",
+      "stages": [
+        {
+          "stage": "write",
+          "status": "completed",
+          "attempt_id": "a-e32efea00bc70f21f94987810c807185",
+          "wire_sha256": "fc7a9030dd41d1ec01651bd5f3fa9111af480569ce10cbabb713f9ca7218f6e7",
+          "receipt_sha256": "f34d269c4e4d78aaa8e6f5650724582fa14d1b8cfbe6b2ef90fe047f9f955ad1",
+          "input_sha256": "f639e35eeb0c97ea2d6c6cfdaf61e6f8304c2f86a62fb3598d9447e0c5b0bd1a",
+          "output_sha256": "86a5d4f13c93e5007517255e36420b205fffae667d7a2a08e3ac3f0a296bd368"
+        },
+        {
+          "stage": "review",
+          "status": "completed",
+          "attempt_id": "a-f6fd9f6b9ef9bc33efbb974a29d28ae8",
+          "wire_sha256": "3d4dace5612558ebbe78ec7b4b2672a185fb4e6957bc28c300c15123e7cf9814",
+          "receipt_sha256": "8a0a7c522a061ccf13d5b364eed4bd9ef685a02be1613af033b3d04df4e41b43",
+          "input_sha256": "22de7dd84e8e9b271585d83227d078ecc06557b6cfaaa9b59fffca932aa41d66",
+          "output_sha256": "7abf1075b31ef7813d00b6515ba4627ff4439fbc25c5be35796664897761e40e"
+        }
+      ],
+      "injections": [
+        {
+          "count": 1,
+          "id": "update",
+          "kind": "material",
+          "stage": "review",
+          "status": "applied"
+        }
+      ]
+    },
+    "material-2": {
+      "status": "completed",
+      "checks_passed": true,
+      "errors": [],
+      "decisions": {
+        "review": "accept"
+      },
+      "document": "1dfbccef9527a90c04f6efb64bb875e7d963c3da8c09c3d397c3b66b9cab6d83",
+      "stages": [
+        {
+          "stage": "write",
+          "status": "completed",
+          "attempt_id": "a-ba6e6c2368085c33895cfd67ce009e3e",
+          "wire_sha256": "66031ea379bc0a977c9e6e98e09fb74cdd6628b5042993edd37cce5ae48b5cea",
+          "receipt_sha256": "7f29b52aa0a8c70e829ec4dd7e6db74feb081bf375ea4b1eccf40d0fa7dc4d64",
+          "input_sha256": "f639e35eeb0c97ea2d6c6cfdaf61e6f8304c2f86a62fb3598d9447e0c5b0bd1a",
+          "output_sha256": "1dfbccef9527a90c04f6efb64bb875e7d963c3da8c09c3d397c3b66b9cab6d83"
+        },
+        {
+          "stage": "review",
+          "status": "completed",
+          "attempt_id": "a-fd60a399b92927731702dcb5746a42a2",
+          "wire_sha256": "a180ae22f3ea385cb9aa1b4c3185764e1926295a0eadf9d17c524cd6ba59eebd",
+          "receipt_sha256": "79f1d9205285e02e35c9f1250ef0ae10ae0d072e7021a0161971570c4d9cbd69",
+          "input_sha256": "ae2203cbae26b373cad9067da4a7356f5d8708a5285d3cd7012339e1eae48dad",
+          "output_sha256": "15a7e4cfda2750be5920c73a0c0bfeee8a5a102b1e52189b25e6e2131907b815"
+        }
+      ],
+      "injections": [
+        {
+          "count": 1,
+          "id": "update",
+          "kind": "material",
+          "stage": "review",
+          "status": "applied"
+        }
+      ]
+    },
+    "fault-1": {
+      "status": "completed",
+      "checks_passed": true,
+      "errors": [],
+      "decisions": {
+        "review": "accept"
+      },
+      "document": "1dfbccef9527a90c04f6efb64bb875e7d963c3da8c09c3d397c3b66b9cab6d83",
+      "stages": [
+        {
+          "stage": "write",
+          "status": "completed",
+          "attempt_id": "a-d9fbb3d1251d0ba6c4ddb8cc5020ad9d",
+          "wire_sha256": "e3be708f87b53a870755c94264b8882ce12839d9c3fa63034d1fd6d1d18d36ed",
+          "receipt_sha256": "bc580aff3c6a798e73ac9e751bafecc447999f3e7a70688ff88b970ae1d01b02",
+          "input_sha256": "f639e35eeb0c97ea2d6c6cfdaf61e6f8304c2f86a62fb3598d9447e0c5b0bd1a",
+          "output_sha256": "1dfbccef9527a90c04f6efb64bb875e7d963c3da8c09c3d397c3b66b9cab6d83"
+        },
+        {
+          "stage": "review",
+          "status": "completed",
+          "attempt_id": "a-e2a09156a46c43edcc7abfb31c90d702",
+          "wire_sha256": "5c24ac8c791205b3ac0a6d3796cba71e5163859584f8f7b542b917e9978c375d",
+          "receipt_sha256": "fb1701ceb6bad687462fc9acbb2ef21556fba2cbb15bf694fea15c12e9f487ab",
+          "input_sha256": "408b8dbe24629bef4d2afcee894f8059b642f057aa6b595e314198426ad62681",
+          "output_sha256": "79b4b7a378d5e69fb75436b85faa8c733ade4d967b6e35e6fce208e3fbf0a235"
+        }
+      ],
+      "injections": [
+        {
+          "count": 1,
+          "error": "temporarily_unavailable",
+          "id": "unavailable",
+          "kind": "tool_failure",
+          "recovery": "read_succeeded",
+          "stage": "review",
+          "status": "applied",
+          "tool": "read_handoff"
+        }
+      ]
+    },
+    "fault-2": {
+      "status": "completed",
+      "checks_passed": true,
+      "errors": [],
+      "decisions": {
+        "review": "accept"
+      },
+      "document": "95787891bdc3ba52f7fd55a0354e6cb1ff49e9af981ec2ff18afbcf9f4d8f826",
+      "stages": [
+        {
+          "stage": "write",
+          "status": "completed",
+          "attempt_id": "a-2b2833d1cfe826ef42bf816cf7b80594",
+          "wire_sha256": "6c4c452c76a903292103c5bbc74f4685d202627f3b98e8793bc08dc30858df18",
+          "receipt_sha256": "0f52fc6a9fcc8a2a58ea058c3226e984bd77675404c2219e3e1c0491487b739c",
+          "input_sha256": "f639e35eeb0c97ea2d6c6cfdaf61e6f8304c2f86a62fb3598d9447e0c5b0bd1a",
+          "output_sha256": "95787891bdc3ba52f7fd55a0354e6cb1ff49e9af981ec2ff18afbcf9f4d8f826"
+        },
+        {
+          "stage": "review",
+          "status": "completed",
+          "attempt_id": "a-4b0dcdc803c292a304b86a656d1c8f34",
+          "wire_sha256": "6f1d1bcbf71792bf801da1356a477eb13207462acb6ad0ba388cc35af7203126",
+          "receipt_sha256": "ea3bb40fc8a2ad545ad214d87d4525208e9673906d78529adf4ac31f5f4a06bc",
+          "input_sha256": "df57bd100a0b8c04a6f603a17b596dbe79dd79952086f9cf69959bd07dee9c75",
+          "output_sha256": "68f2a9bfe66f17eb03b7ab1207bfab39fbd8f77479472bed91b3a9e24e336ea1"
+        }
+      ],
+      "injections": [
+        {
+          "count": 1,
+          "error": "temporarily_unavailable",
+          "id": "unavailable",
+          "kind": "tool_failure",
+          "recovery": "read_succeeded",
+          "stage": "review",
+          "status": "applied",
+          "tool": "read_handoff"
+        }
+      ]
+    },
+    "revision-1": {
+      "status": "completed",
+      "checks_passed": true,
+      "errors": [],
+      "decisions": {
+        "review": "revise",
+        "final-review": "accept"
+      },
+      "document": "c5d3b83e6b1fd2adbad12e19c0e4a27832e2886dde9df4d0a049bad9063f333a",
+      "stages": [
+        {
+          "stage": "write",
+          "status": "completed",
+          "attempt_id": "a-033dfd3a3dc6adfb0394f98f22d713b3",
+          "wire_sha256": "aaa8b2441cc56a0c9ca9eb0682daa80db5fa544c9cd7c2f605cafde333ea2645",
+          "receipt_sha256": "2a46a605256dfd868bcfd88bb4431a323596929fb4a8accb9701aabfbb8466d4",
+          "input_sha256": "f639e35eeb0c97ea2d6c6cfdaf61e6f8304c2f86a62fb3598d9447e0c5b0bd1a",
+          "output_sha256": "e303271bd99482812b95f2f7c6151f9e6f5d0e4e23dfb8a10c92912d96d061db"
+        },
+        {
+          "stage": "review",
+          "status": "completed",
+          "attempt_id": "a-96d4432f24c44ccc2625d8ebabccd205",
+          "wire_sha256": "b0f5a11be5dd1615099ece1c2f1715ea51cef026740c22cd5cf50ee9a0cab85c",
+          "receipt_sha256": "630663b335dc1f48de3d196adb860ee767ba4ef9e456db71b52c62a22af267eb",
+          "input_sha256": "eb9fa4b38b0e3a6ab8f8140bcd21032b9dcf9e5773b2502bf86a6a15dbcab10c",
+          "output_sha256": "aa7a7431382b3b5e6b1d79b3505a01242ed24384682e8928f12b0201c65af7c9"
+        },
+        {
+          "stage": "revise",
+          "status": "completed",
+          "attempt_id": "a-45b0988269af1e795f33874a294459ba",
+          "wire_sha256": "a1737dd67666b008b7342ca221bec7d58d11fd9523a6434a41019ee6b34a5634",
+          "receipt_sha256": "056ddd8cc556c5d6d95410ff454285e384e0cfdf853f8100cf079129d4605a4c",
+          "input_sha256": "042fea760749d4eb66a8ee6dc664035af5728ab8d231942a4c874953b355d048",
+          "output_sha256": "c5d3b83e6b1fd2adbad12e19c0e4a27832e2886dde9df4d0a049bad9063f333a"
+        },
+        {
+          "stage": "final-review",
+          "status": "completed",
+          "attempt_id": "a-b57484054e73cdc4200264f85714aac3",
+          "wire_sha256": "6e959b90c7d132a899bc47cb462275a7f2d6a117e1f79d66e9d18b345c764261",
+          "receipt_sha256": "a5ccfc1adbe391e2426e98b620706202281be9acc590862cb7d231b57987e2e2",
+          "input_sha256": "076b5138879525eb4e04a516eb82ab8ec75a4dda559ad54e9b74c004e4edceb7",
+          "output_sha256": "a669f4e58beb40146306a2a6fd2c7876cfc1027afc581c0d4b7824429d25786c"
+        }
+      ],
+      "injections": [
+        {
+          "count": 1,
+          "id": "update",
+          "kind": "material",
+          "stage": "review",
+          "status": "applied"
+        }
+      ]
+    }
+  },
+  "grading": {
+    "notice-m3-codex": {
+      "planned": 8,
+      "judgments": 8,
+      "verdicts": {
+        "met": 8
+      },
+      "unchanged_judgments": true,
+      "original_preserved": true,
+      "passed": true
+    },
+    "issue1-revision-codex": {
+      "planned": 1,
+      "judgments": 1,
+      "verdicts": {
+        "met": 1
+      },
+      "unchanged_judgments": true,
+      "original_preserved": true,
+      "passed": true
+    }
+  },
+  "passed": true
+}

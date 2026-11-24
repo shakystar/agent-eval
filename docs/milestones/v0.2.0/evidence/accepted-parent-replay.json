@@ -1,0 +1,25 @@
+{
+  "producer": "f4fb972931ac42181108a9be75bd33721b4ce001",
+  "reader": "c348d15a5635067c872a8a29f9e0a850158ab4a3",
+  "backend": "codex",
+  "parent": "v020-terminal-recovery-acceptance",
+  "revision": 2,
+  "state": "accept",
+  "files": 72,
+  "unchanged": true,
+  "exact_replay": true,
+  "receipts": [
+    {
+      "actual_member_id": "acl-010",
+      "attempt_id": "a-5d2a29fa8dd69b3a49d5ec9d0c65c3f8",
+      "run_id": "r-92fe157fbdbe4ab6b05d2eddabdf082e",
+      "receipt_sha256": "a40383fd9a5ea0d5886e16ad8dc513e1cfe87f0e1a23c8d44bcdf99cf9effe08"
+    },
+    {
+      "actual_member_id": "acl-005",
+      "attempt_id": "a-e8e42e24117b92ef85c8b8742e0caf93",
+      "run_id": "r-97622e1a179c4963b1ef46b575907889",
+      "receipt_sha256": "dee8fb18c089f125e6f239bade00284a9bf53f5a3ed3c92a22d9fb0111157929"
+    }
+  ]
+}

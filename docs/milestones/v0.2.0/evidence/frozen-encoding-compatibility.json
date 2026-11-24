@@ -1,0 +1,27 @@
+{
+  "candidate": "de681b07c992838d7c9a81e86824f43a360b4b42",
+  "encoding_vectors": [
+    {
+      "contract": "intent input",
+      "match": true,
+      "sha256": "05da8adb036ee64220b58a175906b8f29108eae3cf989d6e48b5863a0c326016"
+    },
+    {
+      "contract": "persisted record",
+      "match": true,
+      "sha256": "b624d469979ea38b1dd33a72bc91b23028cfeaf94d8f41b13ab3e79fe23ad6da"
+    },
+    {
+      "contract": "artifact hash input",
+      "match": true,
+      "sha256": "bf5c6803fe33b8c190bbf1a95c0f63c22a9c2bdd92aa2af1312ea55d878fc9d5"
+    }
+  ],
+  "record_readback": true,
+  "legacy_source": "dd07d43136dda2020e60612e56f47ee530c208af",
+  "equal_result": true,
+  "state": "accept",
+  "files": 27,
+  "unchanged": true,
+  "extra_submissions": 0
+}

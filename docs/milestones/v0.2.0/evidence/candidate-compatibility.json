@@ -1,0 +1,26 @@
+{
+  "candidate": "699fe82cb79538fd1cd1dd68a246c96716ade75b",
+  "legacy_writer": "dd07d43136dda2020e60612e56f47ee530c208af",
+  "return_value": "accept",
+  "equal": true,
+  "file_count": 27,
+  "changed_files": 0,
+  "new_submits": 0,
+  "serialization": [
+    {
+      "type": "intent input",
+      "matches": true,
+      "sha256": "05da8adb036ee64220b58a175906b8f29108eae3cf989d6e48b5863a0c326016"
+    },
+    {
+      "type": "persisted record",
+      "matches": true,
+      "sha256": "b624d469979ea38b1dd33a72bc91b23028cfeaf94d8f41b13ab3e79fe23ad6da"
+    },
+    {
+      "type": "artifact hash input",
+      "matches": true,
+      "sha256": "bf5c6803fe33b8c190bbf1a95c0f63c22a9c2bdd92aa2af1312ea55d878fc9d5"
+    }
+  ]
+}

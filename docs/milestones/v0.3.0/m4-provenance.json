@@ -1,0 +1,149 @@
+{
+  "source_candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+  "candidate_tree": "d0a74d51308da7ea03391db406da3d3804d22a6e",
+  "catalog_repo": "agent-collaboration-lab",
+  "catalog_commit": "ce998e9031bb420ea13ebbaa9c2a3d3fa2d681dc",
+  "author_chain": [
+    {
+      "member": "acl-007",
+      "run": "r-8381325c68c14c468b336d4825af7b89",
+      "attempt": "a-62c0ebe89eef4cdca0c21b5b10d3e2c1",
+      "receipt": "f8d361c2a58c41a2c60fe3608ffdf6b376da2320c36e774860cc9c0bf3a9a801",
+      "result_diff_sha256": "c1de3b55ef1a1e779b7ac0ca48eb1abace812f78538ade750e85049a3f50c098",
+      "base": "c964a0cc8196b931e9e3cbb4f365e4320a2f7042",
+      "integrated_commit": "d464dfb4daeddf544a6ab976caf43fa12f4cc5d9",
+      "integrated_tree": "b6fd6e8ca7e50410545a89a2f3ea4179662c4c50",
+      "applied_diff_sha256": "7191cb30335b77e95f83a9984932ebe08f40ba2c52bbe27f964d343bead100ff",
+      "source_logs": {
+        "runtime-status.jsonl": "71aae15e9f75acea0d86c7116ba3a6fd4a46060fc57af8c2d37e933909c39d22",
+        "bridge-spans.jsonl": "a742a1cc38b97beb9f89ac43f5f7d0240c2f787d5911a31eb85d7a63f9aa2ac5"
+      }
+    },
+    {
+      "member": "acl-007",
+      "run": "r-bd01abf9c9134df58d84c067e21df74b",
+      "attempt": "a-2fba0b2712b0ea327ef50237ab0a6c53",
+      "receipt": "3e6bb1332f2439297788106949c2d12ba640d6b823182128ca5c2f333a0d6344",
+      "result_diff_sha256": "cc4b2a48c307175a8fcac28d7468997232f2fb6c8e8e2752350f81d8fbe85a34",
+      "base": "d464dfb4daeddf544a6ab976caf43fa12f4cc5d9",
+      "integrated_commit": "c3e777fe21a70dc7380205a42f597291549d2707",
+      "integrated_tree": "d0a74d51308da7ea03391db406da3d3804d22a6e",
+      "applied_diff_sha256": "1c57a481cf4a998854dccb489563e02cc8140364473477ec3dfdb170f6843f54",
+      "source_logs": {
+        "runtime-status.jsonl": "652b2320334ee3b43d1348a83b09bed954c8fade0fe89d9c7b98b96bd3effbc1",
+        "bridge-spans.jsonl": "811d9fc1bdc681d7943893d8403c77cf338a4bd61da706fbc1b40060732b55e4"
+      }
+    }
+  ],
+  "all_implementation_changes_sha256": "581bb9e23914eeaf3d0e28b6c67ffbf8ce4aa8df509a229d9342d710d16cdb1e",
+  "hash_distinction": "result_diff is bytes of model unified patch, applied_diff is git diff from actual parent to commit; metadata/recount/header can differ. Final combined diff is Git comparison across BOTH implementation commits and thus has a third hash. The integration commit/tree and model-producing attempt IDs bind these separately.",
+  "review_runs": {
+    "m4-review-02b/acl-012": {
+      "candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+      "tree": "d0a74d51308da7ea03391db406da3d3804d22a6e",
+      "evidence_input_sha256": "1c719574f2915ebd9ce54de062f964946ca76b95019653aab903e7ab6a8ec1f5",
+      "candidate_in_evidence": true,
+      "member": "acl-012",
+      "run": "r-6ed5db83520a42159a979c0a1c8bcaae",
+      "attempt": "a-cc998b0a6b1f12702f7fb624010d2414",
+      "receipt": "fe8998bd76e6d29646c013d93e6e61d33efc950c8d62a3e5a3062ef26a72f6a8",
+      "decision": "accept",
+      "log_sha256": {
+        "runtime-status.jsonl": "10bd564985245ddd489b2be7a6b843f918f31b42e15698e27d6610d1120e796a",
+        "runtime/bridge-spans.jsonl": "104292b6495482fd8f6cb47573d9f02b87660446ecad1c7147ebad45c10a32bb",
+        "assignment-v2.plan.json": "4569d62d6ff4277a731ac0d6f341395fba5b5fd99d00e99befaf30eec211f0eb",
+        "assignment-v2.verdict.json": "e1bdf1a4a4c82dc2ed23974b72c0f052abe3fd7d6500f933fee9eb80ab18ad22"
+      }
+    },
+    "m4-specialist-acl-013-b": {
+      "candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+      "tree": "d0a74d51308da7ea03391db406da3d3804d22a6e",
+      "evidence_input_sha256": "20aaa63ba72d7bb3131338e54c7041373e6555a4d439b423244a7ecd6cb60058",
+      "candidate_in_evidence": true,
+      "member": "acl-013",
+      "run": "r-1fab54dd11f549b8afa0c78c77b8dbb0",
+      "attempt": "a-1ddff52d6d505f4bc6a11c9b162c5bb5",
+      "receipt": "aa6d557b4d0114170ea472253551f0a1b333370fbadbc473f1beb779f688aec0",
+      "decision": "accept",
+      "log_sha256": {
+        "runtime-status.jsonl": "d54bc888175a005322d3f07496f119bb768eea37f6fea6621603830ad7221b80",
+        "runtime/bridge-spans.jsonl": "9a778fd494a40cf98db78e825646c4c9070d07f03ef0021f142b7be6535f7928",
+        "assignment-v2.plan.json": "0e5f73cbf739262bb69cf83ea91d2c085bba7046683d1f5eb09a07d360e2137c",
+        "assignment-v2.verdict.json": "874035b3e049ddf2972c84dd292a1f8577ebb5fef0950f56c01be6aa1c75db12"
+      }
+    },
+    "m4-specialist-acl-014": {
+      "candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+      "tree": "d0a74d51308da7ea03391db406da3d3804d22a6e",
+      "evidence_input_sha256": "20aaa63ba72d7bb3131338e54c7041373e6555a4d439b423244a7ecd6cb60058",
+      "candidate_in_evidence": true,
+      "member": "acl-014",
+      "run": "r-ccca33cabbb540139e3bc25048ac17fe",
+      "attempt": "a-ff79591a14b3ee61b3b925ae90a9c9e7",
+      "receipt": "c4fa5b091bf7858ec68d8898745c6656e0f619b03dc7f6e17a37eb8d4229349b",
+      "decision": "accept",
+      "log_sha256": {
+        "runtime-status.jsonl": "51506594a218408a6ab1d3a1b5c299002de9280e71c3068f0c534369c73b83fc",
+        "runtime/bridge-spans.jsonl": "41bfea34bcf890782caf3a2b0cb3dada99c986473dbcee89a2561c99d5bdd0c6",
+        "assignment-v2.plan.json": "357fce9d3830bc6da7d320fda4096626dae3a26994519617437fcf43d561164f",
+        "assignment-v2.verdict.json": "da41d459c8323156e526e1700dbab2a75bd2b7bf30e16cf3b7d86e71944d6a78"
+      }
+    },
+    "m4-final-team/acl-015": {
+      "candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+      "tree": "d0a74d51308da7ea03391db406da3d3804d22a6e",
+      "evidence_input_sha256": "89034d591816ae94e085a58e523dc12414d6ad584f24b66a2bdae2b5cc0aa3ac",
+      "candidate_in_evidence": true,
+      "member": "acl-015",
+      "run": "r-06b1afc549554a0d93413a8f0bb29de5",
+      "attempt": "a-e2cb0800dafab641bf98870d16457539",
+      "receipt": "ed633d73ddb7e3670bfac858a644f0da192741f7468f55a30c8b2c376a4cd08e",
+      "decision": "revise",
+      "log_sha256": {
+        "runtime-status.jsonl": "45e7169598ad30b80fad3e2fde817c3c5574694a3f11568bb650de3761d0e461",
+        "runtime/bridge-spans.jsonl": "98e251207c53095d665aacf0497b432c205d74223eb8cd8089f29637c430b601",
+        "assignment-v2.plan.json": "871575d979be186ffe96788dc451587fcd67ef7253b965fb614ab0267873c463",
+        "assignment-v2.verdict.json": "e142c2610cb922d64349816e5203f53c6862bdd3176f66923da6d7451cc12a2b"
+      }
+    }
+  },
+  "fixture_runs": {
+    "m4-fixed-fixture-request": {
+      "team.json": "6729497ffb5cf7d57a95e811174d874744b3cd11b1c463118f81de31927b2979",
+      "research-evidence-route--2/runtime/bridge-spans.jsonl": "4e697bbc2354605f19c1f34314a05d61097016f4505cb819b2ca063d8f8e623d",
+      "planning--2/runtime/bridge-spans.jsonl": "12ce63bba3079fc072ae73017911a1029d81a22c032316c6e88339ab252febcc",
+      "research-evidence-route--4/runtime/bridge-spans.jsonl": "2fecc32f5da41bc7383be6b437e35f5283e37a3ff4f7784dc7a3f448f655ef99",
+      "research-evidence-route--3/runtime/bridge-spans.jsonl": "c776944cd5ee0beca41fb25e1b12b2cf1134d06c1b474ccefe12255940979619",
+      "research-evidence-route--1/runtime/bridge-spans.jsonl": "7f597d3db02ad877e1877d7f39ba32704b64f18c7dfa3df269f3bf8d0537f32c"
+    },
+    "m4-fixed-fixture-signal": {
+      "team.json": "dae1f5194f45c64e5af98f239c3f2f2306e885330138706b1e2af854664aba53",
+      "research-evidence-route--2/runtime/bridge-spans.jsonl": "9860728332d0a47531caf3c9a755bfc330b40b8b835ba7443cee9aa617f0ca93",
+      "planning--2/runtime/bridge-spans.jsonl": "467161a57657345703c6779c955b691ae977c2d6aee3f9aec87b05ee556b937b",
+      "research-evidence-route--4/runtime/bridge-spans.jsonl": "6d9c3769d8b821b2850ec66e0f2ee8abbc1e647a540a5c67c95421653abff69c",
+      "research-evidence-route--3/runtime/bridge-spans.jsonl": "44f406e99e08231761e82f4f1d114fcad0cc62501209b65e3be6e33a5724908b",
+      "research-evidence-route--1/runtime/bridge-spans.jsonl": "6dd9465194e0e49058d99bf34d02e026bef9bdec8b2e12dada441ed52325814b",
+      "planning--1/runtime/bridge-spans.jsonl": "ef705df9ded19f154e6c7b3fb6b5311cc4f9576609b1051f9df11bbe762c940d"
+    },
+    "m4-fixed-conflict": {
+      "team.json": "544d2076b5fcfdc78a16b1fb4d21ea922d09de5f5f347eb6f77d9b54a5d911a5",
+      "research-evidence-route--2/runtime/bridge-spans.jsonl": "b0e56312a66e20288520ac5fd5bd3e7713a52adb51fd2764b814b52dcbdc46b4",
+      "research-evidence-route--1/runtime/bridge-spans.jsonl": "d69ac911ce7cf349b34384356197bfa4900cccb9ccbc63ef787cdb4f94d38303"
+    },
+    "m4-fixed-review-resume": {
+      "team.json": "c147f6b02d590c4da3f84900333a142bf8a0d0a98118852ac3881be1c547b385",
+      "research-evidence-route--2/runtime/bridge-spans.jsonl": "4bb355aae48d2c1b06f6d51dda071ae95555f80231e663d89ddc1684a1e31659",
+      "planning--2/runtime/bridge-spans.jsonl": "a09e3f1095ad48f72c34f9b406702c387267c0c562e1e3bd4cac59b67ddda544",
+      "research-evidence-route--4/runtime/bridge-spans.jsonl": "724957e643f6b0f4ab160d45ba71d342031b2043ddea7c981baabd8dafbe7fb3",
+      "research-evidence-route--3/runtime/bridge-spans.jsonl": "7d6a4522240cbd941300dd6e4c657893a30242c6d2d81d2897d96ec2cc8f422f",
+      "research-evidence-route--1/runtime/bridge-spans.jsonl": "3f49ffc111706429f5a6204cc255e2e7e306b3f0630bf89d7387b90760d105ff"
+    }
+  },
+  "fixture_candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+  "suite": {
+    "tests": 143,
+    "skipped": 0,
+    "seconds": 179.064,
+    "log_sha256": "ab951ec95c3f83b8f60daba89624fac07c9dbf947e1fcccd9acec4443e8944b1"
+  }
+}

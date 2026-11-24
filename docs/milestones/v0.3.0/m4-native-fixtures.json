@@ -1,0 +1,224 @@
+{
+  "request": {
+    "candidate": "d464dfb4daeddf544a6ab976caf43fa12f4cc5d9",
+    "revision": "ce998e9031bb420ea13ebbaa9c2a3d3fa2d681dc",
+    "catalog_sha256": "07740a6559664d6ace4f6c6fd8dad328432bca3c73d2b640f556801d9c0994f7",
+    "case": "SYN-REQ-01",
+    "synthetic": true,
+    "branch": {
+      "action": "hold",
+      "claims": [],
+      "packet_sha256": "a2ecfe680e5249acf1e8b35959d911b3baf91b5e44a4d96b35cfb97e20bee5a1",
+      "reason": "추가 자료 대기"
+    },
+    "receipts": {
+      "decision": {
+        "attempt_id": "a-be1621f1d84357e8c9b1d602fcad8ae5",
+        "case_id": "SYN-REQ-01",
+        "evidence_kind": "fixture",
+        "member_id": "acl-021",
+        "receipt_sha256": "7143461951368439b908e6d251d9ffe5908fc9f40f43c6768536980c6008a9ff",
+        "role_version": "v1",
+        "run_id": "r-c674c47a87294597aa301d9e301c1d8a",
+        "task_id": "planning--2"
+      },
+      "draft": {
+        "attempt_id": "a-20bbe22b0a8537ab9634ee95bb9923dd",
+        "case_id": "SYN-REQ-01",
+        "evidence_kind": "fixture",
+        "member_id": "acl-024",
+        "receipt_sha256": "508ea476bf06eb9e94b6a102422226f673626109f96d5f4a4737b94d79332b2a",
+        "role_version": "v1",
+        "run_id": "r-89af2680bbf94b62beed0dbbc1294334",
+        "task_id": "research-evidence-route--2"
+      },
+      "observe": {
+        "attempt_id": "a-3872a18556d86d564a6639e0a9c4f7f9",
+        "case_id": "SYN-REQ-01",
+        "evidence_kind": "fixture",
+        "member_id": "acl-023",
+        "receipt_sha256": "15c61f879c14d6dab7d6619592001a579a2a52bd60e891e42633963853777c52",
+        "role_version": "v1",
+        "run_id": "r-cedfbdcc5b6a4f4aae78a38349677634",
+        "task_id": "research-evidence-route--1"
+      },
+      "review": {
+        "attempt_id": "a-02f8a1e947c64a739ffbd2072341f45b",
+        "case_id": "SYN-REQ-01",
+        "evidence_kind": "fixture",
+        "member_id": "acl-025",
+        "receipt_sha256": "32b60b639379128d8238f998b6b6e224238b0b10b60dd8d210a3ac0e04fbf883",
+        "role_version": "v1",
+        "run_id": "r-f35f4de3e282430d9d29ab9b5d40586f",
+        "task_id": "research-evidence-route--3"
+      },
+      "synthesize": {
+        "attempt_id": "a-7684cd05e51fa311c6dde49386755bae",
+        "case_id": "SYN-REQ-01",
+        "evidence_kind": "fixture",
+        "member_id": "acl-024",
+        "receipt_sha256": "a1f7a0e7a40d97f93e859797586343256b471cb2f4edb7e33ce3b995c9951da5",
+        "role_version": "v1",
+        "run_id": "r-69a00359981e4ab3a4bdebdd7e535e4e",
+        "task_id": "research-evidence-route--4"
+      }
+    },
+    "submissions_across_replay": {
+      "research-evidence-route--2": 1,
+      "planning--2": 1,
+      "research-evidence-route--4": 1,
+      "research-evidence-route--3": 1,
+      "research-evidence-route--1": 1
+    },
+    "gates": {
+      "broader": {
+        "opinions": [
+          "o2"
+        ],
+        "reasons": [
+          "independent_review:o2",
+          "missing_evidence"
+        ],
+        "status": "revision_hold",
+        "upstream": [
+          {
+            "field": "deduplicated",
+            "ref": "E1",
+            "status": "requested_in_packet",
+            "to": "source-E1"
+          }
+        ]
+      },
+      "limited": {
+        "opinions": [
+          "o1"
+        ],
+        "reasons": [],
+        "status": "eligible",
+        "upstream": []
+      }
+    }
+  },
+  "signal": {
+    "candidate": "d464dfb4daeddf544a6ab976caf43fa12f4cc5d9",
+    "revision": "ce998e9031bb420ea13ebbaa9c2a3d3fa2d681dc",
+    "catalog_sha256": "07740a6559664d6ace4f6c6fd8dad328432bca3c73d2b640f556801d9c0994f7",
+    "case": "SYN-SIG-01",
+    "synthetic": true,
+    "branch": {
+      "action": "hold",
+      "claims": [],
+      "packet_sha256": "2b927fd753d0ca505e166ee43caecf8d9f03a4084ccd4d5fe4781738673a5091",
+      "reason": "추가 자료 대기"
+    },
+    "receipts": {
+      "decision": {
+        "attempt_id": "a-d5a643d0d8cf672414adf8bf55d07b0a",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "fixture",
+        "member_id": "acl-021",
+        "receipt_sha256": "d27cdaf91005b4a43438aaa2849188224633caa7fc1c95205775df229151bd33",
+        "role_version": "v1",
+        "run_id": "r-70af90ca4db2422d93e9e55eb3cba2e9",
+        "task_id": "planning--2"
+      },
+      "draft": {
+        "attempt_id": "a-d78cc5d89f72041cc81ead5124a8c59d",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "fixture",
+        "member_id": "acl-024",
+        "receipt_sha256": "88291429da7c119b4123fabe9042a91067503b076bae6aca6f4ecc0f46dfb66c",
+        "role_version": "v1",
+        "run_id": "r-b154ac48c83d4011856586001151a2b5",
+        "task_id": "research-evidence-route--2"
+      },
+      "intake": {
+        "attempt_id": "a-ac5d4305ec2bdc98768482480a95100f",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "fixture",
+        "member_id": "acl-021",
+        "receipt_sha256": "17d6a2070af97619e8ce56295e9d16579d898803f5349c694f39460fce03138f",
+        "role_version": "v1",
+        "run_id": "r-e26fd38d1ab140c986a03a94a885028a",
+        "task_id": "planning--1"
+      },
+      "observe": {
+        "attempt_id": "a-ed88d72d3eb23ca5c29bbea68a04fbd3",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "fixture",
+        "member_id": "acl-023",
+        "receipt_sha256": "229a669fb5637b880df1535ddecec6d4d5a7e714402e26e84633c836399f225d",
+        "role_version": "v1",
+        "run_id": "r-7f26fea4b720404fbb137f75bfc919e4",
+        "task_id": "research-evidence-route--1"
+      },
+      "review": {
+        "attempt_id": "a-05f6143b8e01b24339050df936080030",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "fixture",
+        "member_id": "acl-025",
+        "receipt_sha256": "897b14d2fea8b872e662e08ea9e21985a29f61ded0a8fb8b19f5be8b49f42121",
+        "role_version": "v1",
+        "run_id": "r-63a9124fb970410ba1d560b0509e5493",
+        "task_id": "research-evidence-route--3"
+      },
+      "synthesize": {
+        "attempt_id": "a-d8121d512c5a936f8286b60a73f6d431",
+        "case_id": "SYN-SIG-01",
+        "evidence_kind": "fixture",
+        "member_id": "acl-024",
+        "receipt_sha256": "cda4076b478c3b93ca265110e2c61b6a5760f63eea11d356112d8f24f123dd88",
+        "role_version": "v1",
+        "run_id": "r-836662b8948b4e61b2a7fd52c6070353",
+        "task_id": "research-evidence-route--4"
+      }
+    },
+    "submissions_across_replay": {
+      "research-evidence-route--2": 1,
+      "planning--2": 1,
+      "research-evidence-route--4": 1,
+      "research-evidence-route--3": 1,
+      "research-evidence-route--1": 1,
+      "planning--1": 1
+    },
+    "gates": {
+      "broader": {
+        "opinions": [
+          "o2"
+        ],
+        "reasons": [
+          "independent_review:o2",
+          "missing_evidence"
+        ],
+        "status": "revision_hold",
+        "upstream": [
+          {
+            "field": "denominator",
+            "ref": "S1",
+            "status": "requested_in_packet",
+            "to": "source-S1"
+          }
+        ]
+      },
+      "limited": {
+        "opinions": [
+          "o1"
+        ],
+        "reasons": [],
+        "status": "eligible",
+        "upstream": []
+      }
+    }
+  },
+  "conflict": {
+    "branch": {
+      "action": "reassign",
+      "phase": "review",
+      "reason": "reviewer_participated"
+    },
+    "actual_submissions": {
+      "research-evidence-route--2": 1,
+      "research-evidence-route--1": 1
+    }
+  }
+}

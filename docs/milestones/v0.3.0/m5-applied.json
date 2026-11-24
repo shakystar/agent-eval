@@ -1,0 +1,210 @@
+{
+  "registry_revision_pair": [
+    "290562cae7a26f74daead12db68fb7a31a950230",
+    "ce998e9031bb420ea13ebbaa9c2a3d3fa2d681dc"
+  ],
+  "authority_method": "Both revisions loaded using the product planning_catalog.load parser. Per-ID fingerprint of full roster binding and, when present, complete member binding/instruction, goal text & UID delegates, lead authority and step limit. All other tracked registry policy, role context and task definitions have identical Git blobs, verified by full three-file diff. Candidate exactly adds 3 distinct new IDs.",
+  "authorities": {
+    "acl-001": [
+      "c4508780c7d939c08c1ca8d4a8b9537ffba8f42c9dd61515d452a73cc6f7294b",
+      "c4508780c7d939c08c1ca8d4a8b9537ffba8f42c9dd61515d452a73cc6f7294b"
+    ],
+    "acl-002": [
+      "0e5d356bd82775e44b00db629968bf67ff86c21f164ac386d20f214888d48a97",
+      "0e5d356bd82775e44b00db629968bf67ff86c21f164ac386d20f214888d48a97"
+    ],
+    "acl-003": [
+      "a04c4f307581473ba5d322c2bab4db6c4217084bf7c9f73e96e710d50bca2ebf",
+      "a04c4f307581473ba5d322c2bab4db6c4217084bf7c9f73e96e710d50bca2ebf"
+    ],
+    "acl-004": [
+      "bfffcbdbc1593224f551afeb3c9c7e2509af2703af7fc095444c70179c911177",
+      "bfffcbdbc1593224f551afeb3c9c7e2509af2703af7fc095444c70179c911177"
+    ],
+    "acl-005": [
+      "725db5662e5cf1f0360cdc8a08006649f5867357f1c1a5d622b7253df6815a6c",
+      "725db5662e5cf1f0360cdc8a08006649f5867357f1c1a5d622b7253df6815a6c"
+    ],
+    "acl-006": [
+      "dce90219dc88b5517642533b0eee1395b82551d3e3593b3fd773ee59ff551b69",
+      "dce90219dc88b5517642533b0eee1395b82551d3e3593b3fd773ee59ff551b69"
+    ],
+    "acl-007": [
+      "a19bceba1ed262f7e3509ac8b042ccce10476f692f7308116bb2c1f3adfaffb6",
+      "a19bceba1ed262f7e3509ac8b042ccce10476f692f7308116bb2c1f3adfaffb6"
+    ],
+    "acl-008": [
+      "c954a4380603a39aa794d9e8c34bcad5d1410f4dfe210b737af046cfc328f0d7",
+      "c954a4380603a39aa794d9e8c34bcad5d1410f4dfe210b737af046cfc328f0d7"
+    ],
+    "acl-009": [
+      "6e9c66289d2e965756bde88ac35b4bb6b8db76bf70df90cf2ca7ec71312a8313",
+      "6e9c66289d2e965756bde88ac35b4bb6b8db76bf70df90cf2ca7ec71312a8313"
+    ],
+    "acl-010": [
+      "4126c4ce1285f3d06f05e78c24c8402568a904f3511e6bb14b827ccc0ab59dd4",
+      "4126c4ce1285f3d06f05e78c24c8402568a904f3511e6bb14b827ccc0ab59dd4"
+    ],
+    "acl-011": [
+      "68c7ae54501c91e43d90c503eede6a895563f79e6db472e7c8c8c58a173b3035",
+      "68c7ae54501c91e43d90c503eede6a895563f79e6db472e7c8c8c58a173b3035"
+    ],
+    "acl-012": [
+      "8bb6002f8fc45e9d97aad3d7507c10c4b0fb0bf09ca6d2c606d031981e315abe",
+      "8bb6002f8fc45e9d97aad3d7507c10c4b0fb0bf09ca6d2c606d031981e315abe"
+    ],
+    "acl-013": [
+      "ec8c5f9617e77c2d48342c448191a0b5386b8692224e6afa41e501fe3ff0d0e4",
+      "ec8c5f9617e77c2d48342c448191a0b5386b8692224e6afa41e501fe3ff0d0e4"
+    ],
+    "acl-014": [
+      "006f4465633cab950abdf989bb4686d72dc67ed0d9a663d7de1530ddc60994d8",
+      "006f4465633cab950abdf989bb4686d72dc67ed0d9a663d7de1530ddc60994d8"
+    ],
+    "acl-015": [
+      "c47411b9d249cb783bf1b761864d90b9d1acc96ab129de152f7c6b9eae8d1122",
+      "c47411b9d249cb783bf1b761864d90b9d1acc96ab129de152f7c6b9eae8d1122"
+    ],
+    "acl-016": [
+      "04afa880b9574cd38ad20855485f245c8c67122412da5c439631e95d3e4fc2b9",
+      "04afa880b9574cd38ad20855485f245c8c67122412da5c439631e95d3e4fc2b9"
+    ],
+    "acl-017": [
+      "dfd6727e012e479fb40d9a10ff2aab02e1c1625f8ea44161f82f18dcac073f06",
+      "dfd6727e012e479fb40d9a10ff2aab02e1c1625f8ea44161f82f18dcac073f06"
+    ],
+    "acl-018": [
+      "1e84872b80a3a9e69fb1ae209dc378727a2854da09f94da8298620e5400447c1",
+      "1e84872b80a3a9e69fb1ae209dc378727a2854da09f94da8298620e5400447c1"
+    ],
+    "acl-019": [
+      "b6b348b90dfe0ebd3c680b5aeaf1a0547010a2432734efe4e96cb11a532b35c2",
+      "b6b348b90dfe0ebd3c680b5aeaf1a0547010a2432734efe4e96cb11a532b35c2"
+    ],
+    "acl-020": [
+      "a00f9826fbd3a2b15cc28ab1e6672b6d7c2205fb49eb8045d6b2bd91ea45743b",
+      "a00f9826fbd3a2b15cc28ab1e6672b6d7c2205fb49eb8045d6b2bd91ea45743b"
+    ],
+    "acl-021": [
+      "04241eb726e9c76d73ba86e537abc44362d55b4da02c06eff9f9be7ec63ce691",
+      "04241eb726e9c76d73ba86e537abc44362d55b4da02c06eff9f9be7ec63ce691"
+    ],
+    "acl-022": [
+      "b5937a73f5f0db8e0d5b2bf415197eb8d44eacbd9113cbdef09e9278715f20e2",
+      "b5937a73f5f0db8e0d5b2bf415197eb8d44eacbd9113cbdef09e9278715f20e2"
+    ]
+  },
+  "turn_context_evidence": "Codex persisted turn_context matched Go codex-sessions threadId AND turnId; compared requested model and effort to actual context, 11/11 matches, no substitution. Only matched identifiers and settings extracted.",
+  "turns": [
+    {
+      "phase": "decision",
+      "case": "request",
+      "member": "acl-021",
+      "turn_id": "01a20c35-49b6-7c60-a165-02612dcb0665",
+      "thread_id": "01a20c35-4989-7c43-898c-88d0b61dc575",
+      "receipt": "4e2c9f2ceec45aa17c37c15802ad014a1e86f0bd97ace0209c673b61ed9715ef",
+      "observed_model": "gpt-6.2-astra",
+      "observed_effort": "medium"
+    },
+    {
+      "phase": "draft",
+      "case": "request",
+      "member": "acl-024",
+      "turn_id": "01a20c33-a7ba-7410-b4d9-6747ff2c0227",
+      "thread_id": "01a20c33-a782-7d53-b374-7f9677973d6f",
+      "receipt": "23284c6fe635c96681d9da99d8b1a81afb7d511978e6196a88286874cdddcbd0",
+      "observed_model": "gpt-6.2-astra",
+      "observed_effort": "high"
+    },
+    {
+      "phase": "observe",
+      "case": "request",
+      "member": "acl-023",
+      "turn_id": "01a20c32-c445-7512-87c5-f67b07ef7b01",
+      "thread_id": "01a20c32-c410-7fd1-9365-2882c78c4de6",
+      "receipt": "1668039ed9e6891522078f79bbe1042b3e4f53ed81786c3283375a264789abc1",
+      "observed_model": "gpt-6.2-sol",
+      "observed_effort": "high"
+    },
+    {
+      "phase": "review",
+      "case": "request",
+      "member": "acl-025",
+      "turn_id": "01a20c34-8616-7c71-b437-87af53af573a",
+      "thread_id": "01a20c34-85d1-7651-8185-74a711d4ad7f",
+      "receipt": "bba88c668a6d26d3540b271229b0681d49a4732ace952160be46467c35deebd8",
+      "observed_model": "gpt-6.2-astra",
+      "observed_effort": "high"
+    },
+    {
+      "phase": "synthesize",
+      "case": "request",
+      "member": "acl-024",
+      "turn_id": "01a20c35-0071-7271-bf57-777248fca57c",
+      "thread_id": "01a20c35-003a-77f0-bd49-fb04e70b2568",
+      "receipt": "0d466a445c8072b4d43759c809a6514fd0208adf3ae3797e9a169eef4636f390",
+      "observed_model": "gpt-6.2-astra",
+      "observed_effort": "high"
+    },
+    {
+      "phase": "decision",
+      "case": "signal",
+      "member": "acl-021",
+      "turn_id": "01a20c35-5ae3-7b82-b178-6f54960da119",
+      "thread_id": "01a20c35-5aa9-7a62-8d4f-cd6b3bd7900a",
+      "receipt": "05c3e11ed4be316476e7147995f7b4fb931e7080cf6b3a41b9c11dc988ea02a7",
+      "observed_model": "gpt-6.2-astra",
+      "observed_effort": "medium"
+    },
+    {
+      "phase": "draft",
+      "case": "signal",
+      "member": "acl-024",
+      "turn_id": "01a20c33-ced6-7b31-918e-7006621d09bc",
+      "thread_id": "01a20c33-ce9e-77f2-8677-2ad8cce0d0a8",
+      "receipt": "a47806b90c6b641adeb232928af61076d9e0f3837df4ede378ab7afddaa3e8f7",
+      "observed_model": "gpt-6.2-astra",
+      "observed_effort": "high"
+    },
+    {
+      "phase": "intake",
+      "case": "signal",
+      "member": "acl-021",
+      "turn_id": "01a20c32-ce61-7392-8111-368f2c2954dd",
+      "thread_id": "01a20c32-ce29-7fd0-8253-ef7f49eccbc0",
+      "receipt": "d4a7ddc1dfbb8e065a8ddaea40a6ddf1b940d0cc8b17ef64a518b03979dd2050",
+      "observed_model": "gpt-6.2-astra",
+      "observed_effort": "medium"
+    },
+    {
+      "phase": "observe",
+      "case": "signal",
+      "member": "acl-023",
+      "turn_id": "01a20c33-3940-7d13-a15c-5935f2a2b80a",
+      "thread_id": "01a20c33-3907-7cc3-9084-aa3c541e04bc",
+      "receipt": "55510132c9cdfccf82e402042b226695a903f174c3e5fd98e123a0c91320cd8a",
+      "observed_model": "gpt-6.2-sol",
+      "observed_effort": "high"
+    },
+    {
+      "phase": "review",
+      "case": "signal",
+      "member": "acl-025",
+      "turn_id": "01a20c34-8a95-72d3-a2b3-f175db0e4c90",
+      "thread_id": "01a20c34-8a5e-7d33-9c49-dd5cff4bae6f",
+      "receipt": "87bfa207e068f56b15a29065f09a077eee427778f814fc79fe978618417328bd",
+      "observed_model": "gpt-6.2-astra",
+      "observed_effort": "high"
+    },
+    {
+      "phase": "synthesize",
+      "case": "signal",
+      "member": "acl-024",
+      "turn_id": "01a20c34-f6a6-7f72-9ece-aba2f61aa1dd",
+      "thread_id": "01a20c34-f66c-7c23-b6ca-76b90b4eb310",
+      "receipt": "e855ef2e47782d85e83785ac6f2f2461a4cc222bcde67f6bc1d2339585cc6492",
+      "observed_model": "gpt-6.2-astra",
+      "observed_effort": "high"
+    }
+  ]
+}

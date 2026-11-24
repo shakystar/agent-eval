@@ -1,0 +1,49 @@
+{
+  "case_id": "strict-json-unicode-scalars",
+  "base_sha": "2ac1621890141f69fb2f603467eb1f288bed392f",
+  "patch_sha256": "4fbfe848d9c1a0aebf3282737b7f3ccc04bcf04b921121c070c0c29a130340e2",
+  "regression_sha256": "1378319dd8c6e3d2a09445e4419c7dbc24d9a26034247fc9efde5f83fa98ef57",
+  "criterion_id": "strict-json-unicode-scalars",
+  "command": "python /oracle.py /source",
+  "baseline": {
+    "exit_code": 1,
+    "log_sha256": "ef30809d59d5217ec1e47bbdf55d7f3ee995d34f6c13005b1f495f445351c16b",
+    "observed_log": "Traceback (most recent call last):\n  File \"/oracle.py\", line 33, in <module>\n    main()\n  File \"/oracle.py\", line 28, in main\n    raise AssertionError(f\"accepted a lone surrogate: {raw!r}\")\nAssertionError: accepted a lone surrogate: '\"\\\\ud800\"'\n"
+  },
+  "candidate": {
+    "exit_code": 0,
+    "log_sha256": "dd7373025afbd32ebe4580637dd29067e9e4a1579b23ef1f883cb3ac7335f234",
+    "observed_log": "PASS nested lone surrogates rejected; Unicode and literal escapes preserved\n"
+  },
+  "author_receipt": "58953e8c551c72bc11060809c47006707b08c69ad3b443e2b41963f61c942a0a",
+  "review_receipt": "e80356d90303a179e2e8b7dc4e1a49c5667560fc040e745fa9c6c9fd4ea093e8",
+  "role_regression": {
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-p",
+      "test_strict_json_unicode.py",
+      "-v"
+    ],
+    "receipt_sha256": "2269e8d0e2ca1603427329215099155a80b364b56b270ecb758e63150969b25c",
+    "diff_sha256": "8bf03d15719e6dee0c4264e19c516090ba57c9be55b376896a95cc8cd158ed74",
+    "baseline_exit_code": 1,
+    "candidate_exit_code": 0,
+    "baseline_log_sha256": "03d3eb5550b8d06f5c6836a7d64e87246164c868230f5c1b1ed5c0a5e2b91b1f",
+    "candidate_log_sha256": "d0c6a45a675ac4beeb416f557dd52c2a930d988d5700f7a4817bf61f1518584a",
+    "baseline_observation": "rict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='literal', location='top_level_string')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/source/tests/test_strict_json_unicode.py\", line 20, in test_reject_unpaired_surrogates_without_duplicates\n    with self.assertRaises(ValueError):\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='literal', location='nested_array_string')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/source/tests/test_strict_json_unicode.py\", line 20, in test_reject_unpaired_surrogates_without_duplicates\n    with self.assertRaises(ValueError):\nAssertionError: ValueError not raised\n\n======================================================================\nFAIL: test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) (code_point=56320, representation='literal', location='nested_object_member_name')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/source/tests/test_strict_json_unicode.py\", line 20, in test_reject_unpaired_surrogates_without_duplicates\n    with self.assertRaises(ValueError):\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 3 tests in 0.005s\n\nFAILED (failures=12)\n",
+    "candidate_observation": "test_preserve_valid_strings_and_member_names (test_strict_json_unicode.StrictJSONUnicodeTests.test_preserve_valid_strings_and_member_names) ... ok\ntest_reject_overwritten_surrogate (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_overwritten_surrogate) ... ok\ntest_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.002s\n\nOK\n"
+  },
+  "candidate_commit": "31f00c9a914e3bfec7857d2631bcaf421b61835c",
+  "candidate_tree": "eb28f75ccf42f89fa6c4c52fb7dc02ec3e6e9eb2",
+  "candidate_build_image": "sha256:e6178edc7946e737885d4e079bb8e052e417ea651fe0e94ce9706f6cbb486b23",
+  "implementation_only": {
+    "exit_code": 0,
+    "log_sha256": "dd7373025afbd32ebe4580637dd29067e9e4a1579b23ef1f883cb3ac7335f234",
+    "observed_log": "PASS nested lone surrogates rejected; Unicode and literal escapes preserved\n"
+  }
+}

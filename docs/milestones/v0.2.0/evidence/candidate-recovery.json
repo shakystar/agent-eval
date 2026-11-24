@@ -1,0 +1,174 @@
+{
+  "candidate_sha": "699fe82cb79538fd1cd1dd68a246c96716ade75b",
+  "observations": {
+    "unknown": [
+      "needs_input",
+      []
+    ],
+    "missing-state": [
+      "needs_input",
+      []
+    ],
+    "author-conflict": [
+      "needs_input",
+      []
+    ],
+    "revise": [
+      "revise",
+      "acl-007",
+      [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "acl-010",
+          "acl-010"
+        ]
+      ]
+    ],
+    "revision2": [
+      "accept",
+      {
+        "input_sha256": "d63414cc7292a0b0d55f94881f3487490916153a123de30b2d6ed7010d6f295e",
+        "revision": 1
+      },
+      [
+        [
+          "acl-010",
+          "acl-010"
+        ],
+        [
+          "acl-005",
+          "acl-005"
+        ]
+      ]
+    ],
+    "concurrent": [
+      [
+        "accept",
+        "accept"
+      ],
+      [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "acl-010",
+          "acl-010"
+        ],
+        [
+          "acl-005",
+          "acl-005"
+        ]
+      ]
+    ],
+    "status-before-recovery": [
+      "accept",
+      false,
+      true,
+      []
+    ],
+    "recover": [
+      "accept",
+      true,
+      []
+    ],
+    "status-after-recovery": [
+      "accept",
+      true,
+      []
+    ],
+    "legacy": [
+      "accept",
+      [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "reviewer",
+          "acl-005"
+        ]
+      ]
+    ]
+  },
+  "crash_after_intent": {
+    "expected_task_id": "de97ff3ec32e21430d800257d92de2a23f4607425b6918c8774d4e31a16ba6cf",
+    "run": {
+      "status": "hold",
+      "cause": "member-unavailable",
+      "task_id": "de97ff3ec32e21430d800257d92de2a23f4607425b6918c8774d4e31a16ba6cf",
+      "attempt": {},
+      "member_id": "acl-010",
+      "reason": "dispatch intent exists but member state is missing or empty"
+    },
+    "status": {
+      "status": "hold",
+      "cause": "member-unavailable",
+      "task_id": "de97ff3ec32e21430d800257d92de2a23f4607425b6918c8774d4e31a16ba6cf",
+      "attempt": {},
+      "member_id": "acl-010",
+      "reason": "dispatch intent exists but member state is missing or empty"
+    },
+    "stored_task_id": "de97ff3ec32e21430d800257d92de2a23f4607425b6918c8774d4e31a16ba6cf",
+    "frames": []
+  },
+  "terminal_history_loss": [
+    {
+      "fault": "lost-terminal-and-trailing-member",
+      "terminal_record_present": false,
+      "observed": "hold",
+      "code": 3,
+      "new_frames": []
+    }
+  ],
+  "policy_diagnostic": [
+    {
+      "action": "run",
+      "state": "hold",
+      "reason": "Expecting value: line 1 column 1 (char 0)",
+      "member": null,
+      "new_frames": [
+        "[\"author\", \"acl-007\"]",
+        "[\"acl-012\", \"acl-012\"]"
+      ]
+    },
+    {
+      "action": "status",
+      "state": "hold",
+      "reason": "Expecting value: line 1 column 1 (char 0)",
+      "member": null,
+      "new_frames": []
+    }
+  ],
+  "missing_reason_before": {
+    "responses": [
+      {
+        "exception": "KeyError",
+        "message": "'reason'"
+      },
+      {
+        "exception": "KeyError",
+        "message": "'reason'"
+      }
+    ],
+    "submissions": []
+  },
+  "missing_reason_after": {
+    "responses": [
+      {
+        "status": "hold",
+        "code": 3,
+        "reason": "invalid terminal outcome: invalid terminal member-unavailable identity"
+      },
+      {
+        "status": "hold",
+        "code": 3,
+        "reason": "invalid terminal outcome: invalid terminal member-unavailable identity"
+      }
+    ],
+    "submissions": []
+  }
+}

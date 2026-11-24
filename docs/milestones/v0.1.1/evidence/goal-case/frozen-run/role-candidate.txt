@@ -1,0 +1,8 @@
+test_preserve_valid_strings_and_member_names (test_strict_json_unicode.StrictJSONUnicodeTests.test_preserve_valid_strings_and_member_names) ... ok
+test_reject_overwritten_surrogate (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_overwritten_surrogate) ... ok
+test_reject_unpaired_surrogates_without_duplicates (test_strict_json_unicode.StrictJSONUnicodeTests.test_reject_unpaired_surrogates_without_duplicates) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK

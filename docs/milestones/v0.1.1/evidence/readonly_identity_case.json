@@ -1,0 +1,48 @@
+{
+  "case_id": "v011-status-read-only",
+  "schema_version": 1,
+  "criterion_id": "status-read-only",
+  "base_sha": "6935f81582aa5e1f0e8414cbf4bba31e47089fd9",
+  "baseline_image": "sha256:32656edb8264720aacfc82466b5e1153e4d838a38ee16188913302924a15ccf2",
+  "runtime_sha": "722c9f620a707a8dc42c43a44f3666a3ba4fc87e",
+  "adapter_sha": "17b36ab24d29f45799af705cca2e35c35af1a609",
+  "lab_sha": "0bbd7b12057aef2777ff12773821d0ff0775911a",
+  "test_sha256": "1402ee7e8406728db9adcf96dafa4093865fbb8785f069d9584a05e63d11819f",
+  "patch_sha256": "5da1161c8ab655e810210be22ada99797ef72bc1fa7929cb55b5a3afe466b91e",
+  "baseline": {
+    "exit_code": 1,
+    "message": "read-only status created a new run identity"
+  },
+  "candidate": {
+    "exit_code": 0,
+    "message": "PASS status preserves existing or missing run identity"
+  },
+  "author": {
+    "task_id": "v011-readonly-author",
+    "member_id": "acl-007",
+    "run_id": "r-4e72a96f416f4789bd1f86d2e6c9212e",
+    "attempt_id": "a-49a529831982e0d28f6d23c1f880b473",
+    "actual_role_version": "v1",
+    "requested_model": "gpt-6.2-sol",
+    "requested_effort": "high",
+    "native_status": "succeeded",
+    "wire_sha256": "70cd4deaf2a4153882a209b775b59489d1e734b2d44c5f7c499a16fb9536de3c",
+    "receipt_sha256": "dd32b5a910008c3198644494b31e2bf82e4bf2f887e12a3f920fdaeacc29153e",
+    "input_sha256": "252b6ea576502f5b9e245e9cc456663d58959d5a685fc5fc1a104cbb8674ed9a",
+    "output_sha256": "4d2ca8f45d453f10e1622901db4eaeaa9cc0d1dc664a7aa1b53b39649d61693e"
+  },
+  "reviewer": {
+    "task_id": "v011-readonly-review",
+    "member_id": "acl-005",
+    "run_id": "r-74e0f5180a5747ec9982eb6a21954338",
+    "attempt_id": "a-1dd60b091821bbdb917aca362e1ed9c5",
+    "actual_role_version": "v1",
+    "requested_model": "gpt-6.2-astra",
+    "requested_effort": "high",
+    "native_status": "succeeded",
+    "wire_sha256": "9ec688077deb35f0d28a8113b9b101f31cd49827c844e5fe88d851b7b93b7232",
+    "receipt_sha256": "7fb45235a7135875cebe41dc3bc7c16d9f4f5b3eb8c2872475f04441d6c2c6b5",
+    "input_sha256": "f0e14eb46bd1a3dbfbace44b7e0e3c941d5c5df303c43650a0e01f0860ef7bb0",
+    "output_sha256": "f8094170a12e641aaa2e1b73ec38eba3a001079655d4a8b53b5f9afc164fc466"
+  }
+}

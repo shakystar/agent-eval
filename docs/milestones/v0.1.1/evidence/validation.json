@@ -1,0 +1,28 @@
+{
+  "candidate": "2ac1621890141f69fb2f603467eb1f288bed392f",
+  "image": "sha256:e6178edc7946e737885d4e079bb8e052e417ea651fe0e94ce9706f6cbb486b23",
+  "packaged_python_modules_verified": 26,
+  "runs": [
+    {
+      "suite": "orchestrator",
+      "tests": 110,
+      "skipped": 0,
+      "seconds": 245.119,
+      "exit_code": 0
+    },
+    {
+      "suite": "eval",
+      "tests": 63,
+      "skipped": 19,
+      "seconds": 4.375,
+      "exit_code": 0
+    },
+    {
+      "suite": "eval_inspect_environment",
+      "tests": 19,
+      "skipped": 0,
+      "seconds": 3.193,
+      "exit_code": 0
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "image": "sha256:c7f96f710c6652f7f427cad4384ef24c2b8828d7457fcd4bdabbc514d38816a3",
+  "revisions": {
+    "agent-eval": "f217804010233c727fc7b2e44d6c05776cc93bf0",
+    "role-orchestrator": "6935f81582aa5e1f0e8414cbf4bba31e47089fd9",
+    "role-runtime": "722c9f620a707a8dc42c43a44f3666a3ba4fc87e",
+    "codex-adapter": "17b36ab24d29f45799af705cca2e35c35af1a609"
+  },
+  "legacy": {
+    "fixture": {
+      "backend": "fixture",
+      "slots": 9,
+      "stages": 30
+    },
+    "codex": {
+      "backend": "codex",
+      "slots": 9,
+      "stages": 18
+    }
+  },
+  "m1": {
+    "actual_member_id": "acl-004",
+    "actual_role_version": "v1",
+    "attempt_id": "a-f058d7e523f02b634e18ebe745a81b14",
+    "run_id": "r-af72a4c620dc4bc18c31707c5cd1fdb6",
+    "status": "succeeded",
+    "version": 2
+  },
+  "m2": [
+    {
+      "task_id": "m2-live-02",
+      "evidence": "receipt-linked local session turn_context",
+      "observed": [
+        [
+          "gpt-6.2-sol",
+          "medium"
+        ]
+      ]
+    },
+    {
+      "task_id": "m2-live-review",
+      "evidence": "receipt-linked local session turn_context",
+      "observed": [
+        [
+          "gpt-6.2-astra",
+          "high"
+        ]
+      ]
+    }
+  ],
+  "reviews": {
+    "M3": "accept",
+    "M5": "approve"
+  },
+  "m4": {
+    "valid": "passed",
+    "fault": "test_failed",
+    "conflict": "patch_failed",
+    "stale": "skipped",
+    "team_patch": "passed"
+  },
+  "comparison": {
+    "sol": {
+      "seconds": 7.271,
+      "observed_profile": [
+        "gpt-6.2-sol",
+        "medium"
+      ],
+      "usage": {
+        "input_tokens": 6011,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 13,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 6024
+      },
+      "expected": [
+        "B",
+        "C"
+      ],
+      "observed": [
+        "B",
+        "C"
+      ],
+      "missed": 0,
+      "false_positives": 0,
+      "rework": 0
+    },
+    "astra": {
+      "seconds": 11.11,
+      "observed_profile": [
+        "gpt-6.2-astra",
+        "medium"
+      ],
+      "usage": {
+        "input_tokens": 6011,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 13,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 6024
+      },
+      "expected": [
+        "B",
+        "C"
+      ],
+      "observed": [
+        "B",
+        "C"
+      ],
+      "missed": 0,
+      "false_positives": 0,
+      "rework": 0
+    }
+  },
+  "image_python_files_verified": 38
+}

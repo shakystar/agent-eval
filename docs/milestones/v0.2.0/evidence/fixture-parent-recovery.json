@@ -1,0 +1,104 @@
+{
+  "candidate": "1415bbaa20c0a49349ebfe7488be0d5f574d0df1",
+  "backend": "fixture",
+  "measurement": "Independent stdin tap at native bridge, counts logical submission frames only. Missing parent result simulated after completed team state.",
+  "observations": {
+    "unknown": [
+      "needs_input",
+      []
+    ],
+    "missing-state": [
+      "needs_input",
+      []
+    ],
+    "author-conflict": [
+      "error",
+      [
+        [
+          "author",
+          "acl-007"
+        ]
+      ]
+    ],
+    "revise": [
+      "revise",
+      "acl-007",
+      [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "acl-010",
+          "acl-010"
+        ]
+      ]
+    ],
+    "revision2": [
+      "accept",
+      {
+        "input_sha256": "46360d885504c02cfeff8b49d9acb2150b60a6a374610808adc6e20ea4248830",
+        "revision": 1
+      },
+      [
+        [
+          "acl-010",
+          "acl-010"
+        ],
+        [
+          "acl-005",
+          "acl-005"
+        ]
+      ]
+    ],
+    "concurrent": [
+      [
+        "accept",
+        "accept"
+      ],
+      [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "acl-010",
+          "acl-010"
+        ],
+        [
+          "acl-005",
+          "acl-005"
+        ]
+      ]
+    ],
+    "status-before-recovery": [
+      "accept",
+      false,
+      true,
+      []
+    ],
+    "recover": [
+      "accept",
+      true,
+      []
+    ],
+    "status-after-recovery": [
+      "accept",
+      true,
+      []
+    ],
+    "legacy": [
+      "accept",
+      [
+        [
+          "author",
+          "acl-007"
+        ],
+        [
+          "reviewer",
+          "acl-005"
+        ]
+      ]
+    ]
+  }
+}

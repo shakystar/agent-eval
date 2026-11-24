@@ -1,0 +1,181 @@
+{
+  "controller_commit_tree_and_authorship": [
+    {
+      "author": "acl-007",
+      "run": "r-4018c5c4c36e4c8d8214a09692751328",
+      "attempt": "a-a660be9583f6182a06a868199b14ae20",
+      "receipt": "14dcd6aca454bef61c4a8ce5bd9a54c0d9e57c0aaefcb4df423fbfcf60314949",
+      "model_patch_sha256": "f9a36821e544ec4165109f13b87fb8fd96bab8984f0a1c2a80de686c30fd9248",
+      "commit": "dfd10421c5522eb484559e06f901280465105345",
+      "tree": "37f18c2d3f81113ac29f256972ab56f74eea8d22",
+      "applied_diff_sha256": "1e3cbe88f061aa335d25ac5a508be06eed729872de0a6001b3ccd4441395596d"
+    },
+    {
+      "author": "acl-007",
+      "run": "r-02b800df16a547ebae5c9d6756318488",
+      "attempt": "a-91e0793b30f0d94ba8bdc992d7301005",
+      "receipt": "f7e4fae43ce8e73d5eb63409a7087a25d6eb90fb85d493187ee034d070cbfc19",
+      "model_patch_sha256": "a33903e1163d39ba8f76bce3a826342de549c6b52a9a9ac0ac7154fcbeb3676c",
+      "commit": "0ad0ccbf7ba9822435e298ed75a76127831e75e0",
+      "tree": "2aebef7960391947e6f97a5a29d58da5f90da429",
+      "applied_diff_sha256": "1d90e64d20ec2a164b0da1bf1ae5754de9d0034127cf1dd16f2e288720402723"
+    },
+    {
+      "author": "acl-007",
+      "run": "r-55e2bf311273401f93dbe675812659a5",
+      "attempt": "a-d12765fec91eb74adfe86e3d97c63dfc",
+      "receipt": "a73fc23d74e36e39042a9860582cac12f8f6927c8ee116eb37bedaab003a9f1e",
+      "model_patch_sha256": "218c84b295c3a8620455993431a2dc5cc54c7822d2c28bf0198aba5ebf99fee0",
+      "commit": "3037d84f6e2efe4f38282c4661fe77ad4eeeadb7",
+      "tree": "2272ff8a3632d7637f30ad13f2f6825892004ee4",
+      "applied_diff_sha256": "03d1a987f556ea4e765851479f18aaa4397ce1180468e55e710483fbedca185f"
+    }
+  ],
+  "runtime_bridge_sha256": "09ae541d5da177cf9199acb8913061228475ae7b4d7f8b64903293bc207cce08",
+  "run_groups": [
+    {
+      "state": "m2-live-01",
+      "controller": "0ad0ccbf7ba9822435e298ed75a76127831e75e0",
+      "catalog_revision": "290562cae7a26f74daead12db68fb7a31a950230",
+      "catalog_sha256": "bcb0a39596bb1d847e13cba53e9c65e7faad7d15d3c73e2f673752c33304e4fe",
+      "team_checkpoint_sha256": "054f4099bfce48122b8dc6c2245605b1989f073003ec2e6ad2ee99285d8cf010",
+      "steps": [
+        {
+          "actual_member_id": "acl-021",
+          "run_id": "r-c5d0d5ed4f6447c99ed4918f12768afb",
+          "attempt_id": "a-8674d422143b70ac1689aec531e49519",
+          "receipt_sha256": "82457ce3878aeb20cc916b793d75264ef6efe83c2c0bf4e9f783160d99d68f76",
+          "status": "succeeded",
+          "step": "planning--1",
+          "evidence_hashes": {
+            "assignment-v2.plan.json": "d63e360d77660aa20250956ab352012a6675818f52f88f1313adc5d3c1f1d73f",
+            "assignment-v2.verdict.json": "7ef82ab6971b4c699c72b8db2fb2a3f2f0be36a464003fee02aa72d8a822545f",
+            "runtime/bridge-spans.jsonl": "5c1c2617e5dad518d0e00937af16ea46ad37ade69ad7877552eb98893ff124ab",
+            "runtime-status.jsonl": "a7a16a46afe913d5359827841015ad104c04e689a39a3675731a8a1fb68854c7"
+          }
+        },
+        {
+          "actual_member_id": "acl-001",
+          "run_id": "r-6e73b0a4d70d4690ad37d048aafe2a79",
+          "attempt_id": "a-875c93ae224f3a8882beef939557d727",
+          "receipt_sha256": "8d3fe9a7f10c99f1cf2a77df774622d53be330b35e415097c01c4489205fb47d",
+          "status": "succeeded",
+          "step": "planning--2",
+          "evidence_hashes": {
+            "assignment-v2.plan.json": "633ff91492f87365421620d4265dac914577569679fef085c73a458c4db1f8a2",
+            "assignment-v2.verdict.json": "e6425761ebbfd9b27c4e14abedb20f82e5aeb3db9fd8ba4314aae8da922f572e",
+            "runtime/bridge-spans.jsonl": "47eab934e3f70f145042e54b0f771453a54f5dcd8f85afd2141e46c61b9e52ef",
+            "runtime-status.jsonl": "f2fc60340c8f2cd389ea1ac4ba1c11238a0dfdf2160716d7f1db799076fa4a94"
+          }
+        },
+        {
+          "actual_member_id": "acl-021",
+          "run_id": "r-bffa5835240e4c8daa24c14eb967bf1d",
+          "attempt_id": "a-2c25d147d1a8968e51933b7805de2235",
+          "receipt_sha256": "2dadfc33ecde43649672a4edcad95b289286277b407f7c60990f08a46b648ce9",
+          "status": "succeeded",
+          "step": "planning--3",
+          "evidence_hashes": {
+            "assignment-v2.plan.json": "03e9d13a71ca68ce662ff7b9ffd9d49e7e7c8f30703a8526d4c37b6c994172da",
+            "assignment-v2.verdict.json": "de4ba64ea4e80317f026d45c002bb209a532b24a9d9972214de60e5c672f4b35",
+            "runtime/bridge-spans.jsonl": "cc22df9b7df66643be4b628f43ef8797517c8a3088cefb37c2e9d4f37bc52b63",
+            "runtime-status.jsonl": "6b8edbaffb90c9ce0063009ba7c6f06ed7864b2222c00a0f13ed30b3b59b49e6"
+          }
+        }
+      ]
+    },
+    {
+      "state": "m2-live-crash-before",
+      "controller": "3037d84f6e2efe4f38282c4661fe77ad4eeeadb7",
+      "catalog_revision": "290562cae7a26f74daead12db68fb7a31a950230",
+      "catalog_sha256": "bcb0a39596bb1d847e13cba53e9c65e7faad7d15d3c73e2f673752c33304e4fe",
+      "team_checkpoint_sha256": "8e737ca69ca63e779cddb92bb4e1354b21605b5f61b1694bf556e1f9c286909b",
+      "steps": []
+    },
+    {
+      "state": "m2-live-crash-after",
+      "controller": "3037d84f6e2efe4f38282c4661fe77ad4eeeadb7",
+      "catalog_revision": "290562cae7a26f74daead12db68fb7a31a950230",
+      "catalog_sha256": "bcb0a39596bb1d847e13cba53e9c65e7faad7d15d3c73e2f673752c33304e4fe",
+      "team_checkpoint_sha256": "8e737ca69ca63e779cddb92bb4e1354b21605b5f61b1694bf556e1f9c286909b",
+      "steps": [
+        {
+          "actual_member_id": null,
+          "run_id": "r-af5240019355451b9633c8b10c306612",
+          "attempt_id": "a-7de3ffe39c425e880c77402a8914083d",
+          "receipt_sha256": null,
+          "status": "uncertain",
+          "step": "planning--1",
+          "evidence_hashes": {
+            "assignment-v2.plan.json": "a7c692f8360a91ada54269d34bd667ff6f2c60dafafa2eb067a4486c3c59cedb",
+            "assignment-v2.verdict.json": "e86cf9fbb6ab399a76e45c3be43f2f4b58559ebad68773545e635b05d2f8197e",
+            "runtime/bridge-spans.jsonl": "0d7ae0c1fa11a6c178cc228119aaa15d7b7960b947553c7261bd0ab3188728fc",
+            "runtime-status.jsonl": "6651a10157369a4255ae3b38d30b1123ea4fa77827793d7b3daf9515974a29ec"
+          }
+        }
+      ]
+    },
+    {
+      "state": "m2-live-crash-retry-after",
+      "controller": "3037d84f6e2efe4f38282c4661fe77ad4eeeadb7",
+      "catalog_revision": "290562cae7a26f74daead12db68fb7a31a950230",
+      "catalog_sha256": "bcb0a39596bb1d847e13cba53e9c65e7faad7d15d3c73e2f673752c33304e4fe",
+      "team_checkpoint_sha256": "f3b2a7b6a67f2cffe7b9ceebbcbabb93de797d353ef14f3565cbdb8705548101",
+      "steps": [
+        {
+          "actual_member_id": "acl-021",
+          "run_id": "r-b1119ea39e3d48e4baa0374d645d9cfb",
+          "attempt_id": "a-c029dd5c26f96f71cf4ce06df3477a65",
+          "receipt_sha256": "a81f28043f71dec24c5977be6ba24cc14da09cebf89d989c36797441916289af",
+          "status": "succeeded",
+          "step": "planning--1",
+          "evidence_hashes": {
+            "assignment-v2.plan.json": "f2cbe8f2125c9eb09f82cb3239b839debb7a219ec6e68c97cd12343887d29cc0",
+            "assignment-v2.verdict.json": "a2fe52286cbfe74e04c7df7505c18bb3504d36f81ccfdabe7da0205773ce9487",
+            "runtime/bridge-spans.jsonl": "f9dcbfe80d4883fe7ba64514bd932524d229fcde024d4649748fac5ca4bacf93",
+            "runtime-status.jsonl": "14e1e7537dad0cd8ce89c1c02c9bab3672c9edfea8d3272254c6bf23dd5186da"
+          }
+        },
+        {
+          "actual_member_id": "acl-001",
+          "run_id": "r-6a510ee2febf4c8c9b67faefa7a55b82",
+          "attempt_id": "a-dce33b6d7de31145fcc40a19fe9483b5",
+          "receipt_sha256": "0a28d427e72b08df2c03c9178170a829c891dd2d553fc70c57d78b851422bbcd",
+          "status": "succeeded",
+          "step": "planning--2",
+          "evidence_hashes": {
+            "assignment-v2.plan.json": "fe2850c5dcf4fd3153f7b3292f2f1f18d892dab43ee460102095748804f9c270",
+            "assignment-v2.verdict.json": "f5206e65017ddf772c407bc0a23dbf61c60acea65128e42c75de8252cd25e65e",
+            "runtime/bridge-spans.jsonl": "304403499d79836a918686c87c4fdc3c5b70e95935bacfe31a8c8394cd2a0b54",
+            "runtime-status.jsonl": "b7f9208fc82c061b007c66d3a3173a9c949d73106093f0f6fd365e8c7604dcc2"
+          }
+        },
+        {
+          "actual_member_id": "acl-021",
+          "run_id": "r-bdfaed22fdf44645b453a27628a22b5e",
+          "attempt_id": "a-1ea33587d991038bc8071b4749d26ba7",
+          "receipt_sha256": "b833855ab722ccf2d0145d7d1ee7aa82e08a9610364fd673682678da66c7cd23",
+          "status": "succeeded",
+          "step": "planning--3",
+          "evidence_hashes": {
+            "assignment-v2.plan.json": "9d61e245c7e4ff799ae9c4340840df3045be5e7fae52208aa6f7b4ddf004dd0f",
+            "assignment-v2.verdict.json": "480992928b5b96eead00480dbb5c235d795d3c71c14d772bf3b528830f044d97",
+            "runtime/bridge-spans.jsonl": "72f0e6b3dabe67d0aa36b3df23a9f39e1d89d41fa08b149d0801ae2cc549a6b3",
+            "runtime-status.jsonl": "17b455032e22460fddfaa802be2c60bef8677528e7f22cb75b70cbfe7fba857b"
+          }
+        }
+      ]
+    }
+  ],
+  "logs_and_instrumentation_sha256": {
+    "m2-crash-witness.py": "0d293a1fd15cb5f94334a7992e14d204e775ae4a0173eba30759de33200f6b00",
+    "m2-retry-witness.py": "0acf8aab9b76fe5c00933f9ecd5001963cc70ff93c011d1b3171e0a448fb3c7a",
+    "m2-run-witness.py": "35eefea8f677bc81da809e5472d9f494c06cb9661aa36cb40f14770756915ab1",
+    "m2-witness-before.jsonl": "97259b504ebdd331f4f4ebfc116ce25437fd7c7e2bd151a7b3d93b5b2389a769",
+    "m2-witness-retry-after.jsonl": "8573d531c99abc74a029d39d95172cd0402efbb7f01d59c48a6a8411183d9124",
+    "m2-witness-after.jsonl": "89126cea71e7a01c78f0bc723155d33d9f3bdce7680b244dc622c4757bfbd108",
+    "m2-native-regression.log": "dba4a2977c92953487b8f5e497cc8737f3aed3c6142fe0cb2a99448e4c38fa63",
+    "m2-recovery-witness-result.json": "e2b64c8b98d236ae34f0d673b10964baa71e60bfdb71f00612d22e90046dbb74"
+  },
+  "scope": "각 state는 독립 실행이다. 동일 작업명은 다른 run ID에 속하므로 영수증 해시는 서로 다르다. 290562c는 기획팀 명부를 고정한 별도 lab 레포 SHA, 3037d84는 수정 후 controller 코드 SHA. 소켓 및 런타임 접근은 같은 호스트 사용자. 중복 판정은 각 state에서 제출 횟수로 검증."
+}

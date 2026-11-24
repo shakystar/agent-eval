@@ -1,0 +1,58 @@
+[
+  {
+    "artifact": {
+      "id": "revision-01e37b71dded6b7eb3b7b88556a648efcf2f24904dc903d9ad6ffa168aa93d6e.json",
+      "sha256": "f35f34d8cf971ceeb37a16e84102a77b270f53015b80ec2bc7e7985befe3eef3"
+    },
+    "artifact_file": "ar-1395178117/restart/artifact.bin",
+    "attempts_after": [
+      "[\"01e37b71dded6b7eb3b7b88556a648efcf2f24904dc903d9ad6ffa168aa93d6e\",1]"
+    ],
+    "attempts_before": [
+      "[\"01e37b71dded6b7eb3b7b88556a648efcf2f24904dc903d9ad6ffa168aa93d6e\",1]"
+    ],
+    "id": "restart",
+    "model_backend": "fixture",
+    "native_leases_after": [
+      {
+        "task_id": "01e37b71dded6b7eb3b7b88556a648efcf2f24904dc903d9ad6ffa168aa93d6e",
+        "generation": 1
+      }
+    ],
+    "native_leases_before": [
+      {
+        "task_id": "01e37b71dded6b7eb3b7b88556a648efcf2f24904dc903d9ad6ffa168aa93d6e",
+        "generation": 1
+      }
+    ],
+    "observed_status": "completed",
+    "review_sha256": "e813967b5922894241e001185ae9acf61ae37c55764c57066096989f6d3854eb",
+    "run_id": "ar-1395178117"
+  },
+  {
+    "artifact": null,
+    "attempts_after": [
+      "[\"da99237d93af7de36e637172a3f5ea8cc2a9804fe7970c4e89acf2fbd07c487c\",1]"
+    ],
+    "attempts_before": [
+      "[\"da99237d93af7de36e637172a3f5ea8cc2a9804fe7970c4e89acf2fbd07c487c\",1]"
+    ],
+    "id": "failure",
+    "model_backend": "fixture",
+    "native_leases_after": [
+      {
+        "task_id": "da99237d93af7de36e637172a3f5ea8cc2a9804fe7970c4e89acf2fbd07c487c",
+        "generation": 1
+      }
+    ],
+    "native_leases_before": [
+      {
+        "task_id": "da99237d93af7de36e637172a3f5ea8cc2a9804fe7970c4e89acf2fbd07c487c",
+        "generation": 1
+      }
+    ],
+    "observed_status": "failed",
+    "review_sha256": "e813967b5922894241e001185ae9acf61ae37c55764c57066096989f6d3854eb",
+    "run_id": "ar-701355327"
+  }
+]

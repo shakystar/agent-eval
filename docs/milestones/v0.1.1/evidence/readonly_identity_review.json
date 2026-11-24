@@ -1,0 +1,6 @@
+{
+  "verdict": "accept",
+  "criterion_id": "status-read-only",
+  "patch_sha256": "5da1161c8ab655e810210be22ada99797ef72bc1fa7929cb55b5a3afe466b91e",
+  "reason": "Missing-identity status returns an error before entering owner() or opening SQLite. If the identity disappears after that check, create=False still prevents the loader from recreating it. Valid identities are read and checked against the manifest; malformed JSON, non-objects and invalid fields are rejected without rewriting the file. Normal execution retains create=True, valid identity generation and the nonempty legacy-receipt guard. The supplied regression passed on the candidate and failed on the baseline. Comparing final bytes alone could miss a faulty status branch that rewrites identical bytes on each of two calls; the patched loader does not open an existing identity for writing."
+}

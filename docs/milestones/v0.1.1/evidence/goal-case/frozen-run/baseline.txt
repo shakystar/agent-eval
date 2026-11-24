@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/oracle.py", line 33, in <module>
+    main()
+  File "/oracle.py", line 28, in main
+    raise AssertionError(f"accepted a lone surrogate: {raw!r}")
+AssertionError: accepted a lone surrogate: '"\\ud800"'

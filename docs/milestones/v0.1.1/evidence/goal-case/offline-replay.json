@@ -1,0 +1,14 @@
+{
+  "controller_commit": "dd07d43136dda2020e60612e56f47ee530c208af",
+  "network": "none",
+  "state_mount": "read_only",
+  "authentication_mounted": false,
+  "status_exit_code": 0,
+  "run_exit_code": 0,
+  "result_byte_identical": true,
+  "raw_result_sha256": "24a7502b83d832ab1fd2b4900b1177badcbf8d477a6362811f4c3b604806c6ff",
+  "state_files_hashed": 183,
+  "changed_state_files": 0,
+  "native_attempts_before": 13,
+  "native_attempts_after": 13
+}

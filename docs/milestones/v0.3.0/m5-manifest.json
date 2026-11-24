@@ -1,0 +1,857 @@
+{
+  "candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+  "tree": "d0a74d51308da7ea03391db406da3d3804d22a6e",
+  "catalog": {
+    "baseline": "290562cae7a26f74daead12db68fb7a31a950230",
+    "candidate": "ce998e9031bb420ea13ebbaa9c2a3d3fa2d681dc",
+    "previous_distinct_member_count": 22,
+    "existing_roster_rows_unchanged": 15,
+    "existing_planning_team_equal": true,
+    "added_members": [
+      "acl-023",
+      "acl-024",
+      "acl-025"
+    ],
+    "catalog_sha256": "07740a6559664d6ace4f6c6fd8dad328432bca3c73d2b640f556801d9c0994f7",
+    "registration_receipt": "6540263d6cd85e724e81adf233724700d550ca67fc321e2d3cf46d829503eb10"
+  },
+  "regression": {
+    "tests": 143,
+    "skipped": 0,
+    "seconds": 179.064,
+    "log_sha256": "ab951ec95c3f83b8f60daba89624fac07c9dbf947e1fcccd9acec4443e8944b1",
+    "passes": 143,
+    "failures": 0,
+    "errors": 0,
+    "runner_summary": [
+      "Ran 143 tests in 179.064s",
+      "",
+      "OK"
+    ],
+    "command_result": "success"
+  },
+  "live": {
+    "request": {
+      "candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+      "catalog": "ce998e9031bb420ea13ebbaa9c2a3d3fa2d681dc",
+      "raw_result_sha256": "b0b52295a5188a087ab40e71f9d31da7c44a7849cb027d28585935bc37db391e",
+      "checkpoint_sha256": "348b9840dea5f674b28cd998c827d32ef69f74b4242a14374a4d65bc7d32cfdf",
+      "packet_sha256": "6b8f2e83a3fd4c3dc2c8cdc6b9712cbf875455c65727001eb4281a7c84a46478",
+      "draft_sha256": "0bc71c424d54a3ca4474153b5a02a72beedb7bfbe3caea2e48d0a7ace0a629c4",
+      "decision": {
+        "action": "select_followup",
+        "claims": [
+          "c1",
+          "c2"
+        ],
+        "packet_sha256": "6b8f2e83a3fd4c3dc2c8cdc6b9712cbf875455c65727001eb4281a7c84a46478",
+        "reason": "두 변경안의 검증 순위는 보류하고, 첫 설정 화면에서 실제로 진행이 막혔는지부터 확인하도록 권고한다. 후속 판단에 사용할 수 있는 관찰은 두 가지다. 1주차 단일 채널의 신규 세션 20개 중 8개(40%)가 첫 설정 화면에서 종료됐지만, 이는 사용자 막힘 비율이 아니다(c1·o1). 같은 주 안내 문의 3건이 기록됐지만 분모·중복 여부와 종료 세션과의 연결은 확인되지 않았다(c2·o2). 두 합성 기록은 합산하지 않는다. 기획팀 의뢰 담당자에게 제안할 보완 사항은 E1의 중복 처리와 종료 사유, E2의 분모·중복 처리와 첫 설정 세션 연결 여부다. 다음 행동을 몰라 멈춘 사례가 확인되면 안내 추가를, 안내를 이해했지만 입력 부담으로 멈춘 사례가 확인되면 단계 단축을 먼저 검증할 후보로 삼는다. 어느 쪽도 효과가 입증된 것은 아니다. 두 원인이 겹치거나 구분되지 않으면 순위를 정하지 않는다. 효과 비교에는 동일 채널·기간·신규 세션 기준에서 첫 설정 완료율과 현행 대비 최소 개선 폭을 사전에 정하고, 안내만 추가한 안과 단계만 줄인 안을 각각 현행과 비교한 기록이 필요하다. 현재는 이 근거가 없어 o3에 따라 c3의 보류를 유지한다. 보완 요청은 발송하지 않았다. 이 권고에는 사용자 결정이 필요하지 않으며, 확정 목표·제품 우선순위·자료 접근 범위의 변경은 사용자 승인 사항이다."
+      },
+      "replay_equal": true,
+      "receipts": {
+        "decision": {
+          "member_id": "acl-021",
+          "run_id": "r-f35c949dd45848c0bf681bc18b50cf62",
+          "attempt_id": "a-24ddfe0c0fe3759ee00278b1b6b6fbc9",
+          "receipt_sha256": "4e2c9f2ceec45aa17c37c15802ad014a1e86f0bd97ace0209c673b61ed9715ef",
+          "go_executes": 1,
+          "verified": true
+        },
+        "draft": {
+          "member_id": "acl-024",
+          "run_id": "r-c04efa94f163439cb68a2f2c8ddf8435",
+          "attempt_id": "a-bf9a336bd6c1d30a3b74c29f4c76d0a3",
+          "receipt_sha256": "23284c6fe635c96681d9da99d8b1a81afb7d511978e6196a88286874cdddcbd0",
+          "go_executes": 1,
+          "verified": true
+        },
+        "observe": {
+          "member_id": "acl-023",
+          "run_id": "r-2be3af96e64b45d2b634f4d212b914b2",
+          "attempt_id": "a-02d6d4410445ec7e9c96b11c503b3595",
+          "receipt_sha256": "1668039ed9e6891522078f79bbe1042b3e4f53ed81786c3283375a264789abc1",
+          "go_executes": 1,
+          "verified": true
+        },
+        "review": {
+          "member_id": "acl-025",
+          "run_id": "r-47e488bd0acc4a3ba2b1e1a2673afb49",
+          "attempt_id": "a-df73ad3158c1207e35d4d6c1c279ac1f",
+          "receipt_sha256": "bba88c668a6d26d3540b271229b0681d49a4732ace952160be46467c35deebd8",
+          "go_executes": 1,
+          "verified": true
+        },
+        "synthesize": {
+          "member_id": "acl-024",
+          "run_id": "r-c8d0055150f8409caaa9d9d173fe5038",
+          "attempt_id": "a-b3b25255ea17cf01caa2d2d725002d46",
+          "receipt_sha256": "0d466a445c8072b4d43759c809a6514fd0208adf3ae3797e9a169eef4636f390",
+          "go_executes": 1,
+          "verified": true
+        }
+      }
+    },
+    "signal": {
+      "candidate": "c3e777fe21a70dc7380205a42f597291549d2707",
+      "catalog": "ce998e9031bb420ea13ebbaa9c2a3d3fa2d681dc",
+      "raw_result_sha256": "865087df17ca207734d1e261d2f72ef24579a8767c430f0ce5cb324d787ba058",
+      "checkpoint_sha256": "e2234352bea257cadadef40be89b3fb8a6038fb338660ff5e04d6faf3177192e",
+      "packet_sha256": "0963c4c74584d84712c3c7e63b3c15d072175a8d7c262b4a327d72c9b012b2f5",
+      "draft_sha256": "3540fa425ed7de374f5e1f774e49b6e7b573869d24f43187b4b303501860341a",
+      "decision": {
+        "action": "select_followup",
+        "claims": [
+          "c1",
+          "c2"
+        ],
+        "packet_sha256": "0963c4c74584d84712c3c7e63b3c15d072175a8d7c262b4a327d72c9b012b2f5",
+        "reason": "후속 검토에는 독립 검토가 지지한 두 관찰만 채택한다. S1에는 1주차 단일 지원 채널의 발췌 4건이 있다(c1/o1). 이는 서로 다른 계정의 일괄 내보내기 문의 4건이라는 뜻이 아니다. S2는 경쟁 제품 안내문 한 건의 언급만 뒷받침한다(c2/o2). 두 자료 모두 합성 근거다. 의뢰 기획팀 담당자의 보완 자료에는 S1의 선정 기준·전체 문의 수와 계정·스레드 중복 제거 후 같은 작업을 요청한 계정 수가 필요하다. 한 계정만 남으면 표본 내 계정 간 반복이라는 해석을 기각한다. 대안 비교 기준은 문의 당시와 같은 권한으로 대상 항목 전부를 요구 형식으로 내보낼 수 있는지다. 기존 경로 안내만으로 완료되면 해당 문의는 기능 공백의 근거에서 제외한다. 현행·안내 개선·기능 추가안·경쟁 제품을 이 기준으로 비교한 결과가 없으므로 기능 공백(c3/o3)과 경쟁 기능의 동등성·우위(c4/o4)는 보류한다. 도입률도 분모와 중복 처리 기준이 없어 비교하지 않는다. 이번 선택에는 사용자 결정이 필요하지 않다. 기능 추가를 과제화하지 않으며 확정 목표·제품 우선순위·접근 범위를 유지한다. 위임 범위가 불명확하거나 변경이 필요하면 사용자 승인 전까지 제안으로 남긴다."
+      },
+      "replay_equal": true,
+      "receipts": {
+        "decision": {
+          "member_id": "acl-021",
+          "run_id": "r-b3c879a5afd0483c849ed6ba17d3c82a",
+          "attempt_id": "a-ff25b97849d3db86a88d08dd01f15d35",
+          "receipt_sha256": "05c3e11ed4be316476e7147995f7b4fb931e7080cf6b3a41b9c11dc988ea02a7",
+          "go_executes": 1,
+          "verified": true
+        },
+        "draft": {
+          "member_id": "acl-024",
+          "run_id": "r-f0e47de3b6d245b5aaa9f6b755adfa19",
+          "attempt_id": "a-84dadbed35c321ca2eefd359c07e3c0e",
+          "receipt_sha256": "a47806b90c6b641adeb232928af61076d9e0f3837df4ede378ab7afddaa3e8f7",
+          "go_executes": 1,
+          "verified": true
+        },
+        "intake": {
+          "member_id": "acl-021",
+          "run_id": "r-8a35bfeaea6d49c4bf1f71e21ff2ef3b",
+          "attempt_id": "a-7f02bd84b6c918444819380f404a10cb",
+          "receipt_sha256": "d4a7ddc1dfbb8e065a8ddaea40a6ddf1b940d0cc8b17ef64a518b03979dd2050",
+          "go_executes": 1,
+          "verified": true
+        },
+        "observe": {
+          "member_id": "acl-023",
+          "run_id": "r-ab2362f300b24935ad510824e64af73b",
+          "attempt_id": "a-75a9ee5dfb2597205b5b94ec90edee09",
+          "receipt_sha256": "55510132c9cdfccf82e402042b226695a903f174c3e5fd98e123a0c91320cd8a",
+          "go_executes": 1,
+          "verified": true
+        },
+        "review": {
+          "member_id": "acl-025",
+          "run_id": "r-77a81347f07f4afdbcd2e4dafaee5e2d",
+          "attempt_id": "a-10c051d2ec514e163ad5b712e3956be7",
+          "receipt_sha256": "87bfa207e068f56b15a29065f09a077eee427778f814fc79fe978618417328bd",
+          "go_executes": 1,
+          "verified": true
+        },
+        "synthesize": {
+          "member_id": "acl-024",
+          "run_id": "r-8ce1f80b5e1848ac8a1e4c612c7e3b92",
+          "attempt_id": "a-13f8c4b0b159e3c0d987cfbbdf4670fb",
+          "receipt_sha256": "e855ef2e47782d85e83785ac6f2f2461a4cc222bcde67f6bc1d2339585cc6492",
+          "go_executes": 1,
+          "verified": true
+        }
+      }
+    }
+  },
+  "verifier_sha256": "57224eb94219d165d1c37bc82efa5474acc178adb00b372afd72c6b0d662e830",
+  "spec_sha256": "aeb8c91787028bc9102639206f009320f7d218daee2ccee28c6e0830ed3821cf",
+  "integration_owner": {
+    "actual_member_id": "acl-007",
+    "run_id": "r-0d7a4ad93ca8484ea61083d1f19a7ab9",
+    "receipt_sha256": "651150b231f49f0c452fe828634ef18a90d032b25fb9e28c729f9749a37b5db9",
+    "attempt_id": "a-0e57c4592968d9b6358e1ed10fb958e4",
+    "assessment": {
+      "base_sha": "c3e777fe21a70dc7380205a42f597291549d2707",
+      "diff": "diff --git a/docs/m5-owner-verification.md b/docs/m5-owner-verification.md\nnew file mode 100644\n--- /dev/null\n+++ b/docs/m5-owner-verification.md\n@@ -0,0 +1,17 @@\n+# M5 owner verification\n+\n+- **Frozen product candidate:** `c3e777fe21a70dc7380205a42f597291549d2707`, tree `d0a74d51308da7ea03391db406da3d3804d22a6e`.\n+- **Evidence binding:** The supplied M5 record binds both cases below to that candidate and catalog revision `ce998e9031bb420ea13ebbaa9c2a3d3fa2d681dc`.\n+\n+| Case | Packet SHA-256 | Independent review | Checkpoint replay |\n+| --- | --- | --- | --- |\n+| Request | `6b8f2e83a3fd4c3dc2c8cdc6b9712cbf875455c65727001eb4281a7c84a46478` | Separate review receipt for `acl-025` marked verified | Equal, as reported |\n+| Signal | `0963c4c74584d84712c3c7e63b3c15d072175a8d7c262b4a327d72c9b012b2f5` | Separate review receipt for `acl-025` marked verified | Equal, as reported |\n+\n+Both recorded decisions select follow-up based only on claims `c1` and `c2`; neither is a release approval.\n+\n+**Regression (reported):** 143 tests passed in 179.064 s, with 0 failures, 0 errors, and 0 skips (`OK`). Log SHA-256: `ab951ec95c3f83b8f60daba89624fac07c9dbf947e1fcccd9acec4443e8944b1`.\n+\n+**Ledger limits:** This record covers only the two supplied synthetic cases. It does not establish why users stopped setup, whether either proposed change would help, or whether there is a feature gap. No request-case follow-up was sent, and the signal decision did not open a feature task. Changes to agreed goals, product priorities, or data access require user approval.\n+\n+This note accompanies the evidence; it does not change the frozen product or extend verification to another candidate or tree.\n",
+      "tests": [
+        "Supplied request evidence: a checkpoint digest is recorded and replay equality with the original result is reported.",
+        "Supplied signal evidence: a checkpoint digest is recorded and replay equality with the original result is reported.",
+        "Supplied regression result: 143 passed, 0 failed, 0 errors, 0 skipped in 179.064 seconds. No tests were run for this advisory diff."
+      ],
+      "unverified": [
+        "The candidate/tree mapping, packet hashes, review receipts, and regression log were not independently verified against the underlying artifacts.",
+        "Python source and approved vectors were not supplied, so branch behavior and separate pre-checkpoint and post-resume assertions could not be inspected beyond the reported replay equality.",
+        "The documentation diff was not applied or checked against a checkout."
+      ]
+    }
+  },
+  "test_results": [
+    {
+      "name": "test_failure_requires_structured_not_started_evidence (test_approval_contract.ApprovalBindingTests.test_failure_requires_structured_not_started_evidence)",
+      "result": "ok"
+    },
+    {
+      "name": "test_malformed_preflight_leaves_no_intent (test_approval_contract.ApprovalBindingTests.test_malformed_preflight_leaves_no_intent)",
+      "result": "ok"
+    },
+    {
+      "name": "test_other_preflight_errors_leave_no_intent (test_approval_contract.ApprovalBindingTests.test_other_preflight_errors_leave_no_intent)",
+      "result": "ok"
+    },
+    {
+      "name": "test_preflight_precedes_submission_and_replay_only_observes (test_approval_contract.ApprovalBindingTests.test_preflight_precedes_submission_and_replay_only_observes)",
+      "result": "ok"
+    },
+    {
+      "name": "test_success_requires_exact_artifact_and_consistent_execution (test_approval_contract.ApprovalBindingTests.test_success_requires_exact_artifact_and_consistent_execution)",
+      "result": "ok"
+    },
+    {
+      "name": "test_terminal_binding_required_for_success_and_failure (test_approval_contract.ApprovalBindingTests.test_terminal_binding_required_for_success_and_failure)",
+      "result": "ok"
+    },
+    {
+      "name": "test_unsupported_saved_actions_leave_no_intent (test_approval_contract.ApprovalBindingTests.test_unsupported_saved_actions_leave_no_intent)",
+      "result": "ok"
+    },
+    {
+      "name": "test_historical_status_after_head_changes (test_assignment.AssignmentCLI.test_historical_status_after_head_changes)",
+      "result": "ok"
+    },
+    {
+      "name": "test_missing_actor (test_assignment.AssignmentCLI.test_missing_actor)",
+      "result": "ok"
+    },
+    {
+      "name": "test_missing_member (test_assignment.AssignmentCLI.test_missing_member)",
+      "result": "ok"
+    },
+    {
+      "name": "test_old_role_rejected (test_assignment.AssignmentCLI.test_old_role_rejected)",
+      "result": "ok"
+    },
+    {
+      "name": "test_unsupported_model (test_assignment.AssignmentCLI.test_unsupported_model)",
+      "result": "ok"
+    },
+    {
+      "name": "test_valid (test_assignment.AssignmentCLI.test_valid)",
+      "result": "ok"
+    },
+    {
+      "name": "test_wrong_actor (test_assignment.AssignmentCLI.test_wrong_actor)",
+      "result": "ok"
+    },
+    {
+      "name": "test_old_plan_without_payload_digest_remains_unconfirmed (test_assignment_receipt_recovery.AssignmentReceiptRecovery.test_old_plan_without_payload_digest_remains_unconfirmed)",
+      "result": "ok"
+    },
+    {
+      "name": "test_receipt_with_different_pinned_input_is_uncertain (test_assignment_receipt_recovery.AssignmentReceiptRecovery.test_receipt_with_different_pinned_input_is_uncertain)",
+      "result": "ok"
+    },
+    {
+      "name": "test_recover_pinned_attempt_without_submitting_or_writing (test_assignment_receipt_recovery.AssignmentReceiptRecovery.test_recover_pinned_attempt_without_submitting_or_writing)",
+      "result": "ok"
+    },
+    {
+      "name": "test_new_process_resume_and_completed_receipt_replay (test_bridge.BridgeIntegrationTests.test_new_process_resume_and_completed_receipt_replay)",
+      "result": "ok"
+    },
+    {
+      "name": "test_export_failure_and_failed_task_replay (test_bridge.FailureBoundaryTests.test_export_failure_and_failed_task_replay)",
+      "result": "ok"
+    },
+    {
+      "name": "test_request_constraints (test_contracts.ContractTests.test_request_constraints)",
+      "result": "ok"
+    },
+    {
+      "name": "test_response_identity_and_cache_accounting (test_contracts.ContractTests.test_response_identity_and_cache_accounting)",
+      "result": "ok"
+    },
+    {
+      "name": "test_shared_vectors (test_contracts.ContractTests.test_shared_vectors)",
+      "result": "ok"
+    },
+    {
+      "name": "test_candidate_tree_contains_exactly_both_reviewed_diffs (test_development_acceptance.DevelopmentAcceptanceTests.test_candidate_tree_contains_exactly_both_reviewed_diffs)",
+      "result": "ok"
+    },
+    {
+      "name": "test_rejects_mismatched_patch_target_or_files_before_dispatch (test_development_acceptance.DevelopmentAcceptanceTests.test_rejects_mismatched_patch_target_or_files_before_dispatch)",
+      "result": "ok"
+    },
+    {
+      "name": "test_review_requires_matching_executor_and_evidence_decision (test_development_acceptance.DevelopmentAcceptanceTests.test_review_requires_matching_executor_and_evidence_decision)",
+      "result": "ok"
+    },
+    {
+      "name": "test_criteria_author_conflict_stops_before_submit (test_development_author_preflight.DevelopmentAuthorPreflightTests.test_criteria_author_conflict_stops_before_submit)",
+      "result": "ok"
+    },
+    {
+      "name": "test_live_profile_rejects_fixture_answers (test_development_case.DevelopmentCaseTests.test_live_profile_rejects_fixture_answers)",
+      "result": "ok"
+    },
+    {
+      "name": "test_native_handoff_replay_and_rejection (test_development_case.DevelopmentCaseTests.test_native_handoff_replay_and_rejection)",
+      "result": "ok"
+    },
+    {
+      "name": "test_ambiguous_failure_remains_uncertain (test_development_receipts.DevelopmentReceiptTests.test_ambiguous_failure_remains_uncertain)",
+      "result": "ok"
+    },
+    {
+      "name": "test_bound_terminal_failure_reports_code (test_development_receipts.DevelopmentReceiptTests.test_bound_terminal_failure_reports_code)",
+      "result": "ok"
+    },
+    {
+      "name": "test_empty_review_cannot_complete (test_development_receipts.DevelopmentReceiptTests.test_empty_review_cannot_complete)",
+      "result": "ok"
+    },
+    {
+      "name": "test_initial_patch_cannot_bypass_its_assignment (test_development_receipts.DevelopmentReceiptTests.test_initial_patch_cannot_bypass_its_assignment)",
+      "result": "ok"
+    },
+    {
+      "name": "test_json_decoders_agree_on_duplicate_keys_and_overflow (test_development_receipts.DevelopmentReceiptTests.test_json_decoders_agree_on_duplicate_keys_and_overflow)",
+      "result": "ok"
+    },
+    {
+      "name": "test_patch_review_contract_binds_input_digest_criterion_and_decision (test_development_receipts.DevelopmentReceiptTests.test_patch_review_contract_binds_input_digest_criterion_and_decision)",
+      "result": "ok"
+    },
+    {
+      "name": "test_review_becomes_an_artifact (test_development_receipts.DevelopmentReceiptTests.test_review_becomes_an_artifact)",
+      "result": "ok"
+    },
+    {
+      "name": "test_wrong_type_and_missing_input_are_rejected (test_development_receipts.DevelopmentReceiptTests.test_wrong_type_and_missing_input_are_rejected)",
+      "result": "ok"
+    },
+    {
+      "name": "test_invalid_scenario_is_terminal_before_downstream_assignment (test_goal_intake.GoalIntakeTests.test_invalid_scenario_is_terminal_before_downstream_assignment)",
+      "result": "ok"
+    },
+    {
+      "name": "test_malformed_patch_verdict_requests_a_bounded_correction (test_goal_intake.GoalIntakeTests.test_malformed_patch_verdict_requests_a_bounded_correction)",
+      "result": "ok"
+    },
+    {
+      "name": "test_oracle_cannot_approve_another_revision (test_goal_intake.GoalIntakeTests.test_oracle_cannot_approve_another_revision)",
+      "result": "ok"
+    },
+    {
+      "name": "test_pinned_source_native_handoffs_and_replay (test_goal_intake.GoalIntakeTests.test_pinned_source_native_handoffs_and_replay)",
+      "result": "ok"
+    },
+    {
+      "name": "test_revision_request_reuses_prior_work_and_reviews_the_new_vectors (test_goal_intake.GoalIntakeTests.test_revision_request_reuses_prior_work_and_reviews_the_new_vectors)",
+      "result": "ok"
+    },
+    {
+      "name": "test_status_of_new_goal_is_read_only (test_goal_intake.GoalIntakeTests.test_status_of_new_goal_is_read_only)",
+      "result": "ok"
+    },
+    {
+      "name": "test_accept_skips_revision (test_graph.GraphTests.test_accept_skips_revision)",
+      "result": "ok"
+    },
+    {
+      "name": "test_budget_blocks_dispatch (test_graph.GraphTests.test_budget_blocks_dispatch)",
+      "result": "ok"
+    },
+    {
+      "name": "test_unresolved_review_stops_after_one_revision (test_graph.GraphTests.test_unresolved_review_stops_after_one_revision)",
+      "result": "ok"
+    },
+    {
+      "name": "test_invalid_receipt_bytes_never_publish (test_handoff_export.SnapshotTests.test_invalid_receipt_bytes_never_publish)",
+      "result": "ok"
+    },
+    {
+      "name": "test_repeated_capture_and_conflict (test_handoff_export.SnapshotTests.test_repeated_capture_and_conflict)",
+      "result": "ok"
+    },
+    {
+      "name": "test_all_field_errors_in_one_request_and_one_repair (test_handoff_policy.HandoffPolicyTests.test_all_field_errors_in_one_request_and_one_repair)",
+      "result": "ok"
+    },
+    {
+      "name": "test_conflict_blocks_all_dispatches_on_the_same_revision (test_handoff_policy.HandoffPolicyTests.test_conflict_blocks_all_dispatches_on_the_same_revision)",
+      "result": "ok"
+    },
+    {
+      "name": "test_historical_pending_siblings_are_read_without_new_ids (test_handoff_policy.HandoffPolicyTests.test_historical_pending_siblings_are_read_without_new_ids)",
+      "result": "ok"
+    },
+    {
+      "name": "test_historical_single_field_request_is_enriched_without_changing_its_id (test_handoff_policy.HandoffPolicyTests.test_historical_single_field_request_is_enriched_without_changing_its_id)",
+      "result": "ok"
+    },
+    {
+      "name": "test_late_conflict_preserves_already_claimed_work (test_handoff_policy.HandoffPolicyTests.test_late_conflict_preserves_already_claimed_work)",
+      "result": "ok"
+    },
+    {
+      "name": "test_output_and_receipt_roll_back_together_and_replay_pins_the_first_revision (test_handoff_policy.HandoffPolicyTests.test_output_and_receipt_roll_back_together_and_replay_pins_the_first_revision)",
+      "result": "ok"
+    },
+    {
+      "name": "test_readonly_store_cannot_create_or_modify_state (test_handoff_policy.HandoffPolicyTests.test_readonly_store_cannot_create_or_modify_state)",
+      "result": "ok"
+    },
+    {
+      "name": "test_request_identity_and_distinct_compatible_requests (test_handoff_policy.HandoffPolicyTests.test_request_identity_and_distinct_compatible_requests)",
+      "result": "ok"
+    },
+    {
+      "name": "test_consume_recovers_after_finish_before_ack_without_dispatch (test_handoff_recovery.HandoffCliRecoveryTests.test_consume_recovers_after_finish_before_ack_without_dispatch)",
+      "result": "ok"
+    },
+    {
+      "name": "test_consume_resumes_committed_claim_with_original_draft_and_input (test_handoff_recovery.HandoffCliRecoveryTests.test_consume_resumes_committed_claim_with_original_draft_and_input)",
+      "result": "ok"
+    },
+    {
+      "name": "test_prebound_conflicting_fields_are_rejected (test_handoff_recovery.HandoffCliRecoveryTests.test_prebound_conflicting_fields_are_rejected)",
+      "result": "ok"
+    },
+    {
+      "name": "test_prebound_conflicting_producer_is_rejected (test_handoff_recovery.HandoffCliRecoveryTests.test_prebound_conflicting_producer_is_rejected)",
+      "result": "ok"
+    },
+    {
+      "name": "test_prebound_equal_contract_can_dispatch (test_handoff_recovery.HandoffCliRecoveryTests.test_prebound_equal_contract_can_dispatch)",
+      "result": "ok"
+    },
+    {
+      "name": "test_repair_recovers_after_publication_before_ack_without_dispatch (test_handoff_recovery.HandoffCliRecoveryTests.test_repair_recovers_after_publication_before_ack_without_dispatch)",
+      "result": "ok"
+    },
+    {
+      "name": "test_repair_resumes_committed_claim_with_original_draft_and_upstream_pins (test_handoff_recovery.HandoffCliRecoveryTests.test_repair_resumes_committed_claim_with_original_draft_and_upstream_pins)",
+      "result": "ok"
+    },
+    {
+      "name": "test_read_waits_for_rollback_of_insert_on_the_same_store (test_handoff_recovery.HandoffStoreRecoveryTests.test_read_waits_for_rollback_of_insert_on_the_same_store)",
+      "result": "ok"
+    },
+    {
+      "name": "test_repair_reads_accepted_upstream_v2_without_repinning_normal_execution (test_handoff_recovery.HandoffStoreRecoveryTests.test_repair_reads_accepted_upstream_v2_without_repinning_normal_execution)",
+      "result": "ok"
+    },
+    {
+      "name": "test_native_receipt_actor_tamper_is_rejected_before_completion (test_handoff_runner.HandoffRunnerFixtureTests.test_native_receipt_actor_tamper_is_rejected_before_completion)",
+      "result": "ok"
+    },
+    {
+      "name": "test_pre_submit_start_failure_recovers_original_intent (test_handoff_runner.HandoffRunnerFixtureTests.test_pre_submit_start_failure_recovers_original_intent)",
+      "result": "ok"
+    },
+    {
+      "name": "test_semantic_rejection_revision_explicit_accept_and_replay (test_handoff_runner.HandoffRunnerFixtureTests.test_semantic_rejection_revision_explicit_accept_and_replay)",
+      "result": "ok"
+    },
+    {
+      "name": "test_structural_rejection_blocks_dispatch_and_reuses_request (test_handoff_runner.HandoffRunnerFixtureTests.test_structural_rejection_blocks_dispatch_and_reuses_request)",
+      "result": "ok"
+    },
+    {
+      "name": "test_submitted_without_receipt_stays_uncertain_across_restarts (test_handoff_runner.HandoffRunnerFixtureTests.test_submitted_without_receipt_stays_uncertain_across_restarts)",
+      "result": "ok"
+    },
+    {
+      "name": "test_native_receipt_actor_tamper_is_rejected_before_completion (test_handoff_runner.HandoffRunnerFixtureTests.test_native_receipt_actor_tamper_is_rejected_before_completion)",
+      "result": "ok"
+    },
+    {
+      "name": "test_pre_submit_start_failure_recovers_original_intent (test_handoff_runner.HandoffRunnerFixtureTests.test_pre_submit_start_failure_recovers_original_intent)",
+      "result": "ok"
+    },
+    {
+      "name": "test_semantic_rejection_revision_explicit_accept_and_replay (test_handoff_runner.HandoffRunnerFixtureTests.test_semantic_rejection_revision_explicit_accept_and_replay)",
+      "result": "ok"
+    },
+    {
+      "name": "test_structural_rejection_blocks_dispatch_and_reuses_request (test_handoff_runner.HandoffRunnerFixtureTests.test_structural_rejection_blocks_dispatch_and_reuses_request)",
+      "result": "ok"
+    },
+    {
+      "name": "test_submitted_without_receipt_stays_uncertain_across_restarts (test_handoff_runner.HandoffRunnerFixtureTests.test_submitted_without_receipt_stays_uncertain_across_restarts)",
+      "result": "ok"
+    },
+    {
+      "name": "test_canonical_hash_and_compare_and_swap_retries (test_handoffs.HandoffsTests.test_canonical_hash_and_compare_and_swap_retries)",
+      "result": "ok"
+    },
+    {
+      "name": "test_concurrent_normal_claims_pin_the_accepted_input_across_reopen (test_handoffs.HandoffsTests.test_concurrent_normal_claims_pin_the_accepted_input_across_reopen)",
+      "result": "ok"
+    },
+    {
+      "name": "test_concurrent_repair_claims_coalesce_across_reviewers (test_handoffs.HandoffsTests.test_concurrent_repair_claims_coalesce_across_reviewers)",
+      "result": "ok"
+    },
+    {
+      "name": "test_meaning_feedback_blocks_the_same_revision_and_retains_added_criteria (test_handoffs.HandoffsTests.test_meaning_feedback_blocks_the_same_revision_and_retains_added_criteria)",
+      "result": "ok"
+    },
+    {
+      "name": "test_meaning_request_can_be_explicitly_accepted_after_correction (test_handoffs.HandoffsTests.test_meaning_request_can_be_explicitly_accepted_after_correction)",
+      "result": "ok"
+    },
+    {
+      "name": "test_missing_external_artifact_is_requestable_and_marked_external (test_handoffs.HandoffsTests.test_missing_external_artifact_is_requestable_and_marked_external)",
+      "result": "ok"
+    },
+    {
+      "name": "test_other_consumers_approval_does_not_cover_a_new_revision (test_handoffs.HandoffsTests.test_other_consumers_approval_does_not_cover_a_new_revision)",
+      "result": "ok"
+    },
+    {
+      "name": "test_seventh_repair_dispatch_is_blocked_across_slots_after_reopen (test_handoffs.HandoffsTests.test_seventh_repair_dispatch_is_blocked_across_slots_after_reopen)",
+      "result": "ok"
+    },
+    {
+      "name": "test_stale_review_cannot_change_the_current_revision (test_handoffs.HandoffsTests.test_stale_review_cannot_change_the_current_revision)",
+      "result": "ok"
+    },
+    {
+      "name": "test_structure_rejection_reuses_notification_and_targets_original_producer (test_handoffs.HandoffsTests.test_structure_rejection_reuses_notification_and_targets_original_producer)",
+      "result": "ok"
+    },
+    {
+      "name": "test_submission_intent_survives_reopen_and_completion_requires_receipt (test_handoffs.HandoffsTests.test_submission_intent_survives_reopen_and_completion_requires_receipt)",
+      "result": "ok"
+    },
+    {
+      "name": "test_third_repair_dispatch_for_one_slot_is_blocked (test_handoffs.HandoffsTests.test_third_repair_dispatch_for_one_slot_is_blocked)",
+      "result": "ok"
+    },
+    {
+      "name": "test_ack_crash (test_live_workflow.LiveWorkflowTests.test_ack_crash)",
+      "result": "ok"
+    },
+    {
+      "name": "test_active_query (test_live_workflow.LiveWorkflowTests.test_active_query)",
+      "result": "ok"
+    },
+    {
+      "name": "test_artifact_invalid (test_live_workflow.LiveWorkflowTests.test_artifact_invalid)",
+      "result": "ok"
+    },
+    {
+      "name": "test_checkpoint_crash (test_live_workflow.LiveWorkflowTests.test_checkpoint_crash)",
+      "result": "ok"
+    },
+    {
+      "name": "test_inbox_crash (test_live_workflow.LiveWorkflowTests.test_inbox_crash)",
+      "result": "ok"
+    },
+    {
+      "name": "test_langfuse_down (test_live_workflow.LiveWorkflowTests.test_langfuse_down)",
+      "result": "ok"
+    },
+    {
+      "name": "test_producer_uncertain (test_live_workflow.LiveWorkflowTests.test_producer_uncertain)",
+      "result": "ok"
+    },
+    {
+      "name": "test_restart_and_rebuild (test_live_workflow.LiveWorkflowTests.test_restart_and_rebuild)",
+      "result": "ok"
+    },
+    {
+      "name": "test_sms_duplicate (test_live_workflow.LiveWorkflowTests.test_sms_duplicate)",
+      "result": "ok"
+    },
+    {
+      "name": "test_sms_early (test_live_workflow.LiveWorkflowTests.test_sms_early)",
+      "result": "ok"
+    },
+    {
+      "name": "test_sms_normal (test_live_workflow.LiveWorkflowTests.test_sms_normal)",
+      "result": "ok"
+    },
+    {
+      "name": "test_sms_scope (test_live_workflow.LiveWorkflowTests.test_sms_scope)",
+      "result": "ok"
+    },
+    {
+      "name": "test_conflict (test_metrics.MetricsTests.test_conflict)",
+      "result": "ok"
+    },
+    {
+      "name": "test_duplicate (test_metrics.MetricsTests.test_duplicate)",
+      "result": "ok"
+    },
+    {
+      "name": "test_gap (test_metrics.MetricsTests.test_gap)",
+      "result": "ok"
+    },
+    {
+      "name": "test_rebuild (test_metrics.MetricsTests.test_rebuild)",
+      "result": "ok"
+    },
+    {
+      "name": "test_reordered (test_metrics.MetricsTests.test_reordered)",
+      "result": "ok"
+    },
+    {
+      "name": "test_terminal_conflict_and_retry_cache (test_metrics.MetricsTests.test_terminal_conflict_and_retry_cache)",
+      "result": "ok"
+    },
+    {
+      "name": "test_transaction_rollback (test_metrics.MetricsTests.test_transaction_rollback)",
+      "result": "ok"
+    },
+    {
+      "name": "test_usage_missing (test_metrics.MetricsTests.test_usage_missing)",
+      "result": "ok"
+    },
+    {
+      "name": "test_validation (test_metrics.MetricsTests.test_validation)",
+      "result": "ok"
+    },
+    {
+      "name": "test_reviewer_receives_verified_writer_output_and_separate_context (test_named_patch_handoff.NamedPatchHandoff.test_reviewer_receives_verified_writer_output_and_separate_context)",
+      "result": "ok"
+    },
+    {
+      "name": "test_wrong_context_patch_digest_blocks_review_before_runtime_execution (test_named_patch_handoff.NamedPatchHandoff.test_wrong_context_patch_digest_blocks_review_before_runtime_execution)",
+      "result": "ok"
+    },
+    {
+      "name": "test_terminal_failure_replay_uses_only_durable_evidence (test_native_failed_handoff.NativeFailedHandoff.test_terminal_failure_replay_uses_only_durable_evidence)",
+      "result": "ok"
+    },
+    {
+      "name": "test_export_failure_does_not_fail_work (test_observability.ObservabilityTests.test_export_failure_does_not_fail_work)",
+      "result": "ok"
+    },
+    {
+      "name": "test_parentage_and_metadata_filter (test_observability.ObservabilityTests.test_parentage_and_metadata_filter)",
+      "result": "ok"
+    },
+    {
+      "name": "test_probe_rejects_remote_destination (test_observability.ObservabilityTests.test_probe_rejects_remote_destination)",
+      "result": "ok"
+    },
+    {
+      "name": "test_queue_bound_and_loss_accounting (test_observability.ObservabilityTests.test_queue_bound_and_loss_accounting)",
+      "result": "ok"
+    },
+    {
+      "name": "test_missing_native_after_intent_stays_pending (test_planning_team.PlanningTeamTest.test_missing_native_after_intent_stays_pending)",
+      "result": "ok"
+    },
+    {
+      "name": "test_native_plan_and_actual_member_mismatch (test_planning_team.PlanningTeamTest.test_native_plan_and_actual_member_mismatch)",
+      "result": "ok"
+    },
+    {
+      "name": "test_native_status_verifies_both_backends (test_planning_team.PlanningTeamTest.test_native_status_verifies_both_backends)",
+      "result": "ok"
+    },
+    {
+      "name": "test_pinned_state_and_child_cwd (test_planning_team.PlanningTeamTest.test_pinned_state_and_child_cwd)",
+      "result": "ok"
+    },
+    {
+      "name": "test_reconcile_after_native_before_team_checkpoint (test_planning_team.PlanningTeamTest.test_reconcile_after_native_before_team_checkpoint)",
+      "result": "ok"
+    },
+    {
+      "name": "test_rejects_bad_routes (test_planning_team.PlanningTeamTest.test_rejects_bad_routes)",
+      "result": "ok"
+    },
+    {
+      "name": "test_author_as_reviewer_is_never_dispatched (test_research_handoff.ResearchHandoffTest.test_author_as_reviewer_is_never_dispatched)",
+      "result": "ok"
+    },
+    {
+      "name": "test_packet_holds_only_affected_claim_and_keeps_dissent (test_research_handoff.ResearchHandoffTest.test_packet_holds_only_affected_claim_and_keeps_dissent)",
+      "result": "ok"
+    },
+    {
+      "name": "test_observe_pending_checkpoint_uses_raw_receipt_without_reissuing (test_research_projection.ResearchProjectionTest.test_observe_pending_checkpoint_uses_raw_receipt_without_reissuing)",
+      "result": "ok"
+    },
+    {
+      "name": "test_observer_missing_denominator_gates_inference_not_limited_observation (test_research_projection.ResearchProjectionTest.test_observer_missing_denominator_gates_inference_not_limited_observation)",
+      "result": "ok"
+    },
+    {
+      "name": "test_required_schema_is_not_repaired (test_research_projection.ResearchProjectionTest.test_required_schema_is_not_repaired)",
+      "result": "ok"
+    },
+    {
+      "name": "test_reads_attempt_id_from_nested_verdict_not_path_or_other_json (test_review_team.PersistedAttemptTests.test_reads_attempt_id_from_nested_verdict_not_path_or_other_json)",
+      "result": "ok"
+    },
+    {
+      "name": "test_changed_evidence_is_rejected_under_same_state (test_review_team.ReviewTeamCLITests.test_changed_evidence_is_rejected_under_same_state)",
+      "result": "ok"
+    },
+    {
+      "name": "test_minimum_routing (test_review_team.ReviewTeamCLITests.test_minimum_routing)",
+      "result": "ok"
+    },
+    {
+      "name": "test_persisted_attempts_rejects_malformed_evidence (test_review_team.ReviewTeamCLITests.test_persisted_attempts_rejects_malformed_evidence)",
+      "result": "ok"
+    },
+    {
+      "name": "test_replay_preserves_actual_attempt_ids (test_review_team.ReviewTeamCLITests.test_replay_preserves_actual_attempt_ids)",
+      "result": "ok"
+    },
+    {
+      "name": "test_revise_stops_before_final_review (test_review_team.ReviewTeamCLITests.test_revise_stops_before_final_review)",
+      "result": "ok"
+    },
+    {
+      "name": "test_self_review_is_rejected_before_dispatch (test_review_team.ReviewTeamCLITests.test_self_review_is_rejected_before_dispatch)",
+      "result": "ok"
+    },
+    {
+      "name": "test_stateful_patch_routes_to_all_required_reviewers (test_review_team.ReviewTeamCLITests.test_stateful_patch_routes_to_all_required_reviewers)",
+      "result": "ok"
+    },
+    {
+      "name": "test_missing_unavailable_reason_holds_without_resubmission (test_review_team_terminal_attempts.TerminalOutcomeTest.test_missing_unavailable_reason_holds_without_resubmission)",
+      "result": "ok"
+    },
+    {
+      "name": "test_preserves_valid_strings (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_preserves_valid_strings)",
+      "result": "ok"
+    },
+    {
+      "name": "test_rejects_lone_surrogates (test_strict_json_unicode_scalars.StrictJsonUnicodeScalarsTest.test_rejects_lone_surrogates)",
+      "result": "ok"
+    },
+    {
+      "name": "test_compare_real_runner_outputs (test_unittest_evidence.UnittestEvidenceTests.test_compare_real_runner_outputs)",
+      "result": "ok"
+    },
+    {
+      "name": "test_failed_producer_visible_without_sms (test_workflow_failure_status.FailureStatusTests.test_failed_producer_visible_without_sms)",
+      "result": "ok"
+    },
+    {
+      "name": "test_early_and_wrong_correlation (test_workflow_probe.WorkflowProbeTests.test_early_and_wrong_correlation)",
+      "result": "ok"
+    },
+    {
+      "name": "test_failed_producer_never_wakes_graph (test_workflow_probe.WorkflowProbeTests.test_failed_producer_never_wakes_graph)",
+      "result": "ok"
+    },
+    {
+      "name": "test_missing_and_corrupt_artifact (test_workflow_probe.WorkflowProbeTests.test_missing_and_corrupt_artifact)",
+      "result": "ok"
+    },
+    {
+      "name": "test_normal_restart_duplicate_and_unknown_usage (test_workflow_probe.WorkflowProbeTests.test_normal_restart_duplicate_and_unknown_usage)",
+      "result": "ok"
+    },
+    {
+      "name": "test_receipt_before_checkpoint_crash (test_workflow_probe.WorkflowProbeTests.test_receipt_before_checkpoint_crash)",
+      "result": "ok"
+    }
+  ],
+  "verifier": {
+    "command": "python ../v030-runs/m5-check.py",
+    "exit_code": 0,
+    "passed_assertions": [
+      "all 11 native receipts compared member/role/run/attempt/hash",
+      "each Go runtime.execute count exactly one",
+      "replay result and checkpoint byte-equal",
+      "packet and draft digests recomputed, independent reviewer, claims eligibility and held upstream verified for both cases"
+    ]
+  },
+  "registry_application": {
+    "preserved_ids": [
+      "acl-001",
+      "acl-002",
+      "acl-003",
+      "acl-004",
+      "acl-005",
+      "acl-006",
+      "acl-007",
+      "acl-008",
+      "acl-009",
+      "acl-010",
+      "acl-011",
+      "acl-012",
+      "acl-013",
+      "acl-014",
+      "acl-015",
+      "acl-016",
+      "acl-017",
+      "acl-018",
+      "acl-019",
+      "acl-020",
+      "acl-021",
+      "acl-022"
+    ],
+    "identical_roster_ids": [
+      "acl-001",
+      "acl-002",
+      "acl-003",
+      "acl-004",
+      "acl-005",
+      "acl-006",
+      "acl-007",
+      "acl-008",
+      "acl-009",
+      "acl-010",
+      "acl-011",
+      "acl-012",
+      "acl-013",
+      "acl-014",
+      "acl-015"
+    ],
+    "unchanged_entire_planning_object_including_authority_and_goals": true,
+    "new_ids": [
+      "acl-023",
+      "acl-024",
+      "acl-025"
+    ],
+    "full_git_diff_numstat": "35\t0\tdocs/team/planning-teams.json\n36\t0\tdocs/team/research-registration.json\n3\t0\tdocs/team/roster.md\n",
+    "model_execution": {
+      "acl-021": {
+        "requested_model": "gpt-6.2-astra",
+        "observed_model": null,
+        "requested_effort": "medium",
+        "observed_effort": null,
+        "actual_member_id": "acl-021",
+        "status": "succeeded",
+        "receipt_sha256": "d4a7ddc1dfbb8e065a8ddaea40a6ddf1b940d0cc8b17ef64a518b03979dd2050"
+      },
+      "acl-024": {
+        "requested_model": "gpt-6.2-astra",
+        "observed_model": null,
+        "requested_effort": "high",
+        "observed_effort": null,
+        "actual_member_id": "acl-024",
+        "status": "succeeded",
+        "receipt_sha256": "e855ef2e47782d85e83785ac6f2f2461a4cc222bcde67f6bc1d2339585cc6492"
+      },
+      "acl-023": {
+        "requested_model": "gpt-6.2-sol",
+        "observed_model": null,
+        "requested_effort": "high",
+        "observed_effort": null,
+        "actual_member_id": "acl-023",
+        "status": "succeeded",
+        "receipt_sha256": "55510132c9cdfccf82e402042b226695a903f174c3e5fd98e123a0c91320cd8a"
+      },
+      "acl-025": {
+        "requested_model": "gpt-6.2-astra",
+        "observed_model": null,
+        "requested_effort": "high",
+        "observed_effort": null,
+        "actual_member_id": "acl-025",
+        "status": "succeeded",
+        "receipt_sha256": "87bfa207e068f56b15a29065f09a077eee427778f814fc79fe978618417328bd"
+      }
+    }
+  }
+}
