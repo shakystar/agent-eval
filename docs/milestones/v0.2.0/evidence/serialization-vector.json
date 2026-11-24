@@ -1,0 +1,31 @@
+{
+  "candidate": "44316f364c8a9542c2328d51e6f5ce82ffd90796",
+  "value": {
+    "z": "한",
+    "a": "é"
+  },
+  "readback_equal": true,
+  "vectors": [
+    {
+      "contract": "intent input",
+      "expected_hex": "7b2261223a225c7530306539222c227a223a225c7564353563227d",
+      "actual_hex": "7b2261223a225c7530306539222c227a223a225c7564353563227d",
+      "sha256": "05da8adb036ee64220b58a175906b8f29108eae3cf989d6e48b5863a0c326016",
+      "matches": true
+    },
+    {
+      "contract": "persisted record",
+      "expected_hex": "7b2261223a225c7530306539222c227a223a225c7564353563227d0a",
+      "actual_hex": "7b2261223a225c7530306539222c227a223a225c7564353563227d0a",
+      "sha256": "b624d469979ea38b1dd33a72bc91b23028cfeaf94d8f41b13ab3e79fe23ad6da",
+      "matches": true
+    },
+    {
+      "contract": "artifact hash input",
+      "expected_hex": "7b2261223a22c3a9222c227a223a22ed959c227d",
+      "actual_hex": "7b2261223a22c3a9222c227a223a22ed959c227d",
+      "sha256": "bf5c6803fe33b8c190bbf1a95c0f63c22a9c2bdd92aa2af1312ea55d878fc9d5",
+      "matches": true
+    }
+  ]
+}
