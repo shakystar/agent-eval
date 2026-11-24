@@ -23,3 +23,7 @@
 ## M0 기준선 결과
 
 132건 중 120건은 최초 실행에서 통과했다. 나머지 12건은 샌드박스가 Unix 소켓 바인딩을 거부해 호스트에서 동일 입력으로 재검증해 모두 통과했다. 두 실행을 합쳐 132개 고유 테스트 통과, 건너뜀 0건이다. 런타임 실행 파일 해시·각 실행 시간·실패 목록은 [측정값](m0-baseline.json)에 기록했다. [기획 원본](https://github.com/shakystar/agent-collaboration-lab/blob/53d20c2608f305cb722b26dd4db8f43ec40e57d2/docs/planning/v0.3.0.md)
+
+## M1·M2 인수
+
+[기획팀 계약](https://github.com/shakystar/agent-collaboration-lab/blob/ff370f3fcc2fe4479851ee7d9592546dae9ac5e8/docs/team/planning-team.md)은 최초 반려 후 독립 수락됐다. 기획팀이 실제로 담당자를 선택해 최초 실모델 과제를 완료했다. 중단·경합 이후 제출 키별 실측과 근거의 실행별 분리를 거쳐 수정 후보가 인수됐다. [중간 판정](m2-intermediate.json) · [복구 시험](m2-recovery.json) · [출처 목록](m2-provenance.json) · [최종 인수](m2-acceptance.json)
