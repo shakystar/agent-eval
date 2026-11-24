@@ -1,0 +1,1119 @@
+{
+  "summary": {
+    "current": {
+      "cases": {
+        "H1": {
+          "false_block": 0,
+          "false_pass": 0
+        },
+        "H2": {
+          "false_block": 1,
+          "false_pass": 0
+        },
+        "H3": {
+          "false_block": 1,
+          "false_pass": 0
+        },
+        "H4": {
+          "false_block": 1,
+          "false_pass": 0
+        }
+      },
+      "heldout_false_blocks": 3,
+      "heldout_false_passes": 0,
+      "attempted_pairs": 8,
+      "valid_reviews": 7,
+      "terminal_holds": [
+        "H2-1"
+      ],
+      "median_success_seconds": 28.48,
+      "total_elapsed_task_seconds": 207.98,
+      "total_tokens": 61225,
+      "critical_field_matches": 7,
+      "upstream_field_requests": 17,
+      "prestart_attempts": 0,
+      "historical_replays": {
+        "OLD1": {
+          "c1": "revision_hold",
+          "c2": "revision_hold",
+          "c3": "revision_hold"
+        },
+        "OLD2": {
+          "c1": "revision_hold",
+          "c2": "revision_hold",
+          "c3": "revision_hold"
+        }
+      },
+      "calibration": {
+        "CAL01": [
+          [
+            0,
+            0
+          ]
+        ],
+        "CAL02": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    },
+    "candidate": {
+      "cases": {
+        "H1": {
+          "false_block": 0,
+          "false_pass": 0
+        },
+        "H2": {
+          "false_block": 0,
+          "false_pass": 0
+        },
+        "H3": {
+          "false_block": 0,
+          "false_pass": 0
+        },
+        "H4": {
+          "false_block": 0,
+          "false_pass": 0
+        }
+      },
+      "heldout_false_blocks": 0,
+      "heldout_false_passes": 0,
+      "attempted_pairs": 8,
+      "valid_reviews": 8,
+      "terminal_holds": [],
+      "median_success_seconds": 27.87,
+      "total_elapsed_task_seconds": 329.24,
+      "total_tokens": 61187,
+      "critical_field_matches": 8,
+      "upstream_field_requests": 8,
+      "prestart_attempts": 4,
+      "historical_replays": {
+        "OLD1": {
+          "c1": "eligible",
+          "c2": "eligible",
+          "c3": "revision_hold"
+        },
+        "OLD2": {
+          "c1": "eligible",
+          "c2": "eligible",
+          "c3": "revision_hold"
+        }
+      },
+      "calibration": {
+        "CAL01": [
+          [
+            0,
+            0
+          ]
+        ],
+        "CAL02": [
+          [
+            0,
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "outcome": "adopt",
+  "runs": [
+    {
+      "case": "CAL01",
+      "rep": 1,
+      "arm": "current",
+      "receipt": "59fdf65ec558e147b01d5e37b229e9522a8dd8d439082ae963d0622eac46a829",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "23e0c4907cd63762a4f1f7bb7439ec8ba72971049f6db0b3cb8ee5dced4adfdc",
+      "draft_sha256": "347dc69352dbb7755388e5753217fa82fea78edec6f4bbde432a28bdae199205",
+      "state_by_claim": {
+        "q": "eligible",
+        "t": "revision_hold"
+      },
+      "usage": 7534,
+      "times": [
+        19.360112205031328
+      ]
+    },
+    {
+      "case": "CAL02",
+      "rep": 1,
+      "arm": "current",
+      "receipt": "d5b2700dcd79530f89dba9ac40970a0f429bfb480630e47173964b256d88341e",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "1e2099ea8774995b26dc7e6cc109384f27b641413af236d20336d6e193f5296a",
+      "draft_sha256": "1833e2d373feaff346e2979b63125db82c713e10380d2f5d26bfb6401836c568",
+      "state_by_claim": {
+        "q": "revision_hold",
+        "t": "eligible"
+      },
+      "usage": 7606,
+      "times": [
+        19.57928902801359
+      ]
+    },
+    {
+      "case": "H1",
+      "rep": 1,
+      "arm": "current",
+      "receipt": "d24f52d98867fde4ebb126b8571d8a28d756610f2c45ed697ef0f5c3b62e6bd9",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "573531e76cf82d7f331991b653c4795d500456b2d8e4913125f594ac34815404",
+      "draft_sha256": "f070c60efa5b03e44f809163667face5779dc7b8fda2d319c343a3732ad26d4c",
+      "state_by_claim": {
+        "a": "revision_hold",
+        "b": "eligible"
+      },
+      "usage": 7576,
+      "times": [
+        34.75482561002718
+      ]
+    },
+    {
+      "case": "H1",
+      "rep": 2,
+      "arm": "current",
+      "receipt": "302bfbb03f96553f26ed4e80e451cf640439c78f1090aa7f4147fe7ee49a8c89",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "573531e76cf82d7f331991b653c4795d500456b2d8e4913125f594ac34815404",
+      "draft_sha256": "f070c60efa5b03e44f809163667face5779dc7b8fda2d319c343a3732ad26d4c",
+      "state_by_claim": {
+        "a": "revision_hold",
+        "b": "eligible"
+      },
+      "usage": 7545,
+      "times": [
+        30.127938896999694
+      ]
+    },
+    {
+      "case": "H2",
+      "rep": 1,
+      "arm": "current",
+      "receipt": "6562a1914a2462a0c3b10f098d6d14b054b15ddbf5d8e002719b6721595a5736",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "b1baf823d8c1d0db966862184de22d75739b6974e315783903ccf55209b05a4b",
+      "draft_sha256": "347b753090379b40af476b6b0c9a45485247188bd38f164687fdd9244a49178c",
+      "state_by_claim": {
+        "a": "terminal_hold",
+        "b": "terminal_hold"
+      },
+      "usage": 7800,
+      "times": [
+        17.741302910959348
+      ]
+    },
+    {
+      "case": "H2",
+      "rep": 2,
+      "arm": "current",
+      "receipt": "56bb4376e88628804c3b1114644473fa15120b778b4b4c114ed3b67813e3a9f3",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "b1baf823d8c1d0db966862184de22d75739b6974e315783903ccf55209b05a4b",
+      "draft_sha256": "347b753090379b40af476b6b0c9a45485247188bd38f164687fdd9244a49178c",
+      "state_by_claim": {
+        "a": "revision_hold",
+        "b": "revision_hold"
+      },
+      "usage": 7754,
+      "times": [
+        26.83453842700692
+      ]
+    },
+    {
+      "case": "H3",
+      "rep": 1,
+      "arm": "current",
+      "receipt": "6c1a66060c88995596075594de92df70dc819f4f77a8ad71b7abdaacfec77538",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "8914f96900d91aec7b35718db1ee9d2714cd9e01595234413a13eb95bcb9e593",
+      "draft_sha256": "9b2f638bbebaeb0796b5e72ed1c5776188be6772ac90a677024954213d01d4ca",
+      "state_by_claim": {
+        "x": "revision_hold",
+        "y": "eligible"
+      },
+      "usage": 7587,
+      "times": [
+        19.726284950971603
+      ]
+    },
+    {
+      "case": "H3",
+      "rep": 2,
+      "arm": "current",
+      "receipt": "b00c85bac37acb6910975529f1c9d4e73ef12295ea7ac49a26e343e1fdf7473a",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "8914f96900d91aec7b35718db1ee9d2714cd9e01595234413a13eb95bcb9e593",
+      "draft_sha256": "9b2f638bbebaeb0796b5e72ed1c5776188be6772ac90a677024954213d01d4ca",
+      "state_by_claim": {
+        "x": "revision_hold",
+        "y": "revision_hold"
+      },
+      "usage": 7603,
+      "times": [
+        31.27118901500944
+      ]
+    },
+    {
+      "case": "H4",
+      "rep": 1,
+      "arm": "current",
+      "receipt": "6680ae39e4de94972a56f8cf697c61ab700986d5ca0bc94ac493f0bf8397e9f1",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "1aabd0a0673b2916ae246188292fc96c954c6ba61eda43234285280c06e7e2cb",
+      "draft_sha256": "8a31ef72ad3d4261a10ef25f9994a51f2f696c40d05c4c748b6b37e0f7933ac0",
+      "state_by_claim": {
+        "x": "revision_hold",
+        "y": "revision_hold"
+      },
+      "usage": 7774,
+      "times": [
+        34.08148685802007
+      ]
+    },
+    {
+      "case": "H4",
+      "rep": 2,
+      "arm": "current",
+      "receipt": "8bcc8e20489fac47927dd2f4c5c5a76d2ea21d3c5e037a8253467fdd41ec11dc",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "1aabd0a0673b2916ae246188292fc96c954c6ba61eda43234285280c06e7e2cb",
+      "draft_sha256": "8a31ef72ad3d4261a10ef25f9994a51f2f696c40d05c4c748b6b37e0f7933ac0",
+      "state_by_claim": {
+        "x": "eligible",
+        "y": "revision_hold"
+      },
+      "usage": 7586,
+      "times": [
+        13.441823405970354
+      ]
+    },
+    {
+      "case": "OLD1",
+      "rep": 1,
+      "arm": "current",
+      "receipt": "9540d5d07eb69178769c0ba7dcf496cef41dc82391814b4d1e6047287ac4328d",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "198113865e6977936f26bd59b1478292f1ff724f9410bc1b4002386e2b6e4acb",
+      "draft_sha256": "0bc71c424d54a3ca4474153b5a02a72beedb7bfbe3caea2e48d0a7ace0a629c4",
+      "state_by_claim": {
+        "c1": "revision_hold",
+        "c2": "revision_hold",
+        "c3": "revision_hold"
+      },
+      "usage": 11010,
+      "times": [
+        45.068917559983674
+      ]
+    },
+    {
+      "case": "OLD2",
+      "rep": 1,
+      "arm": "current",
+      "receipt": "783b4ba0352b3cc50821bb40b522dfd3460d2187f44b0349f68d99115b4bb55e",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "b44ce049b129e65ec6ccca1f47df8b3d3eb92034813c5bd7d4f2032334aacfa4",
+      "draft_sha256": "add3d05511e168116e803f7b67a6e186290556e4473c5aaa81f86b2ffad2e8bf",
+      "state_by_claim": {
+        "c1": "revision_hold",
+        "c2": "revision_hold",
+        "c3": "revision_hold"
+      },
+      "usage": 11280,
+      "times": [
+        41.51141100900713
+      ]
+    },
+    {
+      "case": "CAL01",
+      "rep": 1,
+      "arm": "candidate",
+      "receipt": "c678470c96a97f375b5df4fdc60d1a84e6b5a4c5ce5f94e904c33fe9c22be936",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "23e0c4907cd63762a4f1f7bb7439ec8ba72971049f6db0b3cb8ee5dced4adfdc",
+      "draft_sha256": "347dc69352dbb7755388e5753217fa82fea78edec6f4bbde432a28bdae199205",
+      "state_by_claim": {
+        "q": "eligible",
+        "t": "revision_hold"
+      },
+      "usage": 7603,
+      "times": [
+        30.65486484102439,
+        14.686197098984849
+      ]
+    },
+    {
+      "case": "CAL02",
+      "rep": 1,
+      "arm": "candidate",
+      "receipt": "5031da17be1b8ab7b96d19c796c1aa67c2f72071869a37451ac359d07523eede",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "1e2099ea8774995b26dc7e6cc109384f27b641413af236d20336d6e193f5296a",
+      "draft_sha256": "1833e2d373feaff346e2979b63125db82c713e10380d2f5d26bfb6401836c568",
+      "state_by_claim": {
+        "q": "revision_hold",
+        "t": "eligible"
+      },
+      "usage": 7620,
+      "times": [
+        19.165508244012017
+      ]
+    },
+    {
+      "case": "H1",
+      "rep": 1,
+      "arm": "candidate",
+      "receipt": "b1d401454a72282db6598ec113788ba4abf9aee396acf33828e142ff502dc430",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "573531e76cf82d7f331991b653c4795d500456b2d8e4913125f594ac34815404",
+      "draft_sha256": "f070c60efa5b03e44f809163667face5779dc7b8fda2d319c343a3732ad26d4c",
+      "state_by_claim": {
+        "a": "revision_hold",
+        "b": "eligible"
+      },
+      "usage": 7623,
+      "times": [
+        14.881763928045984
+      ]
+    },
+    {
+      "case": "H1",
+      "rep": 2,
+      "arm": "candidate",
+      "receipt": "9e7c587165d5cb400d8b11dfb7ab8ad5cccf0d4736423bef6fbe128db9d07ad1",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "573531e76cf82d7f331991b653c4795d500456b2d8e4913125f594ac34815404",
+      "draft_sha256": "f070c60efa5b03e44f809163667face5779dc7b8fda2d319c343a3732ad26d4c",
+      "state_by_claim": {
+        "a": "revision_hold",
+        "b": "eligible"
+      },
+      "usage": 7569,
+      "times": [
+        30.97553416894516,
+        15.086934052989818
+      ]
+    },
+    {
+      "case": "H2",
+      "rep": 1,
+      "arm": "candidate",
+      "receipt": "e9182620496270fa8dfd76499a5544c716876b615c095e1c582d964610b2dc01",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "b1baf823d8c1d0db966862184de22d75739b6974e315783903ccf55209b05a4b",
+      "draft_sha256": "347b753090379b40af476b6b0c9a45485247188bd38f164687fdd9244a49178c",
+      "state_by_claim": {
+        "a": "eligible",
+        "b": "revision_hold"
+      },
+      "usage": 7751,
+      "times": [
+        30.609624789038207,
+        21.721067408972885
+      ]
+    },
+    {
+      "case": "H2",
+      "rep": 2,
+      "arm": "candidate",
+      "receipt": "706ec727e50ff36cf1676366a8053b97c577727a24f6ffaa3a6d5fc95e2567a1",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "b1baf823d8c1d0db966862184de22d75739b6974e315783903ccf55209b05a4b",
+      "draft_sha256": "347b753090379b40af476b6b0c9a45485247188bd38f164687fdd9244a49178c",
+      "state_by_claim": {
+        "a": "eligible",
+        "b": "revision_hold"
+      },
+      "usage": 7701,
+      "times": [
+        34.57702909997897
+      ]
+    },
+    {
+      "case": "H3",
+      "rep": 1,
+      "arm": "candidate",
+      "receipt": "d3a27bdb6307e41a2a34e3f6d701835def3534d36558fd6d50b008d3a33affac",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "8914f96900d91aec7b35718db1ee9d2714cd9e01595234413a13eb95bcb9e593",
+      "draft_sha256": "9b2f638bbebaeb0796b5e72ed1c5776188be6772ac90a677024954213d01d4ca",
+      "state_by_claim": {
+        "x": "revision_hold",
+        "y": "eligible"
+      },
+      "usage": 7590,
+      "times": [
+        30.5685269269743,
+        34.01034263899783
+      ]
+    },
+    {
+      "case": "H3",
+      "rep": 2,
+      "arm": "candidate",
+      "receipt": "aaf1b4dda83e34a5e8e7b734334a4a4194b9311379f614bbd50a05ac703756d2",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "8914f96900d91aec7b35718db1ee9d2714cd9e01595234413a13eb95bcb9e593",
+      "draft_sha256": "9b2f638bbebaeb0796b5e72ed1c5776188be6772ac90a677024954213d01d4ca",
+      "state_by_claim": {
+        "x": "revision_hold",
+        "y": "eligible"
+      },
+      "usage": 7622,
+      "times": [
+        31.03601514402544,
+        15.38897754298523
+      ]
+    },
+    {
+      "case": "H4",
+      "rep": 1,
+      "arm": "candidate",
+      "receipt": "85a165f888e7e0319c11f87b2dbf21b54f2295c163c84c11348807f55f016178",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "1aabd0a0673b2916ae246188292fc96c954c6ba61eda43234285280c06e7e2cb",
+      "draft_sha256": "8a31ef72ad3d4261a10ef25f9994a51f2f696c40d05c4c748b6b37e0f7933ac0",
+      "state_by_claim": {
+        "x": "eligible",
+        "y": "revision_hold"
+      },
+      "usage": 7699,
+      "times": [
+        36.32182522001676
+      ]
+    },
+    {
+      "case": "H4",
+      "rep": 2,
+      "arm": "candidate",
+      "receipt": "1d3c61ff6217e49b19e887f95389ca717bdb64a240f4113bc9c05393691a618c",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "1aabd0a0673b2916ae246188292fc96c954c6ba61eda43234285280c06e7e2cb",
+      "draft_sha256": "8a31ef72ad3d4261a10ef25f9994a51f2f696c40d05c4c748b6b37e0f7933ac0",
+      "state_by_claim": {
+        "x": "eligible",
+        "y": "revision_hold"
+      },
+      "usage": 7632,
+      "times": [
+        34.062317191041075
+      ]
+    },
+    {
+      "case": "OLD1",
+      "rep": 1,
+      "arm": "candidate",
+      "receipt": "c4238006123cc41e1b74b26f00b2ed35a0219af1f40002b7899ed95f4854b6c5",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "198113865e6977936f26bd59b1478292f1ff724f9410bc1b4002386e2b6e4acb",
+      "draft_sha256": "0bc71c424d54a3ca4474153b5a02a72beedb7bfbe3caea2e48d0a7ace0a629c4",
+      "state_by_claim": {
+        "c1": "eligible",
+        "c2": "eligible",
+        "c3": "revision_hold"
+      },
+      "usage": 10995,
+      "times": [
+        27.741705396038014
+      ]
+    },
+    {
+      "case": "OLD2",
+      "rep": 1,
+      "arm": "candidate",
+      "receipt": "a468a0743930db7eb5ee4a67d26fddf7e95bdf2b601074f02228d470eb7e521f",
+      "actual_profile": [
+        "gpt-6.2-astra",
+        "high"
+      ],
+      "input_sha256": "b44ce049b129e65ec6ccca1f47df8b3d3eb92034813c5bd7d4f2032334aacfa4",
+      "draft_sha256": "add3d05511e168116e803f7b67a6e186290556e4473c5aaa81f86b2ffad2e8bf",
+      "state_by_claim": {
+        "c1": "eligible",
+        "c2": "eligible",
+        "c3": "revision_hold"
+      },
+      "usage": 11315,
+      "times": [
+        31.039425768016372,
+        29.33269878802821
+      ]
+    }
+  ],
+  "opinions": {
+    "current": {
+      "H1": [
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "b",
+              "verdict": "support",
+              "reason": "합성 근거 S는 관측 기간의 첨부 훈련 로그를 직접 집계한 결과가 재시작 이벤트 네 개라고 명시한다. 같은 기기가 반복해서 재시작했더라도 이벤트 수와 모순되지 않으며, 이 절대 건수에는 분모가 필요 없다. 다만 ‘동일 원문 재검토 가능’은 재현 결과가 아니다. 원작성자 synthetic-author에게 동일 범위의 재집계 기록을 요청할 사항이며, 현재 지지는 S의 보고에 한정된다. 같은 범위와 기준으로 다시 센 결과가 네 개가 아니면 이 판단을 철회한다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "a",
+              "verdict": "undetermined",
+              "reason": "합성 근거 S가 센 단위는 기기가 아니라 이벤트다. 기기 식별자가 없어 한 기기가 네 번 재시작한 경우와 네 기기가 한 번씩 재시작한 경우를 구분할 수 없다. 원작성자 synthetic-author에게 이벤트별 기기를 구분할 수 있는 보완 기록을 요청할 사항이다. 두 이벤트라도 같은 기기의 것으로 확인되면 네 이벤트가 각각 다른 기기에서 발생했다는 주장은 반박된다. 전체 훈련 기기 수인 분모도 미제공이지만, 분모만 알아서는 이벤트 중복 여부를 판별할 수 없다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                },
+                {
+                  "ref": "S",
+                  "field": "denominator"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "b",
+              "verdict": "support",
+              "reason": "합성 근거 S는 관측 기간의 첨부 로그에서 재시작 이벤트 4개를 직접 집계했다고 명시한다. 기기 한 대가 반복 재시작했더라도 기록된 이벤트 수와 모순되지 않으며, 절대 건수에는 분모가 필요하지 않다. 재검토 가능하다는 초안 문구는 재현 기록이 아니다. 원작성자 synthetic-author에게 동일 범위의 재집계 기록을 요청할 필요가 있다. 현재 지지는 S의 보고에 한정되며, 같은 기준으로 다시 센 값이 4가 아니면 반박된다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "a",
+              "verdict": "undetermined",
+              "reason": "합성 근거 S가 센 단위는 기기가 아니라 이벤트다. 기기 식별자를 수집하지 않아 네 이벤트가 서로 다른 기기에서 발생했는지, 한 기기가 여러 번 재시작했는지 구분할 수 없다. 같은 기기의 이벤트가 둘 이상임이 확인되면 주장은 반박된다. 원작성자 synthetic-author에게 기기 중복 판별 근거와 훈련 대상 기기 수를 보완 요청할 필요가 있다. 대상 기기 수만으로는 중복 여부를 판별할 수 없다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                },
+                {
+                  "ref": "S",
+                  "field": "denominator"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "H2": [
+        {
+          "terminal_hold": "invalid_or_conflicted_review",
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "a",
+              "missing": [
+                {
+                  "field": "deduplicated",
+                  "ref": "S"
+                }
+              ],
+              "reason": "H2의 합성 근거 S는 첨부 개정 이력에서 ‘내보내기’를 언급한 문서가 3건이라고 명시한다. 이는 첨부 이력에 보고된 건수를 지지하며, 누락된 분모는 건수 자체에 필요하지 않다. 다만 동일 문서의 여러 개정 항목이 중복 집계됐는지는 확인되지 않았다. 재검토 가능하다는 설명은 재현 결과가 아니다. 원작성자 synthetic-author에게 문서 식별 기준과 재집계 기록을 요청할 사항이며, 회신 전에는 독립 재현된 수치로 전달하지 않는다. 동일 범위에서 서로 다른 문서를 다시 세어 3건이 아니면 이 주장은 반박된다.",
+              "verdict": "support"
+            }
+          ],
+          "critical_field_requested": null,
+          "unsupported_opinions": [
+            {
+              "claim": "b",
+              "missing": [
+                {
+                  "field": "denominator",
+                  "ref": "S"
+                },
+                {
+                  "field": "deduplicated",
+                  "ref": "S"
+                }
+              ],
+              "reason": "S의 3건은 분자일 뿐이다. 첨부 이력이 이번 달 전체 개정 문서를 포괄하는지, 같은 기준으로 센 전체 문서 수가 얼마인지는 알 수 없다. 분자가 3건이라면 분모가 10건일 때 정확히 30%이고, 다른 분모라면 비율도 달라진다. 따라서 S는 30%를 입증하지도 반박하지도 않는다. 원작성자 synthetic-author에게 해당 월의 집계 범위, 중복 제거 기준, 전체 문서 수와 재집계 기록을 요청할 사항이다. 보완 자료가 없으면 비율은 전달하지 않으며, 같은 범위와 기준으로 재집계한 비율이 30%와 다르면 이 주장은 반박된다.",
+              "verdict": "undetermined"
+            }
+          ]
+        },
+        {
+          "terminal_hold": null,
+          "false_block": 1,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "a",
+              "verdict": "support",
+              "reason": "합성 근거 S는 첨부 개정 이력에서 ‘내보내기’를 언급한 문서를 3건으로 직접 집계했다고 명시한다. 따라서 첨부 기록의 보고값으로는 지지한다. 같은 문서의 여러 개정이 중복 집계됐는지는 알 수 없다. 재검토가 가능하다는 설명은 재현 결과가 아니므로, 독립적으로 확인된 고유 문서 수로 단정하지 않는다. synthetic-author에게 문서 식별 기준·중복 처리 방식·재집계 기록을 요청할 필요가 있다. 같은 범위에서 같은 기준으로 재집계한 값이 3건과 다르면 이 판단을 재검토한다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                }
+              ]
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "b",
+              "verdict": "undetermined",
+              "reason": "S의 3건은 분자일 뿐이다. 같은 달·같은 문서 집합에서 동일한 중복 처리 기준으로 센 전체 개정 문서가 10건이면 30%이고, 분자가 3건인 채 분모가 10건이 아니면 정확히 30%라는 주장은 반박된다. S에는 전체 문서 수가 없으므로 어느 쪽도 확정할 수 없다. synthetic-author에게 해당 월의 범위, 분모, 중복 처리 기준과 분자·분모의 재집계 기록을 요청할 필요가 있다. 보완 자료가 제공되기 전에는 30%를 제품 결정의 근거로 전달하지 않는다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "denominator"
+                },
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "H3": [
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "y",
+              "verdict": "support",
+              "reason": "합성 근거 S는 관측 기간에 첨부 기록에서 경고 발행 로그 여섯 줄을 직접 셌다고 명시한다. 같은 거래가 반복돼도 줄 수는 달라지지 않는다. 지지 범위는 첨부 기록에 한정되며, 같은 기록을 재집계한 줄 수가 여섯이 아니면 이 판단은 뒤집힌다. 재검토 가능하다는 설명만 있고 재집계 결과는 없어 독립 재현까지 확인된 것은 아니다. 원작성자 synthetic-author에게 재집계 기록과 전체 거래 수(분모)의 확인이 필요하다. 분모 누락은 줄 수 판단에는 영향을 주지 않지만 거래당 경고율 산출은 막는다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "x",
+              "verdict": "undetermined",
+              "reason": "H3의 합성 근거 S가 센 단위는 거래가 아니라 경고 로그의 줄이다. 여섯 줄이 모두 다른 거래에서 나왔을 수도 있고, 한 거래에서 여러 경고가 나왔을 수도 있다. 원작성자 synthetic-author에게 각 줄을 거래에 연결한 중복 제거 집계가 필요하다. 그 집계에서 고유 거래가 여섯 건보다 적으면 주장은 반박된다. 보완 자료가 없으면 고유 거래 수는 판단할 수 없다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "terminal_hold": null,
+          "false_block": 1,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "y",
+              "verdict": "support",
+              "reason": "합성 첨부 기록 S는 격리 시험의 관측 기간에 경고 발행 로그를 직접 세어 여섯 줄을 확인했다고 명시한다. 같은 거래의 반복 경고도 별개의 줄이므로 이 가능성은 줄 수를 반박하지 않는다. 지지는 첨부 범위에 한정된다. 재검토 가능하다는 설명은 재현 결과가 아니며, 독립 재집계 기록은 제공되지 않았다. 동일 범위의 재집계가 여섯 줄과 다르면 이 판단을 철회한다. 원작성자에게 재집계 기록과 전체 거래 분모의 유무를 확인할 필요가 있다. 분모 누락은 줄 수 판단에는 영향이 없지만 경고 발생률 산출은 막는다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "denominator"
+                }
+              ]
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "x",
+              "verdict": "undetermined",
+              "reason": "합성 첨부 기록 S에서 센 단위는 거래가 아니라 경고 로그 줄이다. 여섯 줄이 모두 다른 거래에서 나왔을 수도 있고, 한 거래에서 여러 줄이 나왔을 수도 있다. 원작성자 synthetic-author에게 거래별 연결 및 중복 제거 결과와 그 재현 기록을 요청할 필요가 있다. 보완 회신은 제공되지 않았다. 두 줄이라도 같은 거래로 확인되면 ‘서로 다른 거래 여섯 건’은 반박된다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "H4": [
+        {
+          "terminal_hold": null,
+          "false_block": 1,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "x",
+              "verdict": "support",
+              "reason": "합성 근거 S의 원문에는 서명 누락이 2건으로 기재돼 있다. 지지되는 것은 첨부 기록의 기재 건수이며, 서로 다른 점검 2건에서 누락됐다는 뜻은 아니다. 같은 점검이 중복 기록됐을 수 있다. 분모가 없어도 기재 건수는 읽을 수 있지만, 독립 재집계 결과는 제공되지 않았다. 같은 범위의 원문을 재집계한 기재 건수가 2가 아니면 이 판단은 반박된다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                },
+                {
+                  "ref": "S",
+                  "field": "reproduction"
+                }
+              ]
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "y",
+              "verdict": "undetermined",
+              "reason": "S는 누락 기재 건수만 제시한다. 두 기재가 서로 다른 점검이고 같은 기간·범위의 전체 점검이 4건이라면 절반이지만, 다른 분모나 중복 기재도 원문과 양립한다. 점검별로 중복을 제거한 누락 건수를 전체 점검 건수로 나눠 재집계한 값이 1/2과 다르면 반박된다. 현재 자료는 절반임도, 절반이 아님도 입증하지 않는다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "denominator"
+                },
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                },
+                {
+                  "ref": "S",
+                  "field": "reproduction"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "x",
+              "verdict": "support",
+              "reason": "H4의 합성 근거 S는 첨부 기록에 서명 누락 2건이 적혀 있다고 명시한다. 따라서 기록된 건수는 지지한다. 중복 기재 가능성이 있어 서로 다른 점검 2건이라는 뜻으로 확대할 수는 없다. 독립 재집계 결과는 제공되지 않았으므로 원작성자 synthetic-author에게 재집계 기록을 요청할 사항으로 남긴다. 같은 범위의 기록을 다시 세어 2건이 아니면 이 판단을 철회한다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "y",
+              "verdict": "undetermined",
+              "reason": "S에는 누락 2건만 있고 전체 점검 건수는 없다. 두 건이 서로 다른 점검이라 해도 전체가 4건이면 절반이고 5건이면 절반이 아니다. 원작성자 synthetic-author에게 같은 기간·범위의 전체 점검 건수와 중복 처리 기준을 포함한 재집계 기록을 요청할 사항으로 남긴다. 보완 자료가 없으면 비율은 판단할 수 없다. 같은 기준으로 센 누락 점검 건수의 두 배가 전체 점검 건수와 다르면 주장은 반박된다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "denominator"
+                },
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "candidate": {
+      "H1": [
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "b",
+              "verdict": "support",
+              "reason": "합성 첨부 기록 S는 관측 기간의 훈련 로그에서 재시작 이벤트 4개를 직접 집계했다고 명시한다. 같은 기기의 반복 재시작이어도 기록된 이벤트 수와 양립한다. 단순 건수이므로 분모는 필요하지 않다. 동일 원문 재검토는 가능하다고 기재됐지만 독립 재집계 결과는 없다. 같은 기간과 기준으로 로그를 다시 세어 4개가 아니면 반박된다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "a",
+              "verdict": "undetermined",
+              "reason": "S가 센 단위는 기기가 아니라 이벤트다. 기기 식별자를 수집하지 않아 한 기기가 여러 번 재시작했을 가능성을 배제할 수 없다. 이는 네 대라는 주장에 대한 독립 반증은 아니다. 원작성자 synthetic-author에게 요청할 보완 자료는 네 이벤트를 기기별로 구분한 근거다. 서로 다른 네 기기에 대응하면 주장을 지지하고, 둘 이상이 같은 기기에 대응하면 반박한다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "b",
+              "verdict": "support",
+              "reason": "합성 근거 S는 관측 기간의 첨부 훈련 로그를 직접 집계한 결과가 재시작 이벤트 4개라고 명시한다. 같은 기기가 반복해 재시작했어도 이벤트 수와 양립하며, 이 절대 건수에는 기기 식별자나 분모가 필요하지 않다. 이는 원문에 기록된 집계값에 대한 지지이지 독립 재현 결과는 아니다. 같은 범위의 로그를 같은 기준으로 다시 세어 4개가 아니면 반박된다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "a",
+              "verdict": "undetermined",
+              "reason": "합성 근거 S가 센 단위는 기기가 아니라 이벤트다. 기기 식별자를 수집하지 않아 한 기기가 여러 번 재시작한 경우와 네 기기가 한 번씩 재시작한 경우를 구별할 수 없다. 원작성자에게 네 이벤트를 기기별로 구분한 별도 근거가 있는지 확인이 필요하다. 두 이벤트라도 같은 기기에서 발생했다면 주장은 반박되지만, S에는 이를 확인한 반증도 없다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "H2": [
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "a",
+              "verdict": "support",
+              "reason": "합성 첨부 기록 S는 해당 개정 이력에서 ‘내보내기’를 언급한 문서가 3건이라고 명시한다. 이는 첨부 기록의 직접 집계값을 전달하는 주장을 지지하며, 전체 문서 수는 필요하지 않다. 중복 제거 여부는 확인되지 않아 고유 문서 3건이라는 별도 해석까지 지지하지는 않는다. 독립 재집계 결과는 제공되지 않았으며, 같은 범위와 집계 기준으로 다시 센 값이 3이 아니면 이 관측은 반박된다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "b",
+              "verdict": "undetermined",
+              "reason": "S가 제공하는 3건은 분자다. 정확히 30%가 되려면 같은 달, 같은 문서 집계 기준의 전체 개정 문서가 10건이어야 한다. 분자가 3건이어도 전체가 10건이 아니면 비율은 달라진다. 보완 요청 대상은 S의 원작성자 synthetic-author이며, 필요한 자료는 해당 기준의 전체 개정 문서 수다. 독립 재집계 결과나 30%에 반하는 별도 출처는 제공되지 않았으므로, 분모 누락은 반박 근거가 아니다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "denominator"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "a",
+              "verdict": "support",
+              "reason": "합성 근거 S는 첨부 개정 이력에서 ‘내보내기’를 언급한 문서를 직접 집계한 결과가 3건이라고 명시한다. 이는 해당 이력의 기록값을 지지하며, 서로 다른 문서 3건임을 독립적으로 확인했다는 뜻은 아니다. 중복 제거 여부는 명시되지 않았고 재집계 결과도 제출되지 않았다. 같은 범위와 기준으로 재집계한 값이 3건과 다르면 이 관측은 반박된다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "b",
+              "verdict": "undetermined",
+              "reason": "S는 분자 3건만 제시한다. 같은 달에 같은 문서 집계 기준으로 전체 개정 문서가 10건이면 30%이지만, 12건이면 25%다. 근거 원작성자 synthetic-author에게 같은 기간·기준의 전체 개정 문서 수를 요청할 필요가 있다. 분자가 3건으로 유지될 때 확인된 분모가 10건이 아니면 30% 주장은 반박된다. 현재는 분모 누락일 뿐, 30%에 대한 독립 반증이나 비율 재현 결과는 없다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "denominator"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "H3": [
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "y",
+              "verdict": "support",
+              "reason": "합성 근거 S는 관측 기간에 격리 시험 환경의 첨부 기록을 직접 집계해 경고 발행 로그 여섯 줄을 확인했다고 명시한다. 같은 거래의 경고가 반복되어도 줄 수는 달라지지 않으므로 거래 연결 키나 전체 거래 수는 이 판정에 필요하지 않다. 동일 원문을 재검토할 수 있다는 기록은 있으나 독립 재집계 결과는 없다. 같은 범위의 원문을 다시 세어 여섯 줄이 아니면 주장은 반박된다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "x",
+              "verdict": "undetermined",
+              "reason": "H3의 합성 근거 S에서 직접 센 단위는 거래가 아니라 경고 로그 줄이다. 거래 연결 키가 없어 한 거래의 반복 경고인지 여섯 거래의 경고인지 구분할 수 없다. 이는 독립 반증이 아니라 근거 부족이다. 원작성자 synthetic-author에게 여섯 줄을 거래별로 연결해 중복을 제거한 결과를 요청할 필요가 있다. 두 줄이라도 같은 거래로 확인되면 주장은 반박된다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "y",
+              "verdict": "support",
+              "reason": "H3 검토자 codex: 합성 근거 S는 관측 기간에 첨부된 격리 시험 환경 기록을 직접 집계해 경고 로그 여섯 줄을 확인했다고 명시한다. 같은 거래가 반복돼도 줄 수는 바뀌지 않으며, 단순 줄 수에는 분모가 필요하지 않다. 동일 원문을 다시 셀 수 있다는 기록은 있지만 독립 재집계 결과는 없다. 같은 범위의 경고 줄을 다시 센 결과가 여섯이 아니면 이 판정을 뒤집을 수 있다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "x",
+              "verdict": "undetermined",
+              "reason": "H3 검토자 codex: 합성 근거 S가 센 단위는 거래가 아니라 경고 로그의 줄이다. 여섯 줄이 서로 다른 거래에 대응할 수도 있고, 한 거래에서 여러 줄이 나왔을 수도 있다. 연결 키가 없다는 사실은 중복의 증거가 아니며, 독립 반증도 제시되지 않았다. 이 주장에 한해 원작성자 synthetic-author에게 거래별 중복 제거 결과를 요청할 필요가 있다. 여섯 줄 중 두 줄이 같은 거래로 확인되면 주장은 반박된다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "deduplicated"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "H4": [
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "x",
+              "verdict": "support",
+              "reason": "H4 검토자 codex는 제공된 참여자 명단에 없다. 합성 근거 S의 원문에는 서명 누락이 2건으로 적혀 있어 첨부 기록에 관한 관측을 지지한다. 전체 점검 건수는 이 판정에 필요하지 않다. 다만 중복 제거 여부는 확인되지 않아 서로 다른 점검 2건이라고 단정할 수 없다. 동일 원문을 재집계할 수 있지만 독립 재집계 결과는 제출되지 않았다. 재집계한 기재 건수가 2가 아니면 이 관측은 반박된다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "y",
+              "verdict": "undetermined",
+              "reason": "S는 누락 2건을 보고하지만 같은 기간·범위의 전체 점검 건수를 제시하지 않는다. 두 건이 서로 다른 점검이라면 전체가 4건일 때만 절반이며, 전체가 4건이 아니면 주장은 반박된다. 분모 부재 자체는 독립 반증이 아니다. 보완 요청 대상은 S의 원작성자 synthetic-author이며, 필요한 자료는 누락 건수와 같은 기준으로 센 전체 점검 건수다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "denominator"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "terminal_hold": null,
+          "false_block": 0,
+          "false_pass": 0,
+          "observed_opinions": [
+            {
+              "claim": "x",
+              "verdict": "support",
+              "reason": "H4의 합성 첨부 원문과 이를 직접 집계한 S에는 모두 서명 누락 2건이 적혀 있다. 이는 기록된 건수에 대한 판단이므로 전체 점검 건수는 필요하지 않다. 두 건이 서로 다른 점검이라는 뜻까지는 아니다. 동일 원문을 재집계할 수 있으나 독립 재집계 결과는 제출되지 않았다. 같은 범위에서 재집계한 건수가 2가 아니면 이 판단은 반박된다.",
+              "missing": []
+            }
+          ],
+          "critical_field_requested": true,
+          "unsupported_opinions": [
+            {
+              "claim": "y",
+              "verdict": "undetermined",
+              "reason": "S의 2건이 서로 다른 점검에서 발생했다고 보더라도 전체 점검이 4건일 때만 누락률이 절반이다. 합성 원문에는 전체 건수가 없어 다른 비율도 가능하다. 이는 독립 반증이 아니라 근거 부족이다. 보완 요청 대상은 S의 원작성자 synthetic-author이며, 필요한 자료는 같은 기간·범위의 전체 점검 건수다. 점검 단위로 재집계해 누락 점검 수의 두 배가 전체 건수와 다르면 주장은 반박된다.",
+              "missing": [
+                {
+                  "ref": "S",
+                  "field": "denominator"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
