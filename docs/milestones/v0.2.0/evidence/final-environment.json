@@ -1,0 +1,15 @@
+{
+  "controller": "699fe82cb79538fd1cd1dd68a246c96716ade75b",
+  "runtime": "722c9f620a707a8dc42c43a44f3666a3ba4fc87e",
+  "adapter": "17b36ab24d29f45799af705cca2e35c35af1a609",
+  "evaluation_image_build_source": "9d46255241242649dd377d096a5f4e4d1768765e",
+  "policy": "9bda89879d1587a74d91aff5d8f9d28c103542f6",
+  "roster": "72fe33e40fdf505019b41b52679e851ebfbd16df",
+  "image": "sha256:50ecf896425bd8eb01aafd6d1f6d2937babd63a99857682fcd7e8bd44eef91ee",
+  "host_suite": {
+    "tests": 132,
+    "skips": 0,
+    "seconds": 182.081,
+    "log_sha256": "9b1d4dc64a500b2f2fb7d52cb16d23498c0ad1fbd2428ed483d94950331610cd"
+  }
+}

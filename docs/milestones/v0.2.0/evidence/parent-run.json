@@ -1,0 +1,48 @@
+{
+  "controller_sha": "699fe82cb79538fd1cd1dd68a246c96716ade75b",
+  "image_id": "sha256:50ecf896425bd8eb01aafd6d1f6d2937babd63a99857682fcd7e8bd44eef91ee",
+  "case": "final-recovery-reviewed",
+  "revision": 1,
+  "parent_commands": 1,
+  "manual_child_commands": 0,
+  "backend": "codex",
+  "result": "accept",
+  "planned": [
+    "acl-010",
+    "acl-005"
+  ],
+  "actual": [
+    {
+      "actual_member_id": "acl-007",
+      "run_id": "r-0da65c74532444849d1731a036275ff0",
+      "attempt_id": "a-bf73c001b477ca7e734951551f4d3a18",
+      "receipt_sha256": "94e965fe90ea32e561f5b768bc8adfd4bffa4e775c1ad8dbcb7c94a5de28a123",
+      "requested_model": "gpt-6.2-sol",
+      "requested_effort": "high"
+    },
+    {
+      "actual_member_id": "acl-010",
+      "run_id": "r-1395473119844fd099efbb1e4ceff41b",
+      "attempt_id": "a-e74210d5069171e2d2a48cec6ee6191f",
+      "receipt_sha256": "899a30a1287e3fb3a345c799edf48e4aa56ff48bc4ad696e8f69c5d6e9272c6e",
+      "requested_model": "gpt-6.2-sol",
+      "requested_effort": "medium"
+    },
+    {
+      "actual_member_id": "acl-005",
+      "run_id": "r-d84ee4806fd14a53aca167f16e1f56b5",
+      "attempt_id": "a-76429f2e21cfb33122c4e7cebae44018",
+      "receipt_sha256": "85baf725996a21867ea3ffb8c0d1228e3b9ab004c96ca4101510f992c37f40ee",
+      "requested_model": "gpt-6.2-astra",
+      "requested_effort": "high"
+    }
+  ],
+  "input_sha256": "edc7ddd4d5cdaa7c93f56802783580fbb22d49bcc5b5cdd8c71e38c9365e9f5c",
+  "patch_sha256": "1b1a0376483e18e15418842249f930408b6335bfaf4b6a1eaa2396a290208c04",
+  "offline": {
+    "network": "none",
+    "state_mount": "read-only",
+    "equal_parent_result": true
+  },
+  "earlier_attempt": "uncertain"
+}

@@ -1,0 +1,19 @@
+{
+  "controller": "699fe82cb79538fd1cd1dd68a246c96716ade75b",
+  "fault": "Process exit before linking specialist assignment verdict, after native task receipt",
+  "first": "accept",
+  "native_receipts_at_stop": 1,
+  "local_verdict_absent": true,
+  "frames_before": [
+    "[\"author\", \"acl-007\"]",
+    "[\"acl-010\", \"acl-010\"]",
+    "[\"acl-005\", \"acl-005\"]"
+  ],
+  "frames_after": [
+    "[\"author\", \"acl-007\"]",
+    "[\"acl-010\", \"acl-010\"]",
+    "[\"acl-005\", \"acl-005\"]"
+  ],
+  "second": "accept",
+  "duplicate_submissions": 0
+}
