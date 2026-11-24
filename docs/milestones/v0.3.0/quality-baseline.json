@@ -113,10 +113,11 @@
     "uncertain_with_startup_not_started": 14
   },
   "final_regression": {
-    "unique_tests": 143,
+    "unique_tests": 138,
     "skipped": 0,
     "wall_seconds": 179.064,
-    "log_sha256": "ab951ec95c3f83b8f60daba89624fac07c9dbf947e1fcccd9acec4443e8944b1"
+    "log_sha256": "ab951ec95c3f83b8f60daba89624fac07c9dbf947e1fcccd9acec4443e8944b1",
+    "executed_tests": 143
   },
   "duplicate_witness_sensitivity": {
     "method": "duplicate a runtime.execute observation in an isolated copy before counting, final packet unchanged",
