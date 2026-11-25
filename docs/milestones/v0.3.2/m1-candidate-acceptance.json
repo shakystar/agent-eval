@@ -1,0 +1,107 @@
+{
+  "scope": "local synthetic M1 candidate acceptance only",
+  "candidates": {
+    "codex-adapter": "f338b2908ff32094514763000bf71da4d7d4bcaf",
+    "role-runtime": "4a457bb576376366989ad6d53ed291f59848d4a0",
+    "role-orchestrator": "3ad85d35d19843a436f667327a22621696f1ff03"
+  },
+  "regression": {
+    "modules": 32,
+    "tests": 156,
+    "skipped": 0,
+    "failures": []
+  },
+  "synthetic_replay": {
+    "status": "verified",
+    "action": "accept",
+    "reasons": [],
+    "turn_count": 1,
+    "usage": {
+      "input_tokens": 10,
+      "output_tokens": 3,
+      "cached_input_tokens": 2
+    },
+    "automatic_dispatch": false,
+    "usage_complete": true,
+    "usage_scope": "final_matched_tokenUsage.last"
+  },
+  "double_and_missing": {
+    "double": {
+      "status": "failed",
+      "action": "reject",
+      "reasons": [
+        "unauthorized_repeat"
+      ],
+      "turn_count": 2,
+      "usage": {},
+      "automatic_dispatch": false,
+      "usage_complete": false,
+      "usage_scope": "final_matched_tokenUsage.last"
+    },
+    "missing": {
+      "status": "uncertain",
+      "action": "hold",
+      "reasons": [
+        "incomplete_turn_evidence"
+      ],
+      "turn_count": 0,
+      "usage": {},
+      "automatic_dispatch": false
+    },
+    "output_sha256": "25f5b316971edf0f886b2e607c617dcf16d165294fe3c58c0dd232922f762f40"
+  },
+  "identity_negatives": [
+    {
+      "case": "wrong_role_version",
+      "native": {
+        "status": "failed",
+        "reason": "actual_role_version_mismatch"
+      },
+      "verified": {
+        "status": "failed",
+        "action": "reject",
+        "reasons": [
+          "actor_or_role_revision_mismatch"
+        ],
+        "turn_count": 0,
+        "usage": {},
+        "automatic_dispatch": false
+      }
+    },
+    {
+      "case": "wrong_assignment",
+      "native": {
+        "status": "failed",
+        "reason": "assignment_mismatch"
+      },
+      "verified": {
+        "status": "failed",
+        "action": "reject",
+        "reasons": [
+          "assignment_mismatch"
+        ],
+        "turn_count": 0,
+        "usage": {},
+        "automatic_dispatch": false
+      }
+    }
+  ],
+  "first_review": "feedback",
+  "review": "accepted",
+  "verdicts": [
+    {
+      "decision": "accept",
+      "owner": "이서진",
+      "reason": "제공된 증빙상 고정 Codex 후보는 로컬 인수 기준 4개를 충족한다. ① 동일 영수증 재전달은 1턴으로 검증됐다(중복 집계 시 실패). ② 출력이 같은 독립 완료 2턴은 2턴으로 집계되어 무단 반복으로 거부됐다(1턴으로 합치거나 수락하면 실패). ③ 턴 증거 누락은 미확인·보류됐다(수락하거나 자동 디스패치하면 실패). ④ 확인된 역할·배정 불일치는 자동 디스패치 없이 거부됐고, 수정 후에는 succeeded·failed 상태에서만 배정 불일치를 확정한다(bogus·running을 확정 불일치로 처리하면 실패). Python 전체 회귀는 32개 모듈 156건에서 실패·건너뜀 0건이었고, 런타임의 Codex 관련 Go 패키지 검사와 어댑터 vet·race도 통과했다. 세 후보 SHA와 판정 근거를 M1 인수 기록에 남겨라. 사용량은 최종 매칭 알림 값으로만 기록하며, 운영·서명·배포·실제 제공자 시험·병합은 승인 범위에 포함하지 않는다.",
+      "member": "acl-010",
+      "receipt": "1b743ecd659f13ea9384c194831b25efeb9f8f41cf382c1f6a46664f342ea420"
+    },
+    {
+      "decision": "accept",
+      "owner": "강이현",
+      "reason": "고정된 로컬 Codex 후보는 네 기준을 충족하며, 직전 revise의 미해결 사유는 없다. ① 영수증 수신 지점에 동일 영수증을 재전달해도 검증 결과는 1턴이다. ② 실행 지점에서 독립 완료 턴을 두 번 발생시키면 최종 파일이 같아도 2턴으로 집계되어 unauthorized_repeat로 거부된다. 파일 해시만 보고 1턴으로 수락하면 거짓 통과다. ③ 검증 입력에서 턴 증거를 빼면 0턴·미확인으로 보류되며 자동 디스패치되지 않는다. ④ 역할 버전이나 배정 ID를 바꿔 확인된 불일치를 만들면 자동 디스패치 없이 거부된다. attempts.py의 배정 불일치 분기는 이제 succeeded·failed에서만 불일치를 확정하며, bogus·running은 잘못된 영수증으로 남긴다. 두 상태를 포함한 Python 전체 회귀는 32개 모듈 156건에서 실패·건너뜀 0건이었고, Codex 런타임 Go 검사와 어댑터 vet·race도 통과했다. 세 후보 SHA와 이 네 관측값을 M1 인수 기록에 연결하라. 사용량은 마지막으로 매칭된 알림 값이지 총 과금량이나 제공자 호출 횟수가 아니다. 구버전과 실제 제공자 시험은 이번 증거에 없으며, 이 판정은 운영·서명·배포·병합 승인이 아니다.",
+      "member": "acl-005",
+      "receipt": "83a438a50c81e4eda5b0fc6725c5b452a57013c272232aa313eac321f49f6a2f"
+    }
+  ]
+}
