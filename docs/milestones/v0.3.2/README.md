@@ -1,6 +1,6 @@
 # v0.3.2 · 독립 리뷰의 실행 근거와 계약 재측정
 
-[M0 인수 규약 초안과 독립 검토 반영 사항](M0.md) · [인수 판정과 측정 사용량](m0-review.json)
+[M0 인수 규약 초안과 독립 검토 반영 사항](M0.md) · [인수 판정과 측정 사용량](m0-review.json) · [M1 착수 전 기술 실사 판정](m1-prestart.json)
 
 
 **상태** 기획팀 설계안. 개발·결함 주입·실모델 비교는 미실행이다. [GitHub 마일스톤](https://github.com/shakystar/agent-eval/milestone/5)
