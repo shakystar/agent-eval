@@ -2,6 +2,8 @@
 
 [프로젝트 개요](../README.md) · [기획 명세](planning-spec.md) · [Inspect AI·Harbor 비교와 채택 근거](research/inspect-harbor.md) · [Linux 실행 환경](../containers/linux/README.md)
 
+[v0.3.2 기획안 · 독립 리뷰 실행 근거와 계약 재측정](milestones/v0.3.2/README.md)
+
 ## 개발 단계와 검증 기록
 
 [이슈 #1 · 병합 후 네 저장소 통합 검증](validation/issue-1-20261122/README.md)에서 고정 커밋, 조건별 결과, 오프라인 재평가와 남은 제약을 확인할 수 있습니다.
