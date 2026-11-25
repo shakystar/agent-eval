@@ -1,0 +1,547 @@
+{
+  "scope": "Independent M2 synthetic integration. The route peer emits deterministic fixture responses and usage. No provider inference, signature or billing assertions.",
+  "baseline": {
+    "codex-adapter": "f338b2908ff32094514763000bf71da4d7d4bcaf",
+    "role-runtime": "4a457bb576376366989ad6d53ed291f59848d4a0",
+    "role-orchestrator": "3ad85d35d19843a436f667327a22621696f1ff03"
+  },
+  "checked_commits": {
+    "codex-adapter": "f338b2908ff32094514763000bf71da4d7d4bcaf",
+    "role-runtime": "4a457bb576376366989ad6d53ed291f59848d4a0",
+    "role-orchestrator": "753fe029c889ee5eff3728cc3c34e52b7edf1b43"
+  },
+  "binaries": {
+    "candidate-bridge": "cf59fb421236dff94114a509d6f7d791b73d69f70afc30e45095acdbc96391e8",
+    "synthetic-app-server": "3b6039a6cc4cdeef08d8d4d82316e922a44b5c1b10f65e5f372552938f4c3128",
+    "role-runtime/bin/runtime-workflow": "23b0d6817db1910e49e749d908bfdb57b01d025b28dfc280a4447467f4454e35",
+    "role-runtime/bin/workflow-probe": "99d3e3dac7e2258fbe46a9faf7dd87360ebead05f948b781de3d6db20a18b107"
+  },
+  "go_version": "go version go1.26.11 darwin/amd64",
+  "go_vet_and_race": {
+    "success_packages": [
+      "github.com/shakystar/codex-adapter",
+      "github.com/shakystar/codex-adapter/rpc",
+      "github.com/shakystar/role-runtime/cmd/codex-evidence-pipeline",
+      "github.com/shakystar/role-runtime/cmd/codex-research-pipeline",
+      "github.com/shakystar/role-runtime/cmd/codex-target-review",
+      "github.com/shakystar/role-runtime/cmd/runtime-bridge",
+      "github.com/shakystar/role-runtime/experiments/eino",
+      "github.com/shakystar/role-runtime/internal/codexadapter",
+      "github.com/shakystar/role-runtime/internal/codexcooperation",
+      "github.com/shakystar/role-runtime/internal/control",
+      "github.com/shakystar/role-runtime/internal/engine",
+      "github.com/shakystar/role-runtime/internal/lifecycle",
+      "github.com/shakystar/role-runtime/internal/pirpc",
+      "github.com/shakystar/role-runtime/internal/researchflow",
+      "github.com/shakystar/role-runtime/internal/workflowmodel"
+    ],
+    "module_dir_matches_fresh_adapter": true
+  },
+  "baseline_suite": {
+    "modules": 32,
+    "tests": 156,
+    "skipped": 0,
+    "failures": []
+  },
+  "final_suite": {
+    "modules": 32,
+    "tests": 157,
+    "skipped": 0,
+    "failures": []
+  },
+  "replay_submissions": [
+    1,
+    0
+  ],
+  "replay": {
+    "status": "verified",
+    "action": "accept",
+    "reasons": [],
+    "turn_count": 1,
+    "usage": {
+      "input_tokens": 10,
+      "output_tokens": 3,
+      "cached_input_tokens": 2
+    },
+    "automatic_dispatch": false,
+    "usage_complete": true,
+    "usage_scope": "final_matched_tokenUsage.last"
+  },
+  "recovery": {
+    "first": {
+      "schema_version": 1,
+      "run_id": "lost-run",
+      "attempt_id": "lost-attempt",
+      "error_code": "execution_failed",
+      "id": "lost-task",
+      "status": "error",
+      "text": "",
+      "cached": false,
+      "stats": {
+        "submitted": 1,
+        "succeeded": 0,
+        "failed": 1,
+        "rejected": 0,
+        "maxActive": 1,
+        "maxQueued": 1,
+        "workers": 1
+      },
+      "error": "execution_failed"
+    },
+    "after_restart": {
+      "schema_version": 1,
+      "run_id": "lost-run",
+      "attempt_id": "lost-attempt",
+      "error_code": "execution_blocked",
+      "id": "lost-task",
+      "status": "error",
+      "text": "",
+      "cached": false,
+      "stats": {
+        "submitted": 0,
+        "succeeded": 0,
+        "failed": 0,
+        "rejected": 0,
+        "maxActive": 0,
+        "maxQueued": 0,
+        "workers": 0
+      },
+      "error": "execution_blocked"
+    },
+    "inspected": {
+      "status": "uncertain",
+      "reason": "attempt_evidence_unavailable_or_invalid"
+    },
+    "verification": {
+      "status": "uncertain",
+      "action": "hold",
+      "reasons": [
+        "incomplete_turn_evidence"
+      ],
+      "turn_count": 0,
+      "usage": {},
+      "automatic_dispatch": false
+    }
+  },
+  "faults": {
+    "double": {
+      "status": "failed",
+      "action": "reject",
+      "reasons": [
+        "unauthorized_repeat"
+      ],
+      "turn_count": 2,
+      "usage": {},
+      "automatic_dispatch": false,
+      "usage_complete": false,
+      "usage_scope": "final_matched_tokenUsage.last"
+    },
+    "missing": {
+      "status": "uncertain",
+      "action": "hold",
+      "reasons": [
+        "incomplete_turn_evidence"
+      ],
+      "turn_count": 0,
+      "usage": {},
+      "automatic_dispatch": false
+    },
+    "output_sha256": "25f5b316971edf0f886b2e607c617dcf16d165294fe3c58c0dd232922f762f40"
+  },
+  "mismatches": [
+    {
+      "case": "wrong_role_version",
+      "native": {
+        "status": "failed",
+        "reason": "actual_role_version_mismatch"
+      },
+      "verified": {
+        "status": "failed",
+        "action": "reject",
+        "reasons": [
+          "actor_or_role_revision_mismatch"
+        ],
+        "turn_count": 0,
+        "usage": {},
+        "automatic_dispatch": false
+      }
+    },
+    {
+      "case": "wrong_assignment",
+      "native": {
+        "status": "failed",
+        "reason": "assignment_mismatch"
+      },
+      "verified": {
+        "status": "failed",
+        "action": "reject",
+        "reasons": [
+          "assignment_mismatch"
+        ],
+        "turn_count": 0,
+        "usage": {},
+        "automatic_dispatch": false
+      }
+    }
+  ],
+  "history": {
+    "v0.3.0": {
+      "sample_count": 11,
+      "original_judgment_equal": 11,
+      "original_bytes_unchanged": 11,
+      "new_fields_unconfirmed": 11
+    },
+    "v0.3.1": {
+      "sample_count": 32,
+      "original_judgment_equal": 32,
+      "original_bytes_unchanged": 32,
+      "new_fields_unconfirmed": 32
+    }
+  },
+  "before_correction": {
+    "action": "hold",
+    "phase": "review",
+    "reason": "invalid_or_conflicted_review",
+    "terminal": true
+  },
+  "final_conflict_record": {
+    "conflict": true,
+    "draft_sha256": "0f160b4b04c831903a000a73cc112b3c12ff23c230625a389b4e0564c1f19923",
+    "opinions": {}
+  },
+  "independent_tools": {
+    "fixture_origin": "agent-eval/docs/milestones/v0.3.0/cases/{request,signal}-fixture.json",
+    "peer": "offline JSON-RPC peer, isolated PATH; one generated turn ID per synthetic dispatch. Counted ledger independently of orchestrator. Usage from peer is synthetic.",
+    "turn_binding": "scope includes case, predecessor receipt set, run, attempt, actor, version, raw receipt, native session + turn and output SHA, bound draft and final packet."
+  },
+  "routes": {
+    "request-normal": {
+      "case": "SYN-REQ-01",
+      "fault": "",
+      "branch": {
+        "action": "hold",
+        "claims": [],
+        "packet_sha256": "13a1cddcb902495771cf2267aa00b15e6f080f153df7ff6d4e0933c04cfce204",
+        "reason": "추가 자료 대기"
+      },
+      "rows": [
+        {
+          "phase": "decision",
+          "receipt": "bc555309c33f546c9038385ee62ec27e50d3397c00c9e18978a3881c2bdc1aa1",
+          "attempt": "a-e37cc8b7e9386a8011e4172dbc9cb656",
+          "turn": "5694db57-48b2-4ef4-a822-d79ca18d43e3"
+        },
+        {
+          "phase": "draft",
+          "receipt": "cdf2080156ded90c0c5f704fbd95cd29849aaca7e2a0a98fc4de51fbcb54f20a",
+          "attempt": "a-9f5f3a62a927933f107a9ee27ccd770f",
+          "turn": "17bdb7c6-7148-4095-9391-02ef1eba9d02"
+        },
+        {
+          "phase": "observe",
+          "receipt": "a9cb896ad444335e95b902155ae5fb726288862f5949678387bb52c3900afaad",
+          "attempt": "a-60676d55fc8788bba37fc3592e3bb3b7",
+          "turn": "27916d3d-df50-4272-bdd6-fc40b6997c23"
+        },
+        {
+          "phase": "review",
+          "receipt": "2ad9ee970a27c6550c729d29003eaec23958fc0e61ba67903399bd6899f4542f",
+          "attempt": "a-a8ecaf8be0b0eba21447907e38fd8f19",
+          "turn": "1d885cf4-c8c5-455b-a1d0-f57b9311b298"
+        },
+        {
+          "phase": "synthesize",
+          "receipt": "17a7a78faf17116e2749f85fe29cffa92cd0f4102427891a4a641ac617e9496c",
+          "attempt": "a-d1ce41b2ae454fe251005f7c4a61e26e",
+          "turn": "76480016-a296-4ff2-bc04-7be086d89929"
+        }
+      ],
+      "dispatches": 5,
+      "replay_new_turns": 0
+    },
+    "signal-normal": {
+      "case": "SYN-SIG-01",
+      "fault": "",
+      "branch": {
+        "action": "hold",
+        "claims": [],
+        "packet_sha256": "3ec43a4de962b08bb60ceaaa8281292a586efe451193a5170f7c7424d073c6b8",
+        "reason": "추가 자료 대기"
+      },
+      "rows": [
+        {
+          "phase": "decision",
+          "receipt": "b195ea0abfb1711b4698b92e207f20f717cb2c54306b559d4a4cb96d6485e67b",
+          "attempt": "a-c55fc0b195701f53cbd7733ae2d12a1a",
+          "turn": "4637471f-f0b3-450d-be06-53d0534a8ef7"
+        },
+        {
+          "phase": "draft",
+          "receipt": "3e2cc46cfd8951bf5b7d31d344b590e997cd1223e6de0b916b90e3b76b6902de",
+          "attempt": "a-1cd9be0376642e560fb2da208b1aae5b",
+          "turn": "1ecbd043-5a80-4657-9325-9cdf4a5ae995"
+        },
+        {
+          "phase": "intake",
+          "receipt": "49d10d22581c9daf44beae5aa9195c5b255f4c95c79739e151e3259f77e08816",
+          "attempt": "a-62057cbac7f3686f7ba5d63e15252c3e",
+          "turn": "71bd5cc2-571d-446d-bccc-b181f46a15c4"
+        },
+        {
+          "phase": "observe",
+          "receipt": "dc2c506b6ac1496c873be6758204e7b43de577d27a52c5246dd333bc64f356ed",
+          "attempt": "a-13b871846dbe5c2bc9669cae9f889ab4",
+          "turn": "36392159-a18d-4dcc-b88c-01ea55c84cea"
+        },
+        {
+          "phase": "review",
+          "receipt": "4fb0309bff3b3d322e07d24328db656ba2df1f9ff0e0f085146ea430373bdd4e",
+          "attempt": "a-2c76de367acde0c1b5ed0a0b1f1a7187",
+          "turn": "4638a49b-510f-408e-aec1-205732ac944e"
+        },
+        {
+          "phase": "synthesize",
+          "receipt": "ce3fd1727aa606b40054e1fc5f11a454a535661c8206112b00a024e94e154088",
+          "attempt": "a-2f8bb46559bb587312fe947704e9b468",
+          "turn": "42f6a62b-f5d8-47aa-8f43-bdce190eb0dc"
+        }
+      ],
+      "dispatches": 6,
+      "replay_new_turns": 0
+    },
+    "request-author": {
+      "case": "SYN-REQ-01",
+      "fault": "author",
+      "branch": {
+        "action": "reassign",
+        "phase": "review",
+        "reason": "reviewer_participated"
+      },
+      "rows": [
+        {
+          "phase": "draft",
+          "receipt": "8be757e4ea294b9a29f95121e70880bc0b9fea9447c63306a7229e3c09cf1737",
+          "attempt": "a-b2041199ab747f310a7fb8da2dffacdf",
+          "turn": "4616015e-f514-4ed4-91aa-47c4ede3da7d"
+        },
+        {
+          "phase": "observe",
+          "receipt": "5077f308677e3b4929ce23a945c4f66fbb4be457b898d0bce47c4f5763ba8cb8",
+          "attempt": "a-b08ae67cbd2a7b80af624ff7f1270e5e",
+          "turn": "be264304-eb36-4764-8cff-20ff9ce2e3cb"
+        }
+      ],
+      "dispatches": 2,
+      "replay_new_turns": 0
+    },
+    "request-self": {
+      "case": "SYN-REQ-01",
+      "fault": "self",
+      "branch": {
+        "action": "reassign",
+        "phase": "review",
+        "reason": "reviewer_conflict"
+      },
+      "rows": [
+        {
+          "phase": "draft",
+          "receipt": "715162a060b9963e0c07da196133515506235f36250698d4a2d2814ff6af5c56",
+          "attempt": "a-0e2e232ea50ccd31c01e7d226826c491",
+          "turn": "63de094e-3154-4e6c-b582-08b5be01c091"
+        },
+        {
+          "phase": "observe",
+          "receipt": "fd00cf9cd86c9e120049a5b7829e538272c77e1b5005f47d9b810e2e35b119c5",
+          "attempt": "a-0cbf8e84509537f4af6ca69fe15ab422",
+          "turn": "914f540b-803c-40fa-9682-df33d6e2f371"
+        },
+        {
+          "phase": "review",
+          "receipt": "1af7075689e4fc1a77f33e9e35072f15ec2e1001944cf164b0e1cd47931c309a",
+          "attempt": "a-92fa50e67edd5a433cb4043d14bbc45a",
+          "turn": "63ac0e10-37e8-4353-9f98-af92c43b4ced"
+        }
+      ],
+      "dispatches": 3,
+      "replay_new_turns": 0
+    },
+    "request-stale": {
+      "case": "SYN-REQ-01",
+      "fault": "stale",
+      "branch": {
+        "action": "hold",
+        "phase": "review",
+        "reason": "invalid_or_conflicted_review",
+        "terminal": true
+      },
+      "rows": [
+        {
+          "phase": "draft",
+          "receipt": "0b7bc0ff5985800b7e8c5fbf21152bcc2beb4e8b650e1053513021b6afacfb52",
+          "attempt": "a-1147fe46506dc94609f6c6662c28e6be",
+          "turn": "04423c79-dab0-40fc-bdaf-c7fd5b0932cc"
+        },
+        {
+          "phase": "observe",
+          "receipt": "3ac398596a57e0023159d9f6ddd6f48016ee3b84e79b5b1b111a5399d56037b3",
+          "attempt": "a-ad8794db3902b3266cbd3dc70c12a63f",
+          "turn": "5fe26d5f-b68b-4682-9cd9-11c4975ad52c"
+        },
+        {
+          "phase": "review",
+          "receipt": "a7023ea73726c1fc07187dec4b23e2f031d61fc727537eecee4599a07c0f1ad8",
+          "attempt": "a-97be023b893c23bd21b07a64b98bdec5",
+          "turn": "4cec2228-2a66-4c3b-b4ae-49213745c361"
+        }
+      ],
+      "dispatches": 3,
+      "replay_new_turns": 0
+    },
+    "request-other": {
+      "case": "SYN-REQ-01",
+      "fault": "other",
+      "branch": {
+        "action": "hold",
+        "phase": "decision",
+        "reason": "invalid_product_decision",
+        "terminal": true
+      },
+      "rows": [
+        {
+          "phase": "decision",
+          "receipt": "80b681d75b4687b1664374a163ebc2e365b6e1dbdcde5b470254a8607723b695",
+          "attempt": "a-1d8558d66b45d8364ac8dfa6591dd88d",
+          "turn": "d0c2d790-2360-405a-88ca-ae5a2c05a6d9"
+        },
+        {
+          "phase": "draft",
+          "receipt": "f51b42fa86435f0b0f8b096324db716ebc3d0026da814ed5018d5e13247d3392",
+          "attempt": "a-aaf69d68921ba723024f8f0e4b837608",
+          "turn": "8d548306-991d-4413-a9f6-e3a4f60892ff"
+        },
+        {
+          "phase": "observe",
+          "receipt": "3a516d773e8140a7a60be636efb39e9365a6394ddc1e434869f9bacc69c5ddd9",
+          "attempt": "a-5aabb0e338dfcbe438e5dad88b1b29ad",
+          "turn": "8af89f87-6814-4268-8de9-6161c98c3f2d"
+        },
+        {
+          "phase": "review",
+          "receipt": "716b2750911cd33ab303a2a8615198d0f211fc4b235cde0ab2351190748e7f38",
+          "attempt": "a-6946fc31c95d35446d758a202be98694",
+          "turn": "fc7ecb04-bc4e-47a8-87fa-7347c6551787"
+        },
+        {
+          "phase": "synthesize",
+          "receipt": "180af4be156e19a20224d49c3c68a3b0cc1e31f1e0ce86d3a36a70575065c5b3",
+          "attempt": "a-9ff1d51cf2ca4b95b3a4a07772dd2e5e",
+          "turn": "e09376df-e4b2-459c-8c6c-afc2d0184c92"
+        }
+      ],
+      "dispatches": 5,
+      "replay_new_turns": 0
+    }
+  },
+  "signature": {
+    "state": "unverified",
+    "owner": "role-runtime and independent trust-verification owner",
+    "missing": "Signed bytes, key ID, verification and key history. A digest alone cannot establish authenticity."
+  },
+  "independent_review": {
+    "status": "hold",
+    "verdicts": [],
+    "meaning": "dispatch hold before reviewer execution; no independent acceptance decision",
+    "reviewer": "acl-014",
+    "dispatches_attempted": 2,
+    "reviewer_model_turns_started": 0,
+    "diagnostic": "codex-adapter --doctor: workspace_routing_timeout",
+    "required_next": "repeat independent reproduction review of the pinned SHA tuple after account routing is available"
+  },
+  "review_intake_first_attempt": {
+    "status": "hold",
+    "stage": "account_read",
+    "execution": "not_started",
+    "model_turns": 0,
+    "separate_from_review_verdict": true
+  },
+  "report_repo_tests": {
+    "discovered": 63,
+    "skipped": 34,
+    "failures": 0,
+    "skip_reasons": [
+      "optional pinned Inspect adapter",
+      "M3 Go bridge and orchestrator environment"
+    ]
+  },
+  "author_receipts": [
+    "c4b65f5e335cfae153fa0c9410f5c6466ba0ba011ff4931f4ba541854bdb31d9",
+    "cb3267cdb5b3e9942dd8e83be30602127ce1ad0a3c41b763e098edc0b013fff3"
+  ],
+  "published_peer_checks": [
+    {
+      "case": "SYN-REQ-01",
+      "dispatches": 3,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "reassign",
+        "phase": "review",
+        "reason": "reviewer_conflict"
+      }
+    },
+    {
+      "case": "SYN-REQ-01",
+      "dispatches": 2,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "reassign",
+        "phase": "review",
+        "reason": "reviewer_participated"
+      }
+    },
+    {
+      "case": "SYN-REQ-01",
+      "dispatches": 3,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "hold",
+        "phase": "review",
+        "reason": "invalid_or_conflicted_review",
+        "terminal": true
+      }
+    },
+    {
+      "case": "SYN-REQ-01",
+      "dispatches": 5,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "hold",
+        "phase": "decision",
+        "reason": "invalid_product_decision",
+        "terminal": true
+      }
+    },
+    {
+      "case": "SYN-REQ-01",
+      "dispatches": 5,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "hold",
+        "claims": [],
+        "packet_sha256": "13a1cddcb902495771cf2267aa00b15e6f080f153df7ff6d4e0933c04cfce204",
+        "reason": "추가 자료 대기"
+      }
+    },
+    {
+      "case": "SYN-SIG-01",
+      "dispatches": 6,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "hold",
+        "claims": [],
+        "packet_sha256": "3ec43a4de962b08bb60ceaaa8281292a586efe451193a5170f7c7424d073c6b8",
+        "reason": "추가 자료 대기"
+      }
+    }
+  ],
+  "operational_qualification": "pending signed evidence, issuer and historical key verification"
+}
