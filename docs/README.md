@@ -2,6 +2,8 @@
 
 [프로젝트 개요](../README.md) · [기획 명세](planning-spec.md) · [Inspect AI·Harbor 비교와 채택 근거](research/inspect-harbor.md) · [Linux 실행 환경](../containers/linux/README.md)
 
+[v0.3.3 기획안 · 하위 모델 역할 계약 비교와 코드 품질 개선](milestones/v0.3.3/README.md)
+
 [v0.3.2 기획안 · 독립 리뷰 실행 근거와 계약 재측정](milestones/v0.3.2/README.md)
 
 ## 개발 단계와 검증 기록

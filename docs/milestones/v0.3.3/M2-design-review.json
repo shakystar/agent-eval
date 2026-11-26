@@ -1,0 +1,180 @@
+{
+  "scope": "기획 인수와 고정 기준 코드 구조 검토",
+  "plan_source_commit": "c1192bc",
+  "plan_review": {
+    "status": "accepted",
+    "decision": "accept",
+    "reason": "기획 명세를 인수한다. M2는 정책 조항·소스 위치에 연결한 리뷰 지적별 처분, 라우팅 견본 diff와 전후 회귀 결과를 남긴다. M3는 같은 모델·effort·입력·도구·캐시에서 계약 본문만 바꾼 블라인드 대응표를 남긴다. M4에서 두 산출물을 별도로 판정하므로 라우팅 구현 성공을 코드 품질 개선이나 계약 우위의 증거로 대신할 수 없다. Docker 복구와 컨텍스트 메모리는 범위 밖이다.\n다음 단계는 M0에서 지원 조합표, 비공개 합성 사례·채점표와 슬롯별 판정 규칙을 동결하는 것이다. 중복 호출 반례는 제출 경계에서 같은 슬롯을 두 번 호출해 같은 경로에 동일한 결과를 덮어쓰도록 설계한다. 예상 관측값은 결과 파일 1개, 독립 수신 원장의 제출 2회·턴 시작 2회다. 파일 내용까지 일치해도 슬롯당 1회 조건 위반이므로 두 시도를 모두 예산에 산입하고 해당 쌍은 무효로 남기며 재제출하지 않는다. 미지원 조합은 제출·턴 시작이 각각 0회여야 하며, 지원 조합도 요청 모델·effort가 실제 세션·턴과 다르면 채점하지 않고 중단한다. 실패를 포함해 라운드당 16회·총 32회가 상한이며, 중요 오류 1건 또는 한 계약의 같은 비중요 축에서 결함 사례 2건이면 남은 호출을 중단한다.\n후보는 목록에서만 발견됐고 기존 경로는 거부됐으며 후보 실호출은 0회다. 다음 모델 진단은 유효 쌍 8/8, 양팔 절대 기준 통과, 불일치 0/32와 함께 후보의 능력·가격 순서, 종단 수락, 시험 권한이 확인될 때만 검토한다. 0/32는 동등성 증명이 아니며 계약 간 품질 차이와 프로젝트 비용 효과는 미확인이다. 연구팀의 계약 채택·운영 하향 보류는 유지한다. 이번 판정은 구현·실호출·배포 승인이 아니다.",
+    "owner": "강이현",
+    "member_id": "acl-005",
+    "turns": [
+      {
+        "actual_member_id": "acl-010",
+        "receipt_sha256": "cfb705c90fad3946fa2ba430fe1ae7e81270510c1abb5ed16830d632400490e2",
+        "run_id": "r-536ff96e21294b6d9c5cdf8ad1cd2c89"
+      },
+      {
+        "actual_member_id": "acl-005",
+        "receipt_sha256": "00271eee9faa2dc75f39ba3525a4a2596a6cf5c1502313e98fe789ac488ef7ee",
+        "run_id": "r-524d599435834cc88cc35c3d026dcbe8"
+      }
+    ],
+    "input_sha256": "343af9f8060f72b1e8176f21b0ce4cac995699bc044805c18571a3e190fcc2e9"
+  },
+  "design_assignment": {
+    "member": "acl-009",
+    "receipt_sha256": "0a1c1b1cf9d73e8c07d47e2372dd67f241e64f53b4cebeb00b88635efa052e0d",
+    "findings": {
+      "criteria": [
+        {
+          "comparison": "공유 런타임 설정을 도입하면 배포 의존성이 늘어난다. 반례로 한쪽에만 새 effort를 추가하면 계획은 수락되지만 브리지는 거절할 수 있다. 이는 관측된 후보 실패가 아니라 드리프트를 검출할 시험이다.",
+          "design_decision": "채택",
+          "finding": "Python의 roster, planning catalog, handoff runner, runtime은 이미 supported_route를 공유한다. Go 브리지는 같은 모델·effort 허용 목록을 별도로 검사한다. 공통 모듈을 더 추출하기보다 두 언어가 같은 계약 벡터를 검증하도록 한다.",
+          "id": "M2-ROUTE",
+          "refs": [
+            "E1",
+            "E2",
+            "E3",
+            "E4"
+          ],
+          "status": "미실행",
+          "verification": "동일한 기준·후보 환경에서 모델 별칭과 정규화된 모델명, 허용·비허용 effort, 플래그 생략과 명시적 빈 값, 거절 시 종료 상태와 상태 변경 여부를 각 공개 경계에서 비교한다. 별칭은 현재 이를 해석하는 경계에서만 기대한다."
+        },
+        {
+          "comparison": "roster의 계획 진입점은 context 없이 호출하고 bound_plan은 context가 있을 때만 승인 검사한다. 무조건 승인하도록 합치면 계획 생성 동작이 달라질 수 있고, 선택적 검사를 실행 승인으로 간주하면 누락된 context를 놓칠 수 있다. 제공된 줄만으로 승인 우회나 실제 실행 실패를 단정하지 않는다.",
+          "design_decision": "조건부",
+          "finding": "bound_plan은 카탈로그 로드, 선택적 승인 검사, 계약 조립을 함께 한다. 호출부 추적으로 실행 경로의 승인 책임을 확인한 뒤, 필요하면 기존 조립 흐름은 유지하고 승인 검사만 이름 있는 함수로 분리한다.",
+          "id": "M2-PLANNING",
+          "refs": [
+            "E2",
+            "E3",
+            "E5"
+          ],
+          "status": "미실행",
+          "verification": "같은 리비전과 카탈로그에서 계획 생성과 실행을 별도로 비교한다. 승인·미승인 UID, 잘못된 팀과 목표 문구, 실행 시 context 누락에 대해 오류 상태, 거절 전 제출·상태 변경 여부, 유효 입력의 계약 바이트와 SHA를 대조한다."
+        },
+        {
+          "comparison": "현재 사전 조회와 검증 순서를 유지한다. 반례로 검증을 선택된 멤버나 목표로만 좁히면, 사용하지 않는 항목이 잘못된 카탈로그도 기존과 달리 수락할 수 있다.",
+          "design_decision": "기각",
+          "finding": "팀·멤버·목표 조회에 새 인덱스나 범용 전략 객체를 추가하지 않는다. 제공된 구현은 이미 사전으로 키를 조회하며, 비용 병목을 보여 주는 측정이 없다.",
+          "id": "M2-ALGORITHM",
+          "refs": [
+            "E2",
+            "E5"
+          ],
+          "status": "미실행",
+          "verification": "향후 구조 변경이 제안되면 선택되지 않은 항목이 잘못된 카탈로그도 같은 오류로 거절되는지 확인한다. 성능 주장은 동일 환경과 대표 카탈로그에서 기준·후보 측정값이 있을 때만 검토한다."
+        },
+        {
+          "finding": "v0.3.2의 독립 인수는 과거 기록이다. v0.3.3 후보에서 사용량 계약과 M3의 네이티브 종료·잠금·커밋 마커 회귀가 보존됐는지는 확인되지 않았다.",
+          "id": "M2-REGRESSIONS",
+          "refs": [
+            "E6",
+            "E7",
+            "E8"
+          ],
+          "status": "미실행",
+          "verification": "같은 합성 입력과 초기 상태 조건에서 누락된 사용량은 uncertain, 명시적 0은 verified인지 원본 영수증과 판정을 대조한다. 완료 턴 수, 기존 영수증 해시, 재조회 시 추가 제출 수는 별도로 확인하고, M3 회귀도 동일 사례로 재검증한다."
+        }
+      ],
+      "evidence_refs": [
+        {
+          "id": "E1",
+          "kind": "제공 코드 발췌",
+          "source": "role-orchestrator/role_orchestrator/contracts.py:11-15; handoff_runner.py:28,104; runtime.py:13,50"
+        },
+        {
+          "id": "E2",
+          "kind": "제공 코드 발췌",
+          "source": "role-orchestrator/role_orchestrator/planning_catalog.py:39-93"
+        },
+        {
+          "id": "E3",
+          "kind": "제공 코드 발췌",
+          "source": "role-orchestrator/role_orchestrator/roster.py:50-81"
+        },
+        {
+          "id": "E4",
+          "kind": "제공 코드 발췌",
+          "source": "role-runtime/cmd/runtime-bridge/main.go:142-179"
+        },
+        {
+          "clauses": [
+            "OWN-01",
+            "API-01",
+            "SER-01",
+            "REC-01",
+            "READ-01",
+            "ERR-01",
+            "TEST-01"
+          ],
+          "id": "E5",
+          "kind": "제공 정책 발췌",
+          "source": "evidence.policy"
+        },
+        {
+          "historical_candidate": {
+            "codex-adapter": "007e055",
+            "role-orchestrator": "571c53d",
+            "role-runtime": "4a457bb"
+          },
+          "id": "E6",
+          "kind": "과거 요약, 원본 영수증 아님",
+          "source": "evidence.prior_quality / 독립 인수 결과"
+        },
+        {
+          "id": "E7",
+          "kind": "과거 인수 요약",
+          "source": "evidence.prior_concurrency"
+        },
+        {
+          "id": "E8",
+          "kind": "제공 기준 리비전",
+          "revisions": {
+            "agent-collaboration-lab": "112d4629d4261b4403ff33fbde43e36431c435f4",
+            "agent-eval": "ba42070c2dadf7a625f1b84bf5d92a767688fef2",
+            "codex-adapter": "6dce52deeb0b89aaecf0c617fa9d10ae6392e2d0",
+            "role-orchestrator": "6d74153ced6b558b8371c0f50201d1979af8f63e",
+            "role-runtime": "45274ee28a053aec3f8dca8f4aecfcbb80138bcb"
+          },
+          "source": "baseline"
+        }
+      ],
+      "unresolved": [
+        {
+          "detail": "v0.3.3 후보 전체 SHA와 빌드 해시, 실행 영수증, 테스트·검증기 원본 결과가 제공되지 않았다. 미실행은 이 보고서에서 실행하거나 확인하지 못했다는 뜻이며, 검증기의 상태와 일치하는지는 대조할 수 없다.",
+          "disposition": "마감 보류",
+          "id": "RELEASE"
+        },
+        {
+          "detail": "G의 별도 인수 기준과 정책 전체 Git SHA를 확인해야 한다. 기준·후보 비교 시 호스트·도구 버전, backend=codex, 모델·effort, 합성 입력, 초기 상태 조건, 실행 명령과 생략 사유를 고정하거나 차이를 기록해야 한다.",
+          "id": "COMPARISON"
+        },
+        {
+          "detail": "실제 실행 진입점에서 승인 검사가 제출 전에 반드시 적용되는지 제공된 발췌만으로는 확인할 수 없다.",
+          "id": "PLANNING-BOUNDARY"
+        }
+      ]
+    }
+  },
+  "design_review": {
+    "status": "accepted",
+    "decision": "accept",
+    "reason": "상류의 설계 판정에 동의한다. 공통화할 것은 허용 목록의 구현이 아니라 경계별 기대값을 담은 시험 벡터다. 일반 roster는 모델 별칭만, 계획 카탈로그는 별칭과 정규명 모두를 받는다. Go 브리지는 명시한 모델에는 정규명만 허용하며, 모델·effort 플래그를 생략하면 해당 값 검사를 건너뛰지만 명시적 빈 값은 거절한다. 한쪽에만 새 effort를 허용하는 결함을 넣었을 때 정규명 입력의 수락·거절 차이를 검출해야 한다. 승인 검사 분리는 조건부다. context 없는 계획 생성은 실행 승인이 아니다. 실제 실행 진입점에서 context가 없거나 UID·팀·목표가 승인과 맞지 않을 때 제출이나 상태 변경이 한 번이라도 발생하면 실패로 판정한다. 인덱스 추가는 병목 근거가 없어 기각한다. 현재 검증 범위는 선택된 팀의 모든 멤버·목표다. 검사를 사용 항목으로만 좁히는 결함을 넣어 미사용 멤버의 잘못된 바인딩이나 미사용 목표의 잘못된 승인이 수락되면 실패다.\n다음 단계는 패치 공개 전에 이 기대값과 재조회 관측 구간을 고정하는 것이다. 재조회 경로에 중복 제출을 넣어 같은 바이트의 영수증 파일 하나만 남기는 반례에서는 파일 수와 해시가 같아도 재조회 시작부터 종료까지 추가 제출이 1건이면 실패다. 완료 턴 수도 별도로 대조한다. 사용량 누락은 uncertain, 명시적 0은 verified인지 원본 영수증으로 구별하고 M3 종료·잠금·커밋 마커 사례도 재검증한다. 이는 관측된 후보 결함이 아니라 시험할 반례다. 실행 경로의 제출 전 승인 책임, G 인수 기준과 정책 전체 SHA, 후보 전체 SHA·빌드 해시 및 동일 조건의 기준·후보 실행 영수증과 검증기 원본 결과는 미확인이다. 판정 범위는 설계 권고에 한하며 구현·실측·출시 승인이 아니다.",
+    "owner": "강이현",
+    "member_id": "acl-005",
+    "turns": [
+      {
+        "actual_member_id": "acl-011",
+        "receipt_sha256": "11b0e2e8f8d910069f6e6178218a38572b7c999a19a005b2a7966e3737193beb",
+        "run_id": "r-54accc89263f4c0f98ce7011746cfcea"
+      },
+      {
+        "actual_member_id": "acl-005",
+        "receipt_sha256": "86c6d83be29941a4b01cbad8d04cc8b3c95932145db3a9b921ba8da70e2ee31f",
+        "run_id": "r-4af2f17803f44c279ed0266a08f820f6"
+      }
+    ],
+    "input_sha256": "5365edfefe85a47d2068d2903ba0c9b1d8bca6d71ba68a2e4236bdf6d9e272a4"
+  }
+}
