@@ -1,0 +1,224 @@
+{
+  "execution_freeze": {
+    "role": "acl-025",
+    "model": "gpt-6.2-astra",
+    "revisions": {
+      "high": "112d4629d4261b4403ff33fbde43e36431c435f4",
+      "medium": "1fd0a6b8444621159a99b30272a25ff17e21b69d"
+    },
+    "role_instruction_sha256": "e00d5a3bc6247da34fa7a8094dfd60474cc5058bccee083c973262bf7a150ff1",
+    "eval": "225efc8241a5efa637e24a65e1bb911addbe10b0",
+    "orchestrator": "6d74153ced6b558b8371c0f50201d1979af8f63e",
+    "bridge_sha256": "0b80fc27daf9bcfec9d998b09726b04f69550c953bb02e83937f5aa3cf69db8b",
+    "order": [
+      [
+        "CAL01",
+        "high"
+      ],
+      [
+        "CAL01",
+        "medium"
+      ],
+      [
+        "CAL02",
+        "medium"
+      ],
+      [
+        "CAL02",
+        "high"
+      ]
+    ],
+    "attempts_per_slot": 1,
+    "deadline_seconds_per_assignment": 600,
+    "inputs": {
+      "CAL01": {
+        "sha256": "bbade05217450ed14677a481d9b80211227fff5f1b63915966ee24e678c72797",
+        "draft_sha256": "9af7c288d7f92e64a746f959f8a3808081af4f0ebb11b5982e302f67b758a5cc"
+      },
+      "CAL02": {
+        "sha256": "8cf8cd77013ba6e9fba2549d496d280417e20b85b58c592c1cd623899cb1b9d9",
+        "draft_sha256": "504b1e53b17455c5b83b0925c6173a8d86d5ba5839a43a5de7aa8209ecd77a05"
+      }
+    },
+    "expected_usage": "record input/output/cached per final matched turn, never add cached to input",
+    "elapsed": "monotonic time before launcher start to receipt-bearing process completion",
+    "release_rule": "admission accept and verified matching session/turn model and effort required; technical failure stays in denominator. Four diagnostic assignments only."
+  },
+  "scoring_freeze": {
+    "execution_freeze_sha256": "3290791b44098f4ac89d79430cc3906126001eff7f347d33464048fab1bb402e",
+    "scorer_sha256": "af473c7a8cb36ccfdf12c256545cd4dc26210801c8f0bd0a2778cb88a8516f32",
+    "private_answer_key_sha256": "087da18b856c711a64cc1a81deb1ba96fb121ebb6c797360ea0061d4965dca79",
+    "timeout_disposition": "600s: retain as technical failure/unknown, no resubmission. Freeze all observations before unblinding.",
+    "provider_check": "Require a single unambiguous profile for matching session+turn; absent/conflicting evidence holds the slot.",
+    "purpose": "2 public examples for calibration only; no change to operating role or quality superiority claim."
+  },
+  "acceptance": {
+    "status": "accepted",
+    "reason": "M4 실험 결과 기록을 수락한다. 권고는 판정불가이며, acl-025의 운영 설정은 변경하지 않는다. 전체 분모는 계획한 4배정이다. medium 2건은 각각 단일 시작과 영수증의 모델·추론 수준이 확인됐고 블라인드 채점을 통과했다. CAL01은 원문이 문의 기록 9줄을 명시하므로 줄 수 주장을 지지한다. CAL02는 한 채널의 재시도 12건만 있고 전체 요청 수가 없어 12% 주장을 판단할 수 없다. high 2건은 모두 계정 조회 단계의 라우팅 시간 초과로 실행이 시작되지 않았고 영수증도 없다. 두 건은 품질 실패가 아닌 기술 실패로 분모에 남기며, 재호출은 0회다. 채점 가능한 동일 사례 대응쌍은 0/2쌍이므로 품질·비용 우열은 판단할 수 없다. 실제 관측 비용은 medium 입력 14,461토큰과 출력 682토큰, 합계 15,143토큰이다. 캐시 입력 3,328토큰은 입력에 포함되며 high 사용량은 0이 아니라 미상이다. 현재 기록과 점수 잠금을 유지하고, 라우팅 오류를 해결한 뒤 별도로 동결한 실험에서 양쪽 영수증과 사용량이 있는 쌍만 비교한다. 별도 반례 시험에서는 1회 호출만 허용된 슬롯의 실행 경계에 두 번째 동일 호출을 넣는다. 최종 파일과 해시가 같아도 호출 기록이 2건이면 위반으로 판정해야 한다. 이 반례의 실행 결과는 아직 없다.",
+    "members": [
+      {
+        "member": "acl-010",
+        "receipt_sha256": "e567b2a6149bd36e5e2a22a84d43af5665d332c79930671257949e938876172a",
+        "verdict": {
+          "decision": "accept",
+          "owner": "이서진",
+          "reason": "M4 최종 인수 기록을 수락한다. 권고는 판정불가이며, 운영 설정은 변경하지 않는다. 계획된 4배정 중 medium 2건은 영수증과 실제 모델·추론 수준이 일치했고 블라인드 채점에서 모두 통과했다. high 2건은 워크스페이스 라우팅 오류로 실행이 시작되지 않아 검증 가능한 영수증이 없었다. 두 기술 실패는 전체 분모에 남기며 재호출은 0회였다. 채점 가능한 동일 사례 대응쌍은 0/2쌍이므로 품질·비용 우열을 판단할 수 없다. 실제 관측 비용은 medium 2건의 입력 14,461토큰과 출력 682토큰(합계 15,143토큰)이다. 캐시 입력 3,328토큰은 입력에 포함되며, high 사용량은 0이 아니라 미상이다. 현재 기록과 점수 잠금을 유지하고, 라우팅 오류를 해결한 뒤 별도로 동결한 실험에서 두 설정의 영수증과 사용량이 모두 확보된 동일 사례 쌍만 비교한다."
+        }
+      },
+      {
+        "member": "acl-005",
+        "receipt_sha256": "2a7cbda84631a10568cd6b9ad665cda10b1f1a648317e5b0e1a5daad67d5c2c5",
+        "verdict": {
+          "decision": "accept",
+          "owner": "강이현",
+          "reason": "M4 실험 결과 기록을 수락한다. 권고는 판정불가이며, acl-025의 운영 설정은 변경하지 않는다. 전체 분모는 계획한 4배정이다. medium 2건은 각각 단일 시작과 영수증의 모델·추론 수준이 확인됐고 블라인드 채점을 통과했다. CAL01은 원문이 문의 기록 9줄을 명시하므로 줄 수 주장을 지지한다. CAL02는 한 채널의 재시도 12건만 있고 전체 요청 수가 없어 12% 주장을 판단할 수 없다. high 2건은 모두 계정 조회 단계의 라우팅 시간 초과로 실행이 시작되지 않았고 영수증도 없다. 두 건은 품질 실패가 아닌 기술 실패로 분모에 남기며, 재호출은 0회다. 채점 가능한 동일 사례 대응쌍은 0/2쌍이므로 품질·비용 우열은 판단할 수 없다. 실제 관측 비용은 medium 입력 14,461토큰과 출력 682토큰, 합계 15,143토큰이다. 캐시 입력 3,328토큰은 입력에 포함되며 high 사용량은 0이 아니라 미상이다. 현재 기록과 점수 잠금을 유지하고, 라우팅 오류를 해결한 뒤 별도로 동결한 실험에서 양쪽 영수증과 사용량이 있는 쌍만 비교한다. 별도 반례 시험에서는 1회 호출만 허용된 슬롯의 실행 경계에 두 번째 동일 호출을 넣는다. 최종 파일과 해시가 같아도 호출 기록이 2건이면 위반으로 판정해야 한다. 이 반례의 실행 결과는 아직 없다."
+        }
+      }
+    ]
+  },
+  "blind_review": {
+    "status": "accepted",
+    "reason": "제공된 두 ID의 잠금 점수를 수락한다. 276333437648a04ec603(CAL02): pass. 원문 S의 12는 한 채널에서 기록한 금요일 재시도 건수다. 의견은 전체 요청 수를 분모로 제시하지 않은 S로는 초안의 12%를 판단할 수 없다며 q를 undetermined로 판정하고 S의 denominator 누락을 명시했다. a5689f85b546b040eb8a(CAL01): pass. S가 문의 기록 9줄을 명시하므로 초안의 줄 수 주장에 대한 support가 맞다. 중복 제거와 분모는 줄 수 판정에 필요하지 않다. 검토자가 명단에 없다는 자유서술은 부정확하지만, 적격성 판단의 기준인 네이티브 영수증 대조 결과 두 ID 모두 배정과 일치하고 이해충돌이 없다. 상위 검토와 독립 재채점 결과가 일치하며, 두 사례에서 과보류·오통과·필수 근거 누락은 확인되지 않았다. 두 점수의 잠금을 유지하고 입력 없는 슬롯은 미판정으로 남긴다. 별도 시험할 거짓 통과 반례는 1회 호출이 요구되는 실행 경계에 두 번째 동일 호출을 넣는 것이다. 최종 파일과 해시가 같아도 호출 기록이 2건이면 위반이므로, 파일 일치만 확인하지 말고 호출 횟수도 대조한다. 이 반례의 실행 기록은 제공되지 않았다.",
+    "members": [
+      {
+        "member": "acl-010",
+        "receipt_sha256": "f6cb538ea222aa37f89eb21c0f6eee9f1a9b9515fa3a5f0445210ee600ce8af0",
+        "verdict": {
+          "decision": "accept",
+          "owner": "이서진",
+          "reason": "제공된 두 익명 응답의 잠금 점수를 수락한다. 276333437648a04ec603(CAL02): pass. 원문은 한 채널의 재시도 12건만 제시하고 초안은 금요일 전체 요청의 12%를 주장한다. 의견은 q를 undetermined로 판정하고 근거 S의 분모 누락을 명시해 동결 기준을 충족한다. a5689f85b546b040eb8a(CAL01): pass. 원문이 문의 기록 9줄을 직접 명시하고 의견이 초안의 줄 수 주장만 support로 판정해 동결 기준을 충족한다. 중복 제거와 분모에 관한 지적은 고유 문의자 수와 비율에만 해당하며, 검토자 자기서술은 적격성 근거로 사용하지 않았다. 두 응답 모두 제공된 네이티브 영수증 대조 결과상 적격하며, 과보류·오통과·필수 근거 누락은 확인되지 않았다. 두 점수의 잠금을 유지하고, 입력이 없는 슬롯은 미판정으로 남겨 원문·초안·의견·적격성 증빙이 제공된 뒤 검토한다."
+        }
+      },
+      {
+        "member": "acl-005",
+        "receipt_sha256": "c3ccce6aadf400a9f5f048e0c46f1a213ed1a0a4ecb1173e0a540e233c06a34c",
+        "verdict": {
+          "decision": "accept",
+          "owner": "강이현",
+          "reason": "제공된 두 ID의 잠금 점수를 수락한다. 276333437648a04ec603(CAL02): pass. 원문 S의 12는 한 채널에서 기록한 금요일 재시도 건수다. 의견은 전체 요청 수를 분모로 제시하지 않은 S로는 초안의 12%를 판단할 수 없다며 q를 undetermined로 판정하고 S의 denominator 누락을 명시했다. a5689f85b546b040eb8a(CAL01): pass. S가 문의 기록 9줄을 명시하므로 초안의 줄 수 주장에 대한 support가 맞다. 중복 제거와 분모는 줄 수 판정에 필요하지 않다. 검토자가 명단에 없다는 자유서술은 부정확하지만, 적격성 판단의 기준인 네이티브 영수증 대조 결과 두 ID 모두 배정과 일치하고 이해충돌이 없다. 상위 검토와 독립 재채점 결과가 일치하며, 두 사례에서 과보류·오통과·필수 근거 누락은 확인되지 않았다. 두 점수의 잠금을 유지하고 입력 없는 슬롯은 미판정으로 남긴다. 별도 시험할 거짓 통과 반례는 1회 호출이 요구되는 실행 경계에 두 번째 동일 호출을 넣는 것이다. 최종 파일과 해시가 같아도 호출 기록이 2건이면 위반이므로, 파일 일치만 확인하지 말고 호출 횟수도 대조한다. 이 반례의 실행 기록은 제공되지 않았다."
+        }
+      }
+    ]
+  },
+  "blind_lock_sha256": "f8d89f5a8b8600c53e1dec2a5c1642a9e0860e6390c46084a3f2133caf33dfe3",
+  "blind_packet_sha256": "0a2ab6547dcf6e040e327d50a0f1ec26e7fa4c43aada56a7ad5656d3c68168e8",
+  "scores_locked": {
+    "276333437648a04ec603": "pass",
+    "a5689f85b546b040eb8a": "pass"
+  },
+  "observations": [
+    {
+      "case": "CAL01",
+      "effort": "high",
+      "elapsed_seconds": 30.704,
+      "returncode": 3,
+      "timeout": false,
+      "starts": 0,
+      "acks": 0,
+      "ledger_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gate": "hold",
+      "reason": "missing_invalid_or_mixed_ledger",
+      "native_receipt": null,
+      "eligibility": "hold",
+      "runtime_failures": [
+        {
+          "version": 1,
+          "stage": "account_read",
+          "code": "workspace_routing_timeout",
+          "execution": "not_started",
+          "retryable": true,
+          "attempts": 1
+        }
+      ]
+    },
+    {
+      "case": "CAL01",
+      "effort": "medium",
+      "elapsed_seconds": 18.37,
+      "returncode": 0,
+      "timeout": false,
+      "starts": 1,
+      "acks": 1,
+      "ledger_sha256": "56cd955003ddc0227f76f095c0b7d5f24690735bc9970637d3f8394ee76b464e",
+      "gate": "accept",
+      "reason": "verified_single_start",
+      "native_receipt": "1d44b2766177237e659469066ae43351c1df3f19bee83e91f562cbff860aec9f",
+      "eligibility": "eligible",
+      "observed_profiles": [
+        [
+          "gpt-6.2-astra",
+          "medium"
+        ]
+      ],
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 7208,
+        "output_tokens": 349
+      },
+      "usage_scope": "final_matched_tokenUsage.last",
+      "quality": "pass",
+      "blind_id": "a5689f85b546b040eb8a",
+      "total_tokens": 7557
+    },
+    {
+      "case": "CAL02",
+      "effort": "medium",
+      "elapsed_seconds": 23.442,
+      "returncode": 0,
+      "timeout": false,
+      "starts": 1,
+      "acks": 1,
+      "ledger_sha256": "425f3d01fd530e21d25c89022bd4737b0a102f85fd6b766f3a76c5f418f6e094",
+      "gate": "accept",
+      "reason": "verified_single_start",
+      "native_receipt": "6bd9cbe6e548c3c69191dcd6d00fef139880b1525e384ca02e51a15ba3d6a9b2",
+      "eligibility": "eligible",
+      "observed_profiles": [
+        [
+          "gpt-6.2-astra",
+          "medium"
+        ]
+      ],
+      "usage": {
+        "cached_input_tokens": 3328,
+        "input_tokens": 7253,
+        "output_tokens": 333
+      },
+      "usage_scope": "final_matched_tokenUsage.last",
+      "quality": "pass",
+      "blind_id": "276333437648a04ec603",
+      "total_tokens": 7586
+    },
+    {
+      "case": "CAL02",
+      "effort": "high",
+      "elapsed_seconds": 30.687,
+      "returncode": 3,
+      "timeout": false,
+      "starts": 0,
+      "acks": 0,
+      "ledger_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "gate": "hold",
+      "reason": "missing_invalid_or_mixed_ledger",
+      "native_receipt": null,
+      "eligibility": "hold",
+      "runtime_failures": [
+        {
+          "version": 1,
+          "stage": "account_read",
+          "code": "workspace_routing_timeout",
+          "execution": "not_started",
+          "retryable": true,
+          "attempts": 1
+        }
+      ]
+    }
+  ],
+  "planned": 4,
+  "model_starts": 2,
+  "eligible": 2,
+  "complete_case_pairs": 0,
+  "resubmissions": 0,
+  "measured_input_plus_output": 15143,
+  "scope": "Observed tokens for eligible turns only. Two public calibration cases. Model routing expansion, roster changes, Docker recovery and release are outside this experiment."
+}

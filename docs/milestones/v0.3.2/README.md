@@ -7,7 +7,7 @@
 [M0 인수 규약 초안과 독립 검토 반영 사항](M0.md) · [인수 판정과 측정 사용량](m0-review.json) · [M1 착수 전 기술 실사 판정](m1-prestart.json) · [M1 착수 전 재심](M1-readiness.md)
 
 
-**M3 종료.** 배정 슬롯 영속화와 채점 경계는 [PR #33](https://github.com/shakystar/agent-eval/pull/33)에서 병합했다. 역할 계약 품질 우위는 판정불가이며 현행 계약을 유지한다. 아래 설계 표의 수치와 기대값은 기획 당시 제안이다. [최종 인수와 CAL01 측정](m3-closeout.json) · [트리와 영수증 대조](m3-slot-provenance.json) · [M4 첫 비교 범위](M4-scope.md)
+**M3 종료.** 배정 슬롯 영속화와 채점 경계는 [PR #33](https://github.com/shakystar/agent-eval/pull/33)에서 병합했다. 역할 계약 품질 우위는 판정불가이며 현행 계약을 유지한다. 아래 설계 표의 수치와 기대값은 기획 당시 제안이다. [최종 인수와 CAL01 측정](m3-closeout.json) · [트리와 영수증 대조](m3-slot-provenance.json) · [M4 첫 비교 범위](M4-scope.md) · [M4 실험 결과와 최종 인수](M4-results.md)
 
 ## 목표와 시작점
 
