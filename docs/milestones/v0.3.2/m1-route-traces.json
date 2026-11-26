@@ -1,0 +1,383 @@
+[
+  {
+    "route": "request",
+    "case": "SYN-REQ-01",
+    "decision": "hold",
+    "packet": "3ad0fa797671e37d066fb5c0ef829c235473d0ba884fbedb041ae0ac47f8265a",
+    "rows": [
+      {
+        "phase": "observe",
+        "task": "research-evidence-route--1",
+        "run": "r-c91688e6b2ac4c7898433ce0c5837255",
+        "attempt": "a-221906ec7d192389ae842569081be233",
+        "receipt": "88dbb8a8894bd737a085a230462ee33eca6e30eae9e05575a25b0c2ccd1545cb",
+        "thread_sha256": "f9f22d59b3739c53ce831b1f9751ad09045188877047f02f36e3217833f41180",
+        "turn_sha256": "18431242db5ac76a0ef00dc3cf52d648597f8e5592f0fcf1eee6ecc445a4863a",
+        "output_sha256": "b48e3500cf7a635895b05d1be6ee9945bbdb87ab4ca960fdf1f6049dd1ba4d14",
+        "checks": {
+          "case": true,
+          "assignment": true,
+          "run": true,
+          "attempt": true,
+          "role": true,
+          "receipt": true,
+          "input": true,
+          "session": true,
+          "session_meta": true,
+          "completion": true,
+          "output": true,
+          "upstream_receipts": true
+        },
+        "usage": {
+          "input_tokens": 6963,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2162,
+          "reasoning_output_tokens": 635,
+          "total_tokens": 9125
+        },
+        "usage_records": 1
+      },
+      {
+        "phase": "draft",
+        "task": "research-evidence-route--2",
+        "run": "r-8164637418244d9985560f98200d4002",
+        "attempt": "a-9877a997f0635427ca98b28047a9377c",
+        "receipt": "d24bf338e4d0fc38a21990af8b8c6df392d7415b29060222fbcf8f2d28c01c73",
+        "thread_sha256": "5c4901d5962e0bec76cf208a4173717555c739b6fc440259733bb0f2c52ed748",
+        "turn_sha256": "97966c20c9a9c03e466baf7c729232338253ab1c444ec49e363e44d11eed0a2a",
+        "output_sha256": "87a75a89ee42164736981c240721cecd2986bff936f0bd60bf66488107cd17b1",
+        "checks": {
+          "case": true,
+          "assignment": true,
+          "run": true,
+          "attempt": true,
+          "role": true,
+          "receipt": true,
+          "input": true,
+          "session": true,
+          "session_meta": true,
+          "completion": true,
+          "output": true,
+          "upstream_receipts": true
+        },
+        "usage": {
+          "input_tokens": 8750,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1563,
+          "reasoning_output_tokens": 39,
+          "total_tokens": 10313
+        },
+        "usage_records": 1
+      },
+      {
+        "phase": "review",
+        "task": "research-evidence-route--3",
+        "run": "r-f8bdb835c142474c976e3269edd3c82d",
+        "attempt": "a-985c7f80d52b9428f6ef26249b03422f",
+        "receipt": "8530fd262742009f5ef5d7d47d8e8b94b65831ac2fc372ee3cb1796b068f8262",
+        "thread_sha256": "dde9e4e198693f28e3ff0accc7f68ac3e0805a37225f105be97625fc2a00464f",
+        "turn_sha256": "676dff2303ca85db400a77de9aee00e3771ef09ba5da35d39084cd0b1e6caa98",
+        "output_sha256": "b297a0bd35d0112eac0204b8059ba42a4c8836ec795bbb2bbd812db9dc6e0c24",
+        "checks": {
+          "case": true,
+          "assignment": true,
+          "run": true,
+          "attempt": true,
+          "role": true,
+          "receipt": true,
+          "input": true,
+          "session": true,
+          "session_meta": true,
+          "completion": true,
+          "output": true,
+          "upstream_receipts": true
+        },
+        "usage": {
+          "input_tokens": 10279,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 994,
+          "reasoning_output_tokens": 19,
+          "total_tokens": 11273
+        },
+        "usage_records": 1
+      },
+      {
+        "phase": "synthesize",
+        "task": "research-evidence-route--4",
+        "run": "r-7ce5d478e77149ccb7a89727d0425eed",
+        "attempt": "a-6e65e11344639f794f74c6d967963d75",
+        "receipt": "47bc71fa35db7f90a2073e6685916985d2fc49af6738093a5016ada9c4d002ac",
+        "thread_sha256": "cc381ba0fe0b3a0953f89867f5ea84d441ad43310017a6072fd700081d6bca3c",
+        "turn_sha256": "1539aaa247590f22186684af8072e81037f0dd12c0eb05ffc6efeb2620c3db9e",
+        "output_sha256": "429bd93079536e90da05377a1e38139fae5cd904b4f3335af7d5e72c4f9620c9",
+        "checks": {
+          "case": true,
+          "assignment": true,
+          "run": true,
+          "attempt": true,
+          "role": true,
+          "receipt": true,
+          "input": true,
+          "session": true,
+          "session_meta": true,
+          "completion": true,
+          "output": true,
+          "upstream_receipts": true
+        },
+        "usage": {
+          "input_tokens": 11321,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 836,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 12157
+        },
+        "usage_records": 1
+      },
+      {
+        "phase": "decision",
+        "task": "planning--2",
+        "run": "r-f4314604ffba4b1abbdd9fb99bddca74",
+        "attempt": "a-2fd61168544c156f61c78952e37f5628",
+        "receipt": "c78db272c4fd7dae8638ae0433caa7f3a58be3774e4268341d165efbf023aec9",
+        "thread_sha256": "e9a9ad5383fdcd52e0761fb7f3220ee2915e83e9fc8e4cc31b0600fe8fbcaa4a",
+        "turn_sha256": "25529ffc3f66936c55e99f57732f58baac5070a61d03336823a6aa386ec97909",
+        "output_sha256": "d80608103b653398dbf4182f8214683f6aff71901c4870b5c27252c3526f10df",
+        "checks": {
+          "case": true,
+          "assignment": true,
+          "run": true,
+          "attempt": true,
+          "role": true,
+          "receipt": true,
+          "input": true,
+          "session": true,
+          "session_meta": true,
+          "completion": true,
+          "output": true,
+          "upstream_receipts": true,
+          "decision": true
+        },
+        "usage": {
+          "input_tokens": 17335,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 464,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 17799
+        },
+        "usage_records": 1
+      }
+    ]
+  },
+  {
+    "route": "signal",
+    "case": "SYN-SIG-01",
+    "decision": "select_followup",
+    "packet": "2e39c2656bf36e355a2e13b1c9604a427f269384e92e4f02b8924438ba995d0b",
+    "rows": [
+      {
+        "phase": "intake",
+        "task": "planning--1",
+        "run": "r-c1238f12bbcc4ccd8545a1b3d79a0e65",
+        "attempt": "a-38d6e4c4e80525ab0552fd42e9548c5d",
+        "receipt": "8ed6190493492bfa3c6ad21aca15539fe92019f97f7926798b6a898a003b6107",
+        "thread_sha256": "05d9919361f5161e0c14f8f9aa2ed3bbddea73257ec0fb18d0f82f0455d81cc2",
+        "turn_sha256": "6e0c35ee49e10916f86bc93c9ca6b7e3d24db4a39d4fe2f1e8e9b0e6122bfba2",
+        "output_sha256": "c51c8b7c9c39ac6978f31be37665dff127c55378898d747b82ceb5f2881fd917",
+        "checks": {
+          "case": true,
+          "assignment": true,
+          "run": true,
+          "attempt": true,
+          "role": true,
+          "receipt": true,
+          "input": true,
+          "session": true,
+          "session_meta": true,
+          "completion": true,
+          "output": true,
+          "upstream_receipts": true
+        },
+        "usage": {
+          "input_tokens": 6942,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 235,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 7177
+        },
+        "usage_records": 1
+      },
+      {
+        "phase": "observe",
+        "task": "research-evidence-route--1",
+        "run": "r-52890c8dbaaa437bbd6e10a315d0765a",
+        "attempt": "a-65069b127f97735a86e73b5e65624cad",
+        "receipt": "32630e8966001c5a32496a30ef542360094e90375d575788336c3c1ef3b32654",
+        "thread_sha256": "69acf43e1f05e8c488d9deb329475fa9a47700598d648101aff1847893d1da6b",
+        "turn_sha256": "661431a2c56d06cb9bcb15f86ddadbf171cabe06c7a8bb20413c535e94dba3af",
+        "output_sha256": "9b9705d319abf7c2a6d00736ed5c49899d26602ae4728ec86030a50f153d73e4",
+        "checks": {
+          "case": true,
+          "assignment": true,
+          "run": true,
+          "attempt": true,
+          "role": true,
+          "receipt": true,
+          "input": true,
+          "session": true,
+          "session_meta": true,
+          "completion": true,
+          "output": true,
+          "upstream_receipts": true
+        },
+        "usage": {
+          "input_tokens": 7318,
+          "cached_input_tokens": 4224,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1489,
+          "reasoning_output_tokens": 384,
+          "total_tokens": 8807
+        },
+        "usage_records": 1
+      },
+      {
+        "phase": "draft",
+        "task": "research-evidence-route--2",
+        "run": "r-c69a2d78af154f3f95df6b36d2bdd250",
+        "attempt": "a-57095018fa1c9ce07c7c828769312a25",
+        "receipt": "42199fa7850a796acdb0e108d273ae75d6e2142c0258eba0c3eec659bba96f7b",
+        "thread_sha256": "fbd0a488a9bb95a4aa1d2d04fb48415eee5ff83bba217f214e4b043ab329ef4d",
+        "turn_sha256": "3c5661fe1bcb0c22a79ca177ce2df73e809ce533039579bd60883a92ef9f2f56",
+        "output_sha256": "b6e375e711df483ddfcd1d2d4855aa2ce9ae89ee00b4b1d77314216f2c75c452",
+        "checks": {
+          "case": true,
+          "assignment": true,
+          "run": true,
+          "attempt": true,
+          "role": true,
+          "receipt": true,
+          "input": true,
+          "session": true,
+          "session_meta": true,
+          "completion": true,
+          "output": true,
+          "upstream_receipts": true
+        },
+        "usage": {
+          "input_tokens": 8709,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1751,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 10460
+        },
+        "usage_records": 1
+      },
+      {
+        "phase": "review",
+        "task": "research-evidence-route--3",
+        "run": "r-81a5899b3ead4110b4c3385827bd2cba",
+        "attempt": "a-d65a586810166b5ec819ce81408a161c",
+        "receipt": "740efd2a7072a7644007de4f224d0a6ada550dbffbaf40c92aaa961d43629ece",
+        "thread_sha256": "74ce94f1616bafe4ec9d1635f1a0a1e099fd9c8bd1f82d96887255a5b23afa89",
+        "turn_sha256": "0f4796b736a850eb0beddb06e7d4f43144cd7516f1175035cd4abb2679997fea",
+        "output_sha256": "19b4655905988067fb75bd9d88207ddefcc4e5c2ecf0af041c872925b22ac3c9",
+        "checks": {
+          "case": true,
+          "assignment": true,
+          "run": true,
+          "attempt": true,
+          "role": true,
+          "receipt": true,
+          "input": true,
+          "session": true,
+          "session_meta": true,
+          "completion": true,
+          "output": true,
+          "upstream_receipts": true
+        },
+        "usage": {
+          "input_tokens": 10447,
+          "cached_input_tokens": 4352,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 943,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 11390
+        },
+        "usage_records": 1
+      },
+      {
+        "phase": "synthesize",
+        "task": "research-evidence-route--4",
+        "run": "r-ad072924990a454a9f04152c929e38d4",
+        "attempt": "a-91092bdb4e412c20574087117ddae864",
+        "receipt": "3bff2ba12b5fd0969782ab0c265ec65014e769e612afc275c586e0e817b31b65",
+        "thread_sha256": "b2e922d40715336e61c3b40c97a856241715a6c1ea3db0feef3e72af0799002c",
+        "turn_sha256": "0c6e55ececae35b9b470e91e291fedc7e2f041cfa535f4d8641cee7fc0541569",
+        "output_sha256": "175fbf2ac299245573e330253cd9224160520f06bfe3b9c64d8b7ec9cd5ea0c4",
+        "checks": {
+          "case": true,
+          "assignment": true,
+          "run": true,
+          "attempt": true,
+          "role": true,
+          "receipt": true,
+          "input": true,
+          "session": true,
+          "session_meta": true,
+          "completion": true,
+          "output": true,
+          "upstream_receipts": true
+        },
+        "usage": {
+          "input_tokens": 11449,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 809,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 12258
+        },
+        "usage_records": 1
+      },
+      {
+        "phase": "decision",
+        "task": "planning--2",
+        "run": "r-33f4551bbf994f659891c09e5135849a",
+        "attempt": "a-58211bad728f7bc6c038616ff84b2a7e",
+        "receipt": "7dd11b5d0757527907430532d431f909065d54cb1702aa9e861df8d7e0aed395",
+        "thread_sha256": "d1286910f62eed0c67965580878671bdbb5160172ebd95802141ab2e293a091b",
+        "turn_sha256": "49b9a5f10978c29d375dd7b2cfb00cf419b0ecf9d36cf331b4a920a183dea593",
+        "output_sha256": "3fe39fd7290aa418a4babc8d762937a048964542f0e03b8a4bac937ea0c3d88e",
+        "checks": {
+          "case": true,
+          "assignment": true,
+          "run": true,
+          "attempt": true,
+          "role": true,
+          "receipt": true,
+          "input": true,
+          "session": true,
+          "session_meta": true,
+          "completion": true,
+          "output": true,
+          "upstream_receipts": true,
+          "decision": true
+        },
+        "usage": {
+          "input_tokens": 17531,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 445,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 17976
+        },
+        "usage_records": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,242 @@
+{
+  "host": "native macOS 14.5 build 23F79 x86_64, no OCI image; Go 1.26.11 darwin/amd64, Python 3.11.9",
+  "executables": {
+    "baseline_bridge": "cf59fb421236dff94114a509d6f7d791b73d69f70afc30e45095acdbc96391e8",
+    "candidate_bridge": "0b2af5ee5bd19b4fa2244d721b4c4c06e346abcf3ed7c1717654c727bfc32be6",
+    "peer": "2778dd48b3f46233f43fb6b0b1d94f32c67e5efc82e9377372194af32d1b5d44",
+    "candidate_route_bridge": "0b2af5ee5bd19b4fa2244d721b4c4c06e346abcf3ed7c1717654c727bfc32be6"
+  },
+  "runs": {
+    "before": [
+      {
+        "case": "missing_last",
+        "native_usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cached_input_tokens": 0
+        },
+        "turn_count": 1,
+        "status": "verified",
+        "complete": true,
+        "action": "accept",
+        "receipt_sha256": "df9bbe19001454c5c5a35c2eb0cd7b79f51fb2681c664d312936d7068d406262",
+        "verdict_file_sha256": "8be716b34f5daf3f54686df2b197b11ca677cd4e2a1b5a752b5f6e291d1b5a85",
+        "raw_result_excerpt": {
+          "session": "test-session",
+          "turn_id": "test-turn",
+          "turn_usage": {
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cached_input_tokens": 0
+          }
+        },
+        "ledger_line": "[\"observe\", \"test-session\", \"test-turn\"]"
+      },
+      {
+        "case": "missing_counter",
+        "native_usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cached_input_tokens": 0
+        },
+        "turn_count": 1,
+        "status": "verified",
+        "complete": true,
+        "action": "accept",
+        "receipt_sha256": "067230d51a4c7e913bf50d6d564bf9c9a7e275add34ab32a29673bec70435e8a",
+        "verdict_file_sha256": "fd77ef0316c8c573c748918bf12b8907284e93f42f19fbf2deab10509cb3104b",
+        "raw_result_excerpt": {
+          "session": "test-session",
+          "turn_id": "test-turn",
+          "turn_usage": {
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cached_input_tokens": 0
+          }
+        },
+        "ledger_line": "[\"observe\", \"test-session\", \"test-turn\"]"
+      },
+      {
+        "case": "zero",
+        "native_usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cached_input_tokens": 0
+        },
+        "turn_count": 1,
+        "status": "verified",
+        "complete": true,
+        "action": "accept",
+        "receipt_sha256": "d40b339b2ece18d2080b655ab77f08b189c1799c1fb280a539d04e6fa5ed5bc5",
+        "verdict_file_sha256": "ea65293d88b856e2d78e7b0a457e8f38411ab4835b54730ecc7e28a283b0673d",
+        "raw_result_excerpt": {
+          "session": "test-session",
+          "turn_id": "test-turn",
+          "turn_usage": {
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cached_input_tokens": 0
+          }
+        },
+        "ledger_line": "[\"observe\", \"test-session\", \"test-turn\"]"
+      }
+    ],
+    "after": [
+      {
+        "case": "missing_last",
+        "native_usage": null,
+        "turn_count": 1,
+        "status": "uncertain",
+        "complete": false,
+        "action": "hold",
+        "receipt_sha256": "805001dbeeff7f1a60c25ade7e23a5f5af1081ebf142706cbb200f5a92438f7e",
+        "verdict_file_sha256": "a8637c5b21131a50118093afa4020b947f6214d5a6771def3f340797bae210ee",
+        "raw_result_excerpt": {
+          "session": "test-session",
+          "turn_id": "test-turn"
+        },
+        "ledger_line": "[\"observe\", \"test-session\", \"test-turn\"]"
+      },
+      {
+        "case": "missing_counter",
+        "native_usage": null,
+        "turn_count": 1,
+        "status": "uncertain",
+        "complete": false,
+        "action": "hold",
+        "receipt_sha256": "9596e15121690db4b14677dc3efcf1784ba2fe6191f88cff0ea9d75978a96c42",
+        "verdict_file_sha256": "47cb56ee8328bd2919307ed1bc0691036999559869fc9dc1de8634830f3ea681",
+        "raw_result_excerpt": {
+          "session": "test-session",
+          "turn_id": "test-turn"
+        },
+        "ledger_line": "[\"observe\", \"test-session\", \"test-turn\"]"
+      },
+      {
+        "case": "zero",
+        "native_usage": {
+          "input_tokens": 0,
+          "output_tokens": 0,
+          "cached_input_tokens": 0
+        },
+        "turn_count": 1,
+        "status": "verified",
+        "complete": true,
+        "action": "accept",
+        "receipt_sha256": "7cf18236accfb62478385e88d22cab948f69b821db516bbe77cc0af263a4f0e3",
+        "verdict_file_sha256": "191fd1dae34d82f7cf239afc0aa8ebae6c8f9e8d94586192a94aaff70c9a7ceb",
+        "raw_result_excerpt": {
+          "session": "test-session",
+          "turn_id": "test-turn",
+          "turn_usage": {
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cached_input_tokens": 0
+          }
+        },
+        "ledger_line": "[\"observe\", \"test-session\", \"test-turn\"]"
+      }
+    ]
+  },
+  "historical_recheck": [
+    {
+      "task": "planning--2",
+      "receipt_sha256": "40d64d6791fe0bcc8011b98a2fa6d0b7a05e0a54a1d5077463d53d3bc6b933c3",
+      "usage": {
+        "input_tokens": 10,
+        "output_tokens": 3,
+        "cached_input_tokens": 2
+      },
+      "status": "verified",
+      "turn_count": 1
+    },
+    {
+      "task": "research-evidence-route--1",
+      "receipt_sha256": "da7ff89439a7360c539578fde8bc4a4e492af583fcff0f8036451399b2b25fe6",
+      "usage": {
+        "input_tokens": 10,
+        "output_tokens": 3,
+        "cached_input_tokens": 2
+      },
+      "status": "verified",
+      "turn_count": 1
+    },
+    {
+      "task": "research-evidence-route--2",
+      "receipt_sha256": "938f6afa47b43974e2f9e9a9599da92a35c59ff6201278f72477e895aedfaeaa",
+      "usage": {
+        "input_tokens": 10,
+        "output_tokens": 3,
+        "cached_input_tokens": 2
+      },
+      "status": "verified",
+      "turn_count": 1
+    },
+    {
+      "task": "research-evidence-route--3",
+      "receipt_sha256": "27ec04db0bf12b101bc8906ee1746fb174354617ca00adb3e0c922dd23751ce0",
+      "usage": {
+        "input_tokens": 10,
+        "output_tokens": 3,
+        "cached_input_tokens": 2
+      },
+      "status": "verified",
+      "turn_count": 1
+    },
+    {
+      "task": "research-evidence-route--4",
+      "receipt_sha256": "df740f98109b3e57dc11bfa25029b3981960e2b1372a88fece23eb3b928343eb",
+      "usage": {
+        "input_tokens": 10,
+        "output_tokens": 3,
+        "cached_input_tokens": 2
+      },
+      "status": "verified",
+      "turn_count": 1
+    }
+  ],
+  "commands": {
+    "working_directory": "v032-m2/usage-quality; orchestrator and adapter checkouts at baseline then candidate commits",
+    "baseline": "python replay.py before",
+    "candidate": "python replay.py after",
+    "recording": "For each case: same python -m role_orchestrator.research_handoff --one-step, fixture, review role and native input; only bridge binary, pristine state/log path and checkout revision change. Script digest f3c6afd799b327ca7fb33265172e50cba67ef560d44196bbfe61fd40e8e658bd"
+  },
+  "commits": {
+    "codex-adapter": "007e0552f9a18b3e5375e9cb1fadcce809475c58",
+    "role-orchestrator": "571c53d9bf4361c31fda716daabe1aeefc3fcc50",
+    "role-runtime": "4a457bb576376366989ad6d53ed291f59848d4a0"
+  },
+  "historical_checkpoint_sha256": "5ef125e828ec8fd0e1c9afb246e81d4558300fda85ee3419d7676790ab1a3d7b",
+  "historical_ledger_sha256": "800a715090728ef0f363bb26312b6398be0d298dcfe6c3284c2651067fe6e14f",
+  "baseline_commits": {
+    "codex-adapter": "f338b2908ff32094514763000bf71da4d7d4bcaf",
+    "role-orchestrator": "753fe029c889ee5eff3728cc3c34e52b7edf1b43",
+    "role-runtime": "4a457bb576376366989ad6d53ed291f59848d4a0"
+  },
+  "first_review": {
+    "status": "feedback",
+    "decision": "blocked",
+    "reason": "제공된 요약상 기준판은 last 또는 카운터 누락을 실측 0으로 오인해 verified/accept 처리했다. 기준 Go 어댑터가 누락 필드를 0으로 디코딩한 뒤 Known을 무조건 true로 설정한 것이 원인이다. 후보판은 Go에서 세 카운터의 존재와 유효성을 확인하고, Python에서 스코프 없는 빈 사용량을 미확인으로 처리한다. 요약상 누락 두 건은 uncertain/hold로 바뀌고 명시적 0은 verified/accept로 유지됐으며, 체크포인트 재생에서 새 턴은 없었다. 다만 동일 명령의 기준·후보 원본 로그와 실행 이미지 식별자가 없어 경로 재현과 호환성을 독립 확인할 수 없다. 김가온은 양쪽의 정확한 실행 명령, 이미지 다이제스트, 커밋에 연결된 원본 로그를 요청하고, 세 사례와 기존 체크포인트의 비영(0이 아닌) 사용량이 재생 후에도 보존되는지 대조하라.",
+    "receipts": [
+      {
+        "member": "acl-014",
+        "sha256": "62020f431cb586bc2bed2e23f48986134a9b9ea9b1aa474e3a7ced0623e8bae4"
+      }
+    ]
+  },
+  "independent_review": {
+    "status": "accepted",
+    "decision": "accept",
+    "reason": "제공된 기록은 M2의 사용량 판정 수정을 뒷받침한다. 기준판은 missing_last와 missing_counter를 모두 실측 0으로 간주해 잘못 통과시켰다. 후보판에서는 두 사례 모두 영수증에 turn_usage가 없고, 턴 수는 1이지만 사용량은 미완전하여 uncertain/hold다. 반면 zero는 세 카운터가 모두 명시된 0이므로 verified/accept가 맞다. 어댑터는 세 값이 모두 음이 아닌 정수일 때만 사용량을 확정하고, 오케스트레이터는 범위 없는 빈 객체를 미확인으로 처리하되 네이티브 범위의 빈 객체는 거부한다. 동일 macOS 호스트에서 비교한 후보 브리지의 해시는 경로 재현에 사용한 브리지와 일치한다. 세 경로 모두 체크포인트 재생 시 추가 턴이 0이었고, 기존 비영 사용량 영수증 5건도 각각 1턴·verified를 유지했다. 다만 추가 턴 0은 호출 0의 증거가 아니다. 다음 회귀 시험에서는 재생 시 디스패치 직전에 동일 요청을 한 번 더 보내는 결함을 주입하고, 호출 경계에서 실제 횟수를 기록하라. 두 호출이 같은 판정 파일을 덮어써 최종 해시와 턴 수가 그대로여도, 재생 구간의 기대 호출 수 0을 넘으면 실패로 판정해야 한다. 이 단일 호출 여부는 현재 기록만으로 확정하지 않으며, M3·과금·릴리스는 판정 대상이 아니다.",
+    "receipts": [
+      {
+        "member": "acl-014",
+        "sha256": "d2edcb656d4d88f2e903283688737572a2b3071a57c34755b50e98a08ec391c0"
+      },
+      {
+        "member": "acl-005",
+        "sha256": "1a08ec59acaed42a922e76f5f47f5b9677591014262c1afdab8e6f5c29489b3d"
+      }
+    ]
+  }
+}

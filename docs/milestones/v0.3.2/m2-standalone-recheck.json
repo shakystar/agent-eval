@@ -1,0 +1,434 @@
+{
+  "adapter": {
+    "merged": "6dce52deeb0b89aaecf0c617fa9d10ae6392e2d0",
+    "pr": "https://github.com/shakystar/codex-adapter/pull/3",
+    "standalone_vet_race": "pass"
+  },
+  "heads": {
+    "runtime": "cb8801c2e471b21dd63338453e0312d4a84ab6a2",
+    "orchestrator": "571c53d9bf4361c31fda716daabe1aeefc3fcc50",
+    "eval": "f7f16e7589dd79d81800e315c9883ccfcb659a99"
+  },
+  "standalone": {
+    "command": "GOWORK=off go vet -mod=readonly ./... && go test -mod=readonly -race -count=1 ./...; build bridge/workflow/probe with -mod=readonly",
+    "after": [
+      "\tpath\tgithub.com/shakystar/role-runtime/cmd/runtime-bridge",
+      "\tmod\tgithub.com/shakystar/role-runtime\tv0.0.0-20261126004914-cb8801c2e471\t",
+      "\tdep\tgithub.com/shakystar/codex-adapter\tv0.0.0-20261126004700-6dce52deeb0b\th1:a/1NkfH8F713UZEaED6by85bcmi4SM0d7N2ro3RxStQ="
+    ],
+    "regression_packages": 14,
+    "bridge_sha256": "4260b4f778bbfda9a0b2b271c1b26c645f2b1ef6f1a84d0175836220e608658e",
+    "same_bridge": false,
+    "embedded_build_info": [
+      "dep\tgithub.com/shakystar/codex-adapter\tv0.0.0-20261126004700-6dce52deeb0b\th1:a/1NkfH8F713UZEaED6by85bcmi4SM0d7N2ro3RxStQ=",
+      "build\tvcs.revision=cb8801c2e471b21dd63338453e0312d4a84ab6a2",
+      "build\tvcs.time=2026-11-26T00:49:14Z",
+      "build\tvcs.modified=false"
+    ],
+    "test_binary_details": "Two independent builds stamped the same clean runtime VCS revision and adapter dependency. End-to-end cases and Python suite used the test-bridge identified by bridge_sha256."
+  },
+  "replay": [
+    {
+      "name": "normal-req",
+      "case": "SYN-REQ-01",
+      "dispatches": 5,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "hold",
+        "claims": [],
+        "packet_sha256": "13a1cddcb902495771cf2267aa00b15e6f080f153df7ff6d4e0933c04cfce204",
+        "reason": "추가 자료 대기"
+      },
+      "receipts": [
+        [
+          "988766f0650010b806a2f4bd1438f7e91df9e8ac7705f3a4911e6dd243b4b0e1",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "158f2753b959b91b286a7817659bfa4a7a0b21dfb358a8db1e2fbf33d5a472d8",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "31b98bef9bce9a9fc8514808c30759ec3bd3babbe5a5626d57b323bc1c5a8bd0",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "13ee19f850a76212e9c67a6a176100a63ebdbb65a5a95db30923aace6e77da81",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "564ec9050a5f1a81d147a8053c872aa941a80fa83fe88bbbe855f0948f2b4022",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ]
+      ]
+    },
+    {
+      "name": "normal-sig",
+      "case": "SYN-SIG-01",
+      "dispatches": 6,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "hold",
+        "claims": [],
+        "packet_sha256": "3ec43a4de962b08bb60ceaaa8281292a586efe451193a5170f7c7424d073c6b8",
+        "reason": "추가 자료 대기"
+      },
+      "receipts": [
+        [
+          "af6028f9b46f8a6c868a92de64e410a4f33fbc81cd80db662282f6913e988dcf",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "100d5c1fbaabddc3884eafd4882252ac5d4ebe4c89676196af41534f8118f6b9",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "5a8e209bfa8ba783021af09a28d736a00f127810d1ebc1cff21fdfb80e7f77a1",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "70224775546e343f0e823af28c9942f104d35402342ca668ec44f0189427ef36",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "f652fab5436acd87bd634fba81b47f6a206c4577a4b67eee1e410e46289ec668",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "250cb88febaa2392ee86925cf2f51c7dd6365802b6c0162225a6a6a67f06e8b3",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ]
+      ]
+    },
+    {
+      "name": "usage-missing-last",
+      "case": "SYN-REQ-01",
+      "dispatches": 5,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "hold",
+        "claims": [],
+        "packet_sha256": "13a1cddcb902495771cf2267aa00b15e6f080f153df7ff6d4e0933c04cfce204",
+        "reason": "추가 자료 대기"
+      },
+      "receipts": [
+        [
+          "39cb01c17d59eed3ad4521ea1efc6dc66e936df4ae83e149658463aff5044d43",
+          null
+        ],
+        [
+          "b472af2071c672b94a25633cb693861ff0ddd3a1097d49e6b82df94c8381fc46",
+          null
+        ],
+        [
+          "991f7920fcacdfc1d987c99c87eccd3fdedf9744cf2d38ea528f72f12fcd118a",
+          null
+        ],
+        [
+          "899de4fa391d1745709c55afd9f8d1d4c99ecdb50f688f3ace839511dccc4aa5",
+          null
+        ],
+        [
+          "68cec199552cb18d18ccc9c85dc2ed5a57b34dc6f643a9eb841ab10032dc8605",
+          null
+        ]
+      ]
+    },
+    {
+      "name": "usage-missing-counter",
+      "case": "SYN-REQ-01",
+      "dispatches": 5,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "hold",
+        "claims": [],
+        "packet_sha256": "13a1cddcb902495771cf2267aa00b15e6f080f153df7ff6d4e0933c04cfce204",
+        "reason": "추가 자료 대기"
+      },
+      "receipts": [
+        [
+          "ef959ccd5b6f95faa460dd20aeea00c8072f0a21e56b5899559d8bd432108229",
+          null
+        ],
+        [
+          "9ee339d0bc03cd72a7308e35e84b88b1dc5bc5935a2f61e88171350b4c4e8fe7",
+          null
+        ],
+        [
+          "9f02a1bc04350c8797f85228f22e86078f1dd8ae4222016878f6032ba46faac8",
+          null
+        ],
+        [
+          "be284f063fad8b1f3e4507deaecf4c6983ff2970f7eec90ab0973b304f7d2543",
+          null
+        ],
+        [
+          "377294c8c2d9e0604fcca4018961f3ad0c7390092927eded1be280e229f0f94e",
+          null
+        ]
+      ]
+    },
+    {
+      "name": "usage-zero",
+      "case": "SYN-REQ-01",
+      "dispatches": 5,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "hold",
+        "claims": [],
+        "packet_sha256": "13a1cddcb902495771cf2267aa00b15e6f080f153df7ff6d4e0933c04cfce204",
+        "reason": "추가 자료 대기"
+      },
+      "receipts": [
+        [
+          "694a005849d9247029d9fb20299422cb8b333423849adace11835385f4fd3309",
+          {
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cached_input_tokens": 0
+          }
+        ],
+        [
+          "8f36994cc36de95ae2b9610e0bd79317f1e7f1a9225c54146e619342d32f2c8d",
+          {
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cached_input_tokens": 0
+          }
+        ],
+        [
+          "4c3fdf67539d146157cbbaa334a74822ad85430e5db2e175ab5aebed22d847fc",
+          {
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cached_input_tokens": 0
+          }
+        ],
+        [
+          "7595ef269049959f19786bac32dcaddafb3bbe0393fa4cf73c273938a28bf7fc",
+          {
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cached_input_tokens": 0
+          }
+        ],
+        [
+          "450e8d0f39ef1698d105a7b7a9947635fa4a4e2192f4b61191df871f854d3de2",
+          {
+            "input_tokens": 0,
+            "output_tokens": 0,
+            "cached_input_tokens": 0
+          }
+        ]
+      ]
+    },
+    {
+      "name": "fault-self",
+      "case": "SYN-REQ-01",
+      "dispatches": 3,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "reassign",
+        "phase": "review",
+        "reason": "reviewer_conflict"
+      },
+      "receipts": [
+        [
+          "02668f3413818a0707b36c927c6dd5317fd4620d03be7421160ebbc179054af3",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "3c8511010691dcd76c42b3b721934e5c45065b8cdffddeab4107a5ddc5cbb8e8",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "3cb861044f8a355302ab796090471739c27c6b0dfde602e66b6188f78bd258d5",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ]
+      ]
+    },
+    {
+      "name": "fault-author",
+      "case": "SYN-REQ-01",
+      "dispatches": 2,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "reassign",
+        "phase": "review",
+        "reason": "reviewer_participated"
+      },
+      "receipts": [
+        [
+          "ea17eef4a3ef6e2377bfcb9a6fe74b783430a24cd19c6ccecceac2e3c7bf98d8",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "75beab635650f1f1d21e2fce557e4f50e5b2d3835a0690306b2fa9f2a367d426",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ]
+      ]
+    },
+    {
+      "name": "fault-stale",
+      "case": "SYN-REQ-01",
+      "dispatches": 3,
+      "replay_new_turns": 0,
+      "branch": {
+        "action": "hold",
+        "phase": "review",
+        "reason": "invalid_or_conflicted_review",
+        "terminal": true
+      },
+      "receipts": [
+        [
+          "f47384f8981bbd8518b33a348e84430da9471c8dbb5ddc4a3d3c346987b3a7ba",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "1779f39153893a1194549b5f22199e52fbe808a209c92bbd60e627f27b1fc30d",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ],
+        [
+          "11ed5a6818739027101e1f421df9abd690d50d49c83b9dffc205562aad0a1f7f",
+          {
+            "input_tokens": 10,
+            "output_tokens": 3,
+            "cached_input_tokens": 2
+          }
+        ]
+      ]
+    }
+  ],
+  "earlier_reviews": {
+    "M0": "m0-review.json: revise then accepted document handoff by acl-010, acl-005",
+    "M1": "m1-readiness-review.json: blocked at readiness; m1-candidate-acceptance.json: local synthetic candidate accepted after revision by acl-010 and acl-005."
+  },
+  "developer_receipt": "d28b9fd9fc87a6c666a7e60f87878ed86589ad3b1311d7e6b8f4b589b6a22f44",
+  "python_regression": [
+    "Ran 160 tests in 189.776s",
+    "",
+    "OK"
+  ],
+  "additional_fault": {
+    "case": "SYN-REQ-01",
+    "dispatches": 5,
+    "replay_new_turns": 0,
+    "branch": {
+      "action": "hold",
+      "phase": "decision",
+      "reason": "invalid_product_decision",
+      "terminal": true
+    }
+  },
+  "crosscheck": {
+    "previous_route_comparisons": {
+      "normal-req": "request-normal",
+      "normal-sig": "signal-normal",
+      "fault-author": "request-author",
+      "fault-self": "request-self",
+      "fault-stale": "request-stale",
+      "fault-other": "request-other"
+    },
+    "matched_fields": [
+      "case",
+      "dispatches",
+      "replay_new_turns",
+      "branch"
+    ],
+    "mismatch_verdicts": [
+      {
+        "status": "failed",
+        "action": "reject",
+        "reasons": [
+          "actor_or_role_revision_mismatch"
+        ],
+        "turn_count": 0,
+        "usage": {},
+        "automatic_dispatch": false
+      },
+      {
+        "status": "failed",
+        "action": "reject",
+        "reasons": [
+          "assignment_mismatch"
+        ],
+        "turn_count": 0,
+        "usage": {},
+        "automatic_dispatch": false
+      }
+    ],
+    "usage_cases": "candidate replay checks native receipt hash, turn and Python verdict on all five steps per case"
+  }
+}

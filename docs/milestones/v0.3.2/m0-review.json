@@ -1,0 +1,125 @@
+{
+  "scope": "M0 문서 인계",
+  "reviews": [
+    {
+      "status": "feedback",
+      "document_sha256": "eb9c290d52bb1e2d68896b9d96e167b856e1269fd93c7b41bef29e0782293075",
+      "verdicts": [
+        {
+          "member": "acl-010",
+          "receipt": "0c15b54605b3f2c839c6fa55683082a12a4b29a55180ed8d7ef818be47f73453",
+          "decision": "revise",
+          "owner": "이서진",
+          "reason": "M0 기준표는 관측값·실패 조건·미확인을 구분하지만, 초안의 ‘네이티브 영수증 해시를 대조한다’는 문구는 제공 발췌가 보여 주는 64자 형식 검사보다 강하다. 또한 M0-11·12에는 의뢰와 선제 신호가 각각 최종 결정까지 이어져야 한다는 통과 조건이 빠져 있다. 인계 전에 해시 형식 검사·원문 재계산·서명 검증을 별도 항목으로 표시하고, 두 경로 각각의 최종 결정 참조와 누락 시 판정 조건을 표에 추가하라. 실제 실행 증빙은 미확인으로 남기며, M1 진입이나 실험·규약 동결은 이번 판정에 포함하지 않는다."
+        }
+      ]
+    },
+    {
+      "status": "accepted",
+      "document_sha256": "b3e09d7de6f09b1539317e79ace64a489a72324f3154885a8dfdd6004db5dbc9",
+      "verdicts": [
+        {
+          "member": "acl-010",
+          "receipt": "1f699ff5b4d5150acccb874db4f9bed3bffe66bdd8e17775c15c759312b53f84",
+          "decision": "accept",
+          "owner": "이서진",
+          "reason": "M0 근거 목록·공백·채점 규약 초안의 인계를 승인한다. 우선 적용되는 마지막 표는 발췌에서 확인되는 영수증 형식 검사와 아직 입증되지 않은 원문 재계산·서명 검증을 구분한다. M0-11 사용자 의뢰와 M0-12 선제 신호는 각각 동일한 출처에서 최종 결정까지 추적하도록 했으며, 참조 누락은 미확인으로 통과 보류하고 잘못된 결정 연결은 실패로 명시했다. 최초 유효율은 전체 예정 배정, 복구율은 최초 기술 실패 전체를 분모로 유지하며, 채점 가능 건의 정답률은 보조 지표로 분리했다. 인계 후 이서진은 오케스트레이터의 두 경로별 최종 결정 참조와 런타임·독립 검증팀의 원문 재계산·서명 검증 기록 및 키 이력을 확인하기 전까지 해당 항목을 미확인으로 유지한다. 이번 승인은 실제 실행 통과, M1 진입, 실험 또는 규약 동결을 포함하지 않는다."
+        },
+        {
+          "member": "acl-005",
+          "receipt": "724b000e7a7869d26ff3add8bd7314007ba509f0e9ac631349c9b91e68fb7925",
+          "decision": "accept",
+          "owner": "강이현",
+          "reason": "상위 검토와 같이 M0 근거 목록·공백·채점 규약 초안은 인계 가능하다. 우선 적용되는 마지막 표는 발췌가 입증하는 영수증 해시 형식 검사와 미확인인 원문 재계산·서명 검증을 구분한다. M0-11 의뢰와 M0-12 선제 신호는 각각 자기 출처에서 최종 결정까지 추적해야 하며, 결정 참조 누락은 미확인, 다른 출처의 결정 연결은 실패다. 최초 유효율의 분모는 전체 예정 배정, 복구율의 분모는 최초 기술 실패 전체이며, 채점 가능 건의 정답률은 보조 지표다. 다음 단계는 반환 유실 후 재개 지점에 미승인 자동 재호출을 넣는 합성 반례를 대조하는 것이다. 기대 관측값은 동일 파일 1개와 서로 다른 실제 턴 ID 2개다. 이 경우 실행은 2회, 사례 분모는 1건이며 무자동재시도 조건 위반으로 실패다. 반대로 같은 시도·턴의 영수증 재전달은 실행 1회로 세고 사용량을 다시 더하지 않는다. 파일만 남고 턴 귀속 근거가 없으면 실행 횟수는 미확인이다. 두 경로의 실제 종단 기록, 제공자 실행·사용량 귀속, 서명 검증과 키 이력은 여전히 미확인이다. 이 판정은 M1 진입·실험·규약 동결·출시 승인이 아니다."
+        }
+      ]
+    }
+  ],
+  "observed_turns": [
+    {
+      "team": "intake",
+      "assignment": "planning--1",
+      "usage": {
+        "input_tokens": 10071,
+        "cached_input_tokens": 4352,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1659,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 11730
+      }
+    },
+    {
+      "team": "intake",
+      "assignment": "planning--2",
+      "usage": {
+        "input_tokens": 8858,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7487,
+        "reasoning_output_tokens": 43,
+        "total_tokens": 16345
+      }
+    },
+    {
+      "team": "intake",
+      "assignment": "planning--3",
+      "usage": {
+        "input_tokens": 15855,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4772,
+        "reasoning_output_tokens": 45,
+        "total_tokens": 20627
+      }
+    },
+    {
+      "team": "intake",
+      "assignment": "planning--4",
+      "usage": {
+        "input_tokens": 21490,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4251,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 25741
+      }
+    },
+    {
+      "team": "review",
+      "assignment": "acl-010",
+      "usage": {
+        "input_tokens": 14954,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 332,
+        "reasoning_output_tokens": 121,
+        "total_tokens": 15286
+      }
+    },
+    {
+      "team": "review2",
+      "assignment": "acl-005",
+      "usage": {
+        "input_tokens": 16012,
+        "cached_input_tokens": 4352,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 381,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 16393
+      }
+    },
+    {
+      "team": "review2",
+      "assignment": "acl-010",
+      "usage": {
+        "input_tokens": 15656,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 280,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 15936
+      }
+    }
+  ],
+  "total_tokens": 122058
+}
