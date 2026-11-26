@@ -1,6 +1,6 @@
 # M2 독립 재현 결과
 
-합성 재현 시험은 통과했다. 독립 인수는 판정 대기다. 재현 검토자 acl-014 배정이 두 번 모두 계정 확인 단계에서 중단됐고 검토 모델 턴은 0회였다. 별도 계정 진단에서도 workspace_routing_timeout이 반환됐다. 계정 라우팅 복구 후 같은 커밋과 근거를 재현 검토자와 최종 검토자에게 다시 전달한다. M3 착수는 보류한다. 수정 후 Python 회귀는 157건으로 실패와 건너뜀이 각각 0건이었다. [시험 원본 수치와 검토 배정 상태](m2-integration-evidence.json)
+고정 후보의 합성 인프라, 기존 기록 호환성, 사용자 요청·선제 신호 경로에 대해 acl-014와 최종 판정자 acl-005가 인수했다. 최초 검토는 계정 확인 단계에서 보류됐고, 11월 26일 계정 라우팅 복구 후 독립 판정이 완료됐다. 당시 사용량 완전성은 미인수였다. M2 후보의 회귀 시험은 157건, 실패와 건너뜀은 각각 0건이었다. [시험 원본](m2-integration-evidence.json) · [후속 품질 검토](M2-usage-quality.md)
 
 검증한 세 커밋은 다음과 같다. [codex-adapter f338b29](https://github.com/shakystar/codex-adapter/commit/f338b2908ff32094514763000bf71da4d7d4bcaf) · [role-runtime 4a457bb](https://github.com/shakystar/role-runtime/commit/4a457bb576376366989ad6d53ed291f59848d4a0) · [role-orchestrator 753fe02](https://github.com/shakystar/role-orchestrator/commit/753fe029c889ee5eff3728cc3c34e52b7edf1b43)
 

@@ -41,13 +41,17 @@ def replay(args):
         require(len(args.other_packet) == 64, "Supply the other route's packet digest")
     repo = args.orchestrator.resolve()
     env = dict(os.environ, M2_LEDGER=str(ledger), M2_FIXTURE=str(fixture),
-               M2_FAULT=args.fault, M2_OTHER_PACKET=args.other_packet,
+               M2_USAGE_CASE=args.usage_case, M2_FAULT=args.fault, M2_OTHER_PACKET=args.other_packet,
                PYTHONPATH=str(repo), PATH=str(bindir) + os.pathsep + os.environ["PATH"])
     command = [sys.executable, "-m", "role_orchestrator.research_handoff",
                "--lab", str(args.lab.resolve()), "--revision", REVISION,
                "--runtime", str(args.bridge.resolve()), "--state", str(state),
                "--research-goal", "study", "--planning-team", "planning",
                "--planning-goal", "intake", "--catalog-sha256", CATALOG, "--backend", "codex"]
+
+    if args.usage_case:
+        sys.path.insert(0, str(repo))
+        from role_orchestrator.m1_evidence import verify_m1
 
     def invoke(payload):
         raw = subprocess.check_output(command, input=payload, cwd=repo, env=env, timeout=140)
@@ -84,6 +88,17 @@ def replay(args):
                 and native["result"]["turn_id"] == observed["turn_id"] == turn, "Turn mismatch")
         require(verdict["artifact"]["output_sha256"]
                 == hashlib.sha256(native["result"]["text"].encode()).hexdigest(), "Output mismatch")
+        if args.usage_case:
+            measured = args.usage_case == "zero"
+            usage = {"input_tokens": 0, "output_tokens": 0, "cached_input_tokens": 0}
+            require(native["result"].get("turn_usage") == (usage if measured else None),
+                    "Unexpected native usage for " + args.usage_case)
+            check = verify_m1([verdict], assignment_id=ref["task_id"],
+                              member_id=ref["member_id"], role_version=ref["role_version"])
+            require(check["turn_count"] == 1 and check["usage_complete"] is measured
+                    and check["action"] == ("accept" if measured else "hold")
+                    and check["status"] == ("verified" if measured else "uncertain"),
+                    "Unexpected usage verdict for " + args.usage_case)
         if phase in ("review", "synthesize"):
             prior = context["prior"]
             require(prior["draft_sha256"] == hashlib.sha256(canonical(prior["draft"])).hexdigest(),
@@ -114,5 +129,7 @@ if __name__ == "__main__":
     for name in ("orchestrator", "bridge", "lab", "fixture", "state"):
         parser.add_argument("--" + name, type=Path, required=True)
     parser.add_argument("--fault", choices=("author", "self", "stale", "other"), default="")
+    parser.add_argument("--usage-case", choices=("missing-last", "missing-counter", "zero"),
+                        default="", help="Verify receipt and verdict for the injected usage event")
     parser.add_argument("--other-packet", default="")
     print(json.dumps(replay(parser.parse_args()), ensure_ascii=False))

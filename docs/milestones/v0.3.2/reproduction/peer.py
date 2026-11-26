@@ -39,8 +39,16 @@ def complete_turn(request_id, params):
         print(json.dumps([phase, thread, turn]), file=ledger)
     reply(request_id, {"turn": {"id": turn, "status": "inProgress"}})
     usage = {"inputTokens": 10, "outputTokens": 3, "cachedInputTokens": 2}
+    usage_case = os.environ.get("M2_USAGE_CASE")
+    token_usage = {"last": usage}
+    if usage_case:
+        usage.update(dict.fromkeys(usage, 0))
+        if usage_case == "missing-counter":
+            del usage["outputTokens"]
+        elif usage_case == "missing-last":
+            del token_usage["last"]
     send({"method": "thread/tokenUsage/updated", "params": {
-        "threadId": thread, "turnId": turn, "tokenUsage": {"last": usage}
+        "threadId": thread, "turnId": turn, "tokenUsage": token_usage
     }})
     message = {"type": "agentMessage", "phase": "final_answer",
                "text": json.dumps(envelope, ensure_ascii=False)}
