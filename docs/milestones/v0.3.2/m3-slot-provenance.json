@@ -1,0 +1,189 @@
+{
+  "pins": {
+    "durability": {
+      "before": [
+        "99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb",
+        "b6307e60a8ab6749eb629c8a58e4d2e65e0b6288"
+      ],
+      "after": [
+        "99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb",
+        "b6307e60a8ab6749eb629c8a58e4d2e65e0b6288"
+      ],
+      "exit": 0,
+      "log_sha256": "8368ad70135f5efce91c6746af1539179b16465b3976692de7ad2a68ca9dcb72",
+      "harness_sha256": "4b341aefc3c5ebd9a7b71e54c92903e82aa6ca180df01ecc90fc4253da164455"
+    },
+    "admission": {
+      "before": [
+        "99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb",
+        "b6307e60a8ab6749eb629c8a58e4d2e65e0b6288"
+      ],
+      "after": [
+        "99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb",
+        "b6307e60a8ab6749eb629c8a58e4d2e65e0b6288"
+      ],
+      "exit": 0,
+      "log_sha256": "99b68987dd45da42d58bb6d9c9991d10a8b5c4004b5ff587f1039466f1ff7d13",
+      "harness_sha256": "6fd082e9c459477ca502dcc6363d4a36b040378ce2bf1435b2a2f4c7231cc820"
+    },
+    "unit": {
+      "before": [
+        "99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb",
+        "b6307e60a8ab6749eb629c8a58e4d2e65e0b6288"
+      ],
+      "after": [
+        "99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb",
+        "b6307e60a8ab6749eb629c8a58e4d2e65e0b6288"
+      ],
+      "exit": 0,
+      "log_sha256": "87a3195e85ca471ddfaaaa91fe58247cc11a9703912d8454ca69b7a287462314",
+      "harness_sha256": null
+    }
+  },
+  "git": {
+    "8834ec5a3cbe5b187bd55501b548b725e9295002": [
+      "dc035a599df681cf73618e0a2ed985268a2fea37",
+      "ad1403358dbdb1c6a263179410c6f64b1be5c8d6 cd4826db4aa5cee4f3c42fb0c08621e3a90e9556",
+      "shakystar",
+      "GitHub"
+    ],
+    "51e0a85e65aaad092242a64f5babf857441c05e5": [
+      "a2f4c436ec802f3d7350fe497189029712fd336d",
+      "eec733f12951017e4151f893deecda3e6f3fe609",
+      "shakystar",
+      "shakystar"
+    ],
+    "99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb": [
+      "b6307e60a8ab6749eb629c8a58e4d2e65e0b6288",
+      "51e0a85e65aaad092242a64f5babf857441c05e5",
+      "shakystar",
+      "shakystar"
+    ]
+  },
+  "dispatch": {
+    "member": "acl-007",
+    "receipt": "5b5702494ce56fb3716d9202722415c1e2ebde8834794ca2fad10b602443f847",
+    "receipt_raw": "{\"actual_member_id\":\"acl-007\",\"actual_role_version\":\"v1\",\"artifact\":{\"attempt_id\":\"a-83de271bd644c6344ff9e1c9ec26b26f\",\"contract_sha256\":\"95f0d8f1b76266d487fc6f4524b381a41e8d12ef31250c497615b236efee6cb6\",\"input_sha256\":\"37b2af6c145447764227ba12df97b77e0730acab4f9e5a8a8a6ee1f979763321\",\"kind\":\"python-change\",\"member_id\":\"acl-007\",\"output_sha256\":\"a9cba87dc8904fcb9f2ecfb5ac414710b0b23af3a1a150144982dd13165a925b\",\"payload\":{\"base_sha\":\"51e0a85e65aaad092242a64f5babf857441c05e5\",\"diff\":\"diff --git a/agent_eval/m3_assignment.py b/agent_eval/m3_assignment.py\\n--- a/agent_eval/m3_assignment.py\\n+++ b/agent_eval/m3_assignment.py\\n@@ -93,6 +93,17 @@ def _slot_path(args):\\n     return parent / str(args.repeat)\\n \\n \\n+def _sync_slot(slot):\\n+    # A concurrent launcher may have created an ancestor without syncing it.\\n+    # Sync the whole chain, leaf first, to persist each directory entry.\\n+    for path in (slot, *slot.parents):\\n+        fd = os.open(path, os.O_RDONLY | os.O_DIRECTORY)\\n+        try:\\n+            os.fsync(fd)\\n+        finally:\\n+            os.close(fd)\\n+\\n+\\n def _private_output(path):\\n     fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)\\n     return os.fdopen(fd, \\\"wb\\\")\\n@@ -231,6 +242,13 @@ def main(argv=None):\\n         _status(\\\"slot_unavailable\\\")\\n         return 1\\n \\n+    try:\\n+        _sync_slot(slot)\\n+    except OSError:\\n+        # Keep the exclusive reservation; never make this key retryable here.\\n+        _status(\\\"slot_unavailable\\\")\\n+        return 1\\n+\\n     state = slot / \\\"assignment\\\"\\n     plan = state / \\\"assignment-v2.plan.json\\\"\\n     ledger = slot / \\\"ledger.jsonl\\\"\\ndiff --git a/tests/test_m3_score.py b/tests/test_m3_score.py\\n--- a/tests/test_m3_score.py\\n+++ b/tests/test_m3_score.py\\n@@ -260,9 +260,75 @@ class M3ScoreTests(unittest.TestCase):\\n                 self.assertEqual(result[\\\"action\\\"], action)\\n                 self.assertEqual(\\\"receipt\\\" in result, action == \\\"accept\\\")\\n \\n-    def test_launcher_and_rescore_use_same_exit_checkpoint(self):\\n+    def _launcher_args(self, flags):\\n         backend = self.root / \\\"codex\\\"\\n         backend.touch(mode=0o700)\\n+        return [*flags, \\\"--backend-executable\\\", str(backend), \\\"--\\\",\\n+                \\\"--lab=lab\\\", \\\"--revision=rev\\\", \\\"--member=reviewer\\\", \\\"--task=task\\\",\\n+                f\\\"--runtime={self.bridge}\\\", \\\"--profile=profile\\\"]\\n+\\n+    def _launch(self, args):\\n+        output = io.StringIO()\\n+        with contextlib.redirect_stdout(output):\\n+            code = m3_assignment.main(args)\\n+        return code, json.loads(output.getvalue())\\n+\\n+    def test_reservation_sync_failure_never_starts_native(self):\\n+        for arm in (\\\"current\\\", \\\"candidate\\\"):\\n+            for depth, entry in enumerate((\\\"slot\\\", \\\"case\\\", \\\"arm\\\", \\\"root\\\", \\\"root_parent\\\")):\\n+                with self.subTest(arm=arm, entry=entry):\\n+                    root = self.root.resolve() / f\\\"sync-{arm}-{entry}\\\" / \\\"experiment\\\"\\n+                    slot = root / arm / \\\"reserve\\\" / \\\"0\\\"\\n+                    target = (slot, *slot.parents)[depth]\\n+                    args = self._launcher_args([\\\"--arm\\\", arm, \\\"--case\\\", \\\"reserve\\\",\\n+                                                \\\"--repeat\\\", \\\"0\\\", \\\"--root\\\", str(root)])\\n+\\n+                    def fsync(fd):\\n+                        if os.path.samestat(os.fstat(fd), target.stat()):\\n+                            raise OSError(\\\"reservation sync failed\\\")\\n+\\n+                    with (patch.object(m3_assignment.os, \\\"fsync\\\", side_effect=fsync) as sync,\\n+                          patch.object(m3_assignment.subprocess, \\\"run\\\") as run):\\n+                        self.assertEqual(self._launch(args), (1, {\\\"status\\\": \\\"slot_unavailable\\\"}))\\n+                        self.assertTrue(slot.is_dir())\\n+                        self.assertEqual(self._launch(args), (1, {\\\"status\\\": \\\"slot_exists\\\"}))\\n+                    self.assertEqual(sync.call_count, depth + 1)\\n+                    run.assert_not_called()\\n+\\n+    def test_simulated_process_crash_after_start_blocks_retry(self):\\n+        for arm in (\\\"current\\\", \\\"candidate\\\"):\\n+            with self.subTest(arm=arm):\\n+                root = self.root.resolve() / \\\"crash\\\" / \\\"experiment\\\"\\n+                slot = root / arm / \\\"reserve\\\" / \\\"0\\\"\\n+                # Model directories made visible by another initializer before its sync.\\n+                slot.parent.mkdir(parents=True)\\n+                args = self._launcher_args([\\\"--arm\\\", arm, \\\"--case\\\", \\\"reserve\\\",\\n+                                            \\\"--repeat\\\", \\\"0\\\", \\\"--root\\\", str(root)])\\n+                chain = (slot, *slot.parents)\\n+                synced = []\\n+\\n+                def fsync(fd):\\n+                    path = chain[len(synced)]\\n+                    self.assertTrue(os.path.samestat(os.fstat(fd), path.stat()), path)\\n+                    synced.append(path)\\n+\\n+                def start(command, **kwargs):\\n+                    self.assertEqual(command[3], \\\"role_orchestrator.assignment\\\")\\n+                    self.assertEqual(tuple(synced), chain)\\n+                    # Simulate launcher death after submission, not loss of disk state.\\n+                    raise SystemExit(99)\\n+\\n+                with (patch.object(m3_assignment.os, \\\"fsync\\\", side_effect=fsync),\\n+                      patch.object(m3_assignment.subprocess, \\\"run\\\", side_effect=start) as run):\\n+                    with self.assertRaises(SystemExit) as crash:\\n+                        m3_assignment.main(args)\\n+                    self.assertEqual(crash.exception.code, 99)\\n+                    self.assertFalse((slot / \\\"native-exit.json\\\").exists())\\n+                    self.assertFalse((slot / \\\"native-exit.commit\\\").exists())\\n+                    self.assertEqual(self._launch(args), (1, {\\\"status\\\": \\\"slot_exists\\\"}))\\n+                run.assert_called_once()\\n+\\n+    def test_launcher_and_rescore_use_same_exit_checkpoint(self):\\n         for arm in (\\\"current\\\", \\\"candidate\\\"):\\n             for native_code, duplicate, sync_failure, action, status in (\\n                 (17, False, False, \\\"hold\\\", 3),\\n@@ -280,9 +346,7 @@ class M3ScoreTests(unittest.TestCase):\\n                     flags = [\\\"--arm\\\", arm, \\\"--case\\\", case, \\\"--repeat\\\", \\\"0\\\",\\n                              \\\"--root\\\", str(self.root)]\\n                     score_args = [*flags, \\\"--bridge\\\", str(self.bridge)]\\n-                    args = [*flags, \\\"--backend-executable\\\", str(backend), \\\"--\\\",\\n-                            \\\"--lab=lab\\\", \\\"--revision=rev\\\", \\\"--member=reviewer\\\",\\n-                            \\\"--task=task\\\", f\\\"--runtime={self.bridge}\\\", \\\"--profile=profile\\\"]\\n+                    args = self._launcher_args(flags)\\n \\n                     def rescore(argv):\\n                         output = io.StringIO()\\n@@ -318,9 +382,11 @@ class M3ScoreTests(unittest.TestCase):\\n                     real_fsync, real_unlink = os.fsync, Path.unlink\\n \\n                     def fsync(fd):\\n-                        if sync_failure and stat.S_ISDIR(os.fstat(fd).st_mode):\\n-                            raise OSError(\\\"directory sync failed\\\")\\n+                        if stat.S_ISDIR(os.fstat(fd).st_mode):\\n+                            if sync_failure and (slot / \\\"native-exit.json\\\").exists():\\n+                                raise OSError(\\\"directory sync failed\\\")\\n+                            return\\n                         return real_fsync(fd)\\n \\n                     def unlink(path, *args, **kwargs):\\n                         if sync_failure and path == slot / \\\"native-exit.json\\\":\\n@@ -356,6 +422,20 @@ class M3ScoreTests(unittest.TestCase):\\n                         self.scorer.assert_not_called()\\n                     if native_code == 17 and not duplicate:\\n                         self.assertEqual(first[\\\"reason\\\"], \\\"native_assignment_failed\\\")\\n+                    if action == \\\"accept\\\":\\n+                        for mock in (self.observer, self.verifier, self.scorer):\\n+                            mock.reset_mock()\\n+                        for key in (\\\"run_id\\\", \\\"attempt_id\\\"):\\n+                            (slot / \\\"native-exit.json\\\").write_text(\\n+                                json.dumps(dict(self.identity, assignment=assignment,\\n+                                                exit_code=0, **{key: \\\"tampered\\\"})),\\n+                                encoding=\\\"utf-8\\\")\\n+                            tampered = rescore(score_args)\\n+                            self.assertEqual(tampered.returncode, 3)\\n+                            self.assertNotIn(\\\"receipt\\\", json.loads(tampered.stdout))\\n+                        self.observer.assert_not_called()\\n+                        self.verifier.assert_not_called()\\n+                        self.scorer.assert_not_called()\\n \\n     def test_cli_rejects_unsafe_slots_and_path_overrides(self):\\n         args = self._cli_args()\\n\",\"tests\":[\"Not run. Both arms: inject fsync failure at the slot, case, arm, experiment root, and root parent. Expect exit 1, zero subprocess calls, and same-key retry to return slot_exists without another sync.\",\"Not run. Both arms: precreate ancestors to model concurrent initialization. Assert that every directory is synced leaf-to-root before the simulated start, then simulate a launcher crash before the exit checkpoint. Same-key retry must make zero additional submissions.\",\"Not run. Both arms: before the exit checkpoint, rescore without a record holds (3). After the checkpoint, a normal exit accepts (0), valid receipt evidence with exit 17 holds (3), and duplicate starts reject (4). A post-exit directory sync failure or tampered run/attempt ID yields a receipt-free hold (3).\"],\"unverified\":[\"Patch applicability and test results were not verified against the checkout.\",\"The crash test uses a mocked submission and SystemExit; it checks ordering and retry behavior, not an actual process kill or physical power-loss recovery. Directory fsync support and durability on the deployment filesystem remain unverified.\"]},\"receipt_sha256\":\"5b5702494ce56fb3716d9202722415c1e2ebde8834794ca2fad10b602443f847\",\"run_id\":\"r-3ccadbf5bb3942abaf28de444d42ebb3\",\"sha256\":\"715491f68a73e0d8afcf6edaa02d6650806554908362b58bf3d31225b1b4c228\",\"task_id\":\"slot-durability\"},\"attempt_id\":\"a-83de271bd644c6344ff9e1c9ec26b26f\",\"observed_effort\":null,\"observed_model\":null,\"receipt_sha256\":\"5b5702494ce56fb3716d9202722415c1e2ebde8834794ca2fad10b602443f847\",\"requested_effort\":\"high\",\"requested_model\":\"gpt-6.2-sol\",\"run_id\":\"r-3ccadbf5bb3942abaf28de444d42ebb3\",\"status\":\"succeeded\",\"turn_evidence\":{\"assignment_id\":\"slot-durability\",\"output_sha256\":\"a9cba87dc8904fcb9f2ecfb5ac414710b0b23af3a1a150144982dd13165a925b\",\"turn\":{\"assignment_id\":\"slot-durability\",\"completed\":true,\"output_sha256\":\"a9cba87dc8904fcb9f2ecfb5ac414710b0b23af3a1a150144982dd13165a925b\",\"role_version\":\"v1\",\"session\":\"01a21638-6971-7da1-8fb8-ebc4debbed72\",\"turn_id\":\"01a21638-69b0-7cb2-96ca-702567aea46f\",\"usage\":{\"cached_input_tokens\":0,\"input_tokens\":14176,\"output_tokens\":9452},\"usage_scope\":\"final_matched_tokenUsage.last\"}},\"version\":2}\n",
+    "author_patch_sha256": "365ed49fbbbf1b2ae6bae5c10a09d1b8092daaafa3fd72b3f920fd8f68e4feaa",
+    "replayed_from": "51e0a85e65aaad092242a64f5babf857441c05e5",
+    "replayed_tree": "b6307e60a8ab6749eb629c8a58e4d2e65e0b6288",
+    "procedure": "git read-tree parent; git apply --cached --recount normalized author diff; git write-tree matched HEAD tree exactly"
+  },
+  "incremental": {
+    "base": "51e0a85e65aaad092242a64f5babf857441c05e5",
+    "head": "99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb",
+    "patch_sha256": "b424e5f6b26f99f2a808eec81fdb2b334dc3b1b15e249b64fd1b072f66fd9f39",
+    "paths": [
+      "agent_eval/m3_assignment.py",
+      "tests/test_m3_score.py"
+    ]
+  },
+  "cumulative": {
+    "base": "8834ec5a3cbe5b187bd55501b548b725e9295002",
+    "head": "99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb",
+    "patch_sha256": "0417a7636ae1f2588dc12b140678dcff524b4c3fbd313eb799fa298c47429fc0",
+    "paths": [
+      "agent_eval/m3_assignment.py",
+      "agent_eval/m3_recorder.py",
+      "agent_eval/m3_score.py",
+      "docs/milestones/v0.3.2/M3-call-admission.md",
+      "docs/milestones/v0.3.2/M3-preflight.md",
+      "docs/milestones/v0.3.2/README.md",
+      "docs/milestones/v0.3.2/m3-admission-evidence.json",
+      "docs/milestones/v0.3.2/m3-call-boundary-preflight.json",
+      "docs/milestones/v0.3.2/m3-native-exit-review.json",
+      "docs/milestones/v0.3.2/reproduction/call-boundary/admission.py",
+      "docs/milestones/v0.3.2/reproduction/call-boundary/admission_fault.py",
+      "docs/milestones/v0.3.2/reproduction/call-boundary/check.py",
+      "docs/milestones/v0.3.2/reproduction/call-boundary/control.py",
+      "docs/milestones/v0.3.2/reproduction/call-boundary/double_wire.py",
+      "docs/milestones/v0.3.2/reproduction/call-boundary/peer.py",
+      "tests/test_m3_score.py"
+    ]
+  },
+  "slots": {
+    "controls/exit17-slots/candidate/postexit/1/assignment/assignment-v2.verdict.json": "{\"actual_member_id\":\"acl-006\",\"actual_role_version\":\"v1\",\"artifact\":{\"attempt_id\":\"a-cc981ccccc00fe9c1a595ae797d1f1e2\",\"contract_sha256\":\"65f252c65dd04f370248b4f9593317457ed5e78ddda38cf2bf4f9ccee092cab3\",\"input_sha256\":\"1bb3afabe89a0a7025f80715dd9c2c52c150c77b7ca6aa001e7ed1361e724f9a\",\"kind\":\"go-change\",\"member_id\":\"acl-006\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"payload\":{\"base_sha\":\"1111111111111111111111111111111111111111\",\"existing_evidence\":\"synthetic\",\"tests\":[],\"unverified\":[]},\"receipt_sha256\":\"42a1197ef73969def47420b7e47e1590c86f848dbaece89b252c01465e6ac67b\",\"run_id\":\"r-f11321d0e8474f22ab8760673c513a90\",\"sha256\":\"65932459dc2a50d9033a548321a9163e8d6fdb4362025e7c2e8998f55f470046\",\"task_id\":\"regression\"},\"attempt_id\":\"a-cc981ccccc00fe9c1a595ae797d1f1e2\",\"observed_effort\":null,\"observed_model\":null,\"receipt_sha256\":\"42a1197ef73969def47420b7e47e1590c86f848dbaece89b252c01465e6ac67b\",\"requested_effort\":\"high\",\"requested_model\":\"gpt-6.2-sol\",\"run_id\":\"r-f11321d0e8474f22ab8760673c513a90\",\"status\":\"succeeded\",\"turn_evidence\":{\"assignment_id\":\"regression\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"turn\":{\"assignment_id\":\"regression\",\"completed\":true,\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"role_version\":\"v1\",\"session\":\"thread-synthetic\",\"turn_id\":\"fd178afd-48a4-40a2-96fb-9600d2f80e5a\",\"usage\":{\"cached_input_tokens\":0,\"input_tokens\":1,\"output_tokens\":1},\"usage_scope\":\"final_matched_tokenUsage.last\"}},\"version\":2}\n",
+    "controls/exit17-slots/current/postexit/1/assignment/assignment-v2.verdict.json": "{\"actual_member_id\":\"acl-006\",\"actual_role_version\":\"v1\",\"artifact\":{\"attempt_id\":\"a-7899134233c2287583709977d1e10df5\",\"contract_sha256\":\"65f252c65dd04f370248b4f9593317457ed5e78ddda38cf2bf4f9ccee092cab3\",\"input_sha256\":\"1bb3afabe89a0a7025f80715dd9c2c52c150c77b7ca6aa001e7ed1361e724f9a\",\"kind\":\"go-change\",\"member_id\":\"acl-006\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"payload\":{\"base_sha\":\"1111111111111111111111111111111111111111\",\"existing_evidence\":\"synthetic\",\"tests\":[],\"unverified\":[]},\"receipt_sha256\":\"bf9f26549d739584a3929ac78d98a12aefc65f1d665adf51db74919d5c009d8c\",\"run_id\":\"r-bd4cecbf7cf1430db92e34574ca4236d\",\"sha256\":\"65932459dc2a50d9033a548321a9163e8d6fdb4362025e7c2e8998f55f470046\",\"task_id\":\"regression\"},\"attempt_id\":\"a-7899134233c2287583709977d1e10df5\",\"observed_effort\":null,\"observed_model\":null,\"receipt_sha256\":\"bf9f26549d739584a3929ac78d98a12aefc65f1d665adf51db74919d5c009d8c\",\"requested_effort\":\"high\",\"requested_model\":\"gpt-6.2-sol\",\"run_id\":\"r-bd4cecbf7cf1430db92e34574ca4236d\",\"status\":\"succeeded\",\"turn_evidence\":{\"assignment_id\":\"regression\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"turn\":{\"assignment_id\":\"regression\",\"completed\":true,\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"role_version\":\"v1\",\"session\":\"thread-synthetic\",\"turn_id\":\"7df74eb0-2ae5-41c1-9817-39d774c944d9\",\"usage\":{\"cached_input_tokens\":0,\"input_tokens\":1,\"output_tokens\":1},\"usage_scope\":\"final_matched_tokenUsage.last\"}},\"version\":2}\n",
+    "controls/paired/slots/candidate/double/1/assignment/assignment-v2.verdict.json": "{\"actual_member_id\":\"acl-006\",\"actual_role_version\":\"v1\",\"artifact\":{\"attempt_id\":\"a-d9d56776423ebf486a5dcb2d871a709d\",\"contract_sha256\":\"65f252c65dd04f370248b4f9593317457ed5e78ddda38cf2bf4f9ccee092cab3\",\"input_sha256\":\"1bb3afabe89a0a7025f80715dd9c2c52c150c77b7ca6aa001e7ed1361e724f9a\",\"kind\":\"go-change\",\"member_id\":\"acl-006\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"payload\":{\"base_sha\":\"1111111111111111111111111111111111111111\",\"existing_evidence\":\"synthetic\",\"tests\":[],\"unverified\":[]},\"receipt_sha256\":\"bdac3275011bbd80f7becba1091a258e4777a7dd4f54cfb0ab39b27db36251b1\",\"run_id\":\"r-601e95a023a84314970bd270e06f2531\",\"sha256\":\"65932459dc2a50d9033a548321a9163e8d6fdb4362025e7c2e8998f55f470046\",\"task_id\":\"m3-synthetic\"},\"attempt_id\":\"a-d9d56776423ebf486a5dcb2d871a709d\",\"observed_effort\":null,\"observed_model\":null,\"receipt_sha256\":\"bdac3275011bbd80f7becba1091a258e4777a7dd4f54cfb0ab39b27db36251b1\",\"requested_effort\":\"high\",\"requested_model\":\"gpt-6.2-sol\",\"run_id\":\"r-601e95a023a84314970bd270e06f2531\",\"status\":\"succeeded\",\"turn_evidence\":{\"assignment_id\":\"m3-synthetic\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"turn\":{\"assignment_id\":\"m3-synthetic\",\"completed\":true,\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"role_version\":\"v1\",\"session\":\"thread-synthetic\",\"turn_id\":\"17766f97-3225-4104-b9c1-96a2bd94ec52\",\"usage\":{\"cached_input_tokens\":0,\"input_tokens\":1,\"output_tokens\":1},\"usage_scope\":\"final_matched_tokenUsage.last\"}},\"version\":2}\n",
+    "controls/paired/slots/candidate/lost/1/assignment/assignment-v2.verdict.json": "{\"attempt_id\":\"a-2046aa4ffefbc539a6bf4798e6a4a5eb\",\"observed_effort\":null,\"observed_model\":null,\"reason\":\"attempt_evidence_unavailable_or_invalid\",\"requested_effort\":\"high\",\"requested_model\":\"gpt-6.2-sol\",\"run_id\":\"r-30c1239a792e4486a8b82367b00bda2e\",\"status\":\"uncertain\",\"version\":2}\n",
+    "controls/paired/slots/candidate/success/1/assignment/assignment-v2.verdict.json": "{\"actual_member_id\":\"acl-006\",\"actual_role_version\":\"v1\",\"artifact\":{\"attempt_id\":\"a-3c025b942b7f07e9515a99e89fce1573\",\"contract_sha256\":\"65f252c65dd04f370248b4f9593317457ed5e78ddda38cf2bf4f9ccee092cab3\",\"input_sha256\":\"1bb3afabe89a0a7025f80715dd9c2c52c150c77b7ca6aa001e7ed1361e724f9a\",\"kind\":\"go-change\",\"member_id\":\"acl-006\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"payload\":{\"base_sha\":\"1111111111111111111111111111111111111111\",\"existing_evidence\":\"synthetic\",\"tests\":[],\"unverified\":[]},\"receipt_sha256\":\"97410cdc0dbe28c94b5cee072be95286ba4cf48183e25f758d7ce5de3486008d\",\"run_id\":\"r-014a2004ccbc41df932554c6c2d6fa18\",\"sha256\":\"65932459dc2a50d9033a548321a9163e8d6fdb4362025e7c2e8998f55f470046\",\"task_id\":\"m3-synthetic\"},\"attempt_id\":\"a-3c025b942b7f07e9515a99e89fce1573\",\"observed_effort\":null,\"observed_model\":null,\"receipt_sha256\":\"97410cdc0dbe28c94b5cee072be95286ba4cf48183e25f758d7ce5de3486008d\",\"requested_effort\":\"high\",\"requested_model\":\"gpt-6.2-sol\",\"run_id\":\"r-014a2004ccbc41df932554c6c2d6fa18\",\"status\":\"succeeded\",\"turn_evidence\":{\"assignment_id\":\"m3-synthetic\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"turn\":{\"assignment_id\":\"m3-synthetic\",\"completed\":true,\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"role_version\":\"v1\",\"session\":\"thread-synthetic\",\"turn_id\":\"03a152f3-92e1-4c93-b1cf-03b5ac9b0403\",\"usage\":{\"cached_input_tokens\":0,\"input_tokens\":1,\"output_tokens\":1},\"usage_scope\":\"final_matched_tokenUsage.last\"}},\"version\":2}\n",
+    "controls/paired/slots/current/double/1/assignment/assignment-v2.verdict.json": "{\"actual_member_id\":\"acl-006\",\"actual_role_version\":\"v1\",\"artifact\":{\"attempt_id\":\"a-8d254af0fbba9da2e8d8794f4bdebf8d\",\"contract_sha256\":\"65f252c65dd04f370248b4f9593317457ed5e78ddda38cf2bf4f9ccee092cab3\",\"input_sha256\":\"1bb3afabe89a0a7025f80715dd9c2c52c150c77b7ca6aa001e7ed1361e724f9a\",\"kind\":\"go-change\",\"member_id\":\"acl-006\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"payload\":{\"base_sha\":\"1111111111111111111111111111111111111111\",\"existing_evidence\":\"synthetic\",\"tests\":[],\"unverified\":[]},\"receipt_sha256\":\"6990781e0d6a1c8bd3be869d2cbc26703be08ed5b17dec618bdb7b4f4f9ea439\",\"run_id\":\"r-fe6c8501c3ca488498cff02af51716e5\",\"sha256\":\"65932459dc2a50d9033a548321a9163e8d6fdb4362025e7c2e8998f55f470046\",\"task_id\":\"m3-synthetic\"},\"attempt_id\":\"a-8d254af0fbba9da2e8d8794f4bdebf8d\",\"observed_effort\":null,\"observed_model\":null,\"receipt_sha256\":\"6990781e0d6a1c8bd3be869d2cbc26703be08ed5b17dec618bdb7b4f4f9ea439\",\"requested_effort\":\"high\",\"requested_model\":\"gpt-6.2-sol\",\"run_id\":\"r-fe6c8501c3ca488498cff02af51716e5\",\"status\":\"succeeded\",\"turn_evidence\":{\"assignment_id\":\"m3-synthetic\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"turn\":{\"assignment_id\":\"m3-synthetic\",\"completed\":true,\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"role_version\":\"v1\",\"session\":\"thread-synthetic\",\"turn_id\":\"80e56263-825d-41c0-bb7a-ca56c8c3f6ee\",\"usage\":{\"cached_input_tokens\":0,\"input_tokens\":1,\"output_tokens\":1},\"usage_scope\":\"final_matched_tokenUsage.last\"}},\"version\":2}\n",
+    "controls/paired/slots/current/lost/1/assignment/assignment-v2.verdict.json": "{\"attempt_id\":\"a-36aa41db4c02aaec49cf4f12d66e209a\",\"observed_effort\":null,\"observed_model\":null,\"reason\":\"attempt_evidence_unavailable_or_invalid\",\"requested_effort\":\"high\",\"requested_model\":\"gpt-6.2-sol\",\"run_id\":\"r-81ebeecaed5748a5a9f1f38e433dc817\",\"status\":\"uncertain\",\"version\":2}\n",
+    "controls/paired/slots/current/success/1/assignment/assignment-v2.verdict.json": "{\"actual_member_id\":\"acl-006\",\"actual_role_version\":\"v1\",\"artifact\":{\"attempt_id\":\"a-61b82fd94e4558c20182ed15e056c69b\",\"contract_sha256\":\"65f252c65dd04f370248b4f9593317457ed5e78ddda38cf2bf4f9ccee092cab3\",\"input_sha256\":\"1bb3afabe89a0a7025f80715dd9c2c52c150c77b7ca6aa001e7ed1361e724f9a\",\"kind\":\"go-change\",\"member_id\":\"acl-006\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"payload\":{\"base_sha\":\"1111111111111111111111111111111111111111\",\"existing_evidence\":\"synthetic\",\"tests\":[],\"unverified\":[]},\"receipt_sha256\":\"3dde576fa0fa4c33779b78f216a8173464ee775b85701ce8338ed47951319b4e\",\"run_id\":\"r-e20f1bf13cc24c628ae08e16e14367b1\",\"sha256\":\"65932459dc2a50d9033a548321a9163e8d6fdb4362025e7c2e8998f55f470046\",\"task_id\":\"m3-synthetic\"},\"attempt_id\":\"a-61b82fd94e4558c20182ed15e056c69b\",\"observed_effort\":null,\"observed_model\":null,\"receipt_sha256\":\"3dde576fa0fa4c33779b78f216a8173464ee775b85701ce8338ed47951319b4e\",\"requested_effort\":\"high\",\"requested_model\":\"gpt-6.2-sol\",\"run_id\":\"r-e20f1bf13cc24c628ae08e16e14367b1\",\"status\":\"succeeded\",\"turn_evidence\":{\"assignment_id\":\"m3-synthetic\",\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"turn\":{\"assignment_id\":\"m3-synthetic\",\"completed\":true,\"output_sha256\":\"a519ccf1e074bd55ca8dfcd8ae926fc417f362f615a7307169775a884b78e714\",\"role_version\":\"v1\",\"session\":\"thread-synthetic\",\"turn_id\":\"ebc2573f-26ed-429a-86f0-d5a05f9418e3\",\"usage\":{\"cached_input_tokens\":0,\"input_tokens\":1,\"output_tokens\":1},\"usage_scope\":\"final_matched_tokenUsage.last\"}},\"version\":2}\n"
+  },
+  "log_digests": {
+    "admission.log": "99b68987dd45da42d58bb6d9c9991d10a8b5c4004b5ff587f1039466f1ff7d13",
+    "controls/candidate/calls.jsonl": "6a6f56e7c11aa2d1b080270cd8fc51a54dfc11ea1c113ee957d7407e41edfa77",
+    "controls/crashes.json": "349d1980347ac81ff862f531a734e287daca37a57f8776eaa76fa12709a85ad5",
+    "controls/current/calls.jsonl": "2678dfdb277b034dc1cce098bbe9f2a784ca1151547d4420dfe74b3cdaa4e922",
+    "controls/exit17-slots/candidate/postexit/1/assignment/assignment-v2.verdict.json": "82e0fc4e9fbdd3011f7845428e57e111546187cbbfd0fbf8a9d678f8f52c3f0f",
+    "controls/exit17-slots/candidate/postexit/1/assignment/runtime-status.jsonl": "fb7f3f698dceb3ea05e6e72de511026b62632af43d8bbac9d836783cab425c17",
+    "controls/exit17-slots/candidate/postexit/1/assignment.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "controls/exit17-slots/candidate/postexit/1/assignment.stdout": "82e0fc4e9fbdd3011f7845428e57e111546187cbbfd0fbf8a9d678f8f52c3f0f",
+    "controls/exit17-slots/candidate/postexit/1/ledger.jsonl": "9159cd05efcae5e39840161f0bf62d7ba72272a2d652bdde1a498325b1033ac1",
+    "controls/exit17-slots/candidate/postexit/1/native-exit.json": "8346c43b6e5ee098a843323fc1b0523377af41c72b09e9fc8cdca68421df0262",
+    "controls/exit17-slots/current/postexit/1/assignment/assignment-v2.verdict.json": "ed260abb8d99287010220234bf378a8a1594c1a33257a48d46ac25e7d7d2f64e",
+    "controls/exit17-slots/current/postexit/1/assignment/runtime-status.jsonl": "60d9c786b1f58feac018e6badf079b786477966d849b2d0a62f2a090abd4d60e",
+    "controls/exit17-slots/current/postexit/1/assignment.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "controls/exit17-slots/current/postexit/1/assignment.stdout": "ed260abb8d99287010220234bf378a8a1594c1a33257a48d46ac25e7d7d2f64e",
+    "controls/exit17-slots/current/postexit/1/ledger.jsonl": "350a65978793f913b06c8ba9605e9a3cb42f0b214b2c0766793e2699a02d869b",
+    "controls/exit17-slots/current/postexit/1/native-exit.json": "60af56356ee726a28cb642c6f0993168aa9a6a2e02f77fbe92d14e8c1359f9f0",
+    "controls/paired/candidate-double/calls.jsonl": "203ba27864b51c9fcad5aacac92ffb79bf82616dd03bb6b03284174a86810654",
+    "controls/paired/candidate-lost/calls.jsonl": "3fe6c86031020a161a02a78f8bbe732075a07c7011799a1d88e6a46c8a4e1d80",
+    "controls/paired/candidate-success/calls.jsonl": "e6b1a9889b0c3f2797e5ba5a566d35b47dec5603f74e3005923a04c4f5671446",
+    "controls/paired/current-double/calls.jsonl": "3937a6218d169df8be2777ad4e3b3e6ceda565fefe9ca4a42bed87c659eefb4c",
+    "controls/paired/current-lost/calls.jsonl": "404d296912c10d7f7ccfc52f8f9f08a4c1024872adcb21cb7c049dea130ff984",
+    "controls/paired/current-success/calls.jsonl": "43f544abd654ff5ef76703e18440114e1d8aecc24370ff1efb81648e6c14880f",
+    "controls/paired/slots/candidate/double/1/assignment/assignment-v2.verdict.json": "fdd2015360a3a788643f38dcfed9339b9964b9d624d0000fb002b47fb5a5beaa",
+    "controls/paired/slots/candidate/double/1/assignment/runtime-status.jsonl": "c82ca51c8e107c79871c0b71a4087632d1da9cb532e71c01151156ad49ed8f18",
+    "controls/paired/slots/candidate/double/1/assignment.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "controls/paired/slots/candidate/double/1/assignment.stdout": "fdd2015360a3a788643f38dcfed9339b9964b9d624d0000fb002b47fb5a5beaa",
+    "controls/paired/slots/candidate/double/1/ledger.jsonl": "5799104ae0489680b233e7ecd58e68b5c7edb5a723e6d05ef2c963bbfe5765a4",
+    "controls/paired/slots/candidate/double/1/native-exit.json": "aaa6ec174d8d8d5d8cb8ca78a210e8fb3c5d23896751cc86d51ddee7fd8dbce7",
+    "controls/paired/slots/candidate/lost/1/assignment/assignment-v2.verdict.json": "a3a977acb03dfa5c395f9f02d221382a10b9d6921040f5a88dbdab97ad312055",
+    "controls/paired/slots/candidate/lost/1/assignment/runtime-status.jsonl": "598955f900dfa36ab63cbb8f605cedd4253faa2e4aed26a6ab1dc3708d3e2b22",
+    "controls/paired/slots/candidate/lost/1/assignment.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "controls/paired/slots/candidate/lost/1/assignment.stdout": "a3a977acb03dfa5c395f9f02d221382a10b9d6921040f5a88dbdab97ad312055",
+    "controls/paired/slots/candidate/lost/1/ledger.jsonl": "fb652441fcea051d4d688fb8d4e3af0ed32887bbab4aef1d81ec3d95f97a8afe",
+    "controls/paired/slots/candidate/lost/1/native-exit.json": "11d5fa7f8824a89d764b0e63c4081f9f26f56a4f562890014e825a5720138f31",
+    "controls/paired/slots/candidate/success/1/assignment/assignment-v2.verdict.json": "bb037d6fef80f8b3587aebc45b960d706cd8403edb4d4cfa41725f917d87e144",
+    "controls/paired/slots/candidate/success/1/assignment/runtime-status.jsonl": "ed427487bb39a297d23eebf831563b2a7c445d8c045c226518f4ebe16538f58f",
+    "controls/paired/slots/candidate/success/1/assignment.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "controls/paired/slots/candidate/success/1/assignment.stdout": "bb037d6fef80f8b3587aebc45b960d706cd8403edb4d4cfa41725f917d87e144",
+    "controls/paired/slots/candidate/success/1/ledger.jsonl": "4dd307f566dcf2d76ef5509c0ab007fcb23c252cbd95b89967297dfd4977b297",
+    "controls/paired/slots/candidate/success/1/native-exit.json": "33cb9b23688e239e471b2a5a9c8876a9faedc3e82ef43ddf18f57a9c26847d0a",
+    "controls/paired/slots/current/double/1/assignment/assignment-v2.verdict.json": "f0714a3511ad17190e73654dbbb7f7bead450c29aee2edfe405363d00c9268da",
+    "controls/paired/slots/current/double/1/assignment/runtime-status.jsonl": "368a18f46396d520e31119fddc77b64e5e956f96a1fc87de4d23bc47a97a8e9b",
+    "controls/paired/slots/current/double/1/assignment.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "controls/paired/slots/current/double/1/assignment.stdout": "f0714a3511ad17190e73654dbbb7f7bead450c29aee2edfe405363d00c9268da",
+    "controls/paired/slots/current/double/1/ledger.jsonl": "c22bbb8abe341df383d93fe4ab6f4d8c37b0cbdc2af9e252afd96dd9e59e51e9",
+    "controls/paired/slots/current/double/1/native-exit.json": "0cd3141caa35ae5583d883c35ab67287184d4a6bf239a6df9db8af7197072b22",
+    "controls/paired/slots/current/lost/1/assignment/assignment-v2.verdict.json": "5f43d612016b0d1ad36cbaf48a30b9daa20d384e31e77e08f248f60439e38245",
+    "controls/paired/slots/current/lost/1/assignment/runtime-status.jsonl": "fb9f228aa31a2fe52865d473768c821a718cd84584e50ac10f46b3cd168203bc",
+    "controls/paired/slots/current/lost/1/assignment.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "controls/paired/slots/current/lost/1/assignment.stdout": "5f43d612016b0d1ad36cbaf48a30b9daa20d384e31e77e08f248f60439e38245",
+    "controls/paired/slots/current/lost/1/ledger.jsonl": "d7b969e2eb35b3e6d647387fe5ac3477158354ea09dc929608103cba6ef5e909",
+    "controls/paired/slots/current/lost/1/native-exit.json": "92ccceb6c9a364892a6e9c262c69788c455a585e67b8253db938c8f07fe09105",
+    "controls/paired/slots/current/success/1/assignment/assignment-v2.verdict.json": "878c8e6a18c4a346c19ac25e9135f1b1cadb0fe4b8155ca642c309adfd39de40",
+    "controls/paired/slots/current/success/1/assignment/runtime-status.jsonl": "c7231f807ec11d1d3a523873afd68940073d97ec73c9a309b0035cdb746e330f",
+    "controls/paired/slots/current/success/1/assignment.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "controls/paired/slots/current/success/1/assignment.stdout": "878c8e6a18c4a346c19ac25e9135f1b1cadb0fe4b8155ca642c309adfd39de40",
+    "controls/paired/slots/current/success/1/ledger.jsonl": "6b573de4bccc6e5d740981fc8ed7f1692d02d7fe06a8e1340e59304919d5ff15",
+    "controls/paired/slots/current/success/1/native-exit.json": "70b777f9843f6719f9d3a7adaf9107157fbd13db6a9e551ed5917350d49662bb",
+    "controls/paired.json": "33f7a27fa529bc391b16d8800f2d2a48d36ef04765f23e4dabe0d6c7aa0693a6",
+    "durability.log": "8368ad70135f5efce91c6746af1539179b16465b3976692de7ad2a68ca9dcb72",
+    "faults/candidate-crash/calls.jsonl": "efdab9fde27c801e3b6e4d94f107565efafddaf4717c2d21eacf97628f119c60",
+    "faults/candidate-crash/new-root/slots/candidate/independent/1/assignment/runtime-status.jsonl": "bdce9caa3a4103b809e58ad872b933a96810b73bec6b66b2511de1671813680e",
+    "faults/candidate-crash/new-root/slots/candidate/independent/1/assignment.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "faults/candidate-crash/new-root/slots/candidate/independent/1/assignment.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "faults/candidate-crash/new-root/slots/candidate/independent/1/ledger.jsonl": "cb1f1d138bef4c8fcdf870ce2ff708050b58830370311c7467b1a3011ab85f66",
+    "faults/current-crash/calls.jsonl": "7a9ff62de2f9ecbabeb5852463fad54820dd1e2820edac89f2d0b20cf4740e33",
+    "faults/current-crash/new-root/slots/current/independent/1/assignment/runtime-status.jsonl": "f26368fba448f636def15d0865c2ff1319f412cc6eda9076d7e293da3b8a2d4c",
+    "faults/current-crash/new-root/slots/current/independent/1/assignment.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "faults/current-crash/new-root/slots/current/independent/1/assignment.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "faults/current-crash/new-root/slots/current/independent/1/ledger.jsonl": "59136dea52f25855a86bd965e064a49444383b648c16a81a2619f5e4efd854ab",
+    "faults/results.json": "75373b6582fa7655d0ea2bc29f4c6774415114fb787ca265eaccd272c917fa70",
+    "unit.log": "87a3195e85ca471ddfaaaa91fe58247cc11a9703912d8454ca69b7a287462314"
+  },
+  "interrupted": "No receipt for sync-failure and interrupted trials; peer calls reconcile independently. Raw receipts provided for all trials that produced them."
+}

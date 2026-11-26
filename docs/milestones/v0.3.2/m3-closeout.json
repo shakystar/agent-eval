@@ -1,0 +1,358 @@
+{
+  "infrastructure": {
+    "base": "8834ec5a3cbe5b187bd55501b548b725e9295002",
+    "candidate": "99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb",
+    "orchestrator": "6d74153ced6b558b8371c0f50201d1979af8f63e",
+    "bridge_sha256": "0b80fc27daf9bcfec9d998b09726b04f69550c953bb02e83937f5aa3cf69db8b",
+    "lab_revision": "112d4629d4261b4403ff33fbde43e36431c435f4",
+    "developer": "acl-007",
+    "development_receipt": "5b5702494ce56fb3716d9202722415c1e2ebde8834794ca2fad10b602443f847",
+    "directory_fsync_fault_before": {
+      "arm": "current",
+      "backend_calls": 1,
+      "failure_stage": "injected on directory fsync"
+    },
+    "independent_faults_after": [
+      {
+        "arm": "current",
+        "failure": "sync",
+        "first_exit": 1,
+        "actual_calls": 0
+      },
+      {
+        "arm": "current",
+        "failure": "crash",
+        "first_exit": -9,
+        "retry_status": "slot_exists",
+        "actual_calls": 1,
+        "additional_calls": 0
+      },
+      {
+        "arm": "candidate",
+        "failure": "sync",
+        "first_exit": 1,
+        "actual_calls": 0
+      },
+      {
+        "arm": "candidate",
+        "failure": "crash",
+        "first_exit": -9,
+        "retry_status": "slot_exists",
+        "actual_calls": 1,
+        "additional_calls": 0
+      }
+    ],
+    "admission_controls": [
+      {
+        "arm": "current",
+        "mode": "success",
+        "native": "succeeded",
+        "action": "accept",
+        "starts": 1,
+        "recorder_sha256": "6b573de4bccc6e5d740981fc8ed7f1692d02d7fe06a8e1340e59304919d5ff15",
+        "receipt": "3dde576fa0fa4c33779b78f216a8173464ee775b85701ce8338ed47951319b4e",
+        "trial_exit": 0,
+        "scoring_exit": 0,
+        "retry_new_calls": 0
+      },
+      {
+        "arm": "current",
+        "mode": "lost",
+        "native": "uncertain",
+        "action": "hold",
+        "starts": 1,
+        "recorder_sha256": "d7b969e2eb35b3e6d647387fe5ac3477158354ea09dc929608103cba6ef5e909",
+        "receipt": null,
+        "trial_exit": 3,
+        "scoring_exit": 3,
+        "retry_new_calls": 0
+      },
+      {
+        "arm": "current",
+        "mode": "double",
+        "native": "succeeded",
+        "action": "reject",
+        "starts": 2,
+        "recorder_sha256": "c22bbb8abe341df383d93fe4ab6f4d8c37b0cbdc2af9e252afd96dd9e59e51e9",
+        "receipt": "6990781e0d6a1c8bd3be869d2cbc26703be08ed5b17dec618bdb7b4f4f9ea439",
+        "trial_exit": 4,
+        "scoring_exit": 4,
+        "retry_new_calls": 0
+      },
+      {
+        "arm": "candidate",
+        "mode": "success",
+        "native": "succeeded",
+        "action": "accept",
+        "starts": 1,
+        "recorder_sha256": "4dd307f566dcf2d76ef5509c0ab007fcb23c252cbd95b89967297dfd4977b297",
+        "receipt": "97410cdc0dbe28c94b5cee072be95286ba4cf48183e25f758d7ce5de3486008d",
+        "trial_exit": 0,
+        "scoring_exit": 0,
+        "retry_new_calls": 0
+      },
+      {
+        "arm": "candidate",
+        "mode": "lost",
+        "native": "uncertain",
+        "action": "hold",
+        "starts": 1,
+        "recorder_sha256": "fb652441fcea051d4d688fb8d4e3af0ed32887bbab4aef1d81ec3d95f97a8afe",
+        "receipt": null,
+        "trial_exit": 3,
+        "scoring_exit": 3,
+        "retry_new_calls": 0
+      },
+      {
+        "arm": "candidate",
+        "mode": "double",
+        "native": "succeeded",
+        "action": "reject",
+        "starts": 2,
+        "recorder_sha256": "5799104ae0489680b233e7ecd58e68b5c7edb5a723e6d05ef2c963bbfe5765a4",
+        "receipt": "bdac3275011bbd80f7becba1091a258e4777a7dd4f54cfb0ab39b27db36251b1",
+        "trial_exit": 4,
+        "scoring_exit": 4,
+        "retry_new_calls": 0
+      }
+    ],
+    "postexit17": [
+      {
+        "arm": "current",
+        "first": {
+          "status": "assignment_failed",
+          "action": "hold",
+          "reason": "native_assignment_failed"
+        },
+        "rescore": {
+          "action": "hold",
+          "reason": "native_assignment_failed"
+        },
+        "native_receipt": "bf9f26549d739584a3929ac78d98a12aefc65f1d665adf51db74919d5c009d8c",
+        "codes": [
+          3,
+          3
+        ]
+      },
+      {
+        "arm": "candidate",
+        "first": {
+          "status": "assignment_failed",
+          "action": "hold",
+          "reason": "native_assignment_failed"
+        },
+        "rescore": {
+          "action": "hold",
+          "reason": "native_assignment_failed"
+        },
+        "native_receipt": "42a1197ef73969def47420b7e47e1590c86f848dbaece89b252c01465e6ac67b",
+        "codes": [
+          3,
+          3
+        ]
+      }
+    ],
+    "suite": [
+      "Ran 81 tests in 1.884s",
+      "",
+      "OK (skipped=34)"
+    ],
+    "limits": "Synthetic backend substitutes for actual model; process-group SIGKILL after peer delivery and injected syscall errors, no machine power-cycle.",
+    "merge": "6130992edecec647880d627548fbfe047ee14b54",
+    "review": {
+      "artifacts": [
+        {
+          "actual_member_id": "acl-012",
+          "artifact": {
+            "payload": {
+              "decision": "accept",
+              "owner": "신도윤",
+              "reason": "agent_eval/m3_assignment.py의 main()은 슬롯을 독점 생성한 뒤 _sync_slot()으로 하위 디렉터리부터 상위 디렉터리까지 동기화하고, 모두 성공한 경우에만 네이티브 할당을 시작한다. 제출된 실측에서 두 arm 모두 fsync 실패 시 호출 0건, SIGKILL 후 동일 키 재시도 시 slot_exists 및 추가 호출 0건이었으며, 네이티브 종료 코드 17은 최초 채점과 재채점 모두 영수증 없이 hold(3)였다. 작성자 영수증의 증분 패치 재적용 결과와 각 시험의 커밋·트리 핀이 동일 후보를 가리킨다. 지정 커밋 99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb만 병합하고, 검증 범위가 지원되는 로컬 POSIX 파일시스템의 동기화 순서와 프로세스 중단 복구에 한정되며 물리적 전원 차단은 시험하지 않았음을 병합 기록에 남긴다."
+            },
+            "sha256": "e92f22d7975d8dd2f73643dbfe134ad7b5bb62956cd3a002c2106484de4bddb8"
+          },
+          "attempt_id": "a-a4f9c3ed151eeadab2339638d1fbf353",
+          "receipt_sha256": "174604fd9f7e977171aeff384ddf7fc9892006a1ea096284884a648ebdf5d230",
+          "run_id": "r-34f62ea787044e39ab2d8c4d1da443d7"
+        },
+        {
+          "actual_member_id": "acl-013",
+          "artifact": {
+            "payload": {
+              "decision": "accept",
+              "owner": "서민재",
+              "reason": "구현은 작업 키의 슬롯을 독점 생성하고 하위에서 상위 순으로 디렉터리 fsync를 마친 뒤에만 제출한다. 두 arm 모두 fsync 실패 시 호출 0건으로 종료했고, 호출 1건 직후 SIGKILL한 경우 같은 키 재시도는 slot_exists로 끝나 중복 제출이 0건이었다. 의도적 이중 호출 대조군은 arm당 중복 1건을 reject(4)했고, 네이티브 종료 17은 원본 영수증이 있어도 최초 채점과 재채점 모두 hold(3)였다. 작성자 영수증의 증분 패치 재적용 트리와 시험 전후 트리 핀이 일치하므로 99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb만 병합한다. 검증 범위는 지원 로컬 POSIX 파일시스템의 fsync 순서와 프로세스 중단 복구이며, 물리적 전원 차단은 시험하지 않았음을 병합 기록에 남긴다."
+            },
+            "sha256": "5b84e90750bc6490d51528a5ef8266675431c5f382cb1cfb8062a41e4316e15f"
+          },
+          "attempt_id": "a-2cf852b2fe7c402f926af37871542e5a",
+          "receipt_sha256": "8f6b6c12810c22ecaba85d1083482b8339714a94dc49cc4d653d5c0f8f0e6180",
+          "run_id": "r-b23fb00bac5d477398e9e6ac7bbd6396"
+        },
+        {
+          "actual_member_id": "acl-014",
+          "artifact": {
+            "payload": {
+              "decision": "accept",
+              "owner": "김가온",
+              "reason": "수정 전에는 디렉터리 fsync 실패 조건에서 백엔드가 1회 호출됐으나, 수정 후에는 슬롯을 독점 생성하고 하위부터 상위까지 동기화가 끝나야 실행하므로 두 arm 모두 호출 0건이었다. 두 arm 모두 첫 호출 직후 SIGKILL한 뒤 동일 키로 재시도하면 slot_exists로 종료됐고 추가 호출은 없었다. 네이티브 종료 코드 17은 원본 영수증이 있어도 최초 채점과 재채점에서 모두 hold(3)였다. 제출 자료에서 작성자 영수증의 증분 패치를 재적용한 트리와 시험 전후에 기록된 트리가 일치한다. 지정 커밋 99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb만 병합하고, 검증이 지원되는 로컬 POSIX 파일시스템의 fsync 순서와 프로세스 중단 복구에 한정되며 물리적 전원 차단은 시험하지 않았음을 병합 기록에 남긴다."
+            },
+            "sha256": "4b012b4db53a2859a55be8056a8115639c30da0f06a52ef94bb0df3569fb547e"
+          },
+          "attempt_id": "a-f4c82a2c87693999fbcb15b4c1eb9569",
+          "receipt_sha256": "412e27008a3efec0495e8f40378dc3096c8654502824c15f22f48721a8d355aa",
+          "run_id": "r-efbcc150694743059fae53d863237be1"
+        },
+        {
+          "actual_member_id": "acl-015",
+          "artifact": {
+            "payload": {
+              "decision": "accept",
+              "owner": "장유나",
+              "reason": "제공 자료를 독립 대조한 결과 출처 불일치는 발견되지 않았다. Git 작성자(shakystar)와 패치 작성 영수증의 수행자(acl-007)는 별도로 식별된다. 2파일 증분 패치는 HEAD의 직전 커밋을, 16파일 누적 패치는 별도 기준 커밋을 사용하며, 작성자 패치 재적용 결과는 HEAD 트리 b6307e60a8ab6749eb629c8a58e4d2e65e0b6288과 일치한다. 시험 전후 커밋·트리 핀과 로그 해시가 같은 후보를 가리키고, 원본 영수증의 식별값도 시험 요약과 일치한다. 두 arm 모두 fsync 실패 시 호출 0건, SIGKILL 후 동일 키 재시도 시 추가 호출 0건이었으며, 종료 코드 17은 최초 채점과 재채점 모두 hold(3)였다. 지정 커밋 99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb만 병합하고, 검증 범위가 지원되는 로컬 POSIX 파일시스템의 디렉터리 fsync 순서와 프로세스 중단 복구에 한정되며 물리적 전원 차단은 시험하지 않았음을 병합 기록에 남긴다."
+            },
+            "sha256": "929a0251dfc3c6ede2f0ce5bb87167caf89202824e4209eed9ae422a97d85bd3"
+          },
+          "attempt_id": "a-7f02a99fa887a126768f0d3498baf9bb",
+          "receipt_sha256": "d0d207fd1dd91325264f6620e9832e573c2f62789c7c4ff3ba5e55884beef1bc",
+          "run_id": "r-e52feeb02a0447fbb5d4036279a8c0de"
+        },
+        {
+          "actual_member_id": "acl-005",
+          "artifact": {
+            "payload": {
+              "decision": "accept",
+              "owner": "강이현",
+              "reason": "병합 적합 판정은 커밋 99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb에 한정한다. Git 작성자(shakystar)와 패치 작성 영수증의 수행자(acl-007)가 구분되며, 직전 커밋 51e0a85e 기준의 2파일 증분과 8834ec5a 기준의 16파일 누적 변경은 기준점이 다르다. 작성자 패치를 직전 커밋에 재적용한 트리(b6307e60)는 시험 전후 트리와 일치하고, 로그 해시와 원본 영수증도 시험 요약에 대응해 종전의 출처 보류 사유는 해소됐다. 두 arm 모두 슬롯을 독점 생성한 뒤 하위에서 상위까지 디렉터리 fsync를 마쳐야 호출한다. 이 단계에 실패를 주입하자 수정 전 1회였던 호출이 수정 후 0회가 됐고(종료 1), 첫 호출 직후 SIGKILL한 뒤 같은 키로 재시도하자 slot_exists로 추가 호출은 0회였다. 두 arm의 채점 결과도 일치했다. 정상 1회는 accept(0), 호출 후 증거 유실은 hold(3)였다. 호출 경계에서 같은 작업을 두 번 시작해 정상 대조군과 동일한 내용의 결과 파일이 남는 반례에서는 파일 해시만 보면 거짓 통과하지만, 원장의 시작 기록 2건이 단일 호출 조건을 위반해 reject(4)였다. 네이티브 종료 17은 성공 영수증이 남아도 최초·재채점 모두 영수증 없는 hold(3)였다. 지정 범위에서 미해결 병합 차단 사유는 없다. 병합 기록에는 해당 커밋과 함께 검증 범위를 지원 로컬 POSIX 파일시스템의 fsync 순서와 프로세스 중단 복구로 명시하고, 물리적 전원 차단 복구는 미검증으로 남긴다. 이 판정은 릴리스 승인이 아니다."
+            },
+            "sha256": "f63f187e83e79040b6ab13e263b7c9bcb5fc79d30c1c433bcfed45b0fc97a65f"
+          },
+          "attempt_id": "a-448e8eb4202ffe9817f6894eb26275ff",
+          "receipt_sha256": "b1e04c9ebcac4e56ed7ed6db84c6878e0e7dbbd9c5c99938d9ca3ac9f7ca1a55",
+          "run_id": "r-cab2425202764d768c1239abd57bf771"
+        }
+      ],
+      "decision": "accept",
+      "member_id": "acl-005",
+      "owner": "강이현",
+      "reason": "병합 적합 판정은 커밋 99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb에 한정한다. Git 작성자(shakystar)와 패치 작성 영수증의 수행자(acl-007)가 구분되며, 직전 커밋 51e0a85e 기준의 2파일 증분과 8834ec5a 기준의 16파일 누적 변경은 기준점이 다르다. 작성자 패치를 직전 커밋에 재적용한 트리(b6307e60)는 시험 전후 트리와 일치하고, 로그 해시와 원본 영수증도 시험 요약에 대응해 종전의 출처 보류 사유는 해소됐다. 두 arm 모두 슬롯을 독점 생성한 뒤 하위에서 상위까지 디렉터리 fsync를 마쳐야 호출한다. 이 단계에 실패를 주입하자 수정 전 1회였던 호출이 수정 후 0회가 됐고(종료 1), 첫 호출 직후 SIGKILL한 뒤 같은 키로 재시도하자 slot_exists로 추가 호출은 0회였다. 두 arm의 채점 결과도 일치했다. 정상 1회는 accept(0), 호출 후 증거 유실은 hold(3)였다. 호출 경계에서 같은 작업을 두 번 시작해 정상 대조군과 동일한 내용의 결과 파일이 남는 반례에서는 파일 해시만 보면 거짓 통과하지만, 원장의 시작 기록 2건이 단일 호출 조건을 위반해 reject(4)였다. 네이티브 종료 17은 성공 영수증이 남아도 최초·재채점 모두 영수증 없는 hold(3)였다. 지정 범위에서 미해결 병합 차단 사유는 없다. 병합 기록에는 해당 커밋과 함께 검증 범위를 지원 로컬 POSIX 파일시스템의 fsync 순서와 프로세스 중단 복구로 명시하고, 물리적 전원 차단 복구는 미검증으로 남긴다. 이 판정은 릴리스 승인이 아니다.",
+      "status": "accepted"
+    }
+  },
+  "pilot_design": {
+    "scope": "paired live calibration only, not sealed 64-slot comparison",
+    "roles": {
+      "current": "112d4629d4261b4403ff33fbde43e36431c435f4",
+      "candidate": "bf4650c7a0c3d57f370f0ce73aca0ae5bacd2962"
+    },
+    "case": "CAL01",
+    "input_sha256": "23e0c4907cd63762a4f1f7bb7439ec8ba72971049f6db0b3cb8ee5dced4adfdc",
+    "member": "acl-025",
+    "expected_model": "gpt-6.2-astra",
+    "effort": "high",
+    "slots": 2,
+    "attempts_per_slot": 1,
+    "retries": 0,
+    "cutoff_seconds": 600,
+    "measure": "native admission and research_handoff.apply review validity; descriptive only, no selection of winning arm; tokens final matched usage only"
+  },
+  "pilot_results": {
+    "current": {
+      "action": "accept",
+      "receipt_sha256": "2b46db18741a909851ab9b27e3ff4f9d53128237374bcf1165de8d5d7bb62672",
+      "ledger_sha256": "c62a3e655114554645d0ed3a350fd9b68562d24dbdf6896678f322ab96f43412",
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "requested": {
+        "effort": "high",
+        "model": "gpt-6.2-astra"
+      },
+      "role_revision": "v1",
+      "starts": 1,
+      "usage": {
+        "input_tokens": 7274,
+        "output_tokens": 482,
+        "cached_input_tokens": 3328
+      },
+      "draft_match": true,
+      "parsed": "ok",
+      "claims": [
+        [
+          "q",
+          "support"
+        ],
+        [
+          "t",
+          "undetermined"
+        ]
+      ]
+    },
+    "candidate": {
+      "action": "accept",
+      "receipt_sha256": "e168af7844d4414c88940b0742cea8e1257da1e6c75257baee30d7ac6ec864e9",
+      "ledger_sha256": "128c99f55ef45379a7dafd42125b3a5535bd81f5253d81bd211883507779a14c",
+      "model": "gpt-6.2-astra",
+      "effort": "high",
+      "requested": {
+        "effort": "high",
+        "model": "gpt-6.2-astra"
+      },
+      "role_revision": "v1",
+      "starts": 1,
+      "usage": {
+        "input_tokens": 7344,
+        "output_tokens": 402,
+        "cached_input_tokens": 0
+      },
+      "draft_match": true,
+      "parsed": "ok",
+      "claims": [
+        [
+          "q",
+          "support"
+        ],
+        [
+          "t",
+          "undetermined"
+        ]
+      ]
+    }
+  },
+  "role_acceptance": {
+    "artifacts": [
+      {
+        "actual_member_id": "acl-010",
+        "artifact": {
+          "payload": {
+            "decision": "accept",
+            "owner": "이서진",
+            "reason": "M3 인수 판단 기록을 수락한다. 이는 후보 채택이나 릴리스 승인이 아니다. 인프라 병합 인수는 코드 검토 대상 커밋 99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb와 지원 로컬 POSIX 파일시스템의 fsync 순서·프로세스 중단 복구에 한정한다. 양쪽 모두 fsync 실패 시 호출 0회, 첫 호출 직후 강제 종료 후 동일 키 재시도 시 추가 호출 0회였다. 동일한 결과 파일이 남더라도 시작 기록 2건이면 실패이며, 호출 후 증거 유실이나 네이티브 종료 17은 성공으로 확정하지 않고 보류한다. 병합된 main 최종 헤드와 물리적 전원 차단 복구는 이 증거로 검증되지 않았다. 역할 품질은 판정불가이며 운영 계약은 현행을 유지한다. 공개 CAL01에서 양쪽 모두 1회 시작했고 모델·추론 수준·초안이 일치했지만, 최종 영속화 수정 전 보정 시험으로서 독립 쌍대 채점, 승인된 봉인 비교, 최종 스키마 기준 두 트리거의 종단 증빙이 없다. 확인된 성공은 재사용하고, 실행 여부가 불명확하면 자동 재호출 없이 원장과 대사하며, 구버전 판정은 그대로 보존한다. M0가 증거 부족 시 판정불가를 허용하므로 이 기록을 확정하는 데 추가 실험은 필수가 아니다. 이서진은 검증 범위와 미확인 항목을 인수 기록에 남기고, 후보 채택을 재검토할 때는 사전 승인된 봉인 비교의 독립 쌍대 채점과 최종 헤드에서 의뢰·선제 신호 각각의 배정부터 최종 결정까지의 증빙을 요구한다."
+          },
+          "sha256": "3d5d28e847a76c04a32d0e267db7047f019d6d45704841b47007ec41e396410d"
+        },
+        "attempt_id": "a-a4e3d6727cff70f2409a4eb408076857",
+        "receipt_sha256": "cfaa12b238979ccc6241b4f8e2c8f934c5e2b67e02f11feb38289a46b2980f16",
+        "run_id": "r-aab54e15cdd44e2b9690c0767506b316"
+      },
+      {
+        "actual_member_id": "acl-005",
+        "artifact": {
+          "payload": {
+            "decision": "accept",
+            "owner": "강이현",
+            "reason": "M3 인수 판단 기록을 수락한다. 역할 품질은 판정불가이며, 운영 계약은 현행을 유지한다. 이는 후보 채택이나 릴리스 승인이 아니다. 인프라 병합 인수는 검토 커밋 99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb에서 확인한 지원 로컬 POSIX 파일시스템의 fsync 순서와 프로세스 중단 복구에 한정한다. 양쪽 모두 호출 전 디렉터리 fsync에 실패를 주입하면 호출 0회·종료 1이었고, 첫 호출 직후 SIGKILL한 뒤 동일 키로 재시도하면 slot_exists로 추가 호출은 0회였다. 정상 1회는 accept(0)였다. 호출 경계에서 같은 작업을 두 번 시작하면 정상 대조군과 동일한 결과 파일이 남아 해시 검사는 통과하지만, 원장의 시작 기록 2건이 단일 호출 조건을 위반하므로 reject(4)였다. 호출 후 증거 유실은 hold(3)였고, 네이티브 종료 17은 성공 영수증이 남아도 최초·재채점 모두 hold(3)였다. 운영 시 확인된 성공은 재사용하고 실행 여부가 불명확하면 자동 재호출 없이 원장과 대사한다. 공개 CAL01은 최종 영속화 수정 전 양쪽 각 1슬롯의 보정 시험이다. 모델·추론 수준·초안과 판정이 일치했지만 독립 쌍대 품질 점수는 없으며, 구 영수증은 최종 스키마 증거가 아니다. M0가 판정불가를 허용하므로 이 기록 확정에 추가 실험은 필수가 아니다. 강이현은 병합된 main 최종 헤드와 물리적 전원 차단 복구를 미검증으로 명시하고, 후보 채택 재검토 시에는 사전 승인된 봉인 비교의 독립 쌍대 채점과 최종 헤드에서 의뢰·선제 신호 각각의 배정부터 최종 결정까지의 증빙을 요구한다."
+          },
+          "sha256": "130b2d1a6498b12bc26c5e89b9b7e305b4f69c1bbed6bf43d71bd6875963703a"
+        },
+        "attempt_id": "a-c12c1241161fe6303058c8951e02fa80",
+        "receipt_sha256": "c967bf148b9996ce72f5a4551fe48b532e0ffb6ab07ede807d7dad31b8451231",
+        "run_id": "r-eceeaecf621f4f23a75e4a4cc74f9d70"
+      }
+    ],
+    "decision": "accept",
+    "member_id": "acl-005",
+    "owner": "강이현",
+    "reason": "M3 인수 판단 기록을 수락한다. 역할 품질은 판정불가이며, 운영 계약은 현행을 유지한다. 이는 후보 채택이나 릴리스 승인이 아니다. 인프라 병합 인수는 검토 커밋 99c471bd47c16acc4a5b9c6d6609b6ba7f2a6bcb에서 확인한 지원 로컬 POSIX 파일시스템의 fsync 순서와 프로세스 중단 복구에 한정한다. 양쪽 모두 호출 전 디렉터리 fsync에 실패를 주입하면 호출 0회·종료 1이었고, 첫 호출 직후 SIGKILL한 뒤 동일 키로 재시도하면 slot_exists로 추가 호출은 0회였다. 정상 1회는 accept(0)였다. 호출 경계에서 같은 작업을 두 번 시작하면 정상 대조군과 동일한 결과 파일이 남아 해시 검사는 통과하지만, 원장의 시작 기록 2건이 단일 호출 조건을 위반하므로 reject(4)였다. 호출 후 증거 유실은 hold(3)였고, 네이티브 종료 17은 성공 영수증이 남아도 최초·재채점 모두 hold(3)였다. 운영 시 확인된 성공은 재사용하고 실행 여부가 불명확하면 자동 재호출 없이 원장과 대사한다. 공개 CAL01은 최종 영속화 수정 전 양쪽 각 1슬롯의 보정 시험이다. 모델·추론 수준·초안과 판정이 일치했지만 독립 쌍대 품질 점수는 없으며, 구 영수증은 최종 스키마 증거가 아니다. M0가 판정불가를 허용하므로 이 기록 확정에 추가 실험은 필수가 아니다. 강이현은 병합된 main 최종 헤드와 물리적 전원 차단 복구를 미검증으로 명시하고, 후보 채택 재검토 시에는 사전 승인된 봉인 비교의 독립 쌍대 채점과 최종 헤드에서 의뢰·선제 신호 각각의 배정부터 최종 결정까지의 증빙을 요구한다.",
+    "status": "accepted"
+  }
+}
