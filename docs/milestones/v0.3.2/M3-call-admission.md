@@ -33,3 +33,7 @@ python -m agent_eval.m3_score --root "$experiment" --arm current \
 python docs/milestones/v0.3.2/reproduction/call-boundary/admission.py \
   --lab "$lab" --bridge "$bridge" --output "$new_directory"
 ```
+
+## 독립 재심
+
+김가온(acl-014)과 최종 판정자 강이현(acl-005)이 구현 후보 038f27a의 호출 원장 연결을 수락했다. 양쪽 비교군에서 정상 0, 응답 유실 3, 이중 전달 4로 실행 명령과 재채점 명령의 종료 코드가 일치했다. 각 슬롯의 재제출에서 추가된 호출은 0건이었다. 결함 주입 도구는 첫 번째 응답을 숨기고 두 번째를 전달해 브리지에는 성공 영수증 하나만 남겼다. Python 회귀 76건 중 선택 항목 34건이 건너뛰었고 실패는 없었다. 실모델 역할 비교 전에 예산과 블라인드 채점 기준은 별도로 확정한다. [빌드 식별자, 양쪽 원장과 독립 리뷰 영수증](m3-admission-evidence.json)

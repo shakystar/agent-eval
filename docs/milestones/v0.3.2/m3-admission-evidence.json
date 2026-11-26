@@ -1,0 +1,252 @@
+{
+  "previous_blocker": "호출 경계 진단: 오프라인 합성 시험에서 정상·응답 유실 각 1회 모두 최초 turn/start는 1건이었다. 동일 상태에 대한 동시 제출은 상태 저장소 잠금으로 거부됐고, 재시작 시 추가 호출은 0건이었다. 정상 건은 캐시로 반환됐고, 응답 유실 건은 execution_blocked 및 검증 보류(hold)로 끝났다. 이중 호출 주입에서는 동일 요청에 서로 다른 턴 ID 2개가 기록돼 경계 감사가 거부했지만, 추가 응답이 브리지에 전달되지 않아 출력과 저장된 영수증은 그대로였고 영수증만 보는 검증기는 승인했다. 이는 자연 중복 호출이 아니라 영수증 기반 검증의 사각지대를 입증한다. 현 상태로 실모델 역할 A/B는 진행할 수 없다. 김가온은 동일 빌드의 격리 시험에서 독립적인 호출 경계 기록을 A/B 승인 조건에 연결하고, 정상 재제출은 추가 호출 없이 통과하며, 유실은 재호출 없이 보류되고, 이중 호출 주입은 영수증 검증이 승인해도 최종 승인이 차단됨을 확인한 뒤 착수를 재검토해야 한다.",
+  "candidate": "038f27a3e45cc8e5d31399987c62fb3ad394bd62",
+  "baseline": "239ccb9",
+  "components": {
+    "codex-adapter": "6dce52deeb0b89aaecf0c617fa9d10ae6392e2d0",
+    "role-runtime": "45274ee28a053aec3f8dca8f4aecfcbb80138bcb",
+    "role-orchestrator": "6d74153ced6b558b8371c0f50201d1979af8f63e"
+  },
+  "bridge_sha256": "0b80fc27daf9bcfec9d998b09726b04f69550c953bb02e83937f5aa3cf69db8b",
+  "source_blobs": {
+    "agent_eval/m3_assignment.py": "1e1c6070bc20a25783d60ca142accd8d8a7570fc",
+    "agent_eval/m3_score.py": "cb5e63ea9744b72835ee417fc916e27973182092",
+    "agent_eval/m3_recorder.py": "34feee57c4abced787d65c7fa4fef92363d7ff40"
+  },
+  "synthetic_pairs": [
+    {
+      "arm": "current",
+      "mode": "success",
+      "native": "succeeded",
+      "action": "accept",
+      "starts": 1,
+      "recorder_sha256": "a742ab8e30524b5abfc9c52e81d7099327ee34ded373ec581fa1028f3d039b4c",
+      "receipt": "53af83bc2aa3a3e201125014147175249516f5b636c187067cfa079ad77d995d",
+      "trial_exit": 0,
+      "scoring_exit": 0,
+      "retry_new_calls": 0
+    },
+    {
+      "arm": "current",
+      "mode": "lost",
+      "native": "uncertain",
+      "action": "hold",
+      "starts": 1,
+      "recorder_sha256": "8517eb8c53e0fccb72d7529554f7173c921f0ba47d5f0f05ca87f40cae1c02d9",
+      "receipt": null,
+      "trial_exit": 3,
+      "scoring_exit": 3,
+      "retry_new_calls": 0
+    },
+    {
+      "arm": "current",
+      "mode": "double",
+      "native": "succeeded",
+      "action": "reject",
+      "starts": 2,
+      "recorder_sha256": "d8c5491567988e68be7594b11470945cb9387655269481038d999061259f7d5f",
+      "receipt": "3b7b9e8bb50ffafd9353f43ef358a30b8271785992d6c12688fc74e071cfd23d",
+      "trial_exit": 4,
+      "scoring_exit": 4,
+      "retry_new_calls": 0
+    },
+    {
+      "arm": "candidate",
+      "mode": "success",
+      "native": "succeeded",
+      "action": "accept",
+      "starts": 1,
+      "recorder_sha256": "efb2beb0b124d02c0253761dde58e1a73778d852a0abf6f9d5a66ddea4cdf196",
+      "receipt": "0d82c58672a7e303af865267749fbfbb06aab135c26e1f956df2a54545fe22d5",
+      "trial_exit": 0,
+      "scoring_exit": 0,
+      "retry_new_calls": 0
+    },
+    {
+      "arm": "candidate",
+      "mode": "lost",
+      "native": "uncertain",
+      "action": "hold",
+      "starts": 1,
+      "recorder_sha256": "d90b00e845546ef71ab10da96dbb6705aede68bd2632a020b6b382ac0edf9581",
+      "receipt": null,
+      "trial_exit": 3,
+      "scoring_exit": 3,
+      "retry_new_calls": 0
+    },
+    {
+      "arm": "candidate",
+      "mode": "double",
+      "native": "succeeded",
+      "action": "reject",
+      "starts": 2,
+      "recorder_sha256": "2997e02df0d5cd8b3f48523c3c917ea948188a5124598d788bb584b1ef67b4ec",
+      "receipt": "8772f35016d9fcae51b3d40532faebc6cf9238eba66e71df7654b2a6863db40f",
+      "trial_exit": 4,
+      "scoring_exit": 4,
+      "retry_new_calls": 0
+    }
+  ],
+  "raw": {
+    "current/success": {
+      "ids": [
+        "r-eecd507a13364acbb4e95b07958ec1f7",
+        "a-ff95614a564ae9c76003e746f53bc113"
+      ],
+      "ledger": [
+        "{\"assignment\":\"current/success/1\",\"run\":\"r-eecd507a13364acbb4e95b07958ec1f7\",\"attempt\":\"a-ff95614a564ae9c76003e746f53bc113\",\"ordinal\":1,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"start\"}",
+        "{\"assignment\":\"current/success/1\",\"run\":\"r-eecd507a13364acbb4e95b07958ec1f7\",\"attempt\":\"a-ff95614a564ae9c76003e746f53bc113\",\"ordinal\":1,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"ack\",\"turn\":\"d4660e89-6d63-46a2-a6fb-2aa3ee7ec0b4\"}"
+      ],
+      "peer": [
+        "{\"turn\": \"d4660e89-6d63-46a2-a6fb-2aa3ee7ec0b4\", \"thread\": \"thread-synthetic\", \"request_sha256\": \"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\"}"
+      ]
+    },
+    "current/lost": {
+      "ids": [
+        "r-01b6bcfcebe24898bfda99676e704cbf",
+        "a-2a2511116c528737ad8a92ceb30066ed"
+      ],
+      "ledger": [
+        "{\"assignment\":\"current/lost/1\",\"run\":\"r-01b6bcfcebe24898bfda99676e704cbf\",\"attempt\":\"a-2a2511116c528737ad8a92ceb30066ed\",\"ordinal\":1,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"start\"}",
+        "{\"kind\":\"invalid\"}"
+      ],
+      "peer": [
+        "{\"turn\": \"490bcd65-669f-4a4d-be6b-a391a93e3244\", \"thread\": \"thread-synthetic\", \"request_sha256\": \"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\"}"
+      ]
+    },
+    "current/double": {
+      "ids": [
+        "r-007d38617c904798bb4ae6ceddd3f27b",
+        "a-2c3a0f187a287bf17b4715cc5995b6dc"
+      ],
+      "ledger": [
+        "{\"assignment\":\"current/double/1\",\"run\":\"r-007d38617c904798bb4ae6ceddd3f27b\",\"attempt\":\"a-2c3a0f187a287bf17b4715cc5995b6dc\",\"ordinal\":1,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"start\"}",
+        "{\"assignment\":\"current/double/1\",\"run\":\"r-007d38617c904798bb4ae6ceddd3f27b\",\"attempt\":\"a-2c3a0f187a287bf17b4715cc5995b6dc\",\"ordinal\":1,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"ack\",\"turn\":\"808b4c4c-121f-499b-870b-e0a0030f3808\"}",
+        "{\"assignment\":\"current/double/1\",\"run\":\"r-007d38617c904798bb4ae6ceddd3f27b\",\"attempt\":\"a-2c3a0f187a287bf17b4715cc5995b6dc\",\"ordinal\":2,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"start\"}",
+        "{\"assignment\":\"current/double/1\",\"run\":\"r-007d38617c904798bb4ae6ceddd3f27b\",\"attempt\":\"a-2c3a0f187a287bf17b4715cc5995b6dc\",\"ordinal\":2,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"ack\",\"turn\":\"f7930590-5e96-4295-904c-20b5953d7f8a\"}"
+      ],
+      "peer": [
+        "{\"turn\": \"808b4c4c-121f-499b-870b-e0a0030f3808\", \"thread\": \"thread-synthetic\", \"request_sha256\": \"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\"}",
+        "{\"turn\": \"f7930590-5e96-4295-904c-20b5953d7f8a\", \"thread\": \"thread-synthetic\", \"request_sha256\": \"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\"}"
+      ]
+    },
+    "candidate/success": {
+      "ids": [
+        "r-0a080f6e58db4221a5ae06e22721984e",
+        "a-b8d0ff0d357ecdced0fff6fea3dbf71a"
+      ],
+      "ledger": [
+        "{\"assignment\":\"candidate/success/1\",\"run\":\"r-0a080f6e58db4221a5ae06e22721984e\",\"attempt\":\"a-b8d0ff0d357ecdced0fff6fea3dbf71a\",\"ordinal\":1,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"start\"}",
+        "{\"assignment\":\"candidate/success/1\",\"run\":\"r-0a080f6e58db4221a5ae06e22721984e\",\"attempt\":\"a-b8d0ff0d357ecdced0fff6fea3dbf71a\",\"ordinal\":1,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"ack\",\"turn\":\"48f2fbd7-3612-419a-931a-c3fbe9f08a4e\"}"
+      ],
+      "peer": [
+        "{\"turn\": \"48f2fbd7-3612-419a-931a-c3fbe9f08a4e\", \"thread\": \"thread-synthetic\", \"request_sha256\": \"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\"}"
+      ]
+    },
+    "candidate/lost": {
+      "ids": [
+        "r-2f7c837ceda941aa908f1c39619f9e74",
+        "a-138b5bed2f9c318de482a5e88e05c7a7"
+      ],
+      "ledger": [
+        "{\"assignment\":\"candidate/lost/1\",\"run\":\"r-2f7c837ceda941aa908f1c39619f9e74\",\"attempt\":\"a-138b5bed2f9c318de482a5e88e05c7a7\",\"ordinal\":1,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"start\"}",
+        "{\"kind\":\"invalid\"}"
+      ],
+      "peer": [
+        "{\"turn\": \"c2bf7910-08f2-4dd2-a78a-ab04aaf42ddd\", \"thread\": \"thread-synthetic\", \"request_sha256\": \"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\"}"
+      ]
+    },
+    "candidate/double": {
+      "ids": [
+        "r-d623ca874f81429fac435b5d4d6ec4c0",
+        "a-4ba1ff1c0fe7a150690d234599d75be5"
+      ],
+      "ledger": [
+        "{\"assignment\":\"candidate/double/1\",\"run\":\"r-d623ca874f81429fac435b5d4d6ec4c0\",\"attempt\":\"a-4ba1ff1c0fe7a150690d234599d75be5\",\"ordinal\":1,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"start\"}",
+        "{\"assignment\":\"candidate/double/1\",\"run\":\"r-d623ca874f81429fac435b5d4d6ec4c0\",\"attempt\":\"a-4ba1ff1c0fe7a150690d234599d75be5\",\"ordinal\":1,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"ack\",\"turn\":\"44565197-7b2c-4942-a1c6-a22b00f23d35\"}",
+        "{\"assignment\":\"candidate/double/1\",\"run\":\"r-d623ca874f81429fac435b5d4d6ec4c0\",\"attempt\":\"a-4ba1ff1c0fe7a150690d234599d75be5\",\"ordinal\":2,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"start\"}",
+        "{\"assignment\":\"candidate/double/1\",\"run\":\"r-d623ca874f81429fac435b5d4d6ec4c0\",\"attempt\":\"a-4ba1ff1c0fe7a150690d234599d75be5\",\"ordinal\":2,\"thread\":\"thread-synthetic\",\"rpc_id\":\"5\",\"request_sha256\":\"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\",\"kind\":\"ack\",\"turn\":\"347101f0-efd2-4800-ba2c-e2243fb71be2\"}"
+      ],
+      "peer": [
+        "{\"turn\": \"44565197-7b2c-4942-a1c6-a22b00f23d35\", \"thread\": \"thread-synthetic\", \"request_sha256\": \"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\"}",
+        "{\"turn\": \"347101f0-efd2-4800-ba2c-e2243fb71be2\", \"thread\": \"thread-synthetic\", \"request_sha256\": \"c07633d4453021b20e4ba0e11d72e419903ab3d45ae8b6a1ce9ee8635fd58e22\"}"
+      ]
+    }
+  },
+  "author_receipts": [
+    "90f3bf4155627de36e592a6f3702f635e4c80f53ba1fcb3792001c709164e264",
+    "97893d5ea65da656553a8993545bdf26377757fab5c11688651e5da244473092",
+    "4c249203afa47f6b93f32dc7214da275d4b422870843a7de2b99f24b0cd88f80",
+    "ed58729b05bc1a6f2c5ff01d134904fdc300ba96cdedb8eb75ea0a08e60539c8",
+    "905bc8db81fa3f7e9a75f4c4b4ac35720be66f3c7ccacd29e591dc1132c825b5"
+  ],
+  "suite": [
+    "Ran 76 tests in 1.670s",
+    "",
+    "OK (skipped=34)"
+  ],
+  "additional_checks": {
+    "absent": {
+      "action": "hold",
+      "reason": "missing_ledger"
+    },
+    "foreign-arm": {
+      "action": "hold",
+      "reason": "missing_invalid_or_mixed_ledger"
+    },
+    "foreign-attempt": {
+      "action": "hold",
+      "reason": "start_not_bound_to_plan"
+    },
+    "wrong-turn": {
+      "action": "hold",
+      "reason": "native_turn_not_bound"
+    },
+    "busy": {
+      "action": "hold",
+      "reason": "ledger_lock_busy"
+    },
+    "partial": {
+      "action": "hold",
+      "reason": "missing_invalid_or_mixed_ledger"
+    }
+  },
+  "review": {
+    "decision": "accept",
+    "status": "accepted",
+    "reason": "검토한 빌드의 오프라인 합성 시험에서 기존 M3 호출 원장 미연결 문제는 해소됐다. 기준·후보 모두 실제 배정 CLI와 채점 진입점의 판정이 일치했다. 정상은 start 1건과 턴이 일치하는 ack로 통과(0), 응답 유실은 start 1건이지만 유효한 ack와 영수증이 없어 보류(3)였다. 거짓 통과 반례는 독립 기록기 직전에 동일 요청을 두 번 넣고 두 번째 응답을 브리지에 전달하지 않는 경우다. 출력 파일과 성공 영수증은 그대로 남았지만, 원장에는 같은 요청 해시의 start 2건이, 피어에는 서로 다른 턴 ID 2개가 남았다. 두 진입점 모두 단일 호출 조건 위반으로 채점 전에 거부(4)했다. 여섯 사례 모두 동일 슬롯 재시도의 추가 호출은 0건이었다. 동시 제출은 slot_exists로 차단됐고, 원장이 없거나 불완전한 경우, 잠금이 사용 중인 경우, arm·attempt·turn이 맞지 않는 경우도 모두 보류됐다. 강이현은 이 여섯 사례의 원장·피어 기록과 기대 종료 코드를 빌드 식별자에 연결해 회귀 시험 기준으로 고정한다. 실모델 호출·과금은 입증되지 않았으며 A/B 예산과 블라인드 채점 기준 확정은 별도 미결 사항이다. 이 판정은 A/B 실행·병합·배포·운영 승인이 아니다.",
+    "receipts": [
+      {
+        "member": "acl-014",
+        "sha256": "84c359c632ee4837154be3b382b2efc087e9110a4e9d82f8471280fe47e4a9f1",
+        "decision": "accept"
+      },
+      {
+        "member": "acl-005",
+        "sha256": "3c68cab7b7345ea1e23c49fea0e10cab079c5db8cffbfb5c4137d1e3997ee29b",
+        "decision": "accept"
+      }
+    ]
+  },
+  "overlap": {
+    "success": {
+      "calls": 1,
+      "while_active": {
+        "action": "hold",
+        "reason": "ledger_lock_busy"
+      },
+      "final": "accept",
+      "second": "slot_exists"
+    },
+    "lost": {
+      "calls": 1,
+      "while_active": {
+        "action": "hold",
+        "reason": "ledger_lock_busy"
+      },
+      "final": "hold",
+      "second": "slot_exists"
+    }
+  },
+  "fault_order": "admission_fault.py suppresses the first reply and forwards the second. Two starts and one native completion are observable."
+}
