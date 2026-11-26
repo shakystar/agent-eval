@@ -2,8 +2,11 @@ import contextlib
 import fcntl
 import io
 import json
+import os
+import stat
 import tempfile
 import unittest
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from subprocess import CompletedProcess
 from unittest.mock import Mock, patch
@@ -126,17 +129,41 @@ class M3ScoreTests(unittest.TestCase):
         self.observer.assert_not_called()
         self.verifier.assert_not_called()
 
-    def test_exit_checkpoint_rolls_back_failed_directory_sync(self):
-        slot = self.ledger.parent
-        self.exit_record.unlink()
-        with patch.object(m3_assignment.os, "fsync",
-                          side_effect=[None, OSError("directory sync failed"), None]):
-            with self.assertRaisesRegex(OSError, "directory sync failed"):
-                m3_assignment._record_native_exit(slot, self.assignment, self.plan, 0)
-        self.assertFalse(self.exit_record.exists())
-        self.assertEqual(list(slot.glob(".native-exit-*")), [])
-        self._write(self.start, self.ack)
-        self._nonaccept()
+    def test_rescore_cannot_see_uncommitted_native_exit(self):
+        for arm in ("current", "candidate"):
+            with self.subTest(arm=arm):
+                self._slot(arm)
+                slot = self.ledger.parent
+                self.exit_record.unlink()
+                self._write(self.start, self.ack)
+                missing = {"action": "hold",
+                           "reason": "missing_invalid_or_unbound_native_exit"}
+                self.assertEqual(self._gate(arm), missing)
+                syncs = []
+
+                def fsync(fd):
+                    if not stat.S_ISDIR(os.fstat(fd).st_mode):
+                        return
+                    published = self.exit_record.exists()
+                    # The publisher cannot advance until this rescore returns.
+                    verdict = reader.submit(self._gate, arm).result(timeout=5)
+                    syncs.append((published, verdict))
+                    if published:
+                        raise OSError("directory sync failed")
+
+                with ThreadPoolExecutor(max_workers=1) as reader:
+                    with patch.object(m3_assignment.os, "fsync", side_effect=fsync):
+                        with self.assertRaisesRegex(OSError, "directory sync failed"):
+                            m3_assignment._record_native_exit(slot, self.assignment, self.plan, 0)
+
+                busy = {"action": "hold", "reason": "ledger_lock_busy"}
+                self.assertEqual(syncs, [(True, busy), (False, busy)])
+                self.assertFalse(self.exit_record.exists())
+                self.assertEqual(list(slot.glob(".native-exit-*")), [])
+                self.assertEqual(self._gate(arm), missing)
+                self.scorer.assert_not_called()
+                self.observer.assert_not_called()
+                self.verifier.assert_not_called()
 
     def test_double_start_including_identical_row_or_retry(self):
         self.exit_record.unlink()

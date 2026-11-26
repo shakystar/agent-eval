@@ -9,6 +9,7 @@ An existing slot cannot be resubmitted; re-score it separately with m3_score.
 
 import argparse
 from contextlib import suppress
+import fcntl
 import json
 import os
 from pathlib import Path
@@ -132,15 +133,17 @@ def _record_native_exit(slot, assignment, plan, code):
             json.dump(dict(ids, assignment=assignment, exit_code=code), stream)
             stream.flush()
             os.fsync(stream.fileno())
-        try:
-            os.replace(temporary, destination)
-            os.fsync(directory)
-        except (OSError, KeyboardInterrupt):
-            # Roll back publication if the directory sync fails.
-            with suppress(OSError):
-                destination.unlink(missing_ok=True)
+        with (slot / "ledger.jsonl.lock").open("rb+") as lock:
+            fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+            try:
+                os.replace(temporary, destination)
                 os.fsync(directory)
-            raise
+            except (OSError, KeyboardInterrupt):
+                # Roll back publication if the directory sync fails.
+                with suppress(OSError):
+                    destination.unlink(missing_ok=True)
+                    os.fsync(directory)
+                raise
     finally:
         try:
             if temporary is not None:
