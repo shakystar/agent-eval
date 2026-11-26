@@ -260,9 +260,75 @@ class M3ScoreTests(unittest.TestCase):
                 self.assertEqual(result["action"], action)
                 self.assertEqual("receipt" in result, action == "accept")
 
-    def test_launcher_and_rescore_use_same_exit_checkpoint(self):
+    def _launcher_args(self, flags):
         backend = self.root / "codex"
         backend.touch(mode=0o700)
+        return [*flags, "--backend-executable", str(backend), "--",
+                "--lab=lab", "--revision=rev", "--member=reviewer", "--task=task",
+                f"--runtime={self.bridge}", "--profile=profile"]
+
+    def _launch(self, args):
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            code = m3_assignment.main(args)
+        return code, json.loads(output.getvalue())
+
+    def test_reservation_sync_failure_never_starts_native(self):
+        for arm in ("current", "candidate"):
+            for depth, entry in enumerate(("slot", "case", "arm", "root", "root_parent")):
+                with self.subTest(arm=arm, entry=entry):
+                    root = self.root.resolve() / f"sync-{arm}-{entry}" / "experiment"
+                    slot = root / arm / "reserve" / "0"
+                    target = (slot, *slot.parents)[depth]
+                    args = self._launcher_args(["--arm", arm, "--case", "reserve",
+                                                "--repeat", "0", "--root", str(root)])
+
+                    def fsync(fd):
+                        if os.path.samestat(os.fstat(fd), target.stat()):
+                            raise OSError("reservation sync failed")
+
+                    with (patch.object(m3_assignment.os, "fsync", side_effect=fsync) as sync,
+                          patch.object(m3_assignment.subprocess, "run") as run):
+                        self.assertEqual(self._launch(args), (1, {"status": "slot_unavailable"}))
+                        self.assertTrue(slot.is_dir())
+                        self.assertEqual(self._launch(args), (1, {"status": "slot_exists"}))
+                    self.assertEqual(sync.call_count, depth + 1)
+                    run.assert_not_called()
+
+    def test_simulated_process_crash_after_start_blocks_retry(self):
+        for arm in ("current", "candidate"):
+            with self.subTest(arm=arm):
+                root = self.root.resolve() / "crash" / "experiment"
+                slot = root / arm / "reserve" / "0"
+                # Model directories made visible by another initializer before its sync.
+                slot.parent.mkdir(parents=True)
+                args = self._launcher_args(["--arm", arm, "--case", "reserve",
+                                            "--repeat", "0", "--root", str(root)])
+                chain = (slot, *slot.parents)
+                synced = []
+
+                def fsync(fd):
+                    path = chain[len(synced)]
+                    self.assertTrue(os.path.samestat(os.fstat(fd), path.stat()), path)
+                    synced.append(path)
+
+                def start(command, **kwargs):
+                    self.assertEqual(command[3], "role_orchestrator.assignment")
+                    self.assertEqual(tuple(synced), chain)
+                    # Simulate launcher death after submission, not loss of disk state.
+                    raise SystemExit(99)
+
+                with (patch.object(m3_assignment.os, "fsync", side_effect=fsync),
+                      patch.object(m3_assignment.subprocess, "run", side_effect=start) as run):
+                    with self.assertRaises(SystemExit) as crash:
+                        m3_assignment.main(args)
+                    self.assertEqual(crash.exception.code, 99)
+                    self.assertFalse((slot / "native-exit.json").exists())
+                    self.assertFalse((slot / "native-exit.commit").exists())
+                    self.assertEqual(self._launch(args), (1, {"status": "slot_exists"}))
+                run.assert_called_once()
+
+    def test_launcher_and_rescore_use_same_exit_checkpoint(self):
         for arm in ("current", "candidate"):
             for native_code, duplicate, sync_failure, action, status in (
                 (17, False, False, "hold", 3),
@@ -280,9 +346,7 @@ class M3ScoreTests(unittest.TestCase):
                     flags = ["--arm", arm, "--case", case, "--repeat", "0",
                              "--root", str(self.root)]
                     score_args = [*flags, "--bridge", str(self.bridge)]
-                    args = [*flags, "--backend-executable", str(backend), "--",
-                            "--lab=lab", "--revision=rev", "--member=reviewer",
-                            "--task=task", f"--runtime={self.bridge}", "--profile=profile"]
+                    args = self._launcher_args(flags)
 
                     def rescore(argv):
                         output = io.StringIO()
@@ -318,8 +382,10 @@ class M3ScoreTests(unittest.TestCase):
                     real_fsync, real_unlink = os.fsync, Path.unlink
 
                     def fsync(fd):
-                        if sync_failure and stat.S_ISDIR(os.fstat(fd).st_mode):
-                            raise OSError("directory sync failed")
+                        if stat.S_ISDIR(os.fstat(fd).st_mode):
+                            if sync_failure and (slot / "native-exit.json").exists():
+                                raise OSError("directory sync failed")
+                            return
                         return real_fsync(fd)
 
                     def unlink(path, *args, **kwargs):
@@ -356,6 +422,20 @@ class M3ScoreTests(unittest.TestCase):
                         self.scorer.assert_not_called()
                     if native_code == 17 and not duplicate:
                         self.assertEqual(first["reason"], "native_assignment_failed")
+                    if action == "accept":
+                        for mock in (self.observer, self.verifier, self.scorer):
+                            mock.reset_mock()
+                        for key in ("run_id", "attempt_id"):
+                            (slot / "native-exit.json").write_text(
+                                json.dumps(dict(self.identity, assignment=assignment,
+                                                exit_code=0, **{key: "tampered"})),
+                                encoding="utf-8")
+                            tampered = rescore(score_args)
+                            self.assertEqual(tampered.returncode, 3)
+                            self.assertNotIn("receipt", json.loads(tampered.stdout))
+                        self.observer.assert_not_called()
+                        self.verifier.assert_not_called()
+                        self.scorer.assert_not_called()
 
     def test_cli_rejects_unsafe_slots_and_path_overrides(self):
         args = self._cli_args()

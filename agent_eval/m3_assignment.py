@@ -92,6 +92,17 @@ def _slot_path(args):
     return parent / str(args.repeat)
 
 
+def _sync_slot(slot):
+    # A concurrent launcher may have created an ancestor without syncing it.
+    # Sync the whole chain, leaf first, to persist each directory entry.
+    for path in (slot, *slot.parents):
+        fd = os.open(path, os.O_RDONLY | os.O_DIRECTORY)
+        try:
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+
+
 def _private_output(path):
     fd = os.open(path, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
     return os.fdopen(fd, "wb")
@@ -227,6 +238,13 @@ def main(argv=None):
         _status("slot_exists")
         return 1
     except OSError:
+        _status("slot_unavailable")
+        return 1
+
+    try:
+        _sync_slot(slot)
+    except OSError:
+        # Keep the exclusive reservation; never make this key retryable here.
         _status("slot_unavailable")
         return 1
 
