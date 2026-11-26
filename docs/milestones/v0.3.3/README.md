@@ -1,6 +1,6 @@
 # v0.3.3 · 하위 모델에서의 역할 계약 비교와 코드 품질 개선
 
-**상태** 기획. 기능 구현, 신규 모델 실험과 운영 명부 변경은 미실행이다. [기획 이슈 #37](https://github.com/shakystar/agent-eval/issues/37) · [통합 마일스톤](https://github.com/shakystar/agent-eval/milestone/6) · [프로젝트 보드](https://github.com/users/shakystar/projects/2)
+**상태** 독립 리뷰팀 기획 인수 완료. [M2 구조 검토와 반례](M2-design-review.md) · [팀 판정 기록](M2-design-review.json). 기능 구현, 신규 모델 실험과 운영 명부 변경은 미실행이다. [기획 이슈 #37](https://github.com/shakystar/agent-eval/issues/37) · [통합 마일스톤](https://github.com/shakystar/agent-eval/milestone/6) · [프로젝트 보드](https://github.com/users/shakystar/projects/2)
 
 ## 목표와 범위
 
