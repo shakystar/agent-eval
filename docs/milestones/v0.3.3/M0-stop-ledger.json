@@ -1,0 +1,808 @@
+{
+  "critical": {
+    "events": [
+      {
+        "index": 0,
+        "event": "pre-submit",
+        "stop": false
+      },
+      {
+        "index": 0,
+        "event": "receiver_submission",
+        "slot": 0
+      },
+      {
+        "index": 0,
+        "event": "decision",
+        "outcome": "critical",
+        "stop": true
+      },
+      {
+        "index": 1,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 1,
+        "event": "withheld"
+      },
+      {
+        "index": 2,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 2,
+        "event": "withheld"
+      },
+      {
+        "index": 3,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 3,
+        "event": "withheld"
+      },
+      {
+        "index": 4,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 4,
+        "event": "withheld"
+      },
+      {
+        "index": 5,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 5,
+        "event": "withheld"
+      },
+      {
+        "index": 6,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 6,
+        "event": "withheld"
+      },
+      {
+        "index": 7,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 7,
+        "event": "withheld"
+      },
+      {
+        "index": 8,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 8,
+        "event": "withheld"
+      },
+      {
+        "index": 9,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 9,
+        "event": "withheld"
+      },
+      {
+        "index": 10,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 10,
+        "event": "withheld"
+      },
+      {
+        "index": 11,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 11,
+        "event": "withheld"
+      },
+      {
+        "index": 12,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 12,
+        "event": "withheld"
+      },
+      {
+        "index": 13,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 13,
+        "event": "withheld"
+      },
+      {
+        "index": 14,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 14,
+        "event": "withheld"
+      },
+      {
+        "index": 15,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 15,
+        "event": "withheld"
+      }
+    ],
+    "received": 1,
+    "after_stop": 0
+  },
+  "same_axis": {
+    "events": [
+      {
+        "index": 0,
+        "event": "pre-submit",
+        "stop": false
+      },
+      {
+        "index": 0,
+        "event": "receiver_submission",
+        "slot": 0
+      },
+      {
+        "index": 0,
+        "event": "decision",
+        "outcome": "minor",
+        "stop": false
+      },
+      {
+        "index": 1,
+        "event": "pre-submit",
+        "stop": false
+      },
+      {
+        "index": 1,
+        "event": "receiver_submission",
+        "slot": 1
+      },
+      {
+        "index": 1,
+        "event": "decision",
+        "outcome": "pass",
+        "stop": false
+      },
+      {
+        "index": 2,
+        "event": "pre-submit",
+        "stop": false
+      },
+      {
+        "index": 2,
+        "event": "receiver_submission",
+        "slot": 2
+      },
+      {
+        "index": 2,
+        "event": "decision",
+        "outcome": "minor",
+        "stop": true
+      },
+      {
+        "index": 3,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 3,
+        "event": "withheld"
+      },
+      {
+        "index": 4,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 4,
+        "event": "withheld"
+      },
+      {
+        "index": 5,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 5,
+        "event": "withheld"
+      },
+      {
+        "index": 6,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 6,
+        "event": "withheld"
+      },
+      {
+        "index": 7,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 7,
+        "event": "withheld"
+      },
+      {
+        "index": 8,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 8,
+        "event": "withheld"
+      },
+      {
+        "index": 9,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 9,
+        "event": "withheld"
+      },
+      {
+        "index": 10,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 10,
+        "event": "withheld"
+      },
+      {
+        "index": 11,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 11,
+        "event": "withheld"
+      },
+      {
+        "index": 12,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 12,
+        "event": "withheld"
+      },
+      {
+        "index": 13,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 13,
+        "event": "withheld"
+      },
+      {
+        "index": 14,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 14,
+        "event": "withheld"
+      },
+      {
+        "index": 15,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 15,
+        "event": "withheld"
+      }
+    ],
+    "received": 3,
+    "after_stop": 0
+  },
+  "delivery": {
+    "events": [
+      {
+        "index": 0,
+        "event": "pre-submit",
+        "stop": false
+      },
+      {
+        "index": 0,
+        "event": "receiver_submission",
+        "slot": 0
+      },
+      {
+        "index": 0,
+        "event": "decision",
+        "outcome": "delivery failed",
+        "stop": true
+      },
+      {
+        "index": 1,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 1,
+        "event": "withheld"
+      },
+      {
+        "index": 2,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 2,
+        "event": "withheld"
+      },
+      {
+        "index": 3,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 3,
+        "event": "withheld"
+      },
+      {
+        "index": 4,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 4,
+        "event": "withheld"
+      },
+      {
+        "index": 5,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 5,
+        "event": "withheld"
+      },
+      {
+        "index": 6,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 6,
+        "event": "withheld"
+      },
+      {
+        "index": 7,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 7,
+        "event": "withheld"
+      },
+      {
+        "index": 8,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 8,
+        "event": "withheld"
+      },
+      {
+        "index": 9,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 9,
+        "event": "withheld"
+      },
+      {
+        "index": 10,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 10,
+        "event": "withheld"
+      },
+      {
+        "index": 11,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 11,
+        "event": "withheld"
+      },
+      {
+        "index": 12,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 12,
+        "event": "withheld"
+      },
+      {
+        "index": 13,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 13,
+        "event": "withheld"
+      },
+      {
+        "index": 14,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 14,
+        "event": "withheld"
+      },
+      {
+        "index": 15,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 15,
+        "event": "withheld"
+      }
+    ],
+    "received": 1,
+    "after_stop": 0
+  },
+  "mismatch": {
+    "events": [
+      {
+        "index": 0,
+        "event": "pre-submit",
+        "stop": false
+      },
+      {
+        "index": 0,
+        "event": "receiver_submission",
+        "slot": 0
+      },
+      {
+        "index": 0,
+        "event": "decision",
+        "outcome": "profile mismatch",
+        "stop": true
+      },
+      {
+        "index": 1,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 1,
+        "event": "withheld"
+      },
+      {
+        "index": 2,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 2,
+        "event": "withheld"
+      },
+      {
+        "index": 3,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 3,
+        "event": "withheld"
+      },
+      {
+        "index": 4,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 4,
+        "event": "withheld"
+      },
+      {
+        "index": 5,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 5,
+        "event": "withheld"
+      },
+      {
+        "index": 6,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 6,
+        "event": "withheld"
+      },
+      {
+        "index": 7,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 7,
+        "event": "withheld"
+      },
+      {
+        "index": 8,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 8,
+        "event": "withheld"
+      },
+      {
+        "index": 9,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 9,
+        "event": "withheld"
+      },
+      {
+        "index": 10,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 10,
+        "event": "withheld"
+      },
+      {
+        "index": 11,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 11,
+        "event": "withheld"
+      },
+      {
+        "index": 12,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 12,
+        "event": "withheld"
+      },
+      {
+        "index": 13,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 13,
+        "event": "withheld"
+      },
+      {
+        "index": 14,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 14,
+        "event": "withheld"
+      },
+      {
+        "index": 15,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 15,
+        "event": "withheld"
+      }
+    ],
+    "received": 1,
+    "after_stop": 0
+  },
+  "duplicate": {
+    "events": [
+      {
+        "index": 0,
+        "event": "pre-submit",
+        "stop": false
+      },
+      {
+        "index": 0,
+        "event": "receiver_submission",
+        "slot": 0
+      },
+      {
+        "index": 0,
+        "event": "decision",
+        "outcome": "pass",
+        "stop": false
+      },
+      {
+        "index": 1,
+        "event": "pre-submit",
+        "stop": false
+      },
+      {
+        "index": 1,
+        "event": "receiver_submission",
+        "slot": 0
+      },
+      {
+        "index": 1,
+        "event": "decision",
+        "outcome": "duplicate",
+        "stop": true
+      },
+      {
+        "index": 2,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 2,
+        "event": "withheld"
+      },
+      {
+        "index": 3,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 3,
+        "event": "withheld"
+      },
+      {
+        "index": 4,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 4,
+        "event": "withheld"
+      },
+      {
+        "index": 5,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 5,
+        "event": "withheld"
+      },
+      {
+        "index": 6,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 6,
+        "event": "withheld"
+      },
+      {
+        "index": 7,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 7,
+        "event": "withheld"
+      },
+      {
+        "index": 8,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 8,
+        "event": "withheld"
+      },
+      {
+        "index": 9,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 9,
+        "event": "withheld"
+      },
+      {
+        "index": 10,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 10,
+        "event": "withheld"
+      },
+      {
+        "index": 11,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 11,
+        "event": "withheld"
+      },
+      {
+        "index": 12,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 12,
+        "event": "withheld"
+      },
+      {
+        "index": 13,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 13,
+        "event": "withheld"
+      },
+      {
+        "index": 14,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 14,
+        "event": "withheld"
+      },
+      {
+        "index": 15,
+        "event": "pre-submit",
+        "stop": true
+      },
+      {
+        "index": 15,
+        "event": "withheld"
+      }
+    ],
+    "received": 2,
+    "after_stop": 0
+  }
+}

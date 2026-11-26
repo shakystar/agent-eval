@@ -1,0 +1,92 @@
+[
+  {
+    "case": "perfect tie",
+    "expected": "tier-evidence-required",
+    "observed": "tier-evidence-required",
+    "valid_pairs": 8,
+    "submissions": 16,
+    "turns": 16,
+    "total_with_prior": 16,
+    "distinct_result_files": 16
+  },
+  {
+    "case": "critical omission",
+    "expected": "stop-critical",
+    "observed": "stop-critical",
+    "valid_pairs": 8,
+    "submissions": 16,
+    "turns": 16,
+    "total_with_prior": 16,
+    "distinct_result_files": 16
+  },
+  {
+    "case": "two same-axis minor cases",
+    "expected": "stop-minor",
+    "observed": "stop-minor",
+    "valid_pairs": 8,
+    "submissions": 16,
+    "turns": 16,
+    "total_with_prior": 16,
+    "distinct_result_files": 16
+  },
+  {
+    "case": "strict improvement over two cases",
+    "expected": "pilot-signal",
+    "observed": "pilot-signal",
+    "valid_pairs": 8,
+    "submissions": 16,
+    "turns": 16,
+    "total_with_prior": 16,
+    "distinct_result_files": 16
+  },
+  {
+    "case": "mixed directions",
+    "expected": "undecided",
+    "observed": "undecided",
+    "valid_pairs": 8,
+    "submissions": 16,
+    "turns": 16,
+    "total_with_prior": 16,
+    "distinct_result_files": 16
+  },
+  {
+    "case": "same slot twice; one result file",
+    "expected": "invalid",
+    "observed": "invalid",
+    "valid_pairs": 0,
+    "submissions": 2,
+    "turns": 2,
+    "total_with_prior": 2,
+    "distinct_result_files": 1
+  },
+  {
+    "case": "missing turn",
+    "expected": "invalid",
+    "observed": "invalid",
+    "valid_pairs": 7,
+    "submissions": 16,
+    "turns": 15,
+    "total_with_prior": 16,
+    "distinct_result_files": 15
+  },
+  {
+    "case": "second round exhausted",
+    "expected": "stop-cap",
+    "observed": "stop-cap",
+    "valid_pairs": 8,
+    "submissions": 16,
+    "turns": 16,
+    "total_with_prior": 32,
+    "distinct_result_files": 16
+  },
+  {
+    "case": "over ceiling",
+    "expected": "invalid",
+    "observed": "invalid",
+    "valid_pairs": 8,
+    "submissions": 16,
+    "turns": 16,
+    "total_with_prior": 33,
+    "distinct_result_files": 16
+  }
+]

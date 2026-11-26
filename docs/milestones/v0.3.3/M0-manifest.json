@@ -1,0 +1,33 @@
+{
+  "plaintext_sha256": "fea0ecbdb9f6c844cc991ec5e40d4ee745796b02ae2a03b96593dd09add47c4d",
+  "sealed_file_sha256": "959d0edadf6461ad674678c9e9863ce4bcb9ce93a3a6995657c794a323c51e77",
+  "case_count": 8,
+  "category_counts": [
+    2,
+    2,
+    2,
+    2
+  ],
+  "paired_inputs": 8,
+  "slot_count": 16,
+  "unique_slots": 16,
+  "first_arm_counts": {
+    "current": 4,
+    "candidate": 4
+  },
+  "local_decryption_roundtrip": true,
+  "planning_turns": [
+    {
+      "member": "acl-021",
+      "receipt": "4b4cd92d2c6f9dc968ab7eb89199bbf0277d17781e4e178bd5eef25bbbd4aa3d"
+    },
+    {
+      "member": "acl-001",
+      "receipt": "7382c18d5c2a2da44773e0e6d36926a6da7f4e8c533c3c73c162353925e57d95"
+    },
+    {
+      "member": "acl-021",
+      "receipt": "abaac8c1adfdea6c3630631b2a23069810dcbe7b26e5b74cecac2ea1828113b1"
+    }
+  ]
+}

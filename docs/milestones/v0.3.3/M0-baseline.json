@@ -1,0 +1,137 @@
+{
+  "repositories": {
+    "role-orchestrator": "6d74153ced6b558b8371c0f50201d1979af8f63e",
+    "role-runtime": "45274ee28a053aec3f8dca8f4aecfcbb80138bcb",
+    "codex-adapter": "6dce52deeb0b89aaecf0c617fa9d10ae6392e2d0",
+    "agent-collaboration-lab": "112d4629d4261b4403ff33fbde43e36431c435f4",
+    "agent-eval": "ba42070c2dadf7a625f1b84bf5d92a767688fef2"
+  },
+  "contracts": [
+    {
+      "commit": "112d4629d4261b4403ff33fbde43e36431c435f4",
+      "utf8_instruction_sha256": "e00d5a3bc6247da34fa7a8094dfd60474cc5058bccee083c973262bf7a150ff1",
+      "catalog_path": "docs/team/planning-teams.json",
+      "pointer": "/teams/research-evidence-route/members/acl-025/instruction"
+    },
+    {
+      "commit": "bf4650c7a0c3d57f370f0ce73aca0ae5bacd2962",
+      "utf8_instruction_sha256": "9c3e859a1dea02fea2f811772f98f87cc6d01843c7151ab4f88d60ba6708330d",
+      "catalog_path": "docs/team/planning-teams.json",
+      "pointer": "/teams/research-evidence-route/members/acl-025/instruction"
+    }
+  ],
+  "only_instruction_changed": true,
+  "routes": [
+    {
+      "alias": "Sol",
+      "canonical": "gpt-6.2-sol",
+      "effort": "low",
+      "roster_alias": true,
+      "roster_id": false,
+      "catalog_alias": true,
+      "catalog_id": true,
+      "cli_alias": false,
+      "cli_id": true
+    },
+    {
+      "alias": "Sol",
+      "canonical": "gpt-6.2-sol",
+      "effort": "medium",
+      "roster_alias": true,
+      "roster_id": false,
+      "catalog_alias": true,
+      "catalog_id": true,
+      "cli_alias": false,
+      "cli_id": true
+    },
+    {
+      "alias": "Sol",
+      "canonical": "gpt-6.2-sol",
+      "effort": "high",
+      "roster_alias": true,
+      "roster_id": false,
+      "catalog_alias": true,
+      "catalog_id": true,
+      "cli_alias": false,
+      "cli_id": true
+    },
+    {
+      "alias": "Astra",
+      "canonical": "gpt-6.2-astra",
+      "effort": "low",
+      "roster_alias": true,
+      "roster_id": false,
+      "catalog_alias": true,
+      "catalog_id": true,
+      "cli_alias": false,
+      "cli_id": true
+    },
+    {
+      "alias": "Astra",
+      "canonical": "gpt-6.2-astra",
+      "effort": "medium",
+      "roster_alias": true,
+      "roster_id": false,
+      "catalog_alias": true,
+      "catalog_id": true,
+      "cli_alias": false,
+      "cli_id": true
+    },
+    {
+      "alias": "Astra",
+      "canonical": "gpt-6.2-astra",
+      "effort": "high",
+      "roster_alias": true,
+      "roster_id": false,
+      "catalog_alias": true,
+      "catalog_id": true,
+      "cli_alias": false,
+      "cli_id": true
+    }
+  ],
+  "exceptions": [
+    {
+      "input": "unknown model or unsupported effort",
+      "expected": "reject before submission; submissions=0, turns=0"
+    },
+    {
+      "input": "Go CLI both flags omitted",
+      "expected": "preserve defaults"
+    },
+    {
+      "input": "Go CLI explicitly empty model or effort",
+      "expected": "reject"
+    },
+    {
+      "input": "gpt-6-luna/high",
+      "baseline": "reject",
+      "M1_experimental_target": "accept explicit canonical ID in experimental path; verify echoed model and effort separately; preserve ordinary roster syntax"
+    },
+    {
+      "input": "gpt-5.6-luna/high",
+      "expected": "disabled pending tier evidence and independent authorization"
+    },
+    {
+      "input": "mutation: only Python accepts newly added effort",
+      "expected": "contract suite detects cross-language disagreement"
+    }
+  ],
+  "experiment": {
+    "round_one": "gpt-6-luna",
+    "effort": "high",
+    "tools": "identical isolated input-only settings",
+    "cache": "record both arms; mismatched cache conditions invalidate cost comparison; uncontrolled material quality conditions invalidate pair",
+    "retry": 0,
+    "calls_per_round": 16,
+    "total_ceiling": 32,
+    "operational_changes": false
+  },
+  "catalog_discovery": {
+    "fetched_at": "2026-11-26T06:20:25.912930Z",
+    "high_advertised": {
+      "gpt-6-luna": true,
+      "gpt-5.6-luna": true
+    },
+    "provider_turns": 0
+  }
+}

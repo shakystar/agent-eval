@@ -71,4 +71,4 @@ v0.3.2 M4에서 변경한 변수는 한 계약의 추론 수준이었다. 양쪽
 
 ## 마감 판단
 
-단계별 현재 검증 결과는 모두 미실행이다. 기획 근거는 [팀별 산출물과 영수증](planning-evidence.json)에 보존한다. 운영 채택은 별도 결정으로 남긴다. 하위 모델 제공자 확인 실패, 불완전한 대응쌍, 개선 근거 부족은 각각 미확인 또는 현행 유지로 기록한다. Docker 복구 [#35](https://github.com/shakystar/agent-eval/issues/35)와 에이전트 컨텍스트 메모리(v0.4.0)는 별도 범위다.
+M0 기준 동결과 독립 인수를 완료했다. [동결 규약](M0-protocol.md) · [계약과 경로표](M0-baseline.json) · [블라인드 묶음 매니페스트](M0-manifest.json) · [독립 재검토 판정](M0-verdict.json). M1~M4 구현·실험 결과는 후속 단계에서 기록한다. 기획 근거는 [팀별 산출물과 영수증](planning-evidence.json)에 보존한다. 운영 채택은 별도 결정으로 남긴다. 하위 모델 제공자 확인 실패, 불완전한 대응쌍, 개선 근거 부족은 각각 미확인 또는 현행 유지로 기록한다. Docker 복구 [#35](https://github.com/shakystar/agent-eval/issues/35)와 에이전트 컨텍스트 메모리(v0.4.0)는 별도 범위다.

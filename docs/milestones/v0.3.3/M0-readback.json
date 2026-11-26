@@ -1,0 +1,8 @@
+{
+  "method": "separate readback process, SHA256 of on-disk encrypted file and authenticated decrypted bytes, compared against published manifest",
+  "sealed_readback": "959d0edadf6461ad674678c9e9863ce4bcb9ce93a3a6995657c794a323c51e77",
+  "plaintext_readback": "fea0ecbdb9f6c844cc991ec5e40d4ee745796b02ae2a03b96593dd09add47c4d",
+  "sealed_expected": "959d0edadf6461ad674678c9e9863ce4bcb9ce93a3a6995657c794a323c51e77",
+  "plaintext_expected": "fea0ecbdb9f6c844cc991ec5e40d4ee745796b02ae2a03b96593dd09add47c4d",
+  "all_8_case_inputs_match_both_slots": true
+}
