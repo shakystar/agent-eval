@@ -3,6 +3,7 @@ import fcntl
 import json
 import os
 import re
+import stat
 from pathlib import Path
 
 
@@ -54,6 +55,24 @@ def _json(data):
     if not isinstance(value, dict):
         raise ValueError("expected JSON object")
     return value
+
+
+def _native_exit(ledger, assignment, plan):
+    path = ledger.parent / "native-exit.json"
+    try:
+        fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
+        with os.fdopen(fd, "rb") as stream:
+            if not stat.S_ISREG(os.fstat(stream.fileno()).st_mode):
+                return None
+            record = _json(stream.read())
+    except (OSError, ValueError, RecursionError):
+        return None
+    if (record.keys() != {"assignment", "exit_code", *_IDENTITY}
+            or record["assignment"] != assignment
+            or any(record[key] != plan[key] for key in _IDENTITY)
+            or type(record["exit_code"]) is not int):
+        return None
+    return record["exit_code"]
 
 
 def _valid_row(row):
@@ -165,6 +184,11 @@ def score_assignment(*, arm, assignment, ledger, state, bridge, plan=None, score
                     or not _sha(pinned.get("input_sha256"))
                     or not isinstance(pinned.get("instruction"), str)):
                 return _decision("hold", "invalid_plan_identity")
+            native_exit = _native_exit(ledger, assignment, pinned)
+            if native_exit is None:
+                return _decision("hold", "missing_invalid_or_unbound_native_exit")
+            if native_exit != 0:
+                return _decision("hold", "native_assignment_failed")
             result, native = _observe_bound(bridge, state, pinned, start, ack)
             if result["action"] == "accept" and score is not None:
                 # Scorer errors propagate, but the callback runs under the lock.

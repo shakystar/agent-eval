@@ -5,9 +5,10 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from subprocess import CompletedProcess
 from unittest.mock import Mock, patch
 
-from agent_eval import m3_score
+from agent_eval import m3_assignment, m3_score
 
 
 class M3ScoreTests(unittest.TestCase):
@@ -40,6 +41,9 @@ class M3ScoreTests(unittest.TestCase):
         self.lock.touch()
         self.plan = self.state / "assignment-v2.plan.json"
         self.plan.write_text(json.dumps(self.plan_data), encoding="utf-8")
+        self.exit_record = slot / "native-exit.json"
+        self.exit_data = dict(self.identity, assignment=self.assignment, exit_code=0)
+        self.exit_record.write_text(json.dumps(self.exit_data), encoding="utf-8")
         self.start = dict(kind="start", ordinal=1, assignment=self.assignment, run="run",
                           attempt="attempt", thread="session", rpc_id="1",
                           request_sha256="b" * 64)
@@ -98,7 +102,44 @@ class M3ScoreTests(unittest.TestCase):
         self._write(self.start)
         self._nonaccept()
 
+    def test_invalid_native_exit_never_observes_or_calls_scorer(self):
+        self._write(self.start, self.ack)
+        self.exit_record.unlink()
+        self._nonaccept()
+        for update in (
+            {"exit_code": 17},
+            {"exit_code": False},
+            {"exit_code": 0.0},
+            {"assignment": "candidate/Safe-case_1.0/0"},
+            {"run_id": "tampered"},
+            {"attempt_id": "tampered"},
+        ):
+            with self.subTest(update=update):
+                self.exit_record.write_text(
+                    json.dumps(dict(self.exit_data, **update)), encoding="utf-8")
+                self._nonaccept()
+        self.exit_record.write_text("{", encoding="utf-8")
+        self._nonaccept()
+        self.exit_record.unlink()
+        self.exit_record.mkdir()
+        self._nonaccept()
+        self.observer.assert_not_called()
+        self.verifier.assert_not_called()
+
+    def test_exit_checkpoint_rolls_back_failed_directory_sync(self):
+        slot = self.ledger.parent
+        self.exit_record.unlink()
+        with patch.object(m3_assignment.os, "fsync",
+                          side_effect=[None, OSError("directory sync failed"), None]):
+            with self.assertRaisesRegex(OSError, "directory sync failed"):
+                m3_assignment._record_native_exit(slot, self.assignment, self.plan, 0)
+        self.assertFalse(self.exit_record.exists())
+        self.assertEqual(list(slot.glob(".native-exit-*")), [])
+        self._write(self.start, self.ack)
+        self._nonaccept()
+
     def test_double_start_including_identical_row_or_retry(self):
+        self.exit_record.unlink()
         for extra in (self.start, dict(self.start, ordinal=2, attempt="retry")):
             with self.subTest(extra=extra):
                 self._write(self.start, self.ack, extra)
@@ -187,6 +228,72 @@ class M3ScoreTests(unittest.TestCase):
                 result = json.loads(out.getvalue())
                 self.assertEqual(result["action"], action)
                 self.assertEqual("receipt" in result, action == "accept")
+
+    def test_launcher_and_rescore_use_same_exit_checkpoint(self):
+        backend = self.root / "codex"
+        backend.touch(mode=0o700)
+        for arm in ("current", "candidate"):
+            for native_code, duplicate, action, status in (
+                (17, False, "hold", 3),
+                (0, False, "accept", 0),
+                (17, True, "reject", 4),
+                (0, True, "reject", 4),
+            ):
+                with self.subTest(arm=arm, native_code=native_code, duplicate=duplicate):
+                    case = f"exit-{native_code}-{int(duplicate)}"
+                    assignment = f"{arm}/{case}/0"
+                    slot = self.root / assignment
+                    state = slot / "assignment"
+                    flags = ["--arm", arm, "--case", case, "--repeat", "0",
+                             "--root", str(self.root)]
+                    score_args = [*flags, "--bridge", str(self.bridge)]
+                    args = [*flags, "--backend-executable", str(backend), "--",
+                            "--lab=lab", "--revision=rev", "--member=reviewer",
+                            "--task=task", f"--runtime={self.bridge}", "--profile=profile"]
+
+                    def rescore(argv):
+                        output = io.StringIO()
+                        with contextlib.redirect_stdout(output):
+                            code = m3_score.main(argv)
+                        return CompletedProcess(argv, code, stdout=output.getvalue())
+
+                    def run(command, **kwargs):
+                        if command[2] == "agent_eval.m3_score":
+                            record = json.loads((slot / "native-exit.json").read_bytes())
+                            self.assertEqual(record, dict(self.identity, assignment=assignment,
+                                                          exit_code=native_code))
+                            return rescore(command[3:])
+                        state.mkdir()
+                        (state / "assignment-v2.plan.json").write_text(
+                            json.dumps(self.plan_data), encoding="utf-8")
+                        (slot / "ledger.jsonl.lock").touch()
+                        start = dict(self.start, assignment=assignment)
+                        rows = [start, dict(start, kind="ack", turn="turn")]
+                        ledger = slot / "ledger.jsonl"
+                        ledger.write_text("".join(json.dumps(row) + "\n" for row in rows),
+                                          encoding="utf-8")
+                        before = rescore(score_args)
+                        self.assertEqual(before.returncode, 3)
+                        self.assertNotIn("receipt", json.loads(before.stdout))
+                        if duplicate:
+                            with ledger.open("a", encoding="utf-8") as stream:
+                                stream.write(json.dumps(start) + "\n")
+                        return CompletedProcess(command, native_code)
+
+                    output = io.StringIO()
+                    with patch.object(m3_assignment.subprocess, "run", side_effect=run):
+                        with contextlib.redirect_stdout(output):
+                            self.assertEqual(m3_assignment.main(args), status)
+                    first = json.loads(output.getvalue())
+                    self.assertEqual(first.pop("status"), "assignment_failed" if native_code
+                                     else "assignment_exited")
+                    after = rescore(score_args)
+                    self.assertEqual(after.returncode, status)
+                    self.assertEqual(first, json.loads(after.stdout))
+                    self.assertEqual(first["action"], action)
+                    self.assertEqual("receipt" in first, action == "accept")
+                    if native_code == 17 and not duplicate:
+                        self.assertEqual(first["reason"], "native_assignment_failed")
 
     def test_cli_rejects_unsafe_slots_and_path_overrides(self):
         args = self._cli_args()

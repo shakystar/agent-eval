@@ -8,6 +8,7 @@ An existing slot cannot be resubmitted; re-score it separately with m3_score.
 """
 
 import argparse
+from contextlib import suppress
 import json
 import os
 from pathlib import Path
@@ -111,6 +112,43 @@ def _reject_constant(_):
     raise ValueError("non-JSON gate constant")
 
 
+def _record_native_exit(slot, assignment, plan, code):
+    pinned = json.loads(plan.read_text(encoding="utf-8"), object_pairs_hook=_gate_object,
+                        parse_constant=_reject_constant)
+    if not isinstance(pinned, dict):
+        raise ValueError("invalid plan identity")
+    ids = {key: pinned.get(key) for key in ("run_id", "attempt_id")}
+    if any(not isinstance(value, str) or not value.strip() or "\0" in value
+           for value in ids.values()):
+        raise ValueError("invalid plan identity")
+
+    destination = slot / "native-exit.json"
+    directory = os.open(slot, os.O_RDONLY | os.O_DIRECTORY)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=slot,
+                                         prefix=".native-exit-", delete=False) as stream:
+            temporary = Path(stream.name)
+            json.dump(dict(ids, assignment=assignment, exit_code=code), stream)
+            stream.flush()
+            os.fsync(stream.fileno())
+        try:
+            os.replace(temporary, destination)
+            os.fsync(directory)
+        except (OSError, KeyboardInterrupt):
+            # Roll back publication if the directory sync fails.
+            with suppress(OSError):
+                destination.unlink(missing_ok=True)
+                os.fsync(directory)
+            raise
+    finally:
+        try:
+            if temporary is not None:
+                temporary.unlink(missing_ok=True)
+        finally:
+            os.close(directory)
+
+
 def _score(args, root, runtime, repo, env, native_code):
     command = [
         sys.executable, "-m", "agent_eval.m3_score",
@@ -140,6 +178,8 @@ def _score(args, root, runtime, repo, env, native_code):
     if action == "accept":
         if verdict.get("receipt") is None:
             return fallback, 3
+        if native_code is None:
+            return {"action": "hold", "reason": "missing_invalid_or_unbound_native_exit"}, 3
         if native_code != 0:
             return {"action": "hold", "reason": "native_assignment_failed"}, 3
         return {"action": action, "reason": reason, "receipt": verdict["receipt"]}, code
@@ -197,6 +237,7 @@ def main(argv=None):
     command.extend(f"--{name}={role[name]}" for name in _ROLE_OPTIONS)
 
     result = None
+    recorded_exit = None
     try:
         with tempfile.TemporaryDirectory(prefix=".codex-", dir=slot) as directory:
             shim = Path(directory) / "codex"
@@ -206,6 +247,12 @@ def main(argv=None):
             worker_env = dict(env, PATH=directory + os.pathsep + env.get("PATH", os.defpath))
             with _private_output(native_stdout) as stdout, _private_output(slot / "assignment.stderr") as stderr:
                 result = subprocess.run(command, cwd=repo, env=worker_env, stdout=stdout, stderr=stderr, check=False)
+                try:
+                    _record_native_exit(slot, env["M3_ASSIGNMENT"], plan, result.returncode)
+                except (OSError, ValueError, RecursionError):
+                    pass  # Still score the ledger so attributable duplicates can be rejected.
+                else:
+                    recorded_exit = result.returncode
     except KeyboardInterrupt:
         _status("interrupted")
         return 130
@@ -215,9 +262,14 @@ def main(argv=None):
             return 1
         status = "cleanup_error"
     else:
-        status = "assignment_exited" if result.returncode == 0 else "assignment_failed"
+        if result.returncode != 0:
+            status = "assignment_failed"
+        elif recorded_exit is None:
+            status = "native_exit_record_error"
+        else:
+            status = "assignment_exited"
 
-    verdict, code = _score(args, slot.parents[2], runtime, repo, env, result.returncode)
+    verdict, code = _score(args, slot.parents[2], runtime, repo, env, recorded_exit)
     _status(status, **verdict)
     return code
 
