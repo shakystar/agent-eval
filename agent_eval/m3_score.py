@@ -60,6 +60,9 @@ def _json(data):
 def _native_exit(ledger, assignment, plan):
     path = ledger.parent / "native-exit.json"
     try:
+        marker = (ledger.parent / "native-exit.commit").lstat()
+        if not stat.S_ISREG(marker.st_mode) or marker.st_size != 0:
+            return None
         fd = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_NONBLOCK)
         with os.fdopen(fd, "rb") as stream:
             if not stat.S_ISREG(os.fstat(stream.fileno()).st_mode):

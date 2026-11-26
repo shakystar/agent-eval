@@ -45,8 +45,10 @@ class M3ScoreTests(unittest.TestCase):
         self.plan = self.state / "assignment-v2.plan.json"
         self.plan.write_text(json.dumps(self.plan_data), encoding="utf-8")
         self.exit_record = slot / "native-exit.json"
+        self.exit_commit = slot / "native-exit.commit"
         self.exit_data = dict(self.identity, assignment=self.assignment, exit_code=0)
         self.exit_record.write_text(json.dumps(self.exit_data), encoding="utf-8")
+        self.exit_commit.touch()
         self.start = dict(kind="start", ordinal=1, assignment=self.assignment, run="run",
                           attempt="attempt", thread="session", rpc_id="1",
                           request_sha256="b" * 64)
@@ -134,6 +136,7 @@ class M3ScoreTests(unittest.TestCase):
             with self.subTest(arm=arm):
                 self._slot(arm)
                 slot = self.ledger.parent
+                self.exit_commit.unlink()
                 self.exit_record.unlink()
                 self._write(self.start, self.ack)
                 missing = {"action": "hold",
@@ -157,8 +160,9 @@ class M3ScoreTests(unittest.TestCase):
                             m3_assignment._record_native_exit(slot, self.assignment, self.plan, 0)
 
                 busy = {"action": "hold", "reason": "ledger_lock_busy"}
-                self.assertEqual(syncs, [(True, busy), (False, busy)])
-                self.assertFalse(self.exit_record.exists())
+                self.assertEqual(syncs, [(True, busy)])
+                self.assertTrue(self.exit_record.exists())
+                self.assertFalse(self.exit_commit.exists())
                 self.assertEqual(list(slot.glob(".native-exit-*")), [])
                 self.assertEqual(self._gate(arm), missing)
                 self.scorer.assert_not_called()
@@ -260,14 +264,16 @@ class M3ScoreTests(unittest.TestCase):
         backend = self.root / "codex"
         backend.touch(mode=0o700)
         for arm in ("current", "candidate"):
-            for native_code, duplicate, action, status in (
-                (17, False, "hold", 3),
-                (0, False, "accept", 0),
-                (17, True, "reject", 4),
-                (0, True, "reject", 4),
+            for native_code, duplicate, sync_failure, action, status in (
+                (17, False, False, "hold", 3),
+                (0, False, False, "accept", 0),
+                (17, True, False, "reject", 4),
+                (0, True, False, "reject", 4),
+                (0, False, True, "hold", 3),
             ):
-                with self.subTest(arm=arm, native_code=native_code, duplicate=duplicate):
-                    case = f"exit-{native_code}-{int(duplicate)}"
+                with self.subTest(arm=arm, native_code=native_code, duplicate=duplicate,
+                                  sync_failure=sync_failure):
+                    case = f"exit-{native_code}-{int(duplicate)}-{int(sync_failure)}"
                     assignment = f"{arm}/{case}/0"
                     slot = self.root / assignment
                     state = slot / "assignment"
@@ -289,6 +295,8 @@ class M3ScoreTests(unittest.TestCase):
                             record = json.loads((slot / "native-exit.json").read_bytes())
                             self.assertEqual(record, dict(self.identity, assignment=assignment,
                                                           exit_code=native_code))
+                            self.assertEqual((slot / "native-exit.commit").exists(),
+                                             not sync_failure)
                             return rescore(command[3:])
                         state.mkdir()
                         (state / "assignment-v2.plan.json").write_text(
@@ -307,18 +315,45 @@ class M3ScoreTests(unittest.TestCase):
                                 stream.write(json.dumps(start) + "\n")
                         return CompletedProcess(command, native_code)
 
+                    real_fsync, real_unlink = os.fsync, Path.unlink
+
+                    def fsync(fd):
+                        if sync_failure and stat.S_ISDIR(os.fstat(fd).st_mode):
+                            raise OSError("directory sync failed")
+                        return real_fsync(fd)
+
+                    def unlink(path, *args, **kwargs):
+                        if sync_failure and path == slot / "native-exit.json":
+                            raise PermissionError("rollback unlink failed")
+                        return real_unlink(path, *args, **kwargs)
+
+                    for mock in (self.observer, self.verifier, self.scorer):
+                        mock.reset_mock()
                     output = io.StringIO()
-                    with patch.object(m3_assignment.subprocess, "run", side_effect=run):
+                    with (patch.object(m3_assignment.subprocess, "run", side_effect=run),
+                          patch.object(m3_assignment.os, "fsync", side_effect=fsync),
+                          patch.object(Path, "unlink", unlink)):
                         with contextlib.redirect_stdout(output):
                             self.assertEqual(m3_assignment.main(args), status)
                     first = json.loads(output.getvalue())
-                    self.assertEqual(first.pop("status"), "assignment_failed" if native_code
-                                     else "assignment_exited")
+                    expected = "assignment_failed" if native_code else "assignment_exited"
+                    if sync_failure:
+                        expected = "native_exit_record_error"
+                    self.assertEqual(first.pop("status"), expected)
                     after = rescore(score_args)
                     self.assertEqual(after.returncode, status)
                     self.assertEqual(first, json.loads(after.stdout))
                     self.assertEqual(first["action"], action)
                     self.assertEqual("receipt" in first, action == "accept")
+                    if action != "accept":
+                        gated = m3_score.score_assignment(
+                            arm=arm, assignment=assignment,
+                            ledger=slot / "ledger.jsonl", state=state, bridge=self.bridge,
+                            score=self.scorer)
+                        self.assertEqual(gated, first)
+                        self.observer.assert_not_called()
+                        self.verifier.assert_not_called()
+                        self.scorer.assert_not_called()
                     if native_code == 17 and not duplicate:
                         self.assertEqual(first["reason"], "native_assignment_failed")
 

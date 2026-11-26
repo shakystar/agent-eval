@@ -5,6 +5,7 @@ JSON stdin is inherited; native stdout and stderr are kept in private slot files
 The slot is ROOT/ARM/CASE/REPEAT and its binding is ARM/CASE/REPEAT.
 The launcher reports its status and the scoring verdict, not the native output.
 An existing slot cannot be resubmitted; re-score it separately with m3_score.
+Receipt eligibility requires both native-exit.json and its commit marker.
 """
 
 import argparse
@@ -124,7 +125,7 @@ def _record_native_exit(slot, assignment, plan, code):
         raise ValueError("invalid plan identity")
 
     destination = slot / "native-exit.json"
-    directory = os.open(slot, os.O_RDONLY | os.O_DIRECTORY)
+    marker = slot / "native-exit.commit"
     temporary = None
     try:
         with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=slot,
@@ -133,23 +134,34 @@ def _record_native_exit(slot, assignment, plan, code):
             json.dump(dict(ids, assignment=assignment, exit_code=code), stream)
             stream.flush()
             os.fsync(stream.fileno())
-        with (slot / "ledger.jsonl.lock").open("rb+") as lock:
+        lock = (slot / "ledger.jsonl.lock").open("rb+")
+        try:
             fcntl.flock(lock.fileno(), fcntl.LOCK_EX)
+            # Never replace a record already covered by a marker.
+            try:
+                marker.lstat()
+            except FileNotFoundError:
+                pass
+            else:
+                raise FileExistsError(str(marker))
+            directory = os.open(slot, os.O_RDONLY | os.O_DIRECTORY)
             try:
                 os.replace(temporary, destination)
+                temporary = None
                 os.fsync(directory)
-            except (OSError, KeyboardInterrupt):
-                # Roll back publication if the directory sync fails.
-                with suppress(OSError):
-                    destination.unlink(missing_ok=True)
-                    os.fsync(directory)
-                raise
-    finally:
-        try:
-            if temporary is not None:
-                temporary.unlink(missing_ok=True)
+            finally:
+                os.close(directory)
+            # Atomic commit point. Loss of this unsynced marker can only cause hold.
+            fd = os.open(marker, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+            with suppress(OSError):
+                os.close(fd)
         finally:
-            os.close(directory)
+            with suppress(OSError):
+                lock.close()
+    finally:
+        if temporary is not None:
+            with suppress(OSError):
+                temporary.unlink(missing_ok=True)
 
 
 def _score(args, root, runtime, repo, env, native_code):
