@@ -1,0 +1,170 @@
+{
+  "source": {
+    "codex-adapter": "6dce52deeb0b89aaecf0c617fa9d10ae6392e2d0",
+    "role-runtime": "45274ee28a053aec3f8dca8f4aecfcbb80138bcb",
+    "role-orchestrator": "6d74153ced6b558b8371c0f50201d1979af8f63e"
+  },
+  "bridge_sha256": "0b80fc27daf9bcfec9d998b09726b04f69550c953bb02e83937f5aa3cf69db8b",
+  "natural": [
+    {
+      "mode": "success",
+      "logical_request_sha256": "7c1a4552288866c3581a137aa3908b68fa4496ec7838034a3055f9019c67b099",
+      "overlap_exit": 1,
+      "overlap_error": "state store already owned: resource temporarily unavailable",
+      "initial": {
+        "schema_version": 1,
+        "run_id": "run-shared",
+        "attempt_id": "attempt-shared",
+        "id": "task-shared",
+        "status": "succeeded",
+        "text": "identical output",
+        "cached": false,
+        "stats": {
+          "submitted": 1,
+          "succeeded": 1,
+          "failed": 0,
+          "rejected": 0,
+          "maxActive": 1,
+          "maxQueued": 1,
+          "workers": 1
+        }
+      },
+      "restart": {
+        "schema_version": 1,
+        "run_id": "run-shared",
+        "attempt_id": "attempt-shared",
+        "id": "task-shared",
+        "status": "succeeded",
+        "text": "identical output",
+        "cached": true,
+        "stats": {
+          "submitted": 0,
+          "succeeded": 0,
+          "failed": 0,
+          "rejected": 0,
+          "maxActive": 0,
+          "maxQueued": 0,
+          "workers": 0
+        }
+      },
+      "verified": {
+        "status": "verified",
+        "action": "accept",
+        "reasons": [],
+        "turn_count": 1,
+        "usage": {
+          "input_tokens": 1,
+          "output_tokens": 1,
+          "cached_input_tokens": 0
+        },
+        "automatic_dispatch": false,
+        "usage_complete": true,
+        "usage_scope": "final_matched_tokenUsage.last"
+      },
+      "receipt_sha256": "2c17674893b2432a86b63535a958c0c65c80f911ccb92c94d26d1f5ff31ca5ff",
+      "first_calls": 1,
+      "overlap_new_calls": 0,
+      "restart_new_calls": 0,
+      "injected_control": {
+        "expected_new_calls": 0,
+        "actual_new_calls": 1,
+        "audit": "reject",
+        "product_view": "accept",
+        "same_output": true,
+        "same_receipt": true
+      }
+    },
+    {
+      "mode": "lost",
+      "logical_request_sha256": "7c1a4552288866c3581a137aa3908b68fa4496ec7838034a3055f9019c67b099",
+      "overlap_exit": 1,
+      "overlap_error": "state store already owned: resource temporarily unavailable",
+      "initial": {
+        "schema_version": 1,
+        "run_id": "run-shared",
+        "attempt_id": "attempt-shared",
+        "error_code": "execution_failed",
+        "id": "task-shared",
+        "status": "error",
+        "text": "",
+        "cached": false,
+        "stats": {
+          "submitted": 1,
+          "succeeded": 0,
+          "failed": 1,
+          "rejected": 0,
+          "maxActive": 1,
+          "maxQueued": 1,
+          "workers": 1
+        },
+        "error": "execution_failed"
+      },
+      "restart": {
+        "schema_version": 1,
+        "run_id": "run-shared",
+        "attempt_id": "attempt-shared",
+        "error_code": "execution_blocked",
+        "id": "task-shared",
+        "status": "error",
+        "text": "",
+        "cached": false,
+        "stats": {
+          "submitted": 0,
+          "succeeded": 0,
+          "failed": 0,
+          "rejected": 0,
+          "maxActive": 0,
+          "maxQueued": 0,
+          "workers": 0
+        },
+        "error": "execution_blocked"
+      },
+      "verified": {
+        "status": "uncertain",
+        "action": "hold",
+        "reasons": [
+          "incomplete_turn_evidence"
+        ],
+        "turn_count": 0,
+        "usage": {},
+        "automatic_dispatch": false
+      },
+      "receipt_sha256": "977f5f3f1e3560fb634c5786cc3d0bfc15e406aa846ef96d907207d5f5b543e6",
+      "first_calls": 1,
+      "overlap_new_calls": 0,
+      "restart_new_calls": 0
+    }
+  ],
+  "fault": {
+    "expected_starts": 1,
+    "observed_starts": 2,
+    "request_hash": "fe8e8210803c04ea3a1b15976c62fb6e69f5c897a7f2dd22b79c667d4053a7a2",
+    "turn_ids": [
+      "47df8368-ebaa-4bfa-aaff-e99537c5bbcc",
+      "8d77da04-b991-4151-a3fe-a4b3e344c77b"
+    ],
+    "receipt_sha256": "9b911b0cf426e12ab587b3de011f44b7dc392d7f7bd3ea0a2f8e582b42e4b9ea",
+    "verifier": {
+      "status": "verified",
+      "action": "accept",
+      "reasons": [],
+      "turn_count": 1,
+      "usage": {
+        "input_tokens": 1,
+        "output_tokens": 1,
+        "cached_input_tokens": 0
+      },
+      "automatic_dispatch": false,
+      "usage_complete": true,
+      "usage_scope": "final_matched_tokenUsage.last"
+    },
+    "boundary_audit": "reject"
+  },
+  "review": {
+    "status": "feedback",
+    "decision": "blocked",
+    "member_id": "acl-014",
+    "reason": "호출 경계 진단: 오프라인 합성 시험에서 정상·응답 유실 각 1회 모두 최초 turn/start는 1건이었다. 동일 상태에 대한 동시 제출은 상태 저장소 잠금으로 거부됐고, 재시작 시 추가 호출은 0건이었다. 정상 건은 캐시로 반환됐고, 응답 유실 건은 execution_blocked 및 검증 보류(hold)로 끝났다. 이중 호출 주입에서는 동일 요청에 서로 다른 턴 ID 2개가 기록돼 경계 감사가 거부했지만, 추가 응답이 브리지에 전달되지 않아 출력과 저장된 영수증은 그대로였고 영수증만 보는 검증기는 승인했다. 이는 자연 중복 호출이 아니라 영수증 기반 검증의 사각지대를 입증한다. 현 상태로 실모델 역할 A/B는 진행할 수 없다. 김가온은 동일 빌드의 격리 시험에서 독립적인 호출 경계 기록을 A/B 승인 조건에 연결하고, 정상 재제출은 추가 호출 없이 통과하며, 유실은 재호출 없이 보류되고, 이중 호출 주입은 영수증 검증이 승인해도 최종 승인이 차단됨을 확인한 뒤 착수를 재검토해야 한다.",
+    "receipt": "f961be01557d1b4515b3bcb67cd46158ee46618b10b3ab0cf83beaf0de77f2d9"
+  }
+}

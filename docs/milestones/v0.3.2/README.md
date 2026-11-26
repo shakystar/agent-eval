@@ -1,5 +1,7 @@
 # v0.3.2 · 독립 리뷰의 실행 근거와 계약 재측정
 
+[M3 호출 경계 사전 검증](M3-preflight.md)
+
 [게시한 M1 후보와 다음 작업 범위](M2-scope.md) · [M2 독립 재현 결과](M2-results.md)
 
 [M0 인수 규약 초안과 독립 검토 반영 사항](M0.md) · [인수 판정과 측정 사용량](m0-review.json) · [M1 착수 전 기술 실사 판정](m1-prestart.json) · [M1 착수 전 재심](M1-readiness.md)
