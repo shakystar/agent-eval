@@ -35,7 +35,7 @@ for line in sys.stdin:
             sys.exit(0)
         send({'id':req['id'], 'result':{'turn':{'id':turn,'status':'inProgress'}}})
         send({'method':'thread/tokenUsage/updated','params':{'threadId':thread,'turnId':turn,'tokenUsage':{'last':{'inputTokens':1,'outputTokens':1,'cachedInputTokens':0}}}})
-        send({'method':'turn/completed','params':{'threadId':thread,'turn':{'id':turn,'status':'completed','items':[{'type':'agentMessage','phase':'final_answer','text':'identical output'}]}}})
+        send({'method':'turn/completed','params':{'threadId':thread,'turn':{'id':turn,'status':'completed','items':[{'type':'agentMessage','phase':'final_answer','text':os.environ.get('PREFLIGHT_REPLY', 'identical output')}]}}})
         continue
     if method == 'account/read':
         result = {'account':{'type':'chatgpt'},'requiresOpenaiAuth':True}

@@ -1,10 +1,10 @@
-"""Run one M3 assignment without scoring it.
+"""Run one M3 assignment and score it after the native process exits.
 
 Use -- to separate launcher options from role_orchestrator.assignment options.
 JSON stdin is inherited; native stdout and stderr are kept in private slot files.
 The slot is ROOT/ARM/CASE/REPEAT and its binding is ARM/CASE/REPEAT.
-Run python -m agent_eval.m3_score separately on that slot after execution stops.
-Neither the launcher status nor the native CLI exit code is a scoring verdict.
+The launcher reports its status and the scoring verdict, not the native output.
+An existing slot cannot be resubmitted; re-score it separately with m3_score.
 """
 
 import argparse
@@ -94,8 +94,58 @@ def _private_output(path):
     return os.fdopen(fd, "wb")
 
 
-def _status(status, **paths):
-    print(json.dumps({"status": status, **{key: str(path) for key, path in paths.items()}}))
+def _status(status, **fields):
+    print(json.dumps({"status": status, **fields}))
+
+
+def _gate_object(pairs):
+    fields = {}
+    for key, value in pairs:
+        if key in fields:
+            raise ValueError("duplicate gate field")
+        fields[key] = value
+    return fields
+
+
+def _reject_constant(_):
+    raise ValueError("non-JSON gate constant")
+
+
+def _score(args, root, runtime, repo, env, native_code):
+    command = [
+        sys.executable, "-m", "agent_eval.m3_score",
+        "--arm", args.arm, "--case", args.case, "--repeat", str(args.repeat),
+        "--root", str(root), "--bridge", runtime,
+    ]
+    fallback = {"action": "hold", "reason": "scoring_gate_unavailable_or_invalid"}
+    try:
+        result = subprocess.run(
+            command, cwd=repo, env=env, stdin=subprocess.DEVNULL,
+            stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=False, timeout=60,
+        )
+        verdict = json.loads(
+            result.stdout, object_pairs_hook=_gate_object, parse_constant=_reject_constant,
+        )
+        json.dumps(verdict, allow_nan=False)
+    except (OSError, subprocess.SubprocessError, ValueError, TypeError, RecursionError):
+        return fallback, 3
+    if not isinstance(verdict, dict):
+        return fallback, 3
+    action, reason = verdict.get("action"), verdict.get("reason")
+    if not isinstance(action, str) or not isinstance(reason, str) or not reason.strip():
+        return fallback, 3
+    code = {"accept": 0, "hold": 3, "reject": 4}.get(action)
+    if code is None or code != result.returncode:
+        return fallback, 3
+    if action == "accept":
+        if verdict.get("receipt") is None:
+            return fallback, 3
+        if native_code != 0:
+            return {"action": "hold", "reason": "native_assignment_failed"}, 3
+        return {"action": action, "reason": reason, "receipt": verdict["receipt"]}, code
+    if "receipt" in verdict:
+        return fallback, 3
+    return {"action": action, "reason": reason}, code
 
 
 def main(argv=None):
@@ -105,6 +155,12 @@ def main(argv=None):
     except (OSError, ValueError, RuntimeError):
         _status("invalid_backend")
         return 2
+    try:
+        runtime = str(Path(role["runtime"]).resolve())
+    except (OSError, ValueError, RuntimeError):
+        _status("invalid_runtime")
+        return 2
+    role["runtime"] = runtime
     try:
         slot = _slot_path(args)
     except (OSError, RuntimeError):
@@ -123,7 +179,6 @@ def main(argv=None):
     plan = state / "assignment-v2.plan.json"
     ledger = slot / "ledger.jsonl"
     native_stdout = slot / "assignment.stdout"
-    paths = dict(slot=slot, state=state, plan=plan, ledger=ledger, native_stdout=native_stdout)
     package_dir = Path(__file__).resolve().parent
     repo = package_dir.parent
     python = os.path.abspath(sys.executable)
@@ -141,24 +196,30 @@ def main(argv=None):
     command = [python, "-P", "-m", "role_orchestrator.assignment", f"--state={state}", "--backend=codex"]
     command.extend(f"--{name}={role[name]}" for name in _ROLE_OPTIONS)
 
+    result = None
     try:
         with tempfile.TemporaryDirectory(prefix=".codex-", dir=slot) as directory:
             shim = Path(directory) / "codex"
             shim_args = [python, "-I", "-B", "-c", _SHIM, str(plan), str(package_dir / "m3_recorder.py")]
             shim.write_text("#!/bin/sh\nexec " + shlex.join(shim_args) + ' "$@"\n', encoding="utf-8")
             shim.chmod(0o700)
-            env["PATH"] = directory + os.pathsep + env.get("PATH", os.defpath)
+            worker_env = dict(env, PATH=directory + os.pathsep + env.get("PATH", os.defpath))
             with _private_output(native_stdout) as stdout, _private_output(slot / "assignment.stderr") as stderr:
-                result = subprocess.run(command, env=env, stdout=stdout, stderr=stderr, check=False)
+                result = subprocess.run(command, cwd=repo, env=worker_env, stdout=stdout, stderr=stderr, check=False)
     except KeyboardInterrupt:
-        _status("interrupted", **paths)
+        _status("interrupted")
         return 130
     except OSError:
-        _status("launch_error", **paths)
-        return 1
+        if result is None:
+            _status("launch_error")
+            return 1
+        status = "cleanup_error"
+    else:
+        status = "assignment_exited" if result.returncode == 0 else "assignment_failed"
 
-    _status("assignment_exited" if result.returncode == 0 else "assignment_failed", **paths)
-    return result.returncode if result.returncode >= 0 else 128 - result.returncode
+    verdict, code = _score(args, slot.parents[2], runtime, repo, env, result.returncode)
+    _status(status, **verdict)
+    return code
 
 
 if __name__ == "__main__":
