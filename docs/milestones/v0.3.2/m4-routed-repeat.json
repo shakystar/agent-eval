@@ -1,0 +1,221 @@
+{
+  "study": "M4-routing-repeat-01",
+  "execution_freeze": {
+    "role": "acl-025",
+    "model": "gpt-6.2-astra",
+    "revisions": {
+      "high": "112d4629d4261b4403ff33fbde43e36431c435f4",
+      "medium": "1fd0a6b8444621159a99b30272a25ff17e21b69d"
+    },
+    "role_instruction_sha256": "e00d5a3bc6247da34fa7a8094dfd60474cc5058bccee083c973262bf7a150ff1",
+    "eval": "225efc8241a5efa637e24a65e1bb911addbe10b0",
+    "orchestrator": "6d74153ced6b558b8371c0f50201d1979af8f63e",
+    "bridge_sha256": "0b80fc27daf9bcfec9d998b09726b04f69550c953bb02e83937f5aa3cf69db8b",
+    "order": [
+      [
+        "CAL01",
+        "high"
+      ],
+      [
+        "CAL01",
+        "medium"
+      ],
+      [
+        "CAL02",
+        "medium"
+      ],
+      [
+        "CAL02",
+        "high"
+      ]
+    ],
+    "attempts_per_slot": 1,
+    "deadline_seconds_per_assignment": 600,
+    "inputs": {
+      "CAL01": {
+        "sha256": "bbade05217450ed14677a481d9b80211227fff5f1b63915966ee24e678c72797",
+        "draft_sha256": "9af7c288d7f92e64a746f959f8a3808081af4f0ebb11b5982e302f67b758a5cc"
+      },
+      "CAL02": {
+        "sha256": "8cf8cd77013ba6e9fba2549d496d280417e20b85b58c592c1cd623899cb1b9d9",
+        "draft_sha256": "504b1e53b17455c5b83b0925c6173a8d86d5ba5839a43a5de7aa8209ecd77a05"
+      }
+    },
+    "expected_usage": "record input/output/cached per final matched turn, never add cached to input",
+    "elapsed": "monotonic time before launcher start to receipt-bearing process completion",
+    "release_rule": "admission accept and verified matching session/turn model and effort required; technical failure stays in denominator. Four diagnostic assignments only.",
+    "experiment": "M4-routing-repeat-01",
+    "connection": "process-only CONNECT chatgpt.com:443 via current DNS IPv4 104.18.32.47; regular TLS; account/read before first slot",
+    "previous_study_sha256": "3290791b44098f4ac89d79430cc3906126001eff7f347d33464048fab1bb402e"
+  },
+  "scoring_freeze": {
+    "execution_freeze_sha256": "6396cfccfc396d941fca04a8e8d285a5b8495749f23b98224d416ba1b19df494",
+    "scorer_sha256": "af473c7a8cb36ccfdf12c256545cd4dc26210801c8f0bd0a2778cb88a8516f32",
+    "private_answer_key_sha256": "087da18b856c711a64cc1a81deb1ba96fb121ebb6c797360ea0061d4965dca79",
+    "timeout_disposition": "600s: retain as technical failure/unknown, no resubmission. Freeze all observations before unblinding.",
+    "provider_check": "Require a single unambiguous profile for matching session+turn; absent/conflicting evidence holds the slot.",
+    "purpose": "2 public examples for calibration only; no change to operating role or quality superiority claim."
+  },
+  "route_preflight": {
+    "ip": "104.18.32.47",
+    "dns": [
+      "104.18.32.47",
+      "172.64.155.209"
+    ],
+    "routingAvailable": true
+  },
+  "attempts": 4,
+  "starts": 4,
+  "retries": 0,
+  "observations": [
+    {
+      "case": "CAL01",
+      "effort": "high",
+      "elapsed_seconds": 14.106,
+      "returncode": 0,
+      "timeout": false,
+      "starts": 1,
+      "acks": 1,
+      "ledger_sha256": "026e1246abe1686b95ec451445feaa3dd8942d3b59e96aa4abaf21ef03e42f99",
+      "gate": "accept",
+      "reason": "verified_single_start",
+      "native_receipt": "f1635a011deb41f197322cac57bdea6bfd82944c91d61a6884a27e135acbb81b",
+      "eligibility": "eligible",
+      "observed_profiles": [
+        [
+          "gpt-6.2-astra",
+          "high"
+        ]
+      ],
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 7213,
+        "output_tokens": 402
+      },
+      "usage_scope": "final_matched_tokenUsage.last",
+      "quality": "pass",
+      "blind_id": "43846dedb8b562ccc688",
+      "total_tokens": 7615
+    },
+    {
+      "case": "CAL01",
+      "effort": "medium",
+      "elapsed_seconds": 12.429,
+      "returncode": 0,
+      "timeout": false,
+      "starts": 1,
+      "acks": 1,
+      "ledger_sha256": "330d811e9472db16fea2f04d12fdcaa3cf041538ed190b5b5297594e9fb7e6c0",
+      "gate": "accept",
+      "reason": "verified_single_start",
+      "native_receipt": "90853fa25b6f1b5c4513eeaebad3633a06816d63db87c4d3a3e83f18b3de8831",
+      "eligibility": "eligible",
+      "observed_profiles": [
+        [
+          "gpt-6.2-astra",
+          "medium"
+        ]
+      ],
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 7208,
+        "output_tokens": 325
+      },
+      "usage_scope": "final_matched_tokenUsage.last",
+      "quality": "pass",
+      "blind_id": "b4f1db5d41b8c92f1fbe",
+      "total_tokens": 7533
+    },
+    {
+      "case": "CAL02",
+      "effort": "medium",
+      "elapsed_seconds": 13.97,
+      "returncode": 0,
+      "timeout": false,
+      "starts": 1,
+      "acks": 1,
+      "ledger_sha256": "edbac62f03b5b021bc46e4f516ee77a10cb7fd3a601b5af3ed8e08d41242d4ef",
+      "gate": "accept",
+      "reason": "verified_single_start",
+      "native_receipt": "d989708e45e6d63725daec7eff7a37e2eb7625c0b0e651dd8be7568e3d28aa6a",
+      "eligibility": "eligible",
+      "observed_profiles": [
+        [
+          "gpt-6.2-astra",
+          "medium"
+        ]
+      ],
+      "usage": {
+        "cached_input_tokens": 4480,
+        "input_tokens": 7253,
+        "output_tokens": 351
+      },
+      "usage_scope": "final_matched_tokenUsage.last",
+      "quality": "pass",
+      "blind_id": "b689d4a06d39838eac17",
+      "total_tokens": 7604
+    },
+    {
+      "case": "CAL02",
+      "effort": "high",
+      "elapsed_seconds": 16.454,
+      "returncode": 0,
+      "timeout": false,
+      "starts": 1,
+      "acks": 1,
+      "ledger_sha256": "e0ed8399245d3f1433530842b8fc186b0b9ff5113159970fbc66cbe41d35cd99",
+      "gate": "accept",
+      "reason": "verified_single_start",
+      "native_receipt": "37a15e6529657e0d4fc4da28ca6e54d47c0cd3ce68c10e65bc9476f82617a44c",
+      "eligibility": "eligible",
+      "observed_profiles": [
+        [
+          "gpt-6.2-astra",
+          "high"
+        ]
+      ],
+      "usage": {
+        "cached_input_tokens": 0,
+        "input_tokens": 7258,
+        "output_tokens": 408
+      },
+      "usage_scope": "final_matched_tokenUsage.last",
+      "quality": "pass",
+      "blind_id": "024bbc190b061711fa1c",
+      "total_tokens": 7666
+    }
+  ],
+  "blind_score_lock_sha256": "1f5019c804893b9b478677ab296587f40735b050d46ee7c8fe577f0ad7d1976e",
+  "blind_review": {
+    "status": "accepted",
+    "reason": "제공된 적격 응답 4건의 점수 잠금을 수락한다. 원문·초안·의견을 동결 기준과 대조한 결과는 다음과 같다.\n024bbc190b061711fa1c: pass — CAL02의 S는 한 채널의 금요일 재시도 12건만 기록한다. 의견은 12% 주장을 undetermined로 판정하고 S의 분모 누락을 명시했다.\n43846dedb8b562ccc688: pass — CAL01의 S가 문의 기록 9줄을 직접 뒷받침하므로 support가 맞다. 의견은 9줄을 9명으로 해석하지 않았다.\nb4f1db5d41b8c92f1fbe: pass — CAL01의 9줄 주장에 support를 부여했다. 분모와 독립 재집계 결과가 없다는 한계를 줄 수 주장을 보류할 사유로 삼지 않았다.\nb689d4a06d39838eac17: pass — CAL02의 의견은 반복 재시도 가능성을 구분하고 S에 전체 요청 수가 없음을 명시했다. 따라서 12% 주장의 undetermined 판정은 기준에 맞다.\n네 점수 모두 잠금 점수 및 상위 검토와 일치하며 과보류·오통과·필수 근거 누락은 없다. 입력 없는 슬롯은 미판정이다. 중복 호출 여부도 최종 파일만으로는 확인할 수 없다. 다음 검증에서는 1회 호출이 기대되는 저장 지점에 동일 내용의 두 번째 호출을 삽입하고 호출 횟수를 기록하라. 최종 파일이 같아도 호출이 2회 관측되면 1회 조건 위반으로 실패 처리한다. 이는 제안한 반례이며 실제 관측 결과가 아니다.",
+    "reviewers": [
+      {
+        "member": "acl-010",
+        "receipt_sha256": "8a291700b6a4cb33a0c4dd0587c019e390943b73b38e61d842eaf64c6a543a2d",
+        "decision": "accept"
+      },
+      {
+        "member": "acl-005",
+        "receipt_sha256": "6362f1273d545543ccc96255cd4ed50337127a54c341572f44384a8d280b97a9",
+        "decision": "accept"
+      }
+    ]
+  },
+  "final_acceptance": {
+    "status": "accepted",
+    "reason": "권고: 유지. M4 실험 결과 기록만 수락하며 운영 명부와 모델 설정은 변경하지 않는다. 전체 계획 분모는 4배정이다. 4건 모두 시작·ACK가 각각 1회였고 해당 세션·턴의 모델과 추론 수준이 계획과 일치했다. 4건 모두 적격·블라인드 채점 통과였으며 기술 실패·미상·타임아웃·재호출은 0건이다.\n채점 가능한 동일 사례 대응쌍은 2쌍이다. CAL01은 high·medium 모두 원문이 뒷받침하는 문의 기록 9줄을 support로 판정했고, 이를 문의자 9명으로 확대하지 않았다. CAL02는 양쪽 모두 한 채널의 재시도 12건만으로 전체 요청의 12%를 판단할 수 없어 undetermined로 판정하고 분모 누락을 명시했다. 과보류·오통과·필수 근거 누락은 없었고 블라인드 판정과 상위 검토가 일치했다.\n실측값(입력/출력/캐시 입력 토큰, 경과 시간)은 실행 순서대로 CAL01 high 7,213/402/0, 14.106초 → medium 7,208/325/0, 12.429초; CAL02 medium 7,253/351/4,480, 13.970초 → high 7,258/408/0, 16.454초다. 캐시 입력은 입력의 일부이므로 다시 더하지 않았다. 입력·출력 합계는 high 15,281토큰, medium 15,137토큰으로 총 30,418토큰이다. 공개 진단 사례가 2개뿐이고 실행 순서가 서로 반대이며 캐시는 CAL02 medium에서만 관측돼, 비용 절감이나 품질 우위는 일반화할 수 없다.\n다음 단계는 이 대응표와 유지 권고를 인수 기록에 남기는 것이다. 중복 저장 탐지는 이번 실험에서 검증하지 않았다. 후속 반례 시험에서는 1회만 허용된 저장 지점에 동일 내용의 두 번째 호출을 삽입하고 호출 횟수를 기록한다. 최종 파일이 같아도 2회가 관측되면 실패다. 이는 실제 관측값이 아니라 제안한 실패 조건이다.",
+    "reviewers": [
+      {
+        "member": "acl-010",
+        "receipt_sha256": "a5c1889dd3477ecf77c1f332c739e868198bd9aff4d35fa2d7e1eab9f52184e2",
+        "decision": "accept"
+      },
+      {
+        "member": "acl-005",
+        "receipt_sha256": "ed14ec9cd4511fef176df2b3ed7cab20e4c7b319b28bb4c65c09b80b41cf43d1",
+        "decision": "accept"
+      }
+    ]
+  }
+}
